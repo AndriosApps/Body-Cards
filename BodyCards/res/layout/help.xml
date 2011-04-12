@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="fill_parent"
+	android:layout_width="fill_parent"
+	android:gravity="bottom"
+	android:orientation="vertical">
+	
+
+	
+	
+
+	
+	<TextView
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:text="Help Window"
+		android:textSize="18px"
+		android:textColor="#000"
+		android:background="#CCC"
+		android:layout_weight="0" />
+		
+				<ScrollView 
+			android:layout_weight="1"
+			android:layout_height="0px"
+			android:layout_width="fill_parent">
+
+			<LinearLayout
+				android:layout_height="fill_parent"
+				android:layout_width="fill_parent"
+				android:orientation="vertical"
+				android:background="#E5E5E5">
+
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="center"
+					android:text="Quick Workout"
+					android:padding="10px"
+					android:textSize="15px"
+					android:textColor="#000"
+					android:background="#CCC"
+					android:layout_weight="0" />
+
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#E5E5FF"
+					android:textColor="#000"
+					android:text="The Quick Workout button will run through a deck of cards allowing you to complete a workout based on the original deck of cards workout." />	
+
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#FFFFFF"
+					android:textColor="#000"
+					android:text="Exercises completed in this mode will not be saved to your profile." />
+
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="center"
+					android:text="Create Workout"
+					android:padding="10px"
+					android:textColor="#000"
+					android:textSize="15px"
+					android:background="#CCC"
+					android:layout_weight="0" />
+
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#E5E5FF"
+					android:textColor="#000"
+					android:text="The Create Workout button will walk you through setting up your workout." />
+
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#FFF"
+					android:textColor="#000"
+					android:text="The first screen will be the choose exercises window. It will list all workouts available for selection." android:gravity="fill_horizontal"/>
+
+				
+
+				<TextView android:layout_width="fill_parent" 
+					android:text="If you are unsure of how to complete a certain workout or you want to remove it from your list, you can long click and choose view or delete." 
+					android:id="@+id/TextView01" 
+					android:layout_height="wrap_content" 
+					android:background="#E5E5FF" 
+					android:textColor="#000" />
+				
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#FFF"
+					android:textColor="#000"
+					android:text="From this screen you can Add a new exercise to the list. This exercise, once created, will remain in the list until you delete it or uninstall the application" />
+
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#E5E5FF"
+					android:textColor="#000"
+					android:text="The Clear button will remove all exercises from the selected workouts list and place them back into the available exercises list." />
+
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#FFF"
+					android:textColor="#000"
+					android:text="Once you have selected your desired workouts click the next button to take you to the set workout details window." />
+
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#E5E5FF"
+					android:textColor="#000"
+					android:text="In the set workout details you can set the desired number of people who are participating in the workout, number of sets and the reps range for your workout." />
+
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#FFF"
+					android:textColor="#000"
+					android:text="You also have the chance to choose a profile. If you choose a profile the workout will be saved to your profile for future reference." />
+
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#E5E5FF"
+					android:textColor="#000"
+					android:text="Done will take you to the start workout screen. Once you are here click start to begin your workout. The application will randomly choose an exercise from your list of selected exercise and a random number of reps based on your max and mins." />
+
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#FFF"
+					android:textColor="#000"
+					android:text="The application will track the amount of time each participant is working out and the overall workout time." />
+
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#E5E5FF"
+					android:textColor="#000"
+					android:text="You will be able to end workouts before all sets are completed, but it will show in your profile" />
+
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="center"
+					android:text="Profiles"
+					android:padding="10px"
+					android:textSize="15px"
+					android:textColor="#000"
+					android:background="#CCC"
+					android:layout_weight="0" />
+					
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#E5E5FF"
+					android:textColor="#000"
+					android:text="You can add profiles from the view profile screen." />
+
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#FFF"
+					android:textColor="#000"
+					android:text="Each person's profile will display a list of workouts and when they were completed" />
+					
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#E5E5FF"
+					android:textColor="#000"
+					android:text="If you select a workout it will display all the wokrout details" />
+
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#FFF"
+					android:textColor="#000"
+					android:text="Long clicking a workout will give you the option to delete the workout" />
+					
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#E5E5FF"
+					android:textColor="#000"
+					android:text="Long clicking on a profile in the profile list will give you the option to delete the profile" />
+
+			</LinearLayout>
+
+		</ScrollView>
+
+
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_height="55px" android:background="#555555"
+		android:gravity="bottom" android:orientation="horizontal"
+		android:layout_weight="0">
+
+		<Button android:id="@+id/hpBack" android:text="Back"
+			android:layout_width="wrap_content" android:layout_height="50px"
+			android:layout_weight="1" />
+
+
+	</LinearLayout>
+
+
+
+</LinearLayout>

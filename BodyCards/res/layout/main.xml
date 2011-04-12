@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:id="@+id/mainLayout" 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent"
+	android:background="#FFFFFF"
+	android:gravity="center_horizontal" 
+	android:orientation="vertical"
+	android:weightSum="8.0"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<LinearLayout android:id="@+id/middleLayout" 
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent"
+		android:orientation="vertical"
+		android:gravity="center"
+		android:layout_weight="1">
+		
+		<ImageView android:id="@+id/logo"
+			android:src="@drawable/rw" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:layout_weight="1" />
+		
+		<LinearLayout android:id="@+id/middleLayout" 
+			android:layout_width="fill_parent" 
+			android:layout_height="fill_parent"
+			android:orientation="vertical"
+			android:gravity="center"
+			android:layout_weight="10">
+			
+			<LinearLayout android:id="@+id/mainSpacer" 
+				android:layout_width="fill_parent" 
+				android:layout_height="30px"
+				android:orientation="horizontal" />
+	
+			<LinearLayout android:id="@+id/quickOptions" 
+				android:layout_width="fill_parent" 
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:gravity="center_horizontal">
+				
+				<Button android:text="Quick Workout" 
+					android:id="@+id/qw" 
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content"
+					android:layout_weight="1" />
+					
+				<Button android:text="Create Workout" 
+					android:id="@+id/nw" 
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content"
+					android:layout_weight="1" />	
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+		<!-- Fill the rest of screen and place buttons at the bottom of screen -->
+		
+	<LinearLayout android:id="@+id/buttonContainer" 
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:orientation="vertical"
+		android:gravity="bottom"
+		android:layout_weight="7">
+		
+		<LinearLayout android:id="@+id/buttons" 
+			android:layout_width="fill_parent" 
+			android:layout_height="55px"
+			android:orientation="horizontal"
+			android:gravity="bottom"
+			android:background="#555555">
+			
+			<Button android:text="View Profiles" 
+				android:id="@+id/vp" 
+				android:layout_width="90px" 
+				android:layout_height="50px"
+				android:layout_weight="1"
+				android:padding="5px" />
+				
+			<Button android:text="Help" 
+				android:id="@+id/hp" 
+				android:layout_width="90px" 
+				android:layout_height="50px"
+				android:layout_weight="1"
+				android:padding="5px" />	
+				
+			<Button android:text="Quit" 
+				android:id="@+id/qt" 
+				android:layout_width="90px" 
+				android:layout_height="50px"
+				android:layout_weight="1"
+				android:padding="5px" />
+				
+		</LinearLayout>
+		
+	</LinearLayout>
+
+</LinearLayout>
