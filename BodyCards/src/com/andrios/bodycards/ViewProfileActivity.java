@@ -45,7 +45,7 @@ public class ViewProfileActivity extends Activity {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		setContentView(R.layout.viewprofile);
+		setContentView(R.layout.viewprofileactivity);
 		setConnections();
 		setAlertDialog();
 	}
@@ -121,9 +121,22 @@ public class ViewProfileActivity extends Activity {
 		});
 
 		write();
-
+		
 		lv.setAdapter(aa);
 
+		back = (Button) findViewById(R.id.vpBack);
+
+
+		newProf = (Button) findViewById(R.id.vpnewProf);
+		
+		setOnClickListeners();
+	}
+
+	private void setOnClickListeners() {
+		
+		
+		
+		
 		lv.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> arg0, View theView,
@@ -154,8 +167,7 @@ public class ViewProfileActivity extends Activity {
 			}
 
 		});
-
-		back = (Button) findViewById(R.id.vpBack);
+		
 		back.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -164,8 +176,6 @@ public class ViewProfileActivity extends Activity {
 			}
 
 		});
-
-		newProf = (Button) findViewById(R.id.vpnewProf);
 		newProf.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -176,7 +186,7 @@ public class ViewProfileActivity extends Activity {
 			}
 
 		});
-
+		
 	}
 
 	public void deleteEntry(int row) {
