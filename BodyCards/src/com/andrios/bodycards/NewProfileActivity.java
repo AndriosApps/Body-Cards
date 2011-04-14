@@ -77,15 +77,22 @@ public class NewProfileActivity extends Activity {
 
 	private void setConnections() {
 		// TODO Auto-generated method stub
-		male = (RadioButton) findViewById(R.id.male);
-		female = (RadioButton) findViewById(R.id.female);
-		fName = (EditText) findViewById(R.id.userFirstName);
-		lName = (EditText) findViewById(R.id.userLastName);
-		age = (EditText) findViewById(R.id.userAge);
+		male = (RadioButton) findViewById(R.id.newProfileMaleRDO);
+		female = (RadioButton) findViewById(R.id.newProfileFemaleRDO);
+		fName = (EditText) findViewById(R.id.newProfileUserFirstNameTXT);
+		lName = (EditText) findViewById(R.id.newProfileUserLastNameTXT);
+		age = (EditText) findViewById(R.id.newProfileUserAgeTXT);
+		back = (Button) findViewById(R.id.newProfileBackBTN);
+		reset = (Button) findViewById(R.id.newProfileResetBTN);
+		done = (Button) findViewById(R.id.newProfileDoneBTN);
+		
+		//TODO DOES THIS NEED TO GO HERE????
 		created = new Profile();
 		readProfiles();
+		setOnClickListeners();
+	}
 
-		back = (Button) findViewById(R.id.npBack);
+	private void setOnClickListeners() {
 		back.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -94,8 +101,7 @@ public class NewProfileActivity extends Activity {
 			}
 
 		});
-
-		reset = (Button) findViewById(R.id.npReset);
+		
 		reset.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -108,8 +114,7 @@ public class NewProfileActivity extends Activity {
 			}
 
 		});
-
-		done = (Button) findViewById(R.id.npDone);
+		
 		done.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -188,6 +193,7 @@ public class NewProfileActivity extends Activity {
 			}
 
 		});
+		
 	}
 
 	@SuppressWarnings("unchecked")

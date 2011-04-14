@@ -28,7 +28,7 @@
 			android:gravity="center" 
 			android:textColor="#000" />
 
-		<EditText android:id="@+id/userFirstName" 
+		<EditText android:id="@+id/newProfileUserFirstNameTXT" 
 			android:hint="Enter First Name"
 			android:background="#E5E5E5" 
 			android:textColorHint="#AAA"
@@ -60,7 +60,7 @@
 				android:layout_height="wrap_content" 
 				android:gravity="center" />
 
-			<EditText android:id="@+id/userLastName" 
+			<EditText android:id="@+id/newProfileUserLastNameTXT" 
 				android:hint="Enter Last Name"
 				android:textColorHint="#AAA" 
 				android:layout_width="175px"
@@ -93,7 +93,7 @@
 					android:gravity="center"
 					android:layout_weight="1"></TextView>
 
-				<EditText android:id="@+id/userAge" 
+				<EditText android:id="@+id/newProfileUserAgeTXT" 
 					android:layout_width="0px"
 					android:layout_height="wrap_content" 
 					android:inputType="phone"
@@ -120,14 +120,14 @@
 						android:layout_height="wrap_content"
 						android:orientation="horizontal"
 						android:layout_weight="0">
-						<RadioButton android:id="@+id/male"
+						<RadioButton android:id="@+id/newProfileMaleRDO"
 							android:text="Male"
 							android:checked="True"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:textSize="15px"
 							android:textColor="#000"></RadioButton>
-						<RadioButton android:id="@+id/female"
+						<RadioButton android:id="@+id/newProfileFemaleRDO"
 							android:text="Female"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
@@ -157,19 +157,19 @@
 					android:orientation="horizontal"
 					android:gravity="bottom">
 
-					<Button android:id="@+id/npBack"
+					<Button android:id="@+id/newProfileBackBTN"
 						android:layout_width="wrap_content" 
 						android:text="Back"
 						android:layout_weight="1" 
 						android:layout_height="50px" />
 
-					<Button android:id="@+id/npReset"
+					<Button android:id="@+id/newProfileResetBTN"
 						android:layout_width="wrap_content" 
 						android:text="Reset"
 						android:layout_weight="1" 
 						android:layout_height="50px" />
 
-					<Button android:id="@+id/npDone"
+					<Button android:id="@+id/newProfileDoneBTN"
 						android:layout_width="wrap_content" 
 						android:text="Done"
 						android:layout_weight="1" 
