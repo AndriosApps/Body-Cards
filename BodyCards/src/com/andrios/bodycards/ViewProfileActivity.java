@@ -28,10 +28,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ViewProfileActivity extends Activity {
-	Button back, newProf;
-	ListView lv;
-	ArrayList<Profile> profs;
-	ArrayAdapter<Profile> aa;
+	Button backBTN, newProfileBTN;
+	ListView listView;
+	ArrayList<Profile> profileList;
+	ArrayAdapter<Profile> profileListAdapter;
 	AlertDialog ad;
 	int selectedRow;
 
@@ -86,13 +86,13 @@ public class ViewProfileActivity extends Activity {
 			FileInputStream fis = openFileInput("profiles");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
-			profs = (ArrayList<Profile>) ois.readObject();
+			profileList = (ArrayList<Profile>) ois.readObject();
 			ois.close();
 			fis.close();
 
 		} catch (Exception e) {
 
-			profs = new ArrayList<Profile>();
+			profileList = new ArrayList<Profile>();
 		}
 
 	}
@@ -107,10 +107,10 @@ public class ViewProfileActivity extends Activity {
 	private void setConnections() {
 		readProfiles();
 
-		lv = (ListView) findViewById(R.id.profileListView);
-		aa = new ArrayAdapter<Profile>(this, R.layout.list_view2, profs);
-		aa.setNotifyOnChange(true);
-		aa.sort(new Comparator<Profile>() {
+		listView = (ListView) findViewById(R.id.viewProfileProfileListView);
+		profileListAdapter = new ArrayAdapter<Profile>(this, R.layout.list_view2, profileList);
+		profileListAdapter.setNotifyOnChange(true);
+		profileListAdapter.sort(new Comparator<Profile>() {
 
 			public int compare(Profile object1, Profile object2) {
 
@@ -122,12 +122,12 @@ public class ViewProfileActivity extends Activity {
 
 		write();
 		
-		lv.setAdapter(aa);
+		listView.setAdapter(profileListAdapter);
 
-		back = (Button) findViewById(R.id.vpBack);
+		backBTN = (Button) findViewById(R.id.viewProfileBackBTN);
 
 
-		newProf = (Button) findViewById(R.id.vpnewProf);
+		newProfileBTN = (Button) findViewById(R.id.viewProfileNewProfileBTN);
 		
 		setOnClickListeners();
 	}
@@ -137,28 +137,28 @@ public class ViewProfileActivity extends Activity {
 		
 		
 		
-		lv.setOnItemClickListener(new OnItemClickListener() {
+		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> arg0, View theView,
 					int position, long arg3) {
 
 				Intent intent = new Intent(theView.getContext(),
 						DisplayProfileActivity.class);
-				intent.putExtra("obj", profs.get(position));
+				intent.putExtra("obj", profileList.get(position));
 				intent.putExtra("row", position);
-				intent.putExtra("profs", profs);
+				intent.putExtra("profs", profileList);
 				startActivityForResult(intent, 0);
 
 			}
 
 		});
 
-		lv.setOnItemLongClickListener(new OnItemLongClickListener() {
+		listView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			public boolean onItemLongClick(AdapterView<?> arg0, View theView,
 					int row, long arg3) {
 
-				tv.setText("Delete " + profs.get(row).toString()
+				tv.setText("Delete " + profileList.get(row).toString()
 						+ "'s profile?");
 				selectedRow = row;
 				button = true;
@@ -168,7 +168,7 @@ public class ViewProfileActivity extends Activity {
 
 		});
 		
-		back.setOnClickListener(new OnClickListener() {
+		backBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 
@@ -176,7 +176,7 @@ public class ViewProfileActivity extends Activity {
 			}
 
 		});
-		newProf.setOnClickListener(new OnClickListener() {
+		newProfileBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 
@@ -190,7 +190,7 @@ public class ViewProfileActivity extends Activity {
 	}
 
 	public void deleteEntry(int row) {
-		profs.remove(row);
+		profileList.remove(row);
 		write();
 	}
 
@@ -200,7 +200,7 @@ public class ViewProfileActivity extends Activity {
 					Context.MODE_PRIVATE);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-			oos.writeObject(profs);
+			oos.writeObject(profileList);
 
 			oos.close();
 			fos.close();
@@ -211,6 +211,6 @@ public class ViewProfileActivity extends Activity {
 					Toast.LENGTH_SHORT).show();
 		}
 
-		aa.notifyDataSetChanged();
+		profileListAdapter.notifyDataSetChanged();
 	}
 }
