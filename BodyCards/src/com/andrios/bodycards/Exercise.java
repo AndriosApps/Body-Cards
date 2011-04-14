@@ -10,6 +10,9 @@ public class Exercise implements Serializable {
 	private static final long serialVersionUID = 7824758618240534640L;
 
 	int img;
+	double multiplier;
+
+
 	String name;
 	String desc;
 
@@ -23,14 +26,19 @@ public class Exercise implements Serializable {
 	}
 	
 	public Exercise(String n) {
-		name = n;
+		this(n,"",1);
 	}
 
 	public Exercise(String n, String d, int i) {
+		this(n,d,i,1.0);
+	}
+	
+	public Exercise(String n, String d, int i, double multiplier) {
 		name = n;
 		desc = d;
 		//img = "/BodyCards/res/drawable-hdpi/alttoecrunch" + i + ".gif";
 		img = i;
+		this.multiplier = multiplier;
 	}
 
 	public String toString() {
@@ -49,6 +57,14 @@ public class Exercise implements Serializable {
 
 		return this.toString().equals(ex.toString());
 
+	}
+	
+	public double getMultiplier() {
+		return multiplier;
+	}
+
+	public void setMultiplier(double multiplier) {
+		this.multiplier = multiplier;
 	}
 
 }

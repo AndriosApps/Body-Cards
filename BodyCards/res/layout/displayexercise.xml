@@ -33,7 +33,7 @@
 	  	android:gravity="center"
 	  	android:layout_width="100px"
 	  	android:layout_height="100px" />
-	  	
+  	 	
 	  <TextView android:id="@+id/newExName"
 	  	android:layout_width="fill_parent"
 	  	android:layout_height="fill_parent"
@@ -43,7 +43,35 @@
 	  	android:background="#FFF" />
  
   </LinearLayout>
-  
+    <LinearLayout
+	  android:id="@+id/newExMultiplierRow"
+	  android:layout_width="fill_parent"
+	  android:layout_height="wrap_content"
+	  android:background="#FFF"
+	  android:gravity="center"
+	  android:layout_weight="0"
+	  android:orientation="horizontal">
+  	
+	  <TextView android:id="@+id/newExMultiplierLBL"
+	  	android:text="Multiplier"
+	  	android:layout_width="wrap_content"
+	  	android:layout_height="fill_parent"
+	  	android:gravity="left"
+	  	android:textSize="15px"
+	  	android:textColor="#000"
+	  	android:background="#E5E5E5"
+	  	android:layout_weight="4" />
+	  
+	  <TextView 
+	  	android:text="1.0" 
+	  	android:id="@+id/displayExMultiplierTXT" 
+	  	android:layout_width="40px" 
+	  	android:layout_height="wrap_content"
+	  	android:layout_weight="1"
+	  	android:inputType="number">
+	  </TextView>
+ 
+  </LinearLayout>
   <TextView android:id="@+id/newExDescLabel"
   	android:text="Description"
   	android:gravity="center"

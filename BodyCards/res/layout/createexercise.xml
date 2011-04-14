@@ -44,7 +44,31 @@
 	  	android:inputType="text" />
  
   </LinearLayout>
+  <LinearLayout
+	  android:id="@+id/newExMultiplierRow"
+	  android:layout_width="fill_parent"
+	  android:layout_height="wrap_content"
+	  android:background="#E5E5E5"
+	  android:gravity="center"
+	  android:orientation="horizontal"
+	  android:layout_weight="0">
   
+	  <TextView android:id="@+id/newExMultiplierLBL"
+	  	android:text="Multiplier"
+	  	android:gravity="center"
+	  	android:layout_width="100px"
+	  	android:layout_height="wrap_content"
+	  	android:textColor="#000" />
+	  	
+	  <EditText android:id="@+id/newExMultiplier"
+	  	android:text="1.0"
+	  	android:layout_width="fill_parent"
+	  	android:layout_height="wrap_content"
+	  	android:hint="Exercise"
+	  	android:textColorHint="#E5E5E5"
+	  	android:inputType="number" />
+ 
+  </LinearLayout>
   <LinearLayout
 	  android:id="@+id/newExDescRow"
 	  android:layout_width="fill_parent"

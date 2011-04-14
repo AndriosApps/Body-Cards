@@ -8,6 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,10 +35,24 @@ public class DisplayExercise extends Activity {
 		
 	}
 
-	private void setConnections() {
-		
-		
+	private void setConnections() {	
 		back = (Button) findViewById(R.id.deBack);
+		update = (Button) findViewById(R.id.deUpdate);
+		
+		TextView multiplierTXT = (EditText) findViewById(R.id.displayExMultiplierTXT);
+		multiplierTXT.setText(Double.toString(exer.getMultiplier()));
+		
+		TextView f = (TextView) findViewById(R.id.newExDesc);
+		f.setText(exer.getDesc());
+
+		TextView g = (TextView) findViewById(R.id.newExName);
+		g.setText(exer.getName());
+		
+		ImageView img = (ImageView) findViewById(R.id.newExImg);
+		img.setImageResource(exer.getImg());
+	}
+	
+	private void setOnClickListeners(){
 		back.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -46,8 +61,7 @@ public class DisplayExercise extends Activity {
 			}
 
 		});
-
-		update = (Button) findViewById(R.id.deUpdate);
+		
 		update.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -61,15 +75,6 @@ public class DisplayExercise extends Activity {
 			}
 
 		});
-
-		TextView f = (TextView) findViewById(R.id.newExDesc);
-		f.setText(exer.getDesc());
-
-		TextView g = (TextView) findViewById(R.id.newExName);
-		g.setText(exer.getName());
-		
-		ImageView img = (ImageView) findViewById(R.id.newExImg);
-		img.setImageResource(exer.getImg());
 	}
 
 }

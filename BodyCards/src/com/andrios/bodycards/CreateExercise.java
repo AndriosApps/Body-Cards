@@ -23,7 +23,7 @@ public class CreateExercise extends Activity {
 	Exercise newExer;
 
 	Button back, reset, done;
-	EditText name, desc;
+	EditText name, desc, multiplierTXT;
 
 	ArrayList<Exercise> exer;
 
@@ -34,6 +34,7 @@ public class CreateExercise extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.createexercise);
+		
 		readExercises();
 		setConnections();
 		getExtras();
@@ -65,8 +66,17 @@ public class CreateExercise extends Activity {
 		// TODO Auto-generated method stub
 		name = (EditText) findViewById(R.id.newExName);
 		desc = (EditText) findViewById(R.id.newExDesc);
-
+		multiplierTXT = (EditText) findViewById(R.id.newExMultiplier);
+		
 		back = (Button) findViewById(R.id.ceBack);
+		reset = (Button) findViewById(R.id.ceReset);
+		done = (Button) findViewById(R.id.ceDone);
+		
+		setOnClickListeners();
+
+	}
+	
+	private void setOnClickListeners(){
 		back.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -77,30 +87,33 @@ public class CreateExercise extends Activity {
 
 		});
 
-		reset = (Button) findViewById(R.id.ceReset);
+		
 		reset.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				name.setText("");
 				desc.setText("");
+				multiplierTXT.setText("1.0");
 			}
 
 		});
 
-		done = (Button) findViewById(R.id.ceDone);
+		
 		done.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
+				double multiplier = 1.0;
 				if (name.getText().toString().equals("")
-						|| desc.getText().toString().equals("")) {
+						|| desc.getText().toString().equals("") || multiplierTXT.getText().toString().equals("")) {
 					Toast.makeText(CreateExercise.this,
 							"You must fill in all fields", Toast.LENGTH_SHORT)
 							.show();
 				} else {
+					multiplier = Double.parseDouble(multiplierTXT.getText().toString().trim());
 					newExer = new Exercise(name.getText().toString(), desc
 							.getText().toString(),
-							R.drawable.nopic);
+							R.drawable.nopic, multiplier);
 					exer.add(exer.size(), newExer);
 					sort(exer);
 					write();
@@ -120,7 +133,6 @@ public class CreateExercise extends Activity {
 			}
 
 		});
-
 	}
 
 	protected void write() {

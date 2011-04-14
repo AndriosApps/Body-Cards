@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 
-public class Main extends Activity {
+public class MainActivity extends Activity {
 	/** Called when the activity is first created. */
 	int width, height;
 
@@ -70,7 +70,7 @@ public class Main extends Activity {
 		quit.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Main.this.finish();
+				MainActivity.this.finish();
 			}
 
 		});
