@@ -35,6 +35,7 @@ public class ViewProfileActivity extends Activity {
 	AlertDialog ad;
 	int selectedRow;
 
+	//TODO rename boolean button to something meaningfull. 
 	boolean button;
 
 	TextView tv;
