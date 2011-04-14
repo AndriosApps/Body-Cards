@@ -10,6 +10,7 @@ import android.widget.Button;
 
 public class HelpActivity extends Activity {
 
+	Button helpBTN;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -17,20 +18,26 @@ public class HelpActivity extends Activity {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		setContentView(R.layout.help);
+		setContentView(R.layout.helpactivity);
 		setConnections();
-	}
+	}//onCreate()
 
 	private void setConnections() {
 
-		Button help = (Button) findViewById(R.id.hpBack);
-		help.setOnClickListener(new OnClickListener() {
+		helpBTN = (Button) findViewById(R.id.helpActivityBackBTN);
+		
+		setOnClickListeners();
 
+	}//setConnections()
+
+	private void setOnClickListeners() {
+		
+		helpBTN.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				HelpActivity.this.finish();
-
 			}
-
 		});
-	}
-}
+	}//setOnClickListeners()
+	
+	
+}//HelpActivity

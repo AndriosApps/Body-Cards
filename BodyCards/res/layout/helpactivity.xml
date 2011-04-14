@@ -203,8 +203,11 @@
 		android:gravity="bottom" android:orientation="horizontal"
 		android:layout_weight="0">
 
-		<Button android:id="@+id/hpBack" android:text="Back"
-			android:layout_width="wrap_content" android:layout_height="50px"
+		<Button 
+			android:id="@+id/helpActivityBackBTN" 
+			android:text="Back"
+			android:layout_width="wrap_content" 
+			android:layout_height="50px"
 			android:layout_weight="1" />
 
 
