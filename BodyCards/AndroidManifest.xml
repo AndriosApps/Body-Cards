@@ -17,11 +17,11 @@
         <activity android:name="History" android:screenOrientation="portrait" />
         <activity android:name="NewProfileActivity" android:screenOrientation="portrait" />
         <activity android:name="NewWorkoutActivity" android:screenOrientation="portrait" />
-        <activity android:name="ViewProfile" android:screenOrientation="portrait" />
+        <activity android:name="ViewProfileActivity" android:screenOrientation="portrait" />
         <activity android:name="ExerciseListActivity" android:screenOrientation="portrait" />
         <activity android:name="DisplayProfileActivity" android:screenOrientation="portrait" />
         <activity android:name="CreateExerciseActivity" android:screenOrientation="portrait" />
-        <activity android:name="WorkoutCard" android:screenOrientation="portrait" />
+        <activity android:name="WorkoutCardActivity" android:screenOrientation="portrait" />
         <activity android:name="DisplayExerciseActivity" android:screenOrientation="portrait" />
         <activity android:name="DisplayWorkoutActivity" android:screenOrientation="portrait" />
         <activity android:name="HelpActivity" android:screenOrientation="portrait" />
