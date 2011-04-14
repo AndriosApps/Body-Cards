@@ -27,7 +27,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class DisplayProfile extends Activity {
+public class DisplayProfileActivity extends Activity {
 	Button edit, back;
 	Profile profile;
 	ListView lv;
@@ -81,7 +81,7 @@ public class DisplayProfile extends Activity {
 	public void onActivityResult(int requestCode, int returnCode, Intent intent) {
 		if (returnCode == RESULT_OK) {
 			profile = (Profile) intent.getSerializableExtra("profile");
-			DisplayProfile.this.setResult(RESULT_OK, intent);
+			DisplayProfileActivity.this.setResult(RESULT_OK, intent);
 			setProfileText();
 			setConnections();
 			update = true;
@@ -163,7 +163,7 @@ public class DisplayProfile extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View v, int rw,
 					long arg3) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(v.getContext(), DisplayWorkout.class);
+				Intent intent = new Intent(v.getContext(), DisplayWorkoutActivity.class);
 				intent.putExtra("profile", profile);
 				intent.putExtra("row", rw);
 				startActivity(intent);
@@ -190,9 +190,9 @@ public class DisplayProfile extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 
-				DisplayProfile.this.setResult(RESULT_OK);
+				DisplayProfileActivity.this.setResult(RESULT_OK);
 
-				DisplayProfile.this.finish();
+				DisplayProfileActivity.this.finish();
 			}
 
 		});
@@ -202,7 +202,7 @@ public class DisplayProfile extends Activity {
 
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(v.getContext(), NewProfile.class);
+				Intent intent = new Intent(v.getContext(), NewProfileActivity.class);
 				intent.putExtra("fname", profile.getFirstName());
 				intent.putExtra("lname", profile.getLastName());
 				intent.putExtra("age", profile.getAge());
@@ -238,7 +238,7 @@ public class DisplayProfile extends Activity {
 
 		} catch (IOException e) {
 
-			Toast.makeText(DisplayProfile.this, "Error: Writing to file",
+			Toast.makeText(DisplayProfileActivity.this, "Error: Writing to file",
 					Toast.LENGTH_SHORT).show();
 		}
 

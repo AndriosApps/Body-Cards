@@ -21,7 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class WorkoutCard extends Activity {
+public class WorkoutCardActivity extends Activity {
 
 	// XML Variables
 	TextView nameView, setView, rTL, rBR, exerciseName, prNm, cardsRem;
@@ -138,7 +138,7 @@ public class WorkoutCard extends Activity {
 				end();
 
 				setResult(RESULT_OK);
-				WorkoutCard.this.finish();
+				WorkoutCardActivity.this.finish();
 			}
 
 		});
@@ -244,11 +244,11 @@ public class WorkoutCard extends Activity {
 
 			end();
 
-			Intent el_fin = new Intent(v.getContext(), Finished.class);
+			Intent el_fin = new Intent(v.getContext(), FinishedActivity.class);
 
 			startActivity(el_fin);
 			setResult(RESULT_OK);
-			WorkoutCard.this.finish();
+			WorkoutCardActivity.this.finish();
 		}
 	}
 
@@ -288,7 +288,7 @@ public class WorkoutCard extends Activity {
 			fos.close();
 		} catch (IOException e) {
 
-			Toast.makeText(WorkoutCard.this, "Error: Writing to file",
+			Toast.makeText(WorkoutCardActivity.this, "Error: Writing to file",
 					Toast.LENGTH_SHORT).show();
 		}
 	}

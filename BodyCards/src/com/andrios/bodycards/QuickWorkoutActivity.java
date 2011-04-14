@@ -15,7 +15,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class QuickWorkout extends Activity {
+public class QuickWorkoutActivity extends Activity {
 
 	ImageView card;
 
@@ -115,10 +115,10 @@ public class QuickWorkout extends Activity {
 				if (cardNum < cards.length) {
 					getNewCard();
 				} else {
-					Intent el_fin = new Intent(v.getContext(), Finished.class);
+					Intent el_fin = new Intent(v.getContext(), FinishedActivity.class);
 
 					startActivity(el_fin);
-					QuickWorkout.this.finish();
+					QuickWorkoutActivity.this.finish();
 
 				}
 			}

@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class CreateExercise extends Activity {
+public class CreateExerciseActivity extends Activity {
 
 	Exercise newExer;
 
@@ -82,7 +82,7 @@ public class CreateExercise extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 
-				CreateExercise.this.finish();
+				CreateExerciseActivity.this.finish();
 			}
 
 		});
@@ -106,7 +106,7 @@ public class CreateExercise extends Activity {
 				double multiplier = 1.0;
 				if (name.getText().toString().equals("")
 						|| desc.getText().toString().equals("") || multiplierTXT.getText().toString().equals("")) {
-					Toast.makeText(CreateExercise.this,
+					Toast.makeText(CreateExerciseActivity.this,
 							"You must fill in all fields", Toast.LENGTH_SHORT)
 							.show();
 				} else {
@@ -117,9 +117,9 @@ public class CreateExercise extends Activity {
 					exer.add(exer.size(), newExer);
 					sort(exer);
 					write();
-					Toast.makeText(CreateExercise.this, "Exercise Created",
+					Toast.makeText(CreateExerciseActivity.this, "Exercise Created",
 							Toast.LENGTH_SHORT).show();
-					CreateExercise.this.finish();
+					CreateExerciseActivity.this.finish();
 				}
 			}
 
@@ -149,7 +149,7 @@ public class CreateExercise extends Activity {
 
 		} catch (IOException e) {
 
-			Toast.makeText(CreateExercise.this, "Error: Writing to file",
+			Toast.makeText(CreateExerciseActivity.this, "Error: Writing to file",
 					Toast.LENGTH_SHORT).show();
 		}
 

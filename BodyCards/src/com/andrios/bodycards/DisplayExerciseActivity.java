@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DisplayExercise extends Activity {
+public class DisplayExerciseActivity extends Activity {
 
 	Button back, update;
 	Exercise exer;
@@ -39,7 +39,7 @@ public class DisplayExercise extends Activity {
 		back = (Button) findViewById(R.id.deBack);
 		update = (Button) findViewById(R.id.deUpdate);
 		
-		TextView multiplierTXT = (EditText) findViewById(R.id.displayExMultiplierTXT);
+		TextView multiplierTXT = (TextView) findViewById(R.id.displayExMultiplierTXT);
 		multiplierTXT.setText(Double.toString(exer.getMultiplier()));
 		
 		TextView f = (TextView) findViewById(R.id.newExDesc);
@@ -57,7 +57,7 @@ public class DisplayExercise extends Activity {
 
 			public void onClick(View v) {
 
-				DisplayExercise.this.finish();
+				DisplayExerciseActivity.this.finish();
 			}
 
 		});
@@ -67,7 +67,7 @@ public class DisplayExercise extends Activity {
 			public void onClick(View v) {
 				String name = exer.getName();
 				String desc = exer.getDesc();
-				Intent intent = new Intent(v.getContext(), CreateExercise.class);
+				Intent intent = new Intent(v.getContext(), CreateExerciseActivity.class);
 				intent.putExtra("name", name);
 				intent.putExtra("desc", desc);
 				startActivity(intent);

@@ -8,7 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-public class Help extends Activity {
+public class HelpActivity extends Activity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class Help extends Activity {
 		help.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Help.this.finish();
+				HelpActivity.this.finish();
 
 			}
 

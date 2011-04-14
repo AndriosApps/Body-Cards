@@ -27,7 +27,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ViewProfile extends Activity {
+public class ViewProfileActivity extends Activity {
 	Button back, newProf;
 	ListView lv;
 	ArrayList<Profile> profs;
@@ -130,7 +130,7 @@ public class ViewProfile extends Activity {
 					int position, long arg3) {
 
 				Intent intent = new Intent(theView.getContext(),
-						DisplayProfile.class);
+						DisplayProfileActivity.class);
 				intent.putExtra("obj", profs.get(position));
 				intent.putExtra("row", position);
 				intent.putExtra("profs", profs);
@@ -160,7 +160,7 @@ public class ViewProfile extends Activity {
 
 			public void onClick(View v) {
 
-				ViewProfile.this.finish();
+				ViewProfileActivity.this.finish();
 			}
 
 		});
@@ -170,7 +170,7 @@ public class ViewProfile extends Activity {
 
 			public void onClick(View v) {
 
-				Intent intent = new Intent(v.getContext(), NewProfile.class);
+				Intent intent = new Intent(v.getContext(), NewProfileActivity.class);
 				startActivity(intent);
 
 			}
@@ -197,7 +197,7 @@ public class ViewProfile extends Activity {
 
 		} catch (IOException e) {
 
-			Toast.makeText(ViewProfile.this, "Error: Writing to file",
+			Toast.makeText(ViewProfileActivity.this, "Error: Writing to file",
 					Toast.LENGTH_SHORT).show();
 		}
 

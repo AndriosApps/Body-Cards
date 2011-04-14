@@ -21,7 +21,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class NewWorkout extends Activity {
+public class NewWorkoutActivity extends Activity {
 	Button back, reset, done;
 	ArrayList<String> exerciseNames;
 	ArrayList<Workout> peoplesWorkouts;
@@ -45,7 +45,7 @@ public class NewWorkout extends Activity {
 	public void onActivityResult(int requestCode, int returnCode, Intent intent) {
 		if (returnCode == RESULT_OK) {
 			setResult(RESULT_OK);
-			NewWorkout.this.finish();
+			NewWorkoutActivity.this.finish();
 		}
 	}
 
@@ -174,7 +174,7 @@ public class NewWorkout extends Activity {
 
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				NewWorkout.this.finish();
+				NewWorkoutActivity.this.finish();
 			}
 
 		});
@@ -210,30 +210,30 @@ public class NewWorkout extends Activity {
 				int p = Integer.parseInt(numPeeps.getText().toString());
 
 				if(p+chsnPrf < 1) {
-					Toast.makeText(NewWorkout.this,
+					Toast.makeText(NewWorkoutActivity.this,
 							"Must choose at least one profile or guest user",
 							Toast.LENGTH_SHORT).show();
 				}
 				else if (x < n) {
-					Toast.makeText(NewWorkout.this,
+					Toast.makeText(NewWorkoutActivity.this,
 							"Max must be greater than or equal to min",
 							Toast.LENGTH_SHORT).show();
 				} else if (x <= 0) {
-					Toast.makeText(NewWorkout.this,
+					Toast.makeText(NewWorkoutActivity.this,
 							"Max must be greater than zero",
 							Toast.LENGTH_SHORT).show();
 				} else if (n <= 0) {
-					Toast.makeText(NewWorkout.this,
+					Toast.makeText(NewWorkoutActivity.this,
 							"Min must be greater than zero",
 							Toast.LENGTH_SHORT).show();
 				} else if (s < 1) {
-					Toast.makeText(NewWorkout.this,
+					Toast.makeText(NewWorkoutActivity.this,
 							"Sets must be greater than zero",
 							Toast.LENGTH_SHORT).show();
 				} else {
 
 					Intent wkout = new Intent(v.getContext(),
-							WorkoutCard.class);
+							WorkoutCardActivity.class);
 					wkout.putExtra("max", x);
 					wkout.putExtra("min", n);
 					wkout.putExtra("sets", s);

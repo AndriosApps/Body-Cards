@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Finished extends Activity {
+public class FinishedActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,7 +40,7 @@ public class Finished extends Activity {
 
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			Finished.this.finish();
+			FinishedActivity.this.finish();
 		}
 	}
 }

@@ -12,19 +12,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="QuickWorkout" android:screenOrientation="portrait" />
-        <activity android:name="Finished" android:screenOrientation="portrait" />
+        <activity android:name="QuickWorkoutActivity" android:screenOrientation="portrait" />
+        <activity android:name="FinishedActivity" android:screenOrientation="portrait" />
         <activity android:name="History" android:screenOrientation="portrait" />
-        <activity android:name="NewProfile" android:screenOrientation="portrait" />
-        <activity android:name="NewWorkout" android:screenOrientation="portrait" />
+        <activity android:name="NewProfileActivity" android:screenOrientation="portrait" />
+        <activity android:name="NewWorkoutActivity" android:screenOrientation="portrait" />
         <activity android:name="ViewProfile" android:screenOrientation="portrait" />
-        <activity android:name="ExerciseList" android:screenOrientation="portrait" />
-        <activity android:name="DisplayProfile" android:screenOrientation="portrait" />
-        <activity android:name="CreateExercise" android:screenOrientation="portrait" />
+        <activity android:name="ExerciseListActivity" android:screenOrientation="portrait" />
+        <activity android:name="DisplayProfileActivity" android:screenOrientation="portrait" />
+        <activity android:name="CreateExerciseActivity" android:screenOrientation="portrait" />
         <activity android:name="WorkoutCard" android:screenOrientation="portrait" />
-        <activity android:name="DisplayExercise" android:screenOrientation="portrait" />
-        <activity android:name="DisplayWorkout" android:screenOrientation="portrait" />
-        <activity android:name="com.andrios.bodycards.Help" android:screenOrientation="portrait" />
+        <activity android:name="DisplayExerciseActivity" android:screenOrientation="portrait" />
+        <activity android:name="DisplayWorkoutActivity" android:screenOrientation="portrait" />
+        <activity android:name="HelpActivity" android:screenOrientation="portrait" />
     </application>
 
 

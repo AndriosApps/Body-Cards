@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
 		quickWorkout.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), QuickWorkout.class);
+				Intent intent = new Intent(v.getContext(), QuickWorkoutActivity.class);
 				startActivity(intent);
 			}
 
@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
 		newWorkout.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), ExerciseList.class);
+				Intent intent = new Intent(v.getContext(), ExerciseListActivity.class);
 				startActivityForResult(intent, 31415);
 			}
 
@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
 		viewProfile.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), ViewProfile.class);
+				Intent intent = new Intent(v.getContext(), ViewProfileActivity.class);
 				startActivity(intent);
 			}
 
@@ -60,7 +60,7 @@ public class MainActivity extends Activity {
 		help.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), Help.class);
+				Intent intent = new Intent(v.getContext(), HelpActivity.class);
 				startActivity(intent);
 			}
 

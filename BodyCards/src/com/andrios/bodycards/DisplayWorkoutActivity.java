@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class DisplayWorkout extends Activity {
+public class DisplayWorkoutActivity extends Activity {
 	String[] months = { "January", "February", "March", "April", "May", "June",
 			"July", "August", "September", "October", "November", "December" };
 	String[] days = { "", "Sunday", "Monday", "Tuesday", "Wednesday",
@@ -76,7 +76,7 @@ public class DisplayWorkout extends Activity {
 
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				DisplayWorkout.this.finish();
+				DisplayWorkoutActivity.this.finish();
 			}
 
 		});

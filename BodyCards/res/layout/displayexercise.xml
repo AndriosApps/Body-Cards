@@ -67,8 +67,7 @@
 	  	android:id="@+id/displayExMultiplierTXT" 
 	  	android:layout_width="40px" 
 	  	android:layout_height="wrap_content"
-	  	android:layout_weight="1"
-	  	android:inputType="number">
+	  	android:layout_weight="1">
 	  </TextView>
  
   </LinearLayout>

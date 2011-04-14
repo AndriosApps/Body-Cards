@@ -22,7 +22,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-public class NewProfile extends Activity {
+public class NewProfileActivity extends Activity {
 	Button back, done, reset;
 	RadioButton male, female;
 	EditText fName, lName, age;
@@ -90,7 +90,7 @@ public class NewProfile extends Activity {
 
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				NewProfile.this.finish();
+				NewProfileActivity.this.finish();
 			}
 
 		});
@@ -117,21 +117,21 @@ public class NewProfile extends Activity {
 				boolean error = false;
 				;
 				if (isEmpty(fName)) {
-					Toast.makeText(NewProfile.this,
+					Toast.makeText(NewProfileActivity.this,
 							"Error: First Name Field Empty ",
 							Toast.LENGTH_SHORT).show();
 					error = true;
 				}
 
 				if (isEmpty(lName)) {
-					Toast.makeText(NewProfile.this,
+					Toast.makeText(NewProfileActivity.this,
 							"Error: Last Name Field Empty ", Toast.LENGTH_SHORT)
 							.show();
 					error = true;
 				}
 
 				if (isEmpty(age)) {
-					Toast.makeText(NewProfile.this, "Error: Age Field Empty ",
+					Toast.makeText(NewProfileActivity.this, "Error: Age Field Empty ",
 							Toast.LENGTH_SHORT).show();
 					error = true;
 				}
@@ -154,8 +154,8 @@ public class NewProfile extends Activity {
 						created.workoutList = workouts;
 						done.putExtra("row", row);
 						done.putExtra("profile", created);
-						NewProfile.this.setResult(RESULT_OK, done);
-						Toast.makeText(NewProfile.this, "User Profile Updated",
+						NewProfileActivity.this.setResult(RESULT_OK, done);
+						Toast.makeText(NewProfileActivity.this, "User Profile Updated",
 								Toast.LENGTH_SHORT).show();
 					}
 
@@ -172,14 +172,14 @@ public class NewProfile extends Activity {
 						fos.close();
 
 						if(!update) {
-							Toast.makeText(NewProfile.this, "User Profile Created",
+							Toast.makeText(NewProfileActivity.this, "User Profile Created",
 									Toast.LENGTH_SHORT).show();
 						}
 
-						NewProfile.this.finish();
+						NewProfileActivity.this.finish();
 					} catch (IOException e) {
 						System.out.println("Test: " + e);
-						Toast.makeText(NewProfile.this,
+						Toast.makeText(NewProfileActivity.this,
 								"Error: Writing to file", Toast.LENGTH_SHORT)
 								.show();
 					}

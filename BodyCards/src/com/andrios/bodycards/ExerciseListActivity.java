@@ -29,7 +29,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ExerciseList extends Activity {
+public class ExerciseListActivity extends Activity {
 	Button back, next, clear;
 
 	ListView av, sv;
@@ -69,7 +69,7 @@ public class ExerciseList extends Activity {
 	public void onActivityResult(int requestCode, int returnCode, Intent intent) {
 		if (returnCode == RESULT_OK) {
 			setResult(RESULT_OK);
-			ExerciseList.this.finish();
+			ExerciseListActivity.this.finish();
 		}
 	}
 
@@ -94,7 +94,7 @@ public class ExerciseList extends Activity {
 							public void onClick(DialogInterface dialog,
 									int which) {
 								Intent intent = new Intent(view.getContext(),
-										DisplayExercise.class);
+										DisplayExerciseActivity.class);
 								intent.putExtra("exer", (Exercise)av.getItemAtPosition(selectedRow));
 								startActivity(intent);
 							}
@@ -285,7 +285,7 @@ public class ExerciseList extends Activity {
 				// TODO Auto-generated method stub
 
 				Intent intent = new Intent(arg1.getContext(),
-						DisplayExercise.class);
+						DisplayExerciseActivity.class);
 				intent.putExtra("exer", (Exercise)sv.getItemAtPosition(row));
 				
 				startActivity(intent);
@@ -301,7 +301,7 @@ public class ExerciseList extends Activity {
 
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(v.getContext(), CreateExercise.class);
+				Intent intent = new Intent(v.getContext(), CreateExerciseActivity.class);
 				startActivity(intent);
 			}
 
@@ -312,7 +312,7 @@ public class ExerciseList extends Activity {
 
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				ExerciseList.this.finish();
+				ExerciseListActivity.this.finish();
 			}
 
 		});
@@ -336,11 +336,11 @@ public class ExerciseList extends Activity {
 				// ---------
 
 				if (exersNames.isEmpty()) {
-					Toast.makeText(ExerciseList.this,
+					Toast.makeText(ExerciseListActivity.this,
 							"You must choose at least 1 exercise",
 							Toast.LENGTH_SHORT).show();
 				} else {
-					Intent intent = new Intent(v.getContext(), NewWorkout.class);
+					Intent intent = new Intent(v.getContext(), NewWorkoutActivity.class);
 					intent.putExtra("names", exersNames);
 					startActivityForResult(intent, 31415);
 				}
@@ -385,7 +385,7 @@ public class ExerciseList extends Activity {
 
 		} catch (IOException e) {
 
-			Toast.makeText(ExerciseList.this, "Error: Writing to file",
+			Toast.makeText(ExerciseListActivity.this, "Error: Writing to file",
 					Toast.LENGTH_SHORT).show();
 		}
 
