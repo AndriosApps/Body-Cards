@@ -11,7 +11,7 @@ import android.widget.Button;
 
 public class MainActivity extends Activity {
 	/** Called when the activity is first created. */
-	int width, height;
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -20,13 +20,12 @@ public class MainActivity extends Activity {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		setContentView(R.layout.main);
+		setContentView(R.layout.mainactivity);
 		setConnections();
 	}
 
 	private void setConnections() {
-		// TODO Auto-generated method stub
-		Button quickWorkout = (Button) findViewById(R.id.qw);
+		Button quickWorkout = (Button) findViewById(R.id.mainActivityQuickWorkoutBTN);
 		quickWorkout.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -36,7 +35,7 @@ public class MainActivity extends Activity {
 
 		});
 
-		Button newWorkout = (Button) findViewById(R.id.nw);
+		Button newWorkout = (Button) findViewById(R.id.mainActivityNewWorkoutBTN);
 		newWorkout.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -46,7 +45,7 @@ public class MainActivity extends Activity {
 
 		});
 
-		Button viewProfile = (Button) findViewById(R.id.vp);
+		Button viewProfile = (Button) findViewById(R.id.mainActivityViewProfilesBTN);
 		viewProfile.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -56,7 +55,7 @@ public class MainActivity extends Activity {
 
 		});
 
-		Button help = (Button) findViewById(R.id.hp);
+		Button help = (Button) findViewById(R.id.mainActivityHelpBTN);
 		help.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -66,7 +65,7 @@ public class MainActivity extends Activity {
 
 		});
 
-		Button quit = (Button) findViewById(R.id.qt);
+		Button quit = (Button) findViewById(R.id.mainActivityQuitBTN);
 		quit.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {

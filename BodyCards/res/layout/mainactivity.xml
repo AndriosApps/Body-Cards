@@ -16,7 +16,7 @@
 		android:gravity="center"
 		android:layout_weight="1">
 		
-		<ImageView android:id="@+id/logo"
+		<ImageView android:id="@+id/logoIMG"
 			android:src="@drawable/rw" 
 			android:layout_width="wrap_content" 
 			android:layout_height="wrap_content"
@@ -41,13 +41,13 @@
 				android:gravity="center_horizontal">
 				
 				<Button android:text="Quick Workout" 
-					android:id="@+id/qw" 
+					android:id="@+id/mainActivityQuickWorkoutBTN" 
 					android:layout_width="wrap_content" 
 					android:layout_height="wrap_content"
 					android:layout_weight="1" />
 					
 				<Button android:text="Create Workout" 
-					android:id="@+id/nw" 
+					android:id="@+id/mainActivityNewWorkoutBTN" 
 					android:layout_width="wrap_content" 
 					android:layout_height="wrap_content"
 					android:layout_weight="1" />	
@@ -71,21 +71,21 @@
 			android:background="#555555">
 			
 			<Button android:text="View Profiles" 
-				android:id="@+id/vp" 
+				android:id="@+id/mainActivityViewProfilesBTN" 
 				android:layout_width="90px" 
 				android:layout_height="50px"
 				android:layout_weight="1"
 				android:padding="5px" />
 				
 			<Button android:text="Help" 
-				android:id="@+id/hp" 
+				android:id="@+id/mainActivityHelpBTN" 
 				android:layout_width="90px" 
 				android:layout_height="50px"
 				android:layout_weight="1"
 				android:padding="5px" />	
 				
 			<Button android:text="Quit" 
-				android:id="@+id/qt" 
+				android:id="@+id/mainActivityQuitBTN" 
 				android:layout_width="90px" 
 				android:layout_height="50px"
 				android:layout_weight="1"
