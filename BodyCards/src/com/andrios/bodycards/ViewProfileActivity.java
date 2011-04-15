@@ -134,10 +134,7 @@ public class ViewProfileActivity extends Activity {
 	}
 
 	private void setOnClickListeners() {
-		
-		
-		
-		
+
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> arg0, View theView,

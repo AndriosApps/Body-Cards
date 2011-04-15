@@ -25,7 +25,8 @@ import android.widget.Toast;
 public class NewProfileActivity extends Activity {
 	Button back, done, reset;
 	RadioButton male, female;
-	EditText fName, lName, age;
+	EditText fName, lName, month, year, day;
+	EditText age;
 	String gen;
 	ArrayList<Workout> workouts;
 	List<Profile> profList;
@@ -57,7 +58,7 @@ public class NewProfileActivity extends Activity {
 		if (update) {
 			fName.setText(intent.getStringExtra("fname"));
 			lName.setText(intent.getStringExtra("lname"));
-			age.setText(Integer.toString(intent.getIntExtra("age", 0)));
+//			age.setText(Integer.toString(intent.getIntExtra("age", 0)));
 			if (intent.getStringExtra("gender").equals("Male")) {
 				male.setChecked(true);
 				female.setChecked(false);
@@ -66,12 +67,18 @@ public class NewProfileActivity extends Activity {
 				male.setChecked(false);
 			}
 
+
 			created.setCalDate((Calendar) intent
 					.getSerializableExtra("calDate"));
 			created.setCreateDate(intent.getStringExtra("creaDate"));
 			row = intent.getIntExtra("row", -1);
 			workouts = (ArrayList<Workout>) intent
 					.getSerializableExtra("workouts");
+			
+			Calendar bday = (Calendar)intent.getSerializableExtra("bday");
+			month.setText(Integer.toString((bday.get(Calendar.MONTH)+1)));
+			day.setText(Integer.toString(bday.get(Calendar.DAY_OF_MONTH)));
+			year.setText(Integer.toString(bday.get(Calendar.YEAR)));
 		}
 	}
 
@@ -82,6 +89,9 @@ public class NewProfileActivity extends Activity {
 		fName = (EditText) findViewById(R.id.newProfileUserFirstNameTXT);
 		lName = (EditText) findViewById(R.id.newProfileUserLastNameTXT);
 		age = (EditText) findViewById(R.id.newProfileUserAgeTXT);
+		month = (EditText) findViewById(R.id.newProfileUserBirthdayMonthTXT);
+		day = (EditText) findViewById(R.id.newProfileUserBirthdayDayTXT);
+		year = (EditText) findViewById(R.id.newProfileUserBirthdayYearTXT);
 		back = (Button) findViewById(R.id.newProfileBackBTN);
 		reset = (Button) findViewById(R.id.newProfileResetBTN);
 		done = (Button) findViewById(R.id.newProfileDoneBTN);
@@ -108,7 +118,10 @@ public class NewProfileActivity extends Activity {
 				// TODO Auto-generated method stub
 				fName.setText("");
 				lName.setText("");
-				age.setText("");
+//				age.setText("");
+				month.setText("");
+				day.setText("");
+				year.setText("");
 				male.setChecked(true);
 				gen = "Male";
 			}
@@ -120,7 +133,12 @@ public class NewProfileActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				boolean error = false;
-				;
+				int mn, dy, yr;
+				
+				mn = Integer.parseInt(month.getText().toString());
+				dy = Integer.parseInt(day.getText().toString());
+				yr = Integer.parseInt(year.getText().toString());
+				
 				if (isEmpty(fName)) {
 					Toast.makeText(NewProfileActivity.this,
 							"Error: First Name Field Empty ",
@@ -135,8 +153,8 @@ public class NewProfileActivity extends Activity {
 					error = true;
 				}
 
-				if (isEmpty(age)) {
-					Toast.makeText(NewProfileActivity.this, "Error: Age Field Empty ",
+				if (isEmpty(year) || isEmpty(day) || isEmpty(month)) {
+					Toast.makeText(NewProfileActivity.this, "Error: Birthday Field Incomplete ",
 							Toast.LENGTH_SHORT).show();
 					error = true;
 				}
@@ -148,9 +166,10 @@ public class NewProfileActivity extends Activity {
 					else
 						gen = "Female";
 
+					Calendar bd = Calendar.getInstance();
+					bd.set(yr, mn-1, dy);
 					created.setNew(fName.getText().toString(), lName.getText()
-							.toString(), gen, Integer.parseInt(age.getText()
-							.toString()));
+							.toString(), gen, bd);
 
 					if (update) {
 

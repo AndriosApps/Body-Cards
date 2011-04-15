@@ -92,6 +92,7 @@ public class DisplayProfileActivity extends Activity {
 		TextView name = (TextView) findViewById(R.id.profName);
 		name.setText(profile.toString());
 
+		profile.updateAge();
 		TextView age = (TextView) findViewById(R.id.profAge);
 		age.setText("Age: " + Integer.toString(profile.getAge()));
 
@@ -206,6 +207,7 @@ public class DisplayProfileActivity extends Activity {
 				intent.putExtra("fname", profile.getFirstName());
 				intent.putExtra("lname", profile.getLastName());
 				intent.putExtra("age", profile.getAge());
+				intent.putExtra("bday", profile.birthday);
 				intent.putExtra("calDate", profile.getCalendar());
 				intent.putExtra("creaDate", profile.getCreationDate());
 				intent.putExtra("gender", profile.getGender());

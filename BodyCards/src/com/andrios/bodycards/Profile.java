@@ -16,6 +16,7 @@ public class Profile implements Serializable {
 	int age;
 	String createDate;
 	public Calendar creationDate;
+	public Calendar birthday;
 
 	StopWatch clock;
 
@@ -28,18 +29,41 @@ public class Profile implements Serializable {
 
 	}
 
-	public void setNew(String f, String l, String g, int a) {
+	public void setNew(String f, String l, String g, Calendar b) {
 		fName = f;
 		lName = l;
 		gender = g;
-		age = a;
+		
+		birthday = b;
 
 		creationDate = Calendar.getInstance();
 		createDate = creationDate.get(Calendar.DAY_OF_MONTH) + "-"
 				+ months[creationDate.get(Calendar.MONTH)] + "-"
 				+ creationDate.get(Calendar.YEAR);
 
+		updateAge();
+		
 		workoutList = new ArrayList<Workout>();
+	}
+	
+	public void updateAge() {
+		Calendar today = Calendar.getInstance();
+		int year = today.get(Calendar.YEAR) - birthday.get(Calendar.YEAR);
+		int month = today.get(Calendar.MONTH) - birthday.get(Calendar.MONTH);
+		int day = today.get(Calendar.DAY_OF_MONTH) - birthday.get(Calendar.DAY_OF_MONTH);
+		
+		if(month < 0) {
+			age = year-1;
+			
+		} else if (month == 0) {
+			if(day < 0) {
+				age = year-1;
+			} else {
+				age = year;
+			}
+		} else {
+			age = year;
+		}
 	}
 
 	@Override
