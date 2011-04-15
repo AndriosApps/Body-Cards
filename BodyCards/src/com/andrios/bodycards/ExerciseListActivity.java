@@ -7,7 +7,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -15,7 +14,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -31,9 +29,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ExerciseListActivity extends Activity {
-	Button back, next, clear;
+	Button backBTN, nextBTN, clearBTN, addBTN;
 
-	ListView av, sv;
+	ListView availableListView, selectedListView;
 
 	TextView tv;
 	View view;
@@ -44,7 +42,7 @@ public class ExerciseListActivity extends Activity {
 	AlertDialog ad;
 
 	ArrayAdapter<Exercise> aa, sa;
-	ArrayList<Exercise> exercises, sel;
+	ArrayList<Exercise> exerciseList, sel;
 
 	boolean[] selected;
 
@@ -54,7 +52,7 @@ public class ExerciseListActivity extends Activity {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		setContentView(R.layout.exerciselist);
+		setContentView(R.layout.exerciselistactivity);
 		readExercises();
 		setAlertDialog();
 		setConnections();
@@ -96,7 +94,7 @@ public class ExerciseListActivity extends Activity {
 									int which) {
 								Intent intent = new Intent(view.getContext(),
 										DisplayExerciseActivity.class);
-								intent.putExtra("exer", (Exercise)av.getItemAtPosition(selectedRow));
+								intent.putExtra("exer", (Exercise)availableListView.getItemAtPosition(selectedRow));
 								startActivity(intent);
 							}
 						});
@@ -104,7 +102,7 @@ public class ExerciseListActivity extends Activity {
 	}
 
 	public void deleteEntry(int item) {
-		Exercise i = (Exercise) exercises.get(item);
+		Exercise i = (Exercise) exerciseList.get(item);
 		aa.remove(i);
 		// exercises.remove(item);
 
@@ -117,14 +115,14 @@ public class ExerciseListActivity extends Activity {
 			FileInputStream fis = openFileInput("exercises");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
-			exercises = (ArrayList<Exercise>) ois.readObject();
+			exerciseList = (ArrayList<Exercise>) ois.readObject();
 
 			ois.close();
 			fis.close();
 
 		} catch (Exception e) {
 
-			exercises = new ArrayList<Exercise>();
+			exerciseList = new ArrayList<Exercise>();
 
 			createDefaultExercises();
 
@@ -135,7 +133,7 @@ public class ExerciseListActivity extends Activity {
 	}
 
 	private void createDefaultExercises() {
-		exercises
+		exerciseList
 				.add(0,
 						new Exercise(
 								"Push-Ups with Rotation",
@@ -144,7 +142,7 @@ public class ExerciseListActivity extends Activity {
 								"3. Bring your legs back in and repeat for the required number of repetitions.\n\n" +
 								"4. If you are unable to keep your back flat on the floor throughout the movement shorten the distance that your legs extend until you get stronger.",
 								R.drawable.pushupwithrotation));
-		exercises
+		exerciseList
 				.add(0,
 						new Exercise(
 								"Double Leg Pressouts",
@@ -153,7 +151,7 @@ public class ExerciseListActivity extends Activity {
 								"3. Bring your legs back in and repeat for the required number of repetitions.\n\n" +
 								"4. If you are unable to keep your back flat on the floor throughout the movement shorten the distance that your legs extend until you get stronger.",
 								R.drawable.doublelegpressouts));
-		exercises
+		exerciseList
 				.add(0,
 						new Exercise(
 								"Hip Thrust",
@@ -161,7 +159,7 @@ public class ExerciseListActivity extends Activity {
 								"2. Slowly lift your hips off the floor and towards the ceiling.\n\n" +
 								"3. Lower your hips to the floor and repeat for the prescribed number of repetitions.",
 								R.drawable.hipthrust));
-		exercises
+		exerciseList
 				.add(0,
 						new Exercise(
 								"Oblique Crunch",
@@ -170,7 +168,7 @@ public class ExerciseListActivity extends Activity {
 								"3. Return to the starting position and repeat according to the required repetitions.\n\n" +
 								"4. Repeat with the other side.",
 								R.drawable.obliquecrunch));
-		exercises
+		exerciseList
 				.add(0,
 						new Exercise(
 								"V-Up",
@@ -178,7 +176,7 @@ public class ExerciseListActivity extends Activity {
 								"2. Leading with the chin and chest towards the ceiling, contract the abdominal and raise shoulders off floor or bench. Also raise legs up towards ceiling and attempt to touch your hands to your feet.\n\n" +
 								"3. Return to start position.\n\n",
 								R.drawable.vup));
-		exercises
+		exerciseList
 				.add(0,
 						new Exercise(
 								"Sit Ups",
@@ -192,14 +190,14 @@ public class ExerciseListActivity extends Activity {
 	private void setConnections() {
 		// TODO Auto-generated method stub
 
-		selected = new boolean[exercises.size()];
+		selected = new boolean[exerciseList.size()];
 		for (int i = 0; i < selected.length; i++) {
 			selected[i] = false;
 		}
 		sel = new ArrayList<Exercise>();
 
-		av = (ListView) findViewById(R.id.exerciseListView);
-		aa = new ArrayAdapter<Exercise>(this, R.layout.list_view2, exercises);
+		availableListView = (ListView) findViewById(R.id.exerciseListActivityAvailableExercisesListView);
+		aa = new ArrayAdapter<Exercise>(this, R.layout.list_view2, exerciseList);
 		aa.setNotifyOnChange(true);
 		aa.sort(new Comparator<Exercise>() {
 
@@ -210,9 +208,35 @@ public class ExerciseListActivity extends Activity {
 			}
 
 		});
-		av.setAdapter(aa);
+		availableListView.setAdapter(aa);
 
-		av.setOnItemClickListener(new OnItemClickListener() {
+
+
+		selectedListView = (ListView) findViewById(R.id.exerciseListActivitySelectedExercisesListView);
+		sa = new ArrayAdapter<Exercise>(this, R.layout.list_view2, sel);
+		selectedListView.setAdapter(sa);
+		sa.setNotifyOnChange(true);
+
+
+
+		addBTN = (Button) findViewById(R.id.exerciseListActivityAddBTN);
+
+
+		backBTN = (Button) findViewById(R.id.exerciseListActivityBackBTN);
+
+
+		nextBTN = (Button) findViewById(R.id.exerciseListActivityNextBTN);
+
+
+		clearBTN = (Button) findViewById(R.id.exerciseListActivityClearBTN);
+
+		
+		setOnClickListeners();
+	}
+
+	private void setOnClickListeners() {
+		
+		availableListView.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> arg0, View arg1, int row,
 					long arg3) {
@@ -233,7 +257,7 @@ public class ExerciseListActivity extends Activity {
 
 		});
 
-		av.setOnItemLongClickListener(new OnItemLongClickListener() {
+		availableListView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
 					int row, long arg3) {
@@ -241,23 +265,18 @@ public class ExerciseListActivity extends Activity {
 				selectedRow = row;
 
 				tv.setText("Would you like to view "
-						+ ((Exercise) av.getItemAtPosition(row)).toString()
+						+ ((Exercise) availableListView.getItemAtPosition(row)).toString()
 						+ " exercise card or delete the exercise from the list?");
 				view = arg1;
-				name = ((Exercise) av.getItemAtPosition(row)).getName();
-				desc = ((Exercise) av.getItemAtPosition(row)).getDesc();
+				name = ((Exercise) availableListView.getItemAtPosition(row)).getName();
+				desc = ((Exercise) availableListView.getItemAtPosition(row)).getDesc();
 				ad.show();
 				return true;
 			}
 
 		});
-
-		sv = (ListView) findViewById(R.id.selectedExerciseListView);
-		sa = new ArrayAdapter<Exercise>(this, R.layout.list_view2, sel);
-		sv.setAdapter(sa);
-		sa.setNotifyOnChange(true);
-
-		sv.setOnItemClickListener(new OnItemClickListener() {
+		
+		selectedListView.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> arg0, View arg1, int row,
 					long arg3) {
@@ -279,7 +298,7 @@ public class ExerciseListActivity extends Activity {
 
 		});
 
-		sv.setOnItemLongClickListener(new OnItemLongClickListener() {
+		selectedListView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
 					int row, long arg3) {
@@ -287,7 +306,7 @@ public class ExerciseListActivity extends Activity {
 
 				Intent intent = new Intent(arg1.getContext(),
 						DisplayExerciseActivity.class);
-				intent.putExtra("exer", (Exercise)sv.getItemAtPosition(row));
+				intent.putExtra("exer", (Exercise)selectedListView.getItemAtPosition(row));
 				
 				startActivity(intent);
 				
@@ -296,9 +315,8 @@ public class ExerciseListActivity extends Activity {
 			}
 
 		});
-
-		Button add = (Button) findViewById(R.id.exAdd);
-		add.setOnClickListener(new OnClickListener() {
+		
+		addBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -307,9 +325,8 @@ public class ExerciseListActivity extends Activity {
 			}
 
 		});
-
-		back = (Button) findViewById(R.id.exBack);
-		back.setOnClickListener(new OnClickListener() {
+		
+		backBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -317,24 +334,10 @@ public class ExerciseListActivity extends Activity {
 			}
 
 		});
-
-		next = (Button) findViewById(R.id.exNext);
-		next.setOnClickListener(new OnClickListener() {
+		
+		nextBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
-				ArrayList<String> exersNames = new ArrayList<String>();
-
-				// CHANGE THIS TO PULL FROM sl LISTVIEW
-				/*
-				while (!sel.isEmpty()) {
-
-					exersNames.add(sel.remove(0).toString());
-
-				}
-	*/
-				// ---------
 
 				if (sel.isEmpty()) {
 					Toast.makeText(ExerciseListActivity.this,
@@ -351,9 +354,8 @@ public class ExerciseListActivity extends Activity {
 			}
 
 		});
-
-		clear = (Button) findViewById(R.id.exClear);
-		clear.setOnClickListener(new OnClickListener() {
+		
+		clearBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				while (!sa.isEmpty()) {
@@ -374,6 +376,7 @@ public class ExerciseListActivity extends Activity {
 			}
 
 		});
+		
 	}
 
 	public void write() {
@@ -382,7 +385,7 @@ public class ExerciseListActivity extends Activity {
 					Context.MODE_PRIVATE);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-			oos.writeObject(exercises);
+			oos.writeObject(exerciseList);
 
 			oos.close();
 			fos.close();
