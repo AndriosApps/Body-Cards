@@ -297,12 +297,7 @@ public class WorkoutCardActivity extends Activity {
 	private void createWorkouts() {
 		workouts = new Workout[numProf];
 
-		String[] newAr = new String[exercises.size()];
-		/*
-		for (int l = 0; l < newAr.length; l++) {
-			newAr[l] = exercises.get(l).getName();
-		}
-		*/
+
 		for (int i = 0; i < numProf; i++) {
 			workouts[i] = new Workout(numPeople, numSets, max, min, exercises);
 		}
