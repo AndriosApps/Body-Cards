@@ -25,6 +25,7 @@ public class DisplayExerciseActivity extends Activity {
 		setContentView(R.layout.displayexercise);
 		getExtras();
 		setConnections();
+		setOnClickListeners();
 	}
 
 	private void getExtras() {
