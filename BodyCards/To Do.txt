@@ -1,6 +1,6 @@
 Later Implementations:
 
-Add quickworkout to profile
+Add quickworkout to profile - COREY WORKING ON THIS. 
 1/2, 1/3, 1/4 quickwork decks
 Workout Pictures
 Get Contact Picture (QuickContactBadge)
@@ -11,6 +11,7 @@ Body Part Tabs
 Exercise Profiles
 Music playlist
 Profile Birthday instead of age
+Weight Exercises to compare running average of difficulty level. 
 
 Implemented:
 Number of Guest Users

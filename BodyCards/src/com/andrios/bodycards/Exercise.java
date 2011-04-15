@@ -17,13 +17,7 @@ public class Exercise implements Serializable {
 	String desc;
 
 	
-	public int getImg() {
-		return img;
-	}
 
-	public void setImg(int img) {
-		this.img = img;
-	}
 	
 	public Exercise(String n) {
 		this(n,"",1);
@@ -33,11 +27,11 @@ public class Exercise implements Serializable {
 		this(n,d,i,1.0);
 	}
 	
-	public Exercise(String n, String d, int i, double multiplier) {
-		name = n;
-		desc = d;
+	public Exercise(String name, String desc, int image, double multiplier) {
+		this.name = name;
+		this.desc = desc;
 		//img = "/BodyCards/res/drawable-hdpi/alttoecrunch" + i + ".gif";
-		img = i;
+		this.img = image;
 		this.multiplier = multiplier;
 	}
 
@@ -66,5 +60,12 @@ public class Exercise implements Serializable {
 	public void setMultiplier(double multiplier) {
 		this.multiplier = multiplier;
 	}
+	
+	public int getImg() {
+		return img;
+	}
 
+	public void setImg(int img) {
+		this.img = img;
+	}
 }
