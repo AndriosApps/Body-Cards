@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 public class NewWorkoutActivity extends Activity {
 	Button back, reset, done;
-	ArrayList<String> exerciseNames;
+	ArrayList<Exercise> exerciseNames;
 	ArrayList<Workout> peoplesWorkouts;
 	ListView lv, ls;
 	ArrayAdapter<Profile> aa, as;
@@ -52,9 +52,9 @@ public class NewWorkoutActivity extends Activity {
 	@SuppressWarnings("unchecked")
 	private void getExtras() {
 		Intent intent = this.getIntent();
-		exerciseNames = (ArrayList<String>) intent
-				.getSerializableExtra("names");
-		System.out.println("test: " + exerciseNames.size());
+		exerciseNames = (ArrayList<Exercise>) intent
+				.getSerializableExtra("selectedexercises");
+		
 	}
 
 	@SuppressWarnings("unchecked")
@@ -84,9 +84,9 @@ public class NewWorkoutActivity extends Activity {
 		String exLst = "";
 		for (int i = 0; i < exerciseNames.size(); i++) {
 			if (i == 0)
-				exLst += exerciseNames.get(i);
+				exLst += exerciseNames.get(i).getName();
 			else
-				exLst += "\n" + exerciseNames.get(i);
+				exLst += "\n" + exerciseNames.get(i).getName();
 		}
 		t.setText(exLst);
 

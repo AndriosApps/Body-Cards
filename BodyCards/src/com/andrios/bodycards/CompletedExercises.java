@@ -11,10 +11,12 @@ public class CompletedExercises implements Serializable {
 
 	String name;
 	int count;
+	Double multiplier;
 
-	public CompletedExercises(String e) {
+	public CompletedExercises(String e, Double multiplier) {
 		name = e;
 		count = 0;
+		this.multiplier = multiplier;
 	}
 
 	public void increment(int n) {

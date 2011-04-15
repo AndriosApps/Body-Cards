@@ -33,7 +33,7 @@ public class WorkoutCardActivity extends Activity {
 	ArrayList<Profile> selectedProfiles;
 
 	// Workout Initialization Variables
-	ArrayList<String> exercises;
+	ArrayList<Exercise> exercises;
 	int numPeople, numSets, min, max;
 
 	// Workout Card Variables
@@ -81,7 +81,7 @@ public class WorkoutCardActivity extends Activity {
 				.getSerializableExtra("profiles");
 		unusedProfiles = (ArrayList<Profile>) intent
 				.getSerializableExtra("profilesU");
-		exercises = (ArrayList<String>) intent
+		exercises = (ArrayList<Exercise>) intent
 				.getSerializableExtra("exercises");
 	}
 
@@ -198,8 +198,9 @@ public class WorkoutCardActivity extends Activity {
 			int num = Math.abs(rNum.nextInt());
 			reps = min + (num % modulo);
 		}
-		exercise = (exercises.get(Math.abs(rNum.nextInt()) % exercises.size()));
-
+		int randomNumber = Math.abs(rNum.nextInt()) % exercises.size();
+		exercise = (exercises.get(randomNumber).getName());
+			reps = (int) (reps*exercises.get(randomNumber).getMultiplier());
 		displayWorkout();
 
 	}
@@ -297,11 +298,13 @@ public class WorkoutCardActivity extends Activity {
 		workouts = new Workout[numProf];
 
 		String[] newAr = new String[exercises.size()];
+		/*
 		for (int l = 0; l < newAr.length; l++) {
-			newAr[l] = exercises.get(l);
+			newAr[l] = exercises.get(l).getName();
 		}
+		*/
 		for (int i = 0; i < numProf; i++) {
-			workouts[i] = new Workout(numPeople, numSets, max, min, newAr);
+			workouts[i] = new Workout(numPeople, numSets, max, min, exercises);
 		}
 	}
 

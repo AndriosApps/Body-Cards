@@ -15,6 +15,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -43,7 +44,7 @@ public class ExerciseListActivity extends Activity {
 	AlertDialog ad;
 
 	ArrayAdapter<Exercise> aa, sa;
-	List<Exercise> exercises, sel;
+	ArrayList<Exercise> exercises, sel;
 
 	boolean[] selected;
 
@@ -326,22 +327,25 @@ public class ExerciseListActivity extends Activity {
 				ArrayList<String> exersNames = new ArrayList<String>();
 
 				// CHANGE THIS TO PULL FROM sl LISTVIEW
-
+				/*
 				while (!sel.isEmpty()) {
 
 					exersNames.add(sel.remove(0).toString());
 
 				}
-
+	*/
 				// ---------
 
-				if (exersNames.isEmpty()) {
+				if (sel.isEmpty()) {
 					Toast.makeText(ExerciseListActivity.this,
 							"You must choose at least 1 exercise",
 							Toast.LENGTH_SHORT).show();
 				} else {
 					Intent intent = new Intent(v.getContext(), NewWorkoutActivity.class);
-					intent.putExtra("names", exersNames);
+					
+					
+
+					intent.putExtra("selectedexercises", sel);
 					startActivityForResult(intent, 31415);
 				}
 			}

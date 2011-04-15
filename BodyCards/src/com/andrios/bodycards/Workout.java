@@ -15,7 +15,7 @@ public class Workout implements Serializable {
 
 	int numPeople, numSets, max, min, finSets;
 	ArrayList<CompletedExercises> exercises;
-
+	ArrayList<Exercise> exerciseList;
 	long seconds;
 
 	String elapsedWorkoutTime;
@@ -31,21 +31,22 @@ public class Workout implements Serializable {
 				+ workoutDate.get(Calendar.YEAR);
 	}
 
-	public Workout(int np, int ns, int x, int n, String[] e) {
+	public Workout(int np, int ns, int x, int n, ArrayList<Exercise> e) {
 		numPeople = np;
 		numSets = ns;
 		max = x;
 		min = n;
 		exercises = new ArrayList<CompletedExercises>();
-
+		this.exerciseList = e;
 		seconds = 0;
 		workoutDate = Calendar.getInstance();
 		date = workoutDate.get(Calendar.DAY_OF_MONTH) + "-"
 				+ months[workoutDate.get(Calendar.MONTH)] + "-"
 				+ workoutDate.get(Calendar.YEAR);
 
-		for (int i = 0; i < e.length; i++) {
-			exercises.add(new CompletedExercises(e[i]));
+		for (int i = 0; i < this.exerciseList.size(); i++) {
+			Exercise e1 = this.exerciseList.get(i);
+			exercises.add(new CompletedExercises(e1.getName(), e1.getMultiplier()));
 		}
 
 	}
