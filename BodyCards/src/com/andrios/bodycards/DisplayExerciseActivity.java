@@ -1,6 +1,7 @@
 package com.andrios.bodycards;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,11 +11,15 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DisplayExerciseActivity extends Activity {
 
+	protected static final int EXERCISE_ACTIVITY = 0;
 	Button back, update;
 	Exercise exer;
+	TextView multiplierTXT,f,g;
+	ImageView img;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -39,16 +44,16 @@ public class DisplayExerciseActivity extends Activity {
 		back = (Button) findViewById(R.id.deBack);
 		update = (Button) findViewById(R.id.deUpdate);
 		
-		TextView multiplierTXT = (TextView) findViewById(R.id.displayExMultiplierTXT);
+		multiplierTXT = (TextView) findViewById(R.id.displayExMultiplierTXT);
 		multiplierTXT.setText(Double.toString(exer.getMultiplier()));
 		
-		TextView f = (TextView) findViewById(R.id.newExDesc);
+		f = (TextView) findViewById(R.id.newExDesc);
 		f.setText(exer.getDesc());
 
-		TextView g = (TextView) findViewById(R.id.newExName);
+		g = (TextView) findViewById(R.id.newExName);
 		g.setText(exer.getName());
 		
-		ImageView img = (ImageView) findViewById(R.id.newExImg);
+		img = (ImageView) findViewById(R.id.newExImg);
 		img.setImageResource(exer.getImg());
 	}
 	
@@ -65,16 +70,43 @@ public class DisplayExerciseActivity extends Activity {
 		update.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				String name = exer.getName();
-				String desc = exer.getDesc();
+		
 				Intent intent = new Intent(v.getContext(), CreateExerciseActivity.class);
-				intent.putExtra("name", name);
-				intent.putExtra("desc", desc);
-				startActivity(intent);
+				intent.putExtra("exercise", exer);
+				
+				startActivityForResult(intent,EXERCISE_ACTIVITY);
 
 			}
 
 		});
 	}
+	
+	@Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		super.onActivityResult(requestCode, resultCode, intent);
+
+    	if (requestCode == EXERCISE_ACTIVITY) {
+    		try{
+    			System.out.println("EXCERCISE_ACTIVITY");//TODO
+	        exer = (Exercise) intent.getSerializableExtra("exercise");
+    		if (resultCode == RESULT_OK) {
+    			System.out.println("OK");//TODO
+    	    
+    	    	multiplierTXT.setText(Double.toString(exer.getMultiplier()));
+    			
+    			f.setText(exer.getDesc());
+
+    			g.setText(exer.getName());
+    			
+    			img.setImageResource(exer.getImg());
+    			
+    		}
+    		}catch(Exception e){
+    			System.out.println("FAILURE");
+    		}
+    		
+    	}
+    	
+    }	
 
 }
