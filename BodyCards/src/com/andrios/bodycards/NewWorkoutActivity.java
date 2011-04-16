@@ -38,6 +38,7 @@ public class NewWorkoutActivity extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.newworkout);
+		
 		getExtras();
 		setConnections();
 	}
@@ -189,7 +190,7 @@ public class NewWorkoutActivity extends Activity {
 				EditText min = (EditText) findViewById(R.id.minEdit);
 				EditText max = (EditText) findViewById(R.id.maxEdit);
 
-				people.setText("2");
+				people.setText("0");
 				reps.setText("20");
 				min.setText("2");
 				max.setText("15");
