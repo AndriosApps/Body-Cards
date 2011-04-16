@@ -135,9 +135,7 @@ public class NewProfileActivity extends Activity {
 				boolean error = false;
 				int mn, dy, yr;
 				
-				mn = Integer.parseInt(month.getText().toString());
-				dy = Integer.parseInt(day.getText().toString());
-				yr = Integer.parseInt(year.getText().toString());
+				
 				
 				if (isEmpty(fName)) {
 					Toast.makeText(NewProfileActivity.this,
@@ -161,6 +159,10 @@ public class NewProfileActivity extends Activity {
 
 				if (!error) {
 
+					mn = Integer.parseInt(month.getText().toString());
+					dy = Integer.parseInt(day.getText().toString());
+					yr = Integer.parseInt(year.getText().toString());
+					
 					if (male.isChecked())
 						gen = "Male";
 					else
