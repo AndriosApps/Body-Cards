@@ -139,15 +139,21 @@ public class QuickWorkoutActivity extends Activity {
 
 		
 		currentUser++;
+		
+		//TODO Clean up code (use modulos) or not doesn't matter...
+		//		not sure if modulo is more efficient, but maybe something
+		//		to look up for future reference.
 		if(currentUser > (numPeople-1)){
 			currentUser = 0;
 			sets++;
 		}
+		
 		//Guests turn to do exercise
 		if(currentUser >= selectedProfiles.size() ){
 			userTXT.setText("Guest User " + (currentUser));
 			
 		}
+		
 		//User With Profile's turn to do exercise
 		else{
 			userTXT.setText(selectedProfiles.get(currentUser).getFirstName());
