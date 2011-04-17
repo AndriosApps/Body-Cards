@@ -18,7 +18,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +26,7 @@ public class QuickWorkoutActivity extends Activity {
 
 	int numPeople, currentUser, sets;
 	ImageView card;
-	TextView userTXT;
+	TextView userTXT, remainingTXT;
 	ArrayList<Profile> unusedProfiles, selectedProfiles;
 	ArrayList<Exercise> exercises;
 	Workout[] workouts;
@@ -77,7 +76,9 @@ public class QuickWorkoutActivity extends Activity {
 		Exercise quickWorkout = new Exercise("Quick Workout");
 		exercises.add(quickWorkout);
 		for (int i = 0; i < numPeople; i++) {
-			workouts[i] = new Workout(numPeople, 52 / numPeople, 14, 2, exercises);
+			//TODO Check Math on this one... 
+			//Compensation commented out in line 202. if math doesn't work.   
+			workouts[i] = new Workout(numPeople, 54 / numPeople, 14, 2, exercises);
 		}
 	}
 
@@ -117,9 +118,11 @@ public class QuickWorkoutActivity extends Activity {
 	}
 
 	private void getNewCard() {
-
+		
+		
 		if(currentUser != -1){
 			workouts[currentUser].stop();
+			workouts[currentUser].setFinSets(sets);
 			workouts[currentUser].incrementCount("Quick Workout", 1);
 			
 		}else{
@@ -134,7 +137,7 @@ public class QuickWorkoutActivity extends Activity {
 
 		dealCard();
 
-		TextView remaining = (TextView) findViewById(R.id.cardCount);
+		
 		currentUser++;
 		if(currentUser > (numPeople-1)){
 			currentUser = 0;
@@ -149,8 +152,8 @@ public class QuickWorkoutActivity extends Activity {
 		else{
 			userTXT.setText(selectedProfiles.get(currentUser).getFirstName());
 		}
-		workouts[currentUser].setFinSets(sets);
-		remaining.setText("Cards Remaining: " + (53 - cardNum));
+		
+		remainingTXT.setText("Cards Remaining: " + (53 - cardNum));
 		workouts[currentUser].start();
 	}
 
@@ -176,6 +179,7 @@ public class QuickWorkoutActivity extends Activity {
 	private void setConnections() {
 		
 		userTXT = (TextView) findViewById(R.id.quickWorkoutActivityUserNameTXT);
+		remainingTXT = (TextView) findViewById(R.id.cardCount);
 		
 		card = (ImageView) findViewById(R.id.card);
 		
@@ -194,16 +198,22 @@ public class QuickWorkoutActivity extends Activity {
 					workouts[currentUser].stop();
 					workouts[currentUser].incrementCount("Quick Workout", 1);
 					long endTime = SystemClock.elapsedRealtime();
+					
 					for(int i = 0; i < workouts.length; i++){
-						
+						/*
+						if(workouts[i].getNumSets() != sets){
+							workouts[i].setNumSets(sets);
+						}
+						*/
 						workouts[i].stopTotal(endTime);
 						workouts[i].setWorkoutTime(workouts[i].getTotalFormattedTime());
 					}
+					
 					setWorkoutsToProfile();
 					Intent el_fin = new Intent(v.getContext(), FinishedActivity.class);
 					
-					startActivity(el_fin);
-					QuickWorkoutActivity.this.finish();
+					startActivityForResult(el_fin, 34222);
+					
 
 				}
 			}
@@ -238,37 +248,11 @@ public class QuickWorkoutActivity extends Activity {
 					Toast.LENGTH_SHORT).show();
 		}
 	}
-	
-	// TIME / TIMER / STOPWATCH / CHRONOMETER STUFF ----------- TIME / TIMER /
-	// STOPWATCH / CHRONOMETER STUFF ----------- TIME / TIMER / STOPWATCH /
-	// CHRONOMETER STUFF //
-
-	/*
-	Chronometer clock;
-	int totalTime;
-	private long pause_time = 0;
-
-	public void updateTimer() {
-
-		int time = totalTime;
-		int hours = time / (60 * 60);
-		time = time - (hours * 60 * 60);
-		int mins = time / 60;
-		int secs = time - (mins * 60);
-
-		String tStr = "";
-		tStr += (hours > 9) ? (hours + ":") : ("0" + hours + ":");
-		tStr += (mins > 9) ? (mins + ":") : ("0" + mins + ":");
-		tStr += (secs > 9) ? (secs + ":") : ("0" + secs);
-
-		clock.setText(tStr);
-	}
-
-	protected void addTimeToWorkout() {
-
-		for (int i = 0; i < workouts.length; i++) {
-			workouts[i].setWorkoutTime(clock.getText().toString());
+	public void onActivityResult(int requestCode, int returnCode, Intent intent) {
+		if (returnCode == RESULT_OK) {
+			setResult(RESULT_OK);
+			QuickWorkoutActivity.this.finish();
 		}
 	}
-	*/
+	
 }

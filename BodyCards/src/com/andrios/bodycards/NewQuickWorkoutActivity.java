@@ -217,4 +217,11 @@ public class NewQuickWorkoutActivity extends Activity  {
 		}
 
 	}
+	
+	public void onActivityResult(int requestCode, int returnCode, Intent intent) {
+		if (returnCode == RESULT_OK) {
+			setResult(RESULT_OK);
+			NewQuickWorkoutActivity.this.finish();
+		}
+	}
 }

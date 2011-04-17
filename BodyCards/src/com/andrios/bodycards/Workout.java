@@ -176,6 +176,9 @@ public class Workout implements Serializable {
 		return workoutDate;
 	}
 
+	public void setNumSets(int numSets){
+		this.numSets = numSets;
+	}
 	public int getNumSets() {
 		return numSets;
 	}
