@@ -3,8 +3,9 @@ Later Implementations:
 Add workout summary to finish Activity. 
 When QuickWorkoutActivity finishes it drops user back to NewQuickWorkoutActivity - COREY to begin 17 APR
 OBO Error in Display Workout (with QuickWorkouts) - COREY to begin 17 APR
-Test Personal Duration of Completed QuickWorkouts - Corey to being 17 APR
+
 1/2, 1/3, 1/4 quickwork decks
+Rename Done Button in NewQuickWorkoutActivity & NewWorkoutActivity
 Workout Pictures
 Get Contact Picture (QuickContactBadge)
 Connect to Google Calendar
@@ -17,6 +18,7 @@ Weight Exercises to compare running average of difficulty level.
 
 Implemented:
 Number of Guest Users
-Add multipliers for excercises.
+Add multipliers for excercises. 15 APR 2011
 Profile Birthday instead of age
 Add quickworkout to profile - 16 APR 2011
+Test Personal Duration of Completed QuickWorkouts - 16 APR 2011
