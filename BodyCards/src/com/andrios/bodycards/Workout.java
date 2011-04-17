@@ -16,7 +16,7 @@ public class Workout implements Serializable {
 	int numPeople, numSets, max, min, finSets;
 	ArrayList<CompletedExercises> exercises;
 	ArrayList<Exercise> exerciseList;
-	long seconds;
+	long base, totalBase, seconds, totalSeconds;
 
 	String elapsedWorkoutTime;
 	String[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
@@ -51,16 +51,26 @@ public class Workout implements Serializable {
 
 	}
 
-	long base;
-
+	
+    public void startTotal(long time){
+    	totalBase = time;
+    }
+    
+	public void stopTotal(long time) {
+		long res = (time - totalBase) / 1000;
+		
+		totalSeconds += res;
+		
+	}
 	public void start() {
 		base = SystemClock.elapsedRealtime();
 	}
 
 	public void stop() {
 		long res = (SystemClock.elapsedRealtime() - base) / 1000;
-
+		
 		seconds += res;
+		
 	}
 
 	public int getNumPeople() {
@@ -73,6 +83,39 @@ public class Workout implements Serializable {
 		t = seconds - (hr * 60 * 60);
 		long min = t / 60;
 		long sec = seconds - (min * 60);
+
+		String tStr = "  ";
+		if (hr > 0 && hr < 9) {
+			tStr += "0" + hr + ":";
+		} else if (hr > 9) {
+			tStr += hr + ":";
+		}
+
+		if (min > 0 && min < 9) {
+			tStr += "0" + min + ":";
+		} else if (min > 9) {
+			tStr += min + ":";
+		} else {
+			tStr += "00:";
+		}
+
+		if (sec > 0 && sec < 9) {
+			tStr += "0" + sec;
+		} else if (sec > 9) {
+			tStr += Long.toString(sec);
+		} else {
+			tStr += "00";
+		}
+
+		return tStr;
+
+	}
+	public String getTotalFormattedTime() {
+		long t = totalSeconds;
+		long hr = t / (60 * 60);
+		t = totalSeconds - (hr * 60 * 60);
+		long min = t / 60;
+		long sec = totalSeconds - (min * 60);
 
 		String tStr = "  ";
 		if (hr > 0 && hr < 9) {
@@ -140,6 +183,8 @@ public class Workout implements Serializable {
 	public void incrementCount(String exercise, int number) {
 		int i;
 		for (i = 0; i < exercises.size(); i++) {
+			System.out.println("i: "+i);
+			System.out.println("Exercise size: " + exercises.size() );
 			if (exercise.equals(exercises.get(i).getName()))
 				break;
 		}

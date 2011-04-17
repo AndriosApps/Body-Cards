@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
 		quickWorkout.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), QuickWorkoutActivity.class);
+				Intent intent = new Intent(v.getContext(), NewQuickWorkoutActivity.class);
 				startActivity(intent);
 			}
 

@@ -13,6 +13,7 @@
             </intent-filter>
         </activity>
         <activity android:name="QuickWorkoutActivity" android:screenOrientation="portrait" />
+        <activity android:name="NewQuickWorkoutActivity" android:screenOrientation="portrait" />
         <activity android:name="FinishedActivity" android:screenOrientation="portrait" />
         <activity android:name="History" android:screenOrientation="portrait" />
         <activity android:name="NewProfileActivity" android:screenOrientation="portrait" />
