@@ -1,7 +1,9 @@
 Later Implementations:
 
 Add workout summary to finish Activity. 
-Add quickworkout to profile - COREY WORKING ON THIS. 
+When QuickWorkoutActivity finishes it drops user back to NewQuickWorkoutActivity - COREY to begin 17 APR
+OBO Error in Display Workout (with QuickWorkouts) - COREY to begin 17 APR
+Test Personal Duration of Completed QuickWorkouts - Corey to being 17 APR
 1/2, 1/3, 1/4 quickwork decks
 Workout Pictures
 Get Contact Picture (QuickContactBadge)
@@ -17,3 +19,4 @@ Implemented:
 Number of Guest Users
 Add multipliers for excercises.
 Profile Birthday instead of age
+Add quickworkout to profile - 16 APR 2011
