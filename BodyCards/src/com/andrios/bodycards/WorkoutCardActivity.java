@@ -42,9 +42,9 @@ public class WorkoutCardActivity extends Activity {
 	int numProf;
 
 	// Workout Progress Variables
-	int reps, // Number of Reps of the exercise
-			set, // Which set user is on
-			count; // Exercise number
+	int reps, 	// Number of Reps of the exercise
+		set, 	// Which set user is on
+		count; 	// Exercise number
 	String exercise; // Exercise name
 
 	// Workouts to add to Profiles
@@ -94,7 +94,7 @@ public class WorkoutCardActivity extends Activity {
 		numCards = numPeople * numSets;
 		cardsRem.setText("Cards Remaining: " + numCards);
 		started = running = false;
-		totalTime = 0; // TIME / TIMER / STOPWATCH / CHRONOMETER STUFF
+		totalTime = 0;
 		reps = count = 0;
 		set = 1;
 
@@ -102,7 +102,7 @@ public class WorkoutCardActivity extends Activity {
 		begin.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 
-				if (running) { // TIME / TIMER / STOPWATCH / CHRONOMETER STUFF
+				if (running) {
 					clock.stop();
 					pause_time = SystemClock.elapsedRealtime()
 							- clock.getBase();
@@ -110,7 +110,7 @@ public class WorkoutCardActivity extends Activity {
 						workouts[(count - 1) % numPeople].start();
 					begin.setText("Resume");
 					running = false;
-				} else { // TIME / TIMER / STOPWATCH / CHRONOMETER STUFF
+				} else {
 					if (started) {
 						clock.setBase(SystemClock.elapsedRealtime()
 								- pause_time);
@@ -256,9 +256,7 @@ public class WorkoutCardActivity extends Activity {
 	private void setViews() {
 		nameView = (TextView) findViewById(R.id.userName);
 		setView = (TextView) findViewById(R.id.setCount);
-		clock = (Chronometer) findViewById(R.id.timerView); // TIME / TIMER /
-															// STOPWATCH /
-															// CHRONOMETER STUFF
+		clock = (Chronometer) findViewById(R.id.timerView);
 		exerciseName = (TextView) findViewById(R.id.exerciseName);
 		rTL = (TextView) findViewById(R.id.repsTL);
 		rBR = (TextView) findViewById(R.id.repsBR);
@@ -302,10 +300,6 @@ public class WorkoutCardActivity extends Activity {
 			workouts[i] = new Workout(numPeople, numSets, max, min, exercises);
 		}
 	}
-
-	// TIME / TIMER / STOPWATCH / CHRONOMETER STUFF ----------- TIME / TIMER /
-	// STOPWATCH / CHRONOMETER STUFF ----------- TIME / TIMER / STOPWATCH /
-	// CHRONOMETER STUFF //
 
 	Chronometer clock;
 	int totalTime;
