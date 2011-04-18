@@ -121,7 +121,7 @@
 		<Button android:id="@+id/newQuickWorkoutActivityDoneBTN" 
 			android:layout_width="wrap_content"
 			android:layout_height="50px"
-			android:text="Done"
+			android:text="Next"
 			android:layout_weight="1" />
 
 	</LinearLayout>
