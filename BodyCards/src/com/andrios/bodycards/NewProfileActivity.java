@@ -96,7 +96,8 @@ public class NewProfileActivity extends Activity {
 		reset = (Button) findViewById(R.id.newProfileResetBTN);
 		done = (Button) findViewById(R.id.newProfileDoneBTN);
 		
-		//TODO DOES THIS NEED TO GO HERE???? Either here, getExtras()or onCreate() makes more sense here
+		//TODO DOES THIS NEED TO GO HERE???? 
+		//TODO Answer: Either here, getExtras()or onCreate() makes more sense here
 		created = new Profile();
 		readProfiles();
 		setOnClickListeners();
