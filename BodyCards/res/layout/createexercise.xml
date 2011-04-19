@@ -160,16 +160,20 @@
 	  	android:layout_height="wrap_content"
 	  	android:textColor="#000"
 	  	android:layout_weight="0" />
-	  	
-	  <EditText android:id="@+id/newExDesc"
+	  <ScrollView
 	  	android:layout_width="fill_parent"
 	  	android:layout_height="wrap_content"
-	  	android:hint="Description of Exercise"
-	  	android:textColorHint="#E5E5E5"
-	  	android:gravity="top"
-	  	android:singleLine="false"
-	  	android:scrollHorizontally="false"
-	  	android:layout_weight="1" />
+	  	android:layout_weight="1">
+		  <EditText android:id="@+id/newExDesc"
+		  	android:layout_width="fill_parent"
+		  	android:layout_height="wrap_content"
+		  	android:hint="Description of Exercise"
+		  	android:textColorHint="#E5E5E5"
+		  	android:gravity="top"
+		  	android:singleLine="false"
+		  	android:scrollHorizontally="false"
+		  	android:layout_weight="1" />
+	  </ScrollView>
  
   </LinearLayout>
 
