@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World!</string>
-    <string name="app_name">BodyCards</string>
+    <string-array name="muscleGroupChoices">
+    	<item>Hamstrings</item>
+        <item>Calves</item>
+        <item>Chest</item>
+        <item>Back</item>
+        <item>Shoulders</item>
+        <item>Triceps</item>
+        <item>Biceps</item>
+        <item>Forearms</item>
+        <item>Trapezius</item>
+        <item>Abs</item>
+    </string-array>
 </resources>

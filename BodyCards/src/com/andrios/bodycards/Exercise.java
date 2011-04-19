@@ -16,23 +16,43 @@ public class Exercise implements Serializable {
 	String name;
 	String desc;
 
+	String muscle_group;
 	
+	boolean isTimed;
 
 	
 	public Exercise(String n) {
-		this(n,"",1);
+		this(n,"", "Chest",1);
 	}
 
-	public Exercise(String n, String d, int i) {
-		this(n,d,i,1.0);
+	public Exercise(String n, String d, String m, int i) {
+		this(n,d,i,1.0,m,false);
 	}
 	
-	public Exercise(String name, String desc, int image, double multiplier) {
+	public Exercise(String name, String desc, int image, double multiplier, String mg, boolean t) {
 		this.name = name;
 		this.desc = desc;
 		//img = "/BodyCards/res/drawable-hdpi/alttoecrunch" + i + ".gif";
 		this.img = image;
 		this.multiplier = multiplier;
+		this.muscle_group = mg;
+		this.isTimed = t;
+	}
+	
+	public String getMuscleGroup() {
+		return muscle_group;
+	}
+	
+	public void setMuscleGroup(String mg) {
+		this.muscle_group = mg;
+	}
+	
+	public boolean getIsTimed() {
+		return isTimed;
+	}
+	
+	public void setIsTimed(boolean t) {
+		this.isTimed = t;
 	}
 
 	public String toString() {

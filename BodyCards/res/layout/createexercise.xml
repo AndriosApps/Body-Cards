@@ -34,17 +34,43 @@
 	  	android:gravity="center"
 	  	android:layout_width="100px"
 	  	android:layout_height="wrap_content"
+	  	android:layout_weight="0"
 	  	android:textColor="#000" />
 	  	
 	  <EditText android:id="@+id/newExName"
 	  	android:layout_width="fill_parent"
 	  	android:layout_height="wrap_content"
+	  	android:layout_weight="1"
 	  	android:hint="Exercise"
 	  	android:textColorHint="#E5E5E5"
 	  	android:inputType="text" />
  
   </LinearLayout>
-  <LinearLayout
+
+  
+  <LinearLayout android:id="@+id/newExMuscleGroupRow"
+  	  android:layout_width="fill_parent"
+  	  android:layout_height="wrap_content"
+  	  android:layout_weight="0"
+  	  android:orientation="horizontal">
+  	  
+  	  <TextView android:id="@+id/newExMuscleGroupLBL"
+	  	android:text="Muscle Group"
+	  	android:gravity="center"
+	  	android:layout_width="100px"
+	  	android:layout_height="fill_parent"
+	  	android:textColor="#000"
+	  	android:layout_weight="0" />
+	  	
+	  <Spinner android:id="@+id/newExMuscleGroupSpinner"
+	  	android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+	  	
+  
+  </LinearLayout>
+ 
+   <LinearLayout
 	  android:id="@+id/newExMultiplierRow"
 	  android:layout_width="fill_parent"
 	  android:layout_height="wrap_content"
@@ -58,6 +84,7 @@
 	  	android:gravity="center"
 	  	android:layout_width="100px"
 	  	android:layout_height="wrap_content"
+	  	android:layout_weight="0"
 	  	android:textColor="#000" />
 	  	
 	  <EditText android:id="@+id/newExMultiplier"
@@ -66,14 +93,62 @@
 	  	android:layout_height="wrap_content"
 	  	android:hint="Exercise"
 	  	android:textColorHint="#E5E5E5"
-	  	android:inputType="number" />
+	  	android:inputType="number"
+	  	android:layout_weight="1" />
  
   </LinearLayout>
+ 
   <LinearLayout
 	  android:id="@+id/newExDescRow"
 	  android:layout_width="fill_parent"
 	  android:layout_height="wrap_content"
-	  android:background="#FFFFFF"
+	  android:background="#E5E5E5"
+	  android:gravity="top"
+	  android:orientation="horizontal"
+	  android:layout_weight="0">
+  
+	  <TextView android:id="@+id/newExTimedLabel"
+	  	android:text="Timed Exercise"
+	  	android:gravity="center"
+	  	android:layout_width="100px"
+	  	android:layout_height="fill_parent"
+	  	android:textColor="#000"
+	  	android:layout_weight="0" />
+	  	
+	  <RadioGroup
+	  	android:id="@+id/newExTimedRadioGrp"
+	  	android:layout_height="wrap_content"
+	  	android:layout_width="0px"
+	  	android:layout_weight="1"
+	  	android:orientation="horizontal">
+	  	
+	  	<RadioButton android:id="@+id/newExTimedYesRadioBTN"
+	  		android:text="Yes"
+	  		android:layout_height="wrap_content"
+	  		android:layout_width="wrap_content"
+	  		android:textColor="#000"
+	  		android:layout_weight="1" />
+	  		
+	
+	  		
+	  	<RadioButton android:id="@+id/newExTimedNoRadioBTN"
+	  		android:text="No"
+	  		android:layout_height="wrap_content"
+	  		android:layout_width="wrap_content"
+	  		android:textColor="#000"
+	  		android:checked="true"
+	  		android:layout_weight="1" />
+	  		
+	  </RadioGroup>
+	  	
+ 
+  </LinearLayout>
+  
+  <LinearLayout
+	  android:id="@+id/newExDescRow"
+	  android:layout_width="fill_parent"
+	  android:layout_height="wrap_content"
+	  android:background="#E5E5E5"
 	  android:gravity="top"
 	  android:orientation="horizontal"
 	  android:layout_weight="1">
@@ -83,7 +158,8 @@
 	  	android:gravity="center"
 	  	android:layout_width="100px"
 	  	android:layout_height="wrap_content"
-	  	android:textColor="#000" />
+	  	android:textColor="#000"
+	  	android:layout_weight="0" />
 	  	
 	  <EditText android:id="@+id/newExDesc"
 	  	android:layout_width="fill_parent"
@@ -92,7 +168,8 @@
 	  	android:textColorHint="#E5E5E5"
 	  	android:gravity="top"
 	  	android:singleLine="false"
-	  	android:scrollHorizontally="false" />
+	  	android:scrollHorizontally="false"
+	  	android:layout_weight="1" />
  
   </LinearLayout>
 

@@ -141,6 +141,7 @@ public class ExerciseListActivity extends Activity {
 								"2. Keeping your back flat throughout the movement kick your legs out and away until they are almost straight.\n\n" +
 								"3. Bring your legs back in and repeat for the required number of repetitions.\n\n" +
 								"4. If you are unable to keep your back flat on the floor throughout the movement shorten the distance that your legs extend until you get stronger.",
+								"Chest",
 								R.drawable.pushupwithrotation));
 		exerciseList
 				.add(0,
@@ -150,6 +151,7 @@ public class ExerciseListActivity extends Activity {
 								"2. Keeping your back flat throughout the movement kick your legs out and away until they are almost straight.\n\n" +
 								"3. Bring your legs back in and repeat for the required number of repetitions.\n\n" +
 								"4. If you are unable to keep your back flat on the floor throughout the movement shorten the distance that your legs extend until you get stronger.",
+								"Abs",
 								R.drawable.doublelegpressouts));
 		exerciseList
 				.add(0,
@@ -158,6 +160,7 @@ public class ExerciseListActivity extends Activity {
 								"1. Lie on your back with your legs bent 90 degrees at the hip.\n\n" +
 								"2. Slowly lift your hips off the floor and towards the ceiling.\n\n" +
 								"3. Lower your hips to the floor and repeat for the prescribed number of repetitions.",
+								"Abs",
 								R.drawable.hipthrust));
 		exerciseList
 				.add(0,
@@ -167,6 +170,7 @@ public class ExerciseListActivity extends Activity {
 								"2. Lift your shoulders up off the ground and twist so that your right elbows tries to touch your left knee.\n\n" +
 								"3. Return to the starting position and repeat according to the required repetitions.\n\n" +
 								"4. Repeat with the other side.",
+								"Abs",
 								R.drawable.obliquecrunch));
 		exerciseList
 				.add(0,
@@ -175,6 +179,7 @@ public class ExerciseListActivity extends Activity {
 								"1. Start position: Lie back onto floor or bench with knees bent and hands extended towards ceiling. Head should be in a neutral position with a space between chin and chest.\n\n" +
 								"2. Leading with the chin and chest towards the ceiling, contract the abdominal and raise shoulders off floor or bench. Also raise legs up towards ceiling and attempt to touch your hands to your feet.\n\n" +
 								"3. Return to start position.\n\n",
+								"Abs",
 								R.drawable.vup));
 		exerciseList
 				.add(0,
@@ -184,6 +189,7 @@ public class ExerciseListActivity extends Activity {
 								"2. Leading with the chin and chest towards the ceiling, contract the abdominal and raise shoulders off floor or bench until you are seated in an upright position.\n\n" +
 								"3. Return to start position.\n\n" +
 								"4. Remember to keep head and back in a neutral position. Hyperextension or flexion of either may cause injury.",
+								"Abs",
 								R.drawable.situp));
 	}
 

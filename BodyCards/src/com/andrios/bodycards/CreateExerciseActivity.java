@@ -14,8 +14,13 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class CreateExerciseActivity extends Activity {
@@ -26,6 +31,11 @@ public class CreateExerciseActivity extends Activity {
 	Button back, reset, done;
 	EditText nameTXT, descTXT, multiplierTXT;
 	boolean isUpdate;
+	RadioButton yes, no;
+	Spinner muscleGroup;
+	
+	String[] mgOptions = {"Hamstrings", "Calves", "Chest", "Back", "Shoulders", "Triceps", "Biceps", "Forearms", "Trapezius", "Abs"};
+	int selectedMuscle;
 
 	ArrayList<Exercise> exerciseList;
 
@@ -81,13 +91,55 @@ public class CreateExerciseActivity extends Activity {
 		reset = (Button) findViewById(R.id.ceReset);
 		done = (Button) findViewById(R.id.ceDone);
 		
+		yes = (RadioButton) findViewById(R.id.newExTimedYesRadioBTN);
+		no = (RadioButton) findViewById(R.id.newExTimedNoRadioBTN);
+		
+		muscleGroup = (Spinner) findViewById(R.id.newExMuscleGroupSpinner);
+		
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+	            this, R.array.muscleGroupChoices, android.R.layout.simple_spinner_item);
+	    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+	    muscleGroup.setAdapter(adapter);
+
+		muscleGroup.setOnItemSelectedListener(new myOnItemSelectedListener());
+		
 		if(isUpdate){
 			nameTXT.setText(exercise.getName());
 			descTXT.setText(exercise.getDesc());
 			multiplierTXT.setText(Double.toString(exercise.getMultiplier()));
+			if(exercise.getIsTimed()) {
+				yes.setChecked(true);
+			} else {
+				no.setChecked(true);
+			}
+			
+			int position;
+			String mg = exercise.getMuscleGroup();
+			for(position=0;position<mgOptions.length;position++) {
+				if(mg.equals(mgOptions[position])) {
+					break;
+				}
+			}
+			
+			muscleGroup.setSelection(position);
+			
 		}
 		
 		setOnClickListeners();
+
+	}
+	
+	private class myOnItemSelectedListener implements OnItemSelectedListener  {
+		@Override
+		public void onItemSelected(AdapterView<?> parent,
+	        View view, int pos, long id) {
+			selectedMuscle = pos;
+	    }
+		
+		@Override
+	    public void onNothingSelected(@SuppressWarnings("rawtypes") AdapterView parent) {
+	      selectedMuscle = 0;
+	    }
 
 	}
 	
@@ -119,9 +171,15 @@ public class CreateExerciseActivity extends Activity {
 
 			public void onClick(View v) {
 				double multiplier = 1.0;
+				boolean timed;
 				
+				if(yes.isChecked()) {
+					timed = true;
+				} else {
+					timed = false;
+				}
 				
-				
+				String mg = muscleGroup.getItemAtPosition(selectedMuscle).toString();
 				
 				if (nameTXT.getText().toString().equals("")
 						|| descTXT.getText().toString().equals("") || multiplierTXT.getText().toString().equals("")) {
@@ -132,7 +190,8 @@ public class CreateExerciseActivity extends Activity {
 					multiplier = Double.parseDouble(multiplierTXT.getText().toString().trim());
 					exercise = new Exercise(nameTXT.getText().toString(), descTXT
 							.getText().toString(),
-							R.drawable.nopic, multiplier);
+							R.drawable.nopic, multiplier,
+							mg, timed);
 					
 					sort(exerciseList);
 					if(isUpdate){
