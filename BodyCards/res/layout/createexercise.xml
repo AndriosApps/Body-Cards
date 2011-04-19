@@ -102,7 +102,7 @@
 	  android:id="@+id/newExDescRow"
 	  android:layout_width="fill_parent"
 	  android:layout_height="wrap_content"
-	  android:background="#E5E5E5"
+	  android:background="#FFFFFF"
 	  android:gravity="top"
 	  android:orientation="horizontal"
 	  android:layout_weight="0">
