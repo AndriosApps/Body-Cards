@@ -150,7 +150,7 @@ public class QuickWorkoutActivity extends Activity {
 		
 		//Guests turn to do exercise
 		if(currentUser >= selectedProfiles.size() ){
-			userTXT.setText("Guest User " + (currentUser));
+			userTXT.setText("Guest User " + (currentUser - selectedProfiles.size() + 1));
 			
 		}
 		
