@@ -71,7 +71,7 @@
 				android:layout_weight="1"
 				android:orientation="horizontal"
 				android:gravity="center"
-				android:layout_margin="1px">
+				android:layout_margin="1px" android:id="@+id/workoutCardAdLayout">
 				
 				<ImageView
 					android:id="@+id/wkImg"

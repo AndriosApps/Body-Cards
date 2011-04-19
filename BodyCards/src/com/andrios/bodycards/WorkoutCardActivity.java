@@ -6,6 +6,10 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.google.ads.AdRequest;
+import com.google.ads.AdSize;
+import com.google.ads.AdView;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -18,11 +22,13 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class WorkoutCardActivity extends Activity {
 
+	private static final String MY_AD_UNIT_ID = "kbd74bf6644b3aff832515d10083421f";
 	// XML Variables
 	TextView nameView, setView, rTL, rBR, exerciseName, prNm, cardsRem;
 	ImageView wkImg;
@@ -35,6 +41,7 @@ public class WorkoutCardActivity extends Activity {
 	// Workout Initialization Variables
 	ArrayList<Exercise> exercises;
 	int numPeople, numSets, min, max;
+	LinearLayout workoutCardAdLayout;
 
 	// Workout Card Variables
 	boolean running, started;
@@ -98,6 +105,21 @@ public class WorkoutCardActivity extends Activity {
 		reps = count = 0;
 		set = 1;
 
+		workoutCardAdLayout = (LinearLayout) findViewById(R.id.workoutCardAdLayout);
+		
+		AdView adView = new AdView(this, AdSize.BANNER, MY_AD_UNIT_ID);
+	    // Lookup your LinearLayout assuming it’s been given
+	    // the attribute android:id="@+id/mainLayout"
+	    
+	    // Add the adView to it
+		workoutCardAdLayout.addView(adView);
+	    // Initiate a generic request to load it with an ad
+		AdRequest request = new AdRequest();
+		request.setTesting(true);
+		
+	    adView.loadAd(request);
+
+		
 		begin = (Button) findViewById(R.id.wcStart);
 		begin.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
