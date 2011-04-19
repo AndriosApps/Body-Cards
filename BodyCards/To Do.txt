@@ -12,13 +12,16 @@ Rating Badge (Rating xml tag)
 Body Part Tabs
 Exercise Profiles
 Music playlist
-Weight Exercises to compare running average of difficulty level. 
+Weight Exercises to compare running average of difficulty level.
+Display isTimed and muscle group in Display Exercise
+Implement timed workouts in workoutCards 
 
 Implemented:
 Number of Guest Users
-Add multipliers for excercises. 15 APR 2011
+Add multipliers for exercises. 15 APR 2011
 Profile Birthday instead of age
 Add quickworkout to profile - 16 APR 2011
 Test Personal Duration of Completed QuickWorkouts - 16 APR 2011
 OBO Error in Display Workout (with QuickWorkouts) - 17 APR 2011 - caused by dividing 52 instead of 54 by num users
 When QuickWorkoutActivity finishes it drops user back to NewQuickWorkoutActivity - CM - 17 APR 2011 - added onActivityResults. 
+Added isTimed and muscle groups to exercises. 18 APR 2011
