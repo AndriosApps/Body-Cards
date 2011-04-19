@@ -194,7 +194,6 @@ public class ExerciseListActivity extends Activity {
 	}
 
 	private void setConnections() {
-		// TODO Auto-generated method stub
 
 		selected = new boolean[exerciseList.size()];
 		for (int i = 0; i < selected.length; i++) {
@@ -267,7 +266,6 @@ public class ExerciseListActivity extends Activity {
 
 			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
 					int row, long arg3) {
-				// TODO Auto-generated method stub
 				selectedRow = row;
 
 				tv.setText("Would you like to view "
@@ -308,7 +306,6 @@ public class ExerciseListActivity extends Activity {
 
 			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
 					int row, long arg3) {
-				// TODO Auto-generated method stub
 
 				Intent intent = new Intent(arg1.getContext(),
 						DisplayExerciseActivity.class);
@@ -325,7 +322,6 @@ public class ExerciseListActivity extends Activity {
 		addBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Intent intent = new Intent(v.getContext(), CreateExerciseActivity.class);
 				startActivity(intent);
 			}
@@ -335,7 +331,6 @@ public class ExerciseListActivity extends Activity {
 		backBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				ExerciseListActivity.this.finish();
 			}
 

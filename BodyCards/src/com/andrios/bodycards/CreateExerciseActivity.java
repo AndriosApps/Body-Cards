@@ -68,7 +68,6 @@ public class CreateExerciseActivity extends Activity {
 
 	@SuppressWarnings("unchecked")
 	private void readExercises() {
-		// TODO Auto-generated method stub
 		try {
 			FileInputStream fis = openFileInput("exercises");
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -82,7 +81,6 @@ public class CreateExerciseActivity extends Activity {
 	}
 
 	private void setConnections() {
-		// TODO Auto-generated method stub
 		nameTXT = (EditText) findViewById(R.id.newExName);
 		descTXT = (EditText) findViewById(R.id.newExDesc);
 		multiplierTXT = (EditText) findViewById(R.id.newExMultiplier);
@@ -147,7 +145,6 @@ public class CreateExerciseActivity extends Activity {
 		back.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 
 				CreateExerciseActivity.this.finish();
 			}
@@ -158,7 +155,6 @@ public class CreateExerciseActivity extends Activity {
 		reset.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				nameTXT.setText("");
 				descTXT.setText("");
 				multiplierTXT.setText("1.0");
@@ -218,7 +214,6 @@ public class CreateExerciseActivity extends Activity {
 			}
 
 			private void sort(ArrayList<Exercise> exerciseList) {
-				// TODO Auto-generated method stub
 				if (exerciseList.size() == 0)
 					return;
 				else {
@@ -230,7 +225,6 @@ public class CreateExerciseActivity extends Activity {
 	}
 
 	protected void write() {
-		// TODO Auto-generated method stub
 		try {
 			FileOutputStream fos = openFileOutput("exercises",
 					Context.MODE_PRIVATE);

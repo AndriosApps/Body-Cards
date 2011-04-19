@@ -41,7 +41,6 @@ public class DisplayWorkoutActivity extends Activity {
 	}
 
 	private void setWokoutDetails() {
-		// TODO Auto-generated method stub
 		TextView dt = (TextView) findViewById(R.id.workoutDate);
 		TextView t = (TextView) findViewById(R.id.workoutDuration);
 		TextView pt = (TextView) findViewById(R.id.workoutPersonalDuration);
@@ -68,14 +67,12 @@ public class DisplayWorkoutActivity extends Activity {
 	}
 
 	private void setConnections() {
-		// TODO Auto-generated method stub
 		setProfileText();
 		w = profile.getWorkouts().get(row);
 		back = (Button) findViewById(R.id.dwBack);
 		back.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
 				DisplayWorkoutActivity.this.finish();
 			}
 
@@ -83,7 +80,6 @@ public class DisplayWorkoutActivity extends Activity {
 	}
 
 	private void getExtras() {
-		// TODO Auto-generated method stub
 		Intent intent = this.getIntent();
 		profile = (Profile) intent.getSerializableExtra("profile");
 		row = intent.getIntExtra("row", -1);
@@ -124,7 +120,6 @@ public class DisplayWorkoutActivity extends Activity {
 	}
 
 	private boolean difference(Calendar b, Calendar c) {
-		// TODO Auto-generated method stub
 		int y = b.get(Calendar.YEAR) - c.get(Calendar.YEAR);
 		int m = b.get(Calendar.MONTH) - c.get(Calendar.MONTH);
 		int d = b.get(Calendar.DAY_OF_MONTH) - c.get(Calendar.DAY_OF_MONTH);

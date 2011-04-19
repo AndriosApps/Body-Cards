@@ -59,7 +59,7 @@ public class NewQuickWorkoutActivity extends Activity  {
 		availableProfilesAdapter.sort(new Comparator<Profile>() {
 
 			public int compare(Profile object1, Profile object2) {
-				// TODO Auto-generated method stub
+			
 				return object1.getLastName().compareToIgnoreCase(
 						object2.getLastName());
 			}
@@ -74,7 +74,6 @@ public class NewQuickWorkoutActivity extends Activity  {
 		chosenProfilesAdapter.sort(new Comparator<Profile>() {
 
 			public int compare(Profile object1, Profile object2) {
-				// TODO Auto-generated method stub
 				return object1.getLastName().compareToIgnoreCase(
 						object2.getLastName());
 			}
@@ -92,7 +91,6 @@ public class NewQuickWorkoutActivity extends Activity  {
 
 			public void onItemClick(AdapterView<?> arg0, View arg1, int row,
 					long arg3) {
-				// TODO Auto-generated method stub
 
 				chosenProfile++;
 				Profile r = (Profile) availableProfilesAdapter.getItem(row);
@@ -101,7 +99,6 @@ public class NewQuickWorkoutActivity extends Activity  {
 				chosenProfilesAdapter.sort(new Comparator<Profile>() {
 
 					public int compare(Profile object1, Profile object2) {
-						// TODO Auto-generated method stub
 						return object1.getLastName().compareToIgnoreCase(
 								object2.getLastName());
 					}
@@ -115,7 +112,6 @@ public class NewQuickWorkoutActivity extends Activity  {
 
 			public void onItemClick(AdapterView<?> arg0, View arg1, int row,
 					long arg3) {
-				// TODO Auto-generated method stub
 
 				chosenProfile--;
 				Profile r = (Profile) chosenProfilesAdapter.getItem(row);
@@ -124,7 +120,6 @@ public class NewQuickWorkoutActivity extends Activity  {
 				availableProfilesAdapter.sort(new Comparator<Profile>() {
 
 					public int compare(Profile object1, Profile object2) {
-						// TODO Auto-generated method stub
 						return object1.getLastName().compareToIgnoreCase(
 								object2.getLastName());
 					}
@@ -156,7 +151,7 @@ public class NewQuickWorkoutActivity extends Activity  {
 					availableProfilesAdapter.sort(new Comparator<Profile>() {
 
 						public int compare(Profile object1, Profile object2) {
-							// TODO Auto-generated method stub
+							 
 							return object1.getLastName().compareToIgnoreCase(
 									object2.getLastName());
 						}
@@ -197,7 +192,7 @@ public class NewQuickWorkoutActivity extends Activity  {
 	}
 
 	private void getExtras() {
-		// TODO Auto-generated method stub
+		 
 		
 	}
 	

@@ -23,7 +23,6 @@ public class StopWatch implements Serializable {
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				seconds++;
 			}
 

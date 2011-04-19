@@ -22,7 +22,6 @@ public class FinishedActivity extends Activity {
 	}
 
 	private void setConnections() {
-		// TODO Auto-generated method stub
 		myListener l = new myListener();
 		TextView tv = (TextView) findViewById(R.id.finishText);
 		tv.setOnClickListener(l);

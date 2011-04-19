@@ -85,10 +85,8 @@ public class DisplayExerciseActivity extends Activity {
 
     	if (requestCode == EXERCISE_ACTIVITY) {
     		try{
-    			System.out.println("EXCERCISE_ACTIVITY");//TODO
 	        exer = (Exercise) intent.getSerializableExtra("exercise");
     		if (resultCode == RESULT_OK) {
-    			System.out.println("OK");//TODO
     	    
     	    	multiplierTXT.setText(Double.toString(exer.getMultiplier()));
     			

@@ -124,7 +124,6 @@ public class DisplayProfileActivity extends Activity {
 	}
 
 	private boolean difference(Calendar b, Calendar c) {
-		// TODO Auto-generated method stub
 		int y = b.get(Calendar.YEAR) - c.get(Calendar.YEAR);
 		int m = b.get(Calendar.MONTH) - c.get(Calendar.MONTH);
 		int d = b.get(Calendar.DAY_OF_MONTH) - c.get(Calendar.DAY_OF_MONTH);
@@ -140,7 +139,6 @@ public class DisplayProfileActivity extends Activity {
 
 	@SuppressWarnings("unchecked")
 	private void getExtra() {
-		// TODO Auto-generated method stub
 
 		Intent intent = this.getIntent();
 
@@ -151,7 +149,6 @@ public class DisplayProfileActivity extends Activity {
 	}
 
 	private void setConnections() {
-		// TODO Auto-generated method stub
 		lv = (ListView) findViewById(R.id.profWorkoutList);
 		aa = new ArrayAdapter<Workout>(this, R.layout.list_view2,
 				profile.getWorkouts());
@@ -163,7 +160,6 @@ public class DisplayProfileActivity extends Activity {
 
 			public void onItemClick(AdapterView<?> arg0, View v, int rw,
 					long arg3) {
-				// TODO Auto-generated method stub
 				Intent intent = new Intent(v.getContext(), DisplayWorkoutActivity.class);
 				intent.putExtra("profile", profile);
 				intent.putExtra("row", rw);
@@ -176,7 +172,6 @@ public class DisplayProfileActivity extends Activity {
 
 			public boolean onItemLongClick(AdapterView<?> arg0, View v, int rw,
 					long arg3) {
-				// TODO Auto-generated method stub
 				selectedRow = rw;
 				tv.setText("Delete this workout?");
 				ad.show();
@@ -189,7 +184,6 @@ public class DisplayProfileActivity extends Activity {
 		back.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 
 				DisplayProfileActivity.this.setResult(RESULT_OK);
 
@@ -202,7 +196,6 @@ public class DisplayProfileActivity extends Activity {
 		edit.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Intent intent = new Intent(v.getContext(), NewProfileActivity.class);
 				intent.putExtra("fname", profile.getFirstName());
 				intent.putExtra("lname", profile.getLastName());

@@ -52,7 +52,6 @@ public class NewProfileActivity extends Activity {
 
 	@SuppressWarnings("unchecked")
 	private void getExtra() {
-		// TODO Auto-generated method stub
 		Intent intent = this.getIntent();
 		update = intent.getBooleanExtra("update", false);
 		if (update) {
@@ -83,7 +82,6 @@ public class NewProfileActivity extends Activity {
 	}
 
 	private void setConnections() {
-		// TODO Auto-generated method stub
 		male = (RadioButton) findViewById(R.id.newProfileMaleRDO);
 		female = (RadioButton) findViewById(R.id.newProfileFemaleRDO);
 		fName = (EditText) findViewById(R.id.newProfileUserFirstNameTXT);
@@ -107,7 +105,6 @@ public class NewProfileActivity extends Activity {
 		back.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				NewProfileActivity.this.finish();
 			}
 
@@ -116,7 +113,6 @@ public class NewProfileActivity extends Activity {
 		reset.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				fName.setText("");
 				lName.setText("");
 //				age.setText("");
@@ -132,7 +128,6 @@ public class NewProfileActivity extends Activity {
 		done.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				boolean error = false;
 				int mn, dy, yr;
 				

@@ -76,7 +76,7 @@ public class NewWorkoutActivity extends Activity {
 	}
 
 	private void setConnections() {
-		// TODO Auto-generated method stub
+		 
 		readProfiles();
 
 		chsnPrf = 0;
@@ -102,7 +102,7 @@ public class NewWorkoutActivity extends Activity {
 		aa.sort(new Comparator<Profile>() {
 
 			public int compare(Profile object1, Profile object2) {
-				// TODO Auto-generated method stub
+				 
 				return object1.getLastName().compareToIgnoreCase(
 						object2.getLastName());
 			}
@@ -114,7 +114,7 @@ public class NewWorkoutActivity extends Activity {
 
 			public void onItemClick(AdapterView<?> arg0, View arg1, int row,
 					long arg3) {
-				// TODO Auto-generated method stub
+				 
 
 				chsnPrf++;
 				Profile r = (Profile) aa.getItem(row);
@@ -123,7 +123,7 @@ public class NewWorkoutActivity extends Activity {
 				as.sort(new Comparator<Profile>() {
 
 					public int compare(Profile object1, Profile object2) {
-						// TODO Auto-generated method stub
+						 
 						return object1.getLastName().compareToIgnoreCase(
 								object2.getLastName());
 					}
@@ -139,7 +139,7 @@ public class NewWorkoutActivity extends Activity {
 		as.sort(new Comparator<Profile>() {
 
 			public int compare(Profile object1, Profile object2) {
-				// TODO Auto-generated method stub
+				 
 				return object1.getLastName().compareToIgnoreCase(
 						object2.getLastName());
 			}
@@ -151,7 +151,7 @@ public class NewWorkoutActivity extends Activity {
 
 			public void onItemClick(AdapterView<?> arg0, View arg1, int row,
 					long arg3) {
-				// TODO Auto-generated method stub
+				 
 
 				chsnPrf--;
 				Profile r = (Profile) as.getItem(row);
@@ -160,7 +160,7 @@ public class NewWorkoutActivity extends Activity {
 				aa.sort(new Comparator<Profile>() {
 
 					public int compare(Profile object1, Profile object2) {
-						// TODO Auto-generated method stub
+						 
 						return object1.getLastName().compareToIgnoreCase(
 								object2.getLastName());
 					}
@@ -174,7 +174,7 @@ public class NewWorkoutActivity extends Activity {
 		back.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				 
 				NewWorkoutActivity.this.finish();
 			}
 
@@ -184,7 +184,7 @@ public class NewWorkoutActivity extends Activity {
 		reset.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				 
 				EditText people = (EditText) findViewById(R.id.numPeoEdit);
 				EditText reps = (EditText) findViewById(R.id.repEdit);
 				EditText min = (EditText) findViewById(R.id.minEdit);
@@ -203,7 +203,7 @@ public class NewWorkoutActivity extends Activity {
 		done.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				 
 
 				int x = Integer.parseInt(max.getText().toString());
 				int n = Integer.parseInt(min.getText().toString());

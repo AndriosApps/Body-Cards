@@ -174,7 +174,6 @@ public class QuickWorkoutActivity extends Activity {
 		public void run() {
 			handler.post(new Runnable() {
 				public void run() {
-					// TODO Auto-generated method stub
 					card.setImageResource(cards[cardNum++]);
 				}
 
