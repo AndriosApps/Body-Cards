@@ -17,6 +17,8 @@ public class Workout implements Serializable {
 	ArrayList<CompletedExercises> exercises;
 	ArrayList<Exercise> exerciseList;
 	long base, totalBase, seconds, totalSeconds;
+	
+	String workoutName;
 
 	String elapsedWorkoutTime;
 	String[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
@@ -31,7 +33,7 @@ public class Workout implements Serializable {
 				+ workoutDate.get(Calendar.YEAR);
 	}
 
-	public Workout(int np, int ns, int x, int n, ArrayList<Exercise> e) {
+	public Workout(int np, int ns, int x, int n, ArrayList<Exercise> e, String wn) {
 		numPeople = np;
 		numSets = ns;
 		max = x;
@@ -39,6 +41,7 @@ public class Workout implements Serializable {
 		exercises = new ArrayList<CompletedExercises>();
 		this.exerciseList = e;
 		seconds = 0;
+		workoutName = wn;
 		workoutDate = Calendar.getInstance();
 		date = workoutDate.get(Calendar.DAY_OF_MONTH) + "-"
 				+ months[workoutDate.get(Calendar.MONTH)] + "-"
@@ -161,14 +164,7 @@ public class Workout implements Serializable {
 	}
 
 	public String toString() {
-		String ret = date + " (";
-		for (int i = 0; i < exercises.size(); i++) {
-			if (i == 0)
-				ret += exercises.get(i).getName();
-			else
-				ret += ", " + exercises.get(i).getName();
-		}
-		ret += ")";
+		String ret = date + " ("+ workoutName + ")";
 		return ret;
 	}
 
