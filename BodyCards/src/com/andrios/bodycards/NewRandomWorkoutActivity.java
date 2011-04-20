@@ -151,10 +151,17 @@ public class NewRandomWorkoutActivity extends Activity {
 		selectedExercises.clear();
 		ArrayList<Exercise> tempHolder = new ArrayList<Exercise>();
 		for (int i = 0; i < numExercises; i++) {
+			System.out.println("INdex" +index);
 			index = generator.nextInt(exerciseNames.size());
-			
+		
 			e = exerciseNames.get(index);
+			
+			System.out.println("exerciseSize" + exerciseNames.size());
+			System.out.println("tempHolderSize" + tempHolder.size());
 			tempHolder.add(exerciseNames.remove(index));
+			System.out.println("INdex" +index);
+			System.out.println("exerciseSize" + exerciseNames.size());
+			System.out.println("tempHolderSize" + tempHolder.size());
 			selectedExercises.add(e);
 		}
 		
@@ -166,8 +173,10 @@ public class NewRandomWorkoutActivity extends Activity {
 		}
 		
 		for (int i = 0; i < tempHolder.size(); i++) {
-			exerciseNames.add(tempHolder.remove(i));
+			System.out.println("tempHolderSize" + i + tempHolder.size());
+			exerciseNames.add(tempHolder.get(i));
 		}
+		tempHolder.clear();
 		t.setText(exLst);
 		
 		//TODO Implement Random Sets Min / Max Etc. 
