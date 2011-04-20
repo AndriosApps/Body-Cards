@@ -43,7 +43,7 @@ public class DisplayExerciseActivity extends Activity {
 		update = (Button) findViewById(R.id.deUpdate);
 		
 		multiplierTXT = (TextView) findViewById(R.id.displayExMultiplierTXT);
-		multiplierTXT.setText(Double.toString(exer.getMultiplier()));
+		multiplierTXT.setText("Multiplier: " + Double.toString(exer.getMultiplier()));
 		
 		f = (TextView) findViewById(R.id.newExDesc);
 		f.setText(exer.getDesc());
@@ -53,6 +53,13 @@ public class DisplayExerciseActivity extends Activity {
 		
 		img = (ImageView) findViewById(R.id.newExImg);
 		img.setImageResource(exer.getImg());
+		
+		ImageView timerIMG = (ImageView) findViewById(R.id.newExTimedIconIMG);
+		if(exer.isTimed)
+			timerIMG.setImageResource(R.drawable.stopwatch);
+		
+		TextView category = (TextView) findViewById(R.id.newExCategoryTXT);
+		category.setText("Muscle Group: " + exer.getMuscleGroup());
 	}
 	
 	private void setOnClickListeners(){
