@@ -36,6 +36,7 @@
         <activity android:name="DisplayExerciseActivity" android:screenOrientation="portrait" />
         <activity android:name="DisplayWorkoutActivity" android:screenOrientation="portrait" />
         <activity android:name="HelpActivity" android:screenOrientation="portrait" />
+         <activity android:name="NewRandomWorkoutActivity" android:screenOrientation="portrait" />
     </application>
 	
 

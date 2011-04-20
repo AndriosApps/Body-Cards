@@ -50,10 +50,10 @@ public class MainActivity extends Activity {
 		randomWorkoutBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				/*
-				Intent intent = new Intent(v.getContext(), NewQuickWorkoutActivity.class);
-				startActivity(intent);
-				*/
+				
+				Intent randomIntent = new Intent(v.getContext(), NewRandomWorkoutActivity.class);
+				startActivity(randomIntent);
+				
 			}
 
 		});
