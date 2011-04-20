@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 public class DeckOfCardsWorkoutActivity extends Activity {
 
-	int numPeople, currentUser, sets;
+	int numPeople, currentUser, sets, decksize;
 	ImageView card;
 	TextView userTXT, remainingTXT;
 	ArrayList<Profile> unusedProfiles, selectedProfiles;
@@ -88,7 +88,18 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 		
 		Intent intent = this.getIntent();
 		numPeople = intent.getIntExtra("peeps", -1);
-	
+		
+		decksize = intent.getIntExtra("decksize", 0);
+		
+		if(decksize == 0){
+			decksize = 54;
+		}else if(decksize == 1){
+			decksize = 54/4;
+		}else{
+			decksize = 54/2;
+		}
+		
+		
 		selectedProfiles = (ArrayList<Profile>) intent
 				.getSerializableExtra("profiles");
 		unusedProfiles = (ArrayList<Profile>) intent
@@ -159,7 +170,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 			userTXT.setText(selectedProfiles.get(currentUser).getFirstName());
 		}
 		
-		remainingTXT.setText("Cards Remaining: " + (53 - cardNum));
+		remainingTXT.setText("Cards Remaining: " + (decksize - cardNum - 1));
 		workouts[currentUser].start();
 	}
 
@@ -189,6 +200,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 		card = (ImageView) findViewById(R.id.card);
 		
 		currentUser = -1;
+		remainingTXT.setText("Cards Remaining: " + (decksize - cardNum));
 		setOnClickListeners();
 		
 	}
@@ -197,7 +209,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 		card.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				if (cardNum < cards.length) {
+				if (cardNum < decksize) {
 					getNewCard();
 				} else {
 					workouts[currentUser].stop();

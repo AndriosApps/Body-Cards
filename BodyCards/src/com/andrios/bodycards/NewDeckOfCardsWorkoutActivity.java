@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -28,6 +29,7 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 	ArrayList<Profile> availableProfilesList, selectedProfilesList;
 	ArrayAdapter<Profile> availableProfilesAdapter, chosenProfilesAdapter;
 	Button backBTN, resetBTN, doneBTN;
+	RadioButton quarterRDO, halfRDO, fullRDO;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,9 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 		backBTN = (Button) findViewById(R.id.newQuickWorkoutActivityBackBTN);
 		resetBTN = (Button) findViewById(R.id.newQuickWorkoutActivityResetBTN);
 		doneBTN = (Button) findViewById(R.id.newQuickWorkoutActivityDoneBTN);
+		quarterRDO = (RadioButton) findViewById(R.id.newDeckOfCardsQuarterRDO);
+		halfRDO = (RadioButton) findViewById(R.id.newDeckOfCardsHalfRDO);
+		fullRDO = (RadioButton) findViewById(R.id.newDeckOfCardsFullRDO);
 		
 		chosenProfile = 0;
 		
@@ -166,9 +171,15 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 
 			public void onClick(View v) {
 				
-
+				int decksize=0;
 				int numGuests = Integer.parseInt(numGuestsTXT.getText().toString().trim());
 
+				if(quarterRDO.isChecked()){
+					decksize = 1;
+				}else if(halfRDO.isChecked()){
+					decksize = 2;
+				}
+				
 				if(numGuests+chosenProfile < 1) {
 					Toast.makeText(NewDeckOfCardsWorkoutActivity.this,
 							"Must choose at least one profile or guest user",
@@ -181,6 +192,7 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 					deckworkout.putExtra("peeps", numGuests+chosenProfile);
 					deckworkout.putExtra("profilesU", availableProfilesList);
 					deckworkout.putExtra("profiles", selectedProfilesList);
+					deckworkout.putExtra("decksize", decksize);
 					startActivityForResult(deckworkout, 31415);
 				}
 
