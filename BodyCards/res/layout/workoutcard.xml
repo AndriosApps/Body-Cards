@@ -19,6 +19,10 @@
 		android:textSize="25px"
 		android:background="#CCC"
 		android:textColor="#000" />
+
+	<!-- Banner Ads Above Workout Card Here -->
+		
+
 		
 	<LinearLayout
 		android:layout_width="fill_parent"
@@ -130,6 +134,16 @@
 			
 	</LinearLayout>
 	
+		<!-- Banner Ads Below Workout Card Above Time Stuff Here -->
+	
+		<com.google.ads.AdView 
+		android:id="@+id/adView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        ads:adUnitId="a14c76b7bbe0f2e"
+        ads:adSize="BANNER"
+        android:layout_weight="0" />	
+	
 	<LinearLayout
 		android:gravity="bottom"
 		android:layout_width="fill_parent"
@@ -166,10 +180,9 @@
 	</LinearLayout>
 		
 		
-	
-		<!-- Fill the rest of screen and place buttons at the bottom of screen -->
-		
-
+	<!-- Banner Ads Above Buttons Here -->
+        
+<!-- Fill the rest of screen and place buttons at the bottom of screen -->
 		
 	<LinearLayout android:id="@+id/buttons" 
 		android:layout_width="fill_parent" 
@@ -196,15 +209,10 @@
 			android:layout_weight="1"
 			android:padding="5px" />
 				
-							<com.google.ads.AdView 
-		android:id="@+id/adView"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        ads:adUnitId="a14c76b7bbe0f2e"
-        ads:adSize="BANNER" />
+		
 		
 	</LinearLayout>
 	
-
+	<!-- Banner Ads Below Buttons Here -->
 
 </LinearLayout>
