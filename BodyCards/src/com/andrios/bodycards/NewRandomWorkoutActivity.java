@@ -58,7 +58,6 @@ public class NewRandomWorkoutActivity extends Activity {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private void getExtras() {
 		//TODO Delete This?
 	}
