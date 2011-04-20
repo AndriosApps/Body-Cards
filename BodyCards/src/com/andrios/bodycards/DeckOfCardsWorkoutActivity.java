@@ -22,7 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class QuickWorkoutActivity extends Activity {
+public class DeckOfCardsWorkoutActivity extends Activity {
 
 	int numPeople, currentUser, sets;
 	ImageView card;
@@ -59,7 +59,7 @@ public class QuickWorkoutActivity extends Activity {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		setContentView(R.layout.quickworkout);
+		setContentView(R.layout.deckofcardsworkoutactivity);
 
 		getExtras();
 		
@@ -73,7 +73,7 @@ public class QuickWorkoutActivity extends Activity {
 		workouts = new Workout[numPeople];
 
 		ArrayList<Exercise> exercises = new ArrayList<Exercise>();
-		Exercise quickWorkout = new Exercise("Quick Workout");
+		Exercise quickWorkout = new Exercise("Deck of Cards");
 		exercises.add(quickWorkout);
 		for (int i = 0; i < numPeople; i++) {
 			//TODO Check Math on this one... 
@@ -123,7 +123,7 @@ public class QuickWorkoutActivity extends Activity {
 		if(currentUser != -1){
 			workouts[currentUser].stop();
 			workouts[currentUser].setFinSets(sets);
-			workouts[currentUser].incrementCount("Quick Workout", 1);
+			workouts[currentUser].incrementCount("Deck of Cards", 1);
 			
 		}else{
 			sets = 1;
@@ -201,7 +201,7 @@ public class QuickWorkoutActivity extends Activity {
 					getNewCard();
 				} else {
 					workouts[currentUser].stop();
-					workouts[currentUser].incrementCount("Quick Workout", 1);
+					workouts[currentUser].incrementCount("Deck of Cards", 1);
 					long endTime = SystemClock.elapsedRealtime();
 					
 					for(int i = 0; i < workouts.length; i++){
@@ -249,14 +249,14 @@ public class QuickWorkoutActivity extends Activity {
 			fos.close();
 		} catch (IOException e) {
 
-			Toast.makeText(QuickWorkoutActivity.this, "Error: Writing to file",
+			Toast.makeText(DeckOfCardsWorkoutActivity.this, "Error: Writing to file",
 					Toast.LENGTH_SHORT).show();
 		}
 	}
 	public void onActivityResult(int requestCode, int returnCode, Intent intent) {
 		if (returnCode == RESULT_OK) {
 			setResult(RESULT_OK);
-			QuickWorkoutActivity.this.finish();
+			DeckOfCardsWorkoutActivity.this.finish();
 		}
 	}
 	

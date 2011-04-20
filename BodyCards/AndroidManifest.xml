@@ -22,8 +22,8 @@
         <activity android:name="com.google.ads.AdActivity"
               android:configChanges="keyboard|keyboardHidden|orientation"/>
        
-        <activity android:name="QuickWorkoutActivity" android:screenOrientation="portrait" />
-        <activity android:name="NewQuickWorkoutActivity" android:screenOrientation="portrait" />
+        <activity android:name="DeckOfCardsWorkoutActivity" android:screenOrientation="portrait" />
+        <activity android:name="NewDeckOfCardsWorkoutActivity" android:screenOrientation="portrait" />
         <activity android:name="FinishedActivity" android:screenOrientation="portrait" />
         <activity android:name="History" android:screenOrientation="portrait" />
         <activity android:name="NewProfileActivity" android:screenOrientation="portrait" />

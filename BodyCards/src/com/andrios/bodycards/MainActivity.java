@@ -12,7 +12,8 @@ import android.widget.Button;
 public class MainActivity extends Activity {
 	/** Called when the activity is first created. */
 
-
+	Button deckOfCardsWorkoutBTN, customWorkoutBTN, randomWorkoutBTN;
+	Button viewProfileBTN, helpBTN, quitBTN;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -25,18 +26,39 @@ public class MainActivity extends Activity {
 	}
 
 	private void setConnections() {
-		Button quickWorkout = (Button) findViewById(R.id.mainActivityQuickWorkoutBTN);
-		quickWorkout.setOnClickListener(new OnClickListener() {
+		deckOfCardsWorkoutBTN = (Button) findViewById(R.id.mainActivityDeckOfCardsWorkoutBTN);
+		customWorkoutBTN = (Button) findViewById(R.id.mainActivityCustomWorkoutBTN);
+		randomWorkoutBTN = (Button) findViewById(R.id.mainActivityRandomWorkoutBTN);
+		viewProfileBTN = (Button) findViewById(R.id.mainActivityViewProfilesBTN);
+		helpBTN = (Button) findViewById(R.id.mainActivityHelpBTN);
+		quitBTN = (Button) findViewById(R.id.mainActivityQuitBTN);
+
+		
+		setOnClickListeners();
+	}
+
+	private void setOnClickListeners() {
+		deckOfCardsWorkoutBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), NewQuickWorkoutActivity.class);
+				Intent intent = new Intent(v.getContext(), NewDeckOfCardsWorkoutActivity.class);
 				startActivity(intent);
 			}
 
 		});
+		
+		randomWorkoutBTN.setOnClickListener(new OnClickListener() {
 
-		Button newWorkout = (Button) findViewById(R.id.mainActivityNewWorkoutBTN);
-		newWorkout.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				/*
+				Intent intent = new Intent(v.getContext(), NewQuickWorkoutActivity.class);
+				startActivity(intent);
+				*/
+			}
+
+		});
+		
+		customWorkoutBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				Intent intent = new Intent(v.getContext(), ExerciseListActivity.class);
@@ -44,9 +66,8 @@ public class MainActivity extends Activity {
 			}
 
 		});
-
-		Button viewProfile = (Button) findViewById(R.id.mainActivityViewProfilesBTN);
-		viewProfile.setOnClickListener(new OnClickListener() {
+		
+		viewProfileBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				Intent intent = new Intent(v.getContext(), ViewProfileActivity.class);
@@ -54,9 +75,8 @@ public class MainActivity extends Activity {
 			}
 
 		});
-
-		Button help = (Button) findViewById(R.id.mainActivityHelpBTN);
-		help.setOnClickListener(new OnClickListener() {
+		
+		helpBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				Intent intent = new Intent(v.getContext(), HelpActivity.class);
@@ -64,16 +84,15 @@ public class MainActivity extends Activity {
 			}
 
 		});
-
-		Button quit = (Button) findViewById(R.id.mainActivityQuitBTN);
-		quit.setOnClickListener(new OnClickListener() {
+		
+		quitBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				MainActivity.this.finish();
 			}
 
 		});
-
+		
 	}
 
 }

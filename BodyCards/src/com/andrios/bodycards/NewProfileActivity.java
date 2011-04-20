@@ -155,9 +155,9 @@ public class NewProfileActivity extends Activity {
 
 				if (!error) {
 
-					mn = Integer.parseInt(month.getText().toString());
-					dy = Integer.parseInt(day.getText().toString());
-					yr = Integer.parseInt(year.getText().toString());
+					mn = Integer.parseInt(month.getText().toString().trim());
+					dy = Integer.parseInt(day.getText().toString().trim());
+					yr = Integer.parseInt(year.getText().toString().trim());
 					
 					if (male.isChecked())
 						gen = "Male";

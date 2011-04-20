@@ -128,13 +128,13 @@ public class CreateExerciseActivity extends Activity {
 	}
 	
 	private class myOnItemSelectedListener implements OnItemSelectedListener  {
-		@Override
+		
 		public void onItemSelected(AdapterView<?> parent,
 	        View view, int pos, long id) {
 			selectedMuscle = pos;
 	    }
 		
-		@Override
+		
 	    public void onNothingSelected(@SuppressWarnings("rawtypes") AdapterView parent) {
 	      selectedMuscle = 0;
 	    }

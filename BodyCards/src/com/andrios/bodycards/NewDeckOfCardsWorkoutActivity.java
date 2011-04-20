@@ -20,7 +20,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class NewQuickWorkoutActivity extends Activity  {
+public class NewDeckOfCardsWorkoutActivity extends Activity  {
 
 	int chosenProfile;
 	EditText numGuestsTXT;
@@ -35,7 +35,7 @@ public class NewQuickWorkoutActivity extends Activity  {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		setContentView(R.layout.newquickworkoutactivity);
+		setContentView(R.layout.newdeckofcardsworkoutactivity);
 		
 		readProfiles();
 		getExtras();
@@ -132,7 +132,7 @@ public class NewQuickWorkoutActivity extends Activity  {
 		backBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				NewQuickWorkoutActivity.this.finish();
+				NewDeckOfCardsWorkoutActivity.this.finish();
 			}
 
 		});//backBTN.setOnClickListener
@@ -170,18 +170,18 @@ public class NewQuickWorkoutActivity extends Activity  {
 				int numGuests = Integer.parseInt(numGuestsTXT.getText().toString().trim());
 
 				if(numGuests+chosenProfile < 1) {
-					Toast.makeText(NewQuickWorkoutActivity.this,
+					Toast.makeText(NewDeckOfCardsWorkoutActivity.this,
 							"Must choose at least one profile or guest user",
 							Toast.LENGTH_SHORT).show();
 				}else {
 
-					Intent quickworkout = new Intent(v.getContext(),
-							QuickWorkoutActivity.class);
+					Intent deckworkout = new Intent(v.getContext(),
+							DeckOfCardsWorkoutActivity.class);
 					
-					quickworkout.putExtra("peeps", numGuests+chosenProfile);
-					quickworkout.putExtra("profilesU", availableProfilesList);
-					quickworkout.putExtra("profiles", selectedProfilesList);
-					startActivityForResult(quickworkout, 31415);
+					deckworkout.putExtra("peeps", numGuests+chosenProfile);
+					deckworkout.putExtra("profilesU", availableProfilesList);
+					deckworkout.putExtra("profiles", selectedProfilesList);
+					startActivityForResult(deckworkout, 31415);
 				}
 
 				
@@ -216,7 +216,7 @@ public class NewQuickWorkoutActivity extends Activity  {
 	public void onActivityResult(int requestCode, int returnCode, Intent intent) {
 		if (returnCode == RESULT_OK) {
 			setResult(RESULT_OK);
-			NewQuickWorkoutActivity.this.finish();
+			NewDeckOfCardsWorkoutActivity.this.finish();
 		}
 	}
 }
