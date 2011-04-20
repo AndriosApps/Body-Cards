@@ -34,6 +34,8 @@ public class WorkoutCardActivity extends Activity {
 	ImageView wkImg;
 	Button begin, finish;
 
+	AdView adView;
+	AdRequest request;
 	// Profiles
 	ArrayList<Profile> unusedProfiles;
 	ArrayList<Profile> selectedProfiles;
@@ -107,19 +109,19 @@ public class WorkoutCardActivity extends Activity {
 
 		workoutCardAdLayout = (LinearLayout) findViewById(R.id.workoutCardAdLayout);
 		
-		AdView adView = new AdView(this, AdSize.BANNER, MY_AD_UNIT_ID);
-	    // Lookup your LinearLayout assuming it’s been given
-	    // the attribute android:id="@+id/mainLayout"
-	    
+		
 	    // Add the adView to it
-		workoutCardAdLayout.addView(adView);
+	     AdView adView = (AdView)this.findViewById(R.id.adView);
+	      
 	    // Initiate a generic request to load it with an ad
-		AdRequest request = new AdRequest();
+		request = new AdRequest();
 		request.setTesting(true);
-		
-	    adView.loadAd(request);
+		adView.loadAd(request);
+	    
 
-		
+	     
+	    
+	    
 		begin = (Button) findViewById(R.id.wcStart);
 		begin.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -202,6 +204,7 @@ public class WorkoutCardActivity extends Activity {
 				if (((count - 1) % numPeople) < numProf)
 					workouts[(count - 1) % numPeople].stop();
 				getRandomWorkoutCard();
+				
 
 			}
 		}

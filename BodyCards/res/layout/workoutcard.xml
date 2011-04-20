@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout android:id="@+id/mainLayout" 
+<LinearLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res/com.andrios.bodycards"
+    android:id="@+id/mainLayout" 
 	android:layout_width="fill_parent" 
 	android:layout_height="fill_parent"
 	android:background="#000"
 	android:gravity="bottom" 
-	android:orientation="vertical"
-	xmlns:android="http://schemas.android.com/apk/res/android">
+	android:orientation="vertical">
+
 
 	<TextView android:id="@+id/userName"
 		android:gravity="center"
@@ -71,7 +74,10 @@
 				android:layout_weight="1"
 				android:orientation="horizontal"
 				android:gravity="center"
-				android:layout_margin="1px" android:id="@+id/workoutCardAdLayout">
+				android:layout_margin="1px" 
+				android:id="@+id/workoutCardAdLayout">
+
+
 				
 				<ImageView
 					android:id="@+id/wkImg"
@@ -83,7 +89,7 @@
 					android:background="#FFF" />
 				
 			</LinearLayout>
-			
+
 		</LinearLayout>
 		
 			<!-- Right Side -->
@@ -173,6 +179,8 @@
 		android:background="#555555"
 		android:layout_weight="0">
 		
+		
+		
 		<Button android:text="End" 
 			android:id="@+id/wcEnd" 
 			android:layout_width="90px" 
@@ -188,8 +196,15 @@
 			android:layout_weight="1"
 			android:padding="5px" />
 				
-		
+							<com.google.ads.AdView 
+		android:id="@+id/adView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        ads:adUnitId="a14c76b7bbe0f2e"
+        ads:adSize="BANNER" />
 		
 	</LinearLayout>
+	
+
 
 </LinearLayout>
