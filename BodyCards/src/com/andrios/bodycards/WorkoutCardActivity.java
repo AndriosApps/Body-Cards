@@ -59,6 +59,8 @@ public class WorkoutCardActivity extends Activity {
 	// Workouts to add to Profiles
 	Workout[] workouts;
 	String workoutName;
+	
+	View v;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -247,8 +249,6 @@ public class WorkoutCardActivity extends Activity {
 
 		showCard(name);
 	}
-
-	View v;
 
 	private void showCard(String n) {
 
