@@ -36,6 +36,7 @@ public class NewRandomWorkoutActivity extends Activity {
 	int chsnPrf;
 	EditText numPeeps, numSets, max, min;
 	TextView t;
+	String workoutName;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -59,7 +60,9 @@ public class NewRandomWorkoutActivity extends Activity {
 	}
 
 	private void getExtras() {
-		//TODO Delete This?
+
+		Intent intent = this.getIntent();
+		workoutName = intent.getStringExtra("workoutName");
 	}
 
 	@SuppressWarnings("unchecked")
@@ -298,6 +301,7 @@ public class NewRandomWorkoutActivity extends Activity {
 					wkout.putExtra("profilesU", profs);
 					wkout.putExtra("profiles", selects);
 					wkout.putExtra("exercises", selectedExercises);
+					wkout.putExtra("workoutName", workoutName);
 					startActivityForResult(wkout, 31415);
 				}
 

@@ -58,6 +58,7 @@ public class WorkoutCardActivity extends Activity {
 
 	// Workouts to add to Profiles
 	Workout[] workouts;
+	String workoutName;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -92,6 +93,7 @@ public class WorkoutCardActivity extends Activity {
 				.getSerializableExtra("profilesU");
 		exercises = (ArrayList<Exercise>) intent
 				.getSerializableExtra("exercises");
+		workoutName = intent.getStringExtra("workoutName");
 	}
 
 	private void setConnections() {
@@ -322,7 +324,7 @@ public class WorkoutCardActivity extends Activity {
 
 
 		for (int i = 0; i < numProf; i++) {
-			workouts[i] = new Workout(numPeople, numSets, max, min, exercises);
+			workouts[i] = new Workout(numPeople, numSets, max, min, exercises, workoutName);
 		}
 	}
 

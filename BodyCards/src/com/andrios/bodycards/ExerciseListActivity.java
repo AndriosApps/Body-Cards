@@ -35,7 +35,7 @@ public class ExerciseListActivity extends Activity {
 
 	TextView tv;
 	View view;
-	String name, desc;
+	String name, desc, workoutName;
 
 	int selectedRow;
 
@@ -54,8 +54,15 @@ public class ExerciseListActivity extends Activity {
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.exerciselistactivity);
 		readExercises();
+		getExtras();
 		setAlertDialog();
 		setConnections();
+	}
+
+	private void getExtras() {
+		Intent intent = this.getIntent();
+		workoutName = intent.getStringExtra("workoutName");
+		
 	}
 
 	@Override
@@ -348,7 +355,7 @@ public class ExerciseListActivity extends Activity {
 					Intent intent = new Intent(v.getContext(), NewWorkoutActivity.class);
 					
 					
-
+					intent.putExtra("workoutName", workoutName);
 					intent.putExtra("selectedexercises", sel);
 					startActivityForResult(intent, 31415);
 				}

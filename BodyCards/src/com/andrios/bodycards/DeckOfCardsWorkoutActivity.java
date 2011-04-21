@@ -30,6 +30,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 	ArrayList<Profile> unusedProfiles, selectedProfiles;
 	ArrayList<Exercise> exercises;
 	Workout[] workouts;
+	String workoutName;
 
 	int[] cards = { R.drawable.c2, R.drawable.c3, R.drawable.c4, R.drawable.c5,
 			R.drawable.c6, R.drawable.c7, R.drawable.c8, R.drawable.c9,
@@ -78,7 +79,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 		for (int i = 0; i < numPeople; i++) {
 			//TODO Check Math on this one... 
 			//Compensation commented out in line 202. if math doesn't work.   
-			workouts[i] = new Workout(numPeople, 54 / numPeople, 14, 2, exercises);
+			workouts[i] = new Workout(numPeople, 54 / numPeople, 14, 2, exercises, workoutName);
 		}
 	}
 
@@ -99,6 +100,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 			decksize = 54/2;
 		}
 		
+		workoutName = intent.getStringExtra("workoutName");
 		
 		selectedProfiles = (ArrayList<Profile>) intent
 				.getSerializableExtra("profiles");

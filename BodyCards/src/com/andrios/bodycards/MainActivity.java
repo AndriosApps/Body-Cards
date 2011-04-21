@@ -42,6 +42,7 @@ public class MainActivity extends Activity {
 
 			public void onClick(View v) {
 				Intent intent = new Intent(v.getContext(), NewDeckOfCardsWorkoutActivity.class);
+				intent.putExtra("workoutName", "Deck of Cards");
 				startActivity(intent);
 			}
 
@@ -52,6 +53,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				
 				Intent randomIntent = new Intent(v.getContext(), NewRandomWorkoutActivity.class);
+				randomIntent.putExtra("workoutName", "Random Workout");
 				startActivity(randomIntent);
 				
 			}
@@ -62,6 +64,7 @@ public class MainActivity extends Activity {
 
 			public void onClick(View v) {
 				Intent intent = new Intent(v.getContext(), ExerciseListActivity.class);
+				intent.putExtra("workoutName", "Custom Workout");
 				startActivityForResult(intent, 31415);
 			}
 

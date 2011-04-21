@@ -30,6 +30,7 @@ public class NewWorkoutActivity extends Activity {
 	ArrayList<Profile> profs, selects;
 	int chsnPrf;
 	EditText numPeeps, numSets, max, min;
+	String workoutName;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class NewWorkoutActivity extends Activity {
 		Intent intent = this.getIntent();
 		exerciseNames = (ArrayList<Exercise>) intent
 				.getSerializableExtra("selectedexercises");
+		workoutName = intent.getStringExtra("workoutName");
 		
 	}
 
@@ -242,6 +244,7 @@ public class NewWorkoutActivity extends Activity {
 					wkout.putExtra("profilesU", profs);
 					wkout.putExtra("profiles", selects);
 					wkout.putExtra("exercises", exerciseNames);
+					wkout.putExtra("workoutName", workoutName);
 					startActivityForResult(wkout, 31415);
 				}
 

@@ -31,6 +31,8 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 	Button backBTN, resetBTN, doneBTN;
 	RadioButton quarterRDO, halfRDO, fullRDO;
 	
+	String workoutName;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -193,6 +195,7 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 					deckworkout.putExtra("profilesU", availableProfilesList);
 					deckworkout.putExtra("profiles", selectedProfilesList);
 					deckworkout.putExtra("decksize", decksize);
+					deckworkout.putExtra("workoutName", workoutName);
 					startActivityForResult(deckworkout, 31415);
 				}
 
@@ -204,7 +207,8 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 	}
 
 	private void getExtras() {
-		 
+		 Intent intent = this.getIntent();
+		 workoutName = intent.getStringExtra("workoutName");
 		
 	}
 	
