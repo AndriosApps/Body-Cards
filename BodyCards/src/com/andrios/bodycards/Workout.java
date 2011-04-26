@@ -19,7 +19,7 @@ public class Workout implements Serializable {
 	long base, totalBase, seconds, totalSeconds;
 	
 	String workoutName;
-
+ 
 	String elapsedWorkoutTime;
 	String[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
 			"Sep", "Oct", "Nov", "Dec" };
