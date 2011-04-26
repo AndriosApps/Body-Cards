@@ -53,10 +53,10 @@ public class ExerciseListActivity extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.exerciselistactivity);
-		readExercises();
+		
 		getExtras();
-		setAlertDialog();
-		setConnections();
+		
+		
 	}
 
 	private void getExtras() {
@@ -66,10 +66,23 @@ public class ExerciseListActivity extends Activity {
 	}
 
 	@Override
-	public void onRestart() {
-		super.onRestart();
+	public void onStart() {
+		super.onStart();
 		readExercises();
+		
+		setAlertDialog();
 		setConnections();
+	}
+	
+	public void onPause(){
+		super.onPause();
+		write();
+	}
+	
+	public void onDestroy(){
+		super.onDestroy();
+		resetExerciseList();
+		write();
 	}
 
 	public void onActivityResult(int requestCode, int returnCode, Intent intent) {
@@ -123,6 +136,7 @@ public class ExerciseListActivity extends Activity {
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
 			exerciseList = (ArrayList<Exercise>) ois.readObject();
+			sel = (ArrayList<Exercise>) ois.readObject();
 
 			ois.close();
 			fis.close();
@@ -130,6 +144,7 @@ public class ExerciseListActivity extends Activity {
 		} catch (Exception e) {
 
 			exerciseList = new ArrayList<Exercise>();
+			sel = new ArrayList<Exercise>();
 
 			createDefaultExercises();
 
@@ -199,6 +214,12 @@ public class ExerciseListActivity extends Activity {
 								"Abs",
 								R.drawable.situp));
 	}
+	
+
+	
+
+	
+
 
 	private void setConnections() {
 
@@ -206,7 +227,6 @@ public class ExerciseListActivity extends Activity {
 		for (int i = 0; i < selected.length; i++) {
 			selected[i] = false;
 		}
-		sel = new ArrayList<Exercise>();
 
 		availableListView = (ListView) findViewById(R.id.exerciseListActivityAvailableExercisesListView);
 		aa = new ArrayAdapter<Exercise>(this, R.layout.list_view2, exerciseList);
@@ -338,6 +358,7 @@ public class ExerciseListActivity extends Activity {
 		backBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
+				resetExerciseList();
 				ExerciseListActivity.this.finish();
 			}
 
@@ -352,6 +373,7 @@ public class ExerciseListActivity extends Activity {
 							"You must choose at least 1 exercise",
 							Toast.LENGTH_SHORT).show();
 				} else {
+					
 					Intent intent = new Intent(v.getContext(), NewWorkoutActivity.class);
 					
 					
@@ -361,29 +383,36 @@ public class ExerciseListActivity extends Activity {
 				}
 			}
 
+
+
 		});
 		
 		clearBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				while (!sa.isEmpty()) {
-					Exercise r = (Exercise) sa.getItem(0);
-					sa.remove(r);
-					aa.add(r);
-					aa.sort(new Comparator<Exercise>() {
-
-						public int compare(Exercise object1, Exercise object2) {
-
-							return object1.toString().compareToIgnoreCase(
-									object2.toString());
-						}
-
-					});
-				}
-
+				
+				resetExerciseList();
 			}
 
 		});
+		
+	}
+	
+	private void resetExerciseList() {
+		while (!sa.isEmpty()) {
+			Exercise r = (Exercise) sa.getItem(0);
+			sa.remove(r);
+			aa.add(r);
+			aa.sort(new Comparator<Exercise>() {
+
+				public int compare(Exercise object1, Exercise object2) {
+
+					return object1.toString().compareToIgnoreCase(
+							object2.toString());
+				}
+
+			});
+		}
 		
 	}
 
@@ -394,7 +423,7 @@ public class ExerciseListActivity extends Activity {
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 
 			oos.writeObject(exerciseList);
-
+			oos.writeObject(sel);
 			oos.close();
 			fos.close();
 
