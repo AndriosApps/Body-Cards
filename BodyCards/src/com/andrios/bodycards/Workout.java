@@ -182,13 +182,11 @@ public class Workout implements Serializable {
 	public void incrementCount(String exercise, int number) {
 		int i;
 		for (i = 0; i < exercises.size(); i++) {
-			System.out.println("i: "+i);
-			System.out.println("Exercise size: " + exercises.size() );
+			
 			if (exercise.equals(exercises.get(i).getName()))
 				break;
 		}
 		exercises.get(i).increment(number);
 
-		System.out.println("test: " + exercises.get(i).toString());
 	}
 }

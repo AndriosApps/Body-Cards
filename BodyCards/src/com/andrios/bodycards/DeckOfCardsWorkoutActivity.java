@@ -62,6 +62,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.deckofcardsworkoutactivity);
 
+		
 		getExtras();
 		
 		chooseBack();
@@ -137,6 +138,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 			workouts[currentUser].stop();
 			workouts[currentUser].setFinSets(sets);
 			workouts[currentUser].incrementCount("Deck of Cards", 1);
+	
 			
 		}else{
 			sets = 1;
@@ -215,7 +217,9 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 					getNewCard();
 				} else {
 					workouts[currentUser].stop();
+					workouts[currentUser].setFinSets(sets);
 					workouts[currentUser].incrementCount("Deck of Cards", 1);
+	
 					long endTime = SystemClock.elapsedRealtime();
 					
 					for(int i = 0; i < workouts.length; i++){
