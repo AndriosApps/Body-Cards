@@ -80,7 +80,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 		for (int i = 0; i < numPeople; i++) {
 			//TODO Check Math on this one... 
 			//Compensation commented out in line 202. if math doesn't work.   
-			workouts[i] = new Workout(numPeople, 54 / numPeople, 14, 2, exercises, workoutName);
+			workouts[i] = new Workout(numPeople, decksize / numPeople, 14, 2, exercises, workoutName);
 		}
 	}
 
@@ -138,6 +138,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 			workouts[currentUser].stop();
 			workouts[currentUser].setFinSets(sets);
 			workouts[currentUser].incrementCount("Deck of Cards", 1);
+			System.out.println("sets: "+ sets);
 	
 			
 		}else{
@@ -219,6 +220,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 					workouts[currentUser].stop();
 					workouts[currentUser].setFinSets(sets);
 					workouts[currentUser].incrementCount("Deck of Cards", 1);
+					System.out.println("sets: "+ sets);
 	
 					long endTime = SystemClock.elapsedRealtime();
 					

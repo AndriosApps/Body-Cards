@@ -187,6 +187,7 @@ public class Workout implements Serializable {
 				break;
 		}
 		exercises.get(i).increment(number);
+		System.out.println(exercises.get(i).getName() + ": "+exercises.get(i).count );
 
 	}
 }

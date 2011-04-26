@@ -73,6 +73,7 @@ public class ExerciseListActivity extends Activity {
 		setAlertDialog();
 		setConnections();
 	}
+	 
 	
 	public void onPause(){
 		super.onPause();
