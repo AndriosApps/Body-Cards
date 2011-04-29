@@ -112,7 +112,7 @@ public class MainActivity extends Activity {
 		helpBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), HelpActivity.class);
+				Intent intent = new Intent(v.getContext(), MainHelpActivity.class);
 				startActivity(intent);
 			}
 

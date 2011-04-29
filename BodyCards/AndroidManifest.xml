@@ -37,6 +37,13 @@
         <activity android:name="DisplayWorkoutActivity" android:screenOrientation="portrait" />
         <activity android:name="HelpActivity" android:screenOrientation="portrait" />
          <activity android:name="NewRandomWorkoutActivity" android:screenOrientation="portrait" />
+   <activity android:name="MainHelpActivity" android:screenOrientation="portrait" />
+   <activity android:name="HelpGettingStartedActivity" android:screenOrientation="portrait" />
+   <activity android:name="HelpDeckOfCardsActivity" android:screenOrientation="portrait" />
+   <activity android:name="HelpRandomWorkoutActivity" android:screenOrientation="portrait" />
+   <activity android:name="HelpCustomWorkoutActivity" android:screenOrientation="portrait" />
+   
+   
     </application>
 	
 
