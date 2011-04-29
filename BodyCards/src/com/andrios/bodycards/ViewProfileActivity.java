@@ -47,8 +47,19 @@ public class ViewProfileActivity extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.viewprofileactivity);
+		
+		getExtras();
 		setConnections();
 		setAlertDialog();
+	}
+
+	private void getExtras() {
+		Intent intent = this.getIntent();
+		if(intent.getIntExtra("whichOne", 0) == 1){
+			Intent nextIntent = new Intent(this.getBaseContext(), NewProfileActivity.class);
+			startActivity(nextIntent);
+		}
+		
 	}
 
 	private void setAlertDialog() {

@@ -1,5 +1,9 @@
 package com.andrios.bodycards;
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +27,27 @@ public class MainActivity extends Activity {
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.mainactivity);
 		
+		
 		setConnections();
+		
+	}
+
+	public void onStart(){
+		super.onStart();
+		checkForProfiles();
+	}
+	
+	private void checkForProfiles() {
+		try {
+			FileInputStream fis = openFileInput("profiles");
+		
+			fis.close();
+			viewProfileBTN.setText("View Profiles");
+		} catch (Exception e) {
+
+			viewProfileBTN.setText("Create Profile");
+		}
+		
 	}
 
 	private void setConnections() {
@@ -74,7 +98,12 @@ public class MainActivity extends Activity {
 		viewProfileBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
+				int whichOne = 0;
+				if(viewProfileBTN.getText().equals("Create Profile")){
+					whichOne = 1;
+				}
 				Intent intent = new Intent(v.getContext(), ViewProfileActivity.class);
+				intent.putExtra("whichOne", whichOne);
 				startActivity(intent);
 			}
 
