@@ -115,7 +115,7 @@ public class WorkoutCardActivity extends Activity {
 		
 		
 	    // Add the adView to it
-	     AdView adView = (AdView)this.findViewById(R.id.adView);
+	     AdView adView = (AdView)this.findViewById(R.id.workoutCardAdView);
 	      
 	    // Initiate a generic request to load it with an ad
 		request = new AdRequest();

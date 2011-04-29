@@ -8,6 +8,9 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.google.ads.AdRequest;
+import com.google.ads.AdView;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +27,9 @@ import android.widget.Toast;
 
 public class DeckOfCardsWorkoutActivity extends Activity {
 
+	AdView adView;
+	AdRequest request;
+	
 	int numPeople, currentUser, sets, decksize;
 	ImageView card;
 	TextView userTXT, remainingTXT;
@@ -206,6 +212,16 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 		
 		currentUser = -1;
 		remainingTXT.setText("Cards Remaining: " + (decksize - cardNum));
+		
+	    // Add the adView to it
+		//TODO Change this name. 
+	     AdView adView = (AdView)this.findViewById(R.id.deckOfCardsAdView);
+	      
+	    // Initiate a generic request to load it with an ad
+		request = new AdRequest();
+		request.setTesting(true);
+		adView.loadAd(request);
+		
 		setOnClickListeners();
 		
 	}
