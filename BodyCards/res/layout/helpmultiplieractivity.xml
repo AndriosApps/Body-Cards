@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent" android:orientation="vertical">
+  
+  	<TextView
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:text="Help Window"
+		android:textSize="18px"
+		android:textColor="#000"
+		android:background="#CCC"
+		android:layout_weight="0" />
+		
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="center"
+					android:text="Multiplier"
+					android:padding="10px"
+					android:textSize="15px"
+					android:textColor="#000"
+					android:background="#CCC"
+					android:layout_weight="0" />
+
+
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#E5E5FF"
+					android:textColor="#000"
+					android:text="'Multipliers' were designed to make individual exercises either easier or more difficult." />	
+
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#FFFFFF"
+					android:textColor="#000"
+					android:text="If an exercise is very difficult for you, set a multiplier to 0.5.  If it is easy set it to 2.0 or more." />
+		
+  				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#E5E5FF"
+					android:textColor="#000"
+					android:text="The multiplier defaults to 1.0 for any given exercise." />	
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#FFFFFF"
+					android:textColor="#000"
+					android:text="All reps for any given set are multiplied by the multiplier. If you have base reps set to 2-15 and Multiplier set to 2 then you effectively have set all reps of that exercise to 4-30." />
+		
+
+</LinearLayout>

@@ -9,7 +9,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<ImageView android:id="@+id/logoIMG"
-		android:src="@drawable/rw" 
+		android:src="@drawable/home" 
 		android:layout_width="300px" 
 		android:layout_height="wrap_content"
 		android:layout_weight="0" />
