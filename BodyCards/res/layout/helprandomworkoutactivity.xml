@@ -13,4 +13,51 @@
 		android:textColor="#000"
 		android:background="#CCC"
 		android:layout_weight="0" />
+		
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="center"
+					android:text="Random Workout"
+					android:padding="10px"
+					android:textSize="15px"
+					android:textColor="#000"
+					android:background="#CCC"
+					android:layout_weight="0" />
+
+
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#E5E5FF"
+					android:textColor="#000"
+					android:text="'Random Workout' was a follow up to the 'Custom Workout'.  When you don't know what exercises you want to do, choose a Random Workout." />	
+
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#FFFFFF"
+					android:textColor="#000"
+					android:text="Random Workout will choose between 2-5 exercises for you and default to 20 sets of 2-15 reps." />
+		
+  				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#E5E5FF"
+					android:textColor="#000"
+					android:text="You can then choose number of guests and number of profiles to participate in the workout." />	
+				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#FFFFFF"
+					android:textColor="#000"
+					android:text="You can also change the number of sets, and the min / max number of reps for each set." />
+		
+  				<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#E5E5FF"
+					android:textColor="#000"
+					android:text="If you decide that you don't like the workouts selected, click the 'Randomize' button and you will be provided with a new selection of exercises." />	
+    
 </LinearLayout>
