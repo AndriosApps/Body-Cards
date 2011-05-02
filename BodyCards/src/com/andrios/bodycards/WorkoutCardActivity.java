@@ -30,9 +30,10 @@ public class WorkoutCardActivity extends Activity {
 
 	private static final String MY_AD_UNIT_ID = "kbd74bf6644b3aff832515d10083421f";
 	// XML Variables
-	TextView nameView, setView, rTL, rBR, exerciseName, prNm, cardsRem;
+	TextView nameView, setView, rTL, rBR, exerciseName, cardsRem;
 	ImageView wkImg;
 	Button begin, finish;
+	CustomTextView prNm;
 
 	AdView adView;
 	AdRequest request;
@@ -123,7 +124,28 @@ public class WorkoutCardActivity extends Activity {
 		adView.loadAd(request);
 	    
 
-	     
+		prNm.SetRotation(90, 50, 200);
+		
+		
+		
+		
+		
+		
+	     /* *
+	      * 
+	      * 
+				android:textSize="40px"
+				android:textColor="#000000"
+				android:padding="10px"
+				android:maxWidth="50px"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="#FFFFFF"
+				android:layout_margin="1px"
+				android:gravity="center"
+	      * 
+	      * */
 	    
 	    
 		begin = (Button) findViewById(R.id.wcStart);
@@ -253,7 +275,7 @@ public class WorkoutCardActivity extends Activity {
 	private void showCard(String n) {
 
 		if (count < numCards) {
-			nameView.setText(n);
+			prNm.SetText(n);
 			exerciseName.setText(exercise);
 
 			set = (count / numPeople) + 1;
@@ -288,7 +310,7 @@ public class WorkoutCardActivity extends Activity {
 		rTL = (TextView) findViewById(R.id.repsTL);
 		rBR = (TextView) findViewById(R.id.repsBR);
 		wkImg = (ImageView) findViewById(R.id.wkImg);
-		prNm = (TextView) findViewById(R.id.progTitle);
+		prNm = (CustomTextView) findViewById(R.id.sideLabel);
 		cardsRem = (TextView) findViewById(R.id.cardsRemaining);
 	}
 
