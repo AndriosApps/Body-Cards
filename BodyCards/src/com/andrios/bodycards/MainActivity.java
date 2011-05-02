@@ -37,15 +37,26 @@ public class MainActivity extends Activity {
 		checkForProfiles();
 	}
 	
+	@SuppressWarnings("unchecked")
 	private void checkForProfiles() {
+		ArrayList<Profile> profileList;
 		try {
 			FileInputStream fis = openFileInput("profiles");
-		
-			fis.close();
-			viewProfileBTN.setText("View Profiles");
-		} catch (Exception e) {
+			ObjectInputStream ois = new ObjectInputStream(fis);
 
+			profileList = (ArrayList<Profile>) ois.readObject();
+			ois.close();
+			fis.close();
+			
+		} catch (Exception e) {
+			profileList = new ArrayList<Profile>();
+			
+		}
+		
+		if(profileList.isEmpty()) {
 			viewProfileBTN.setText("Create Profile");
+		} else {
+			viewProfileBTN.setText("View Profiles");
 		}
 		
 	}

@@ -53,7 +53,6 @@ public class Workout implements Serializable {
 		}
 
 	}
-
 	
     public void startTotal(long time){
     	totalBase = time;
