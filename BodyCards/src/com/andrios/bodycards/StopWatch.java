@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.os.CountDownTimer;
+
 public class StopWatch implements Serializable {
 	/**
 	 * 
@@ -12,7 +14,9 @@ public class StopWatch implements Serializable {
 
 	public int seconds;
 	Timer clock;
-
+	CountDownTimer timer;
+	
+	
 	public StopWatch(int startTime) {
 		seconds = startTime;
 		clock = new Timer();
@@ -25,6 +29,7 @@ public class StopWatch implements Serializable {
 			public void run() {
 				seconds++;
 			}
+			
 
 		}, 0, 1000);
 

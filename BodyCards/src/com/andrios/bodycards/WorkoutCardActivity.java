@@ -17,6 +17,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -47,7 +48,8 @@ public class WorkoutCardActivity extends Activity {
 	// Profiles
 	ArrayList<Profile> unusedProfiles;
 	ArrayList<Profile> selectedProfiles;
-
+	CountDownTimer alertTime;
+	
 	// Workout Initialization Variables
 	ArrayList<Exercise> exercises;
 	int numPeople, numSets, min, max;
@@ -57,7 +59,7 @@ public class WorkoutCardActivity extends Activity {
 	boolean running, started;
 	int numCards;
 	int numProf;
-
+	long milisLeft;
 	// Workout Progress Variables
 	int reps, 	// Number of Reps of the exercise
 		set, 	// Which set user is on
@@ -367,33 +369,112 @@ public class WorkoutCardActivity extends Activity {
 			workouts[i].setWorkoutTime(clock.getText().toString());
 		}
 	}
+	public void formatTimer(){
+		TextView alertExerciseTimeLBL = (TextView) findViewById(R.id.exerciseTimerAlertExerciseTimeLBL);
+		
 	
+	}
 	private void setAlertDialog() {
+		
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		LayoutInflater inflater = LayoutInflater.from(this);
 		final View layout = inflater.inflate(R.layout.exercisetimeralert, null);
 		TextView alertExerciseNameLBL = (TextView) layout.findViewById(R.id.exerciseTimerAlertExerciseNameLBL);
-		TextView alertExerciseTimeLBL = (TextView) layout.findViewById(R.id.exerciseTimerAlertExerciseTimeLBL);
+		
 		alertExerciseNameLBL.setText("");
+		final Button timerAlertStartBTN = (Button) layout.findViewById(R.id.timerAlertStartBTN);
+		milisLeft = reps*1000;
+		//TODO Make this formatTimer() function
 		
+		int time = (int) (milisLeft / 1000);
+		int hours = time / (60 * 60);
+		time = time - (hours * 60 * 60);
+		int mins = time / 60;
+		int secs = time - (mins * 60);
 		
-		builder.setView(layout)
-				.setTitle(exercise.getName())
-				.setNegativeButton("Quit",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int position) {
 
-								
-							}
-						})
-				.setPositiveButton("Start",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int which) {
-								
-							}
-						});
+		String tStr = "";
+		tStr += (hours > 9) ? (hours + ":") : ("0" + hours + ":");
+		tStr += (mins > 9) ? (mins + ":") : ("0" + mins + ":");
+		tStr += (secs > 9) ? (secs) : ("0" + secs);
+
+		
+		TextView alertExerciseTimeLBL = (TextView) layout.findViewById(R.id.exerciseTimerAlertExerciseTimeLBL);
+		
+    	 alertExerciseTimeLBL.setText(tStr);
+    	 
+		timerAlertStartBTN.setOnClickListener(new OnClickListener(){
+			
+
+			public void onClick(View v) {
+				
+				if(timerAlertStartBTN.getText().equals("Start")){
+					timerAlertStartBTN.setText("Pause");
+					
+					 alertTime = new CountDownTimer(milisLeft, 1000) {
+
+					     public void onTick(long millisUntilFinished) {
+					    	milisLeft = millisUntilFinished;
+					    	//TODO Make this formatTimer() function
+							
+							int time = (int) (milisLeft / 1000);
+							int hours = time / (60 * 60);
+							time = time - (hours * 60 * 60);
+							int mins = time / 60;
+							int secs = time - (mins * 60);
+							
+
+							String tStr = "";
+							tStr += (hours > 9) ? (hours + ":") : ("0" + hours + ":");
+							tStr += (mins > 9) ? (mins + ":") : ("0" + mins + ":");
+							tStr += (secs > 9) ? (secs) : ("0" + secs);
+
+							TextView alertExerciseTimeLBL = (TextView) layout.findViewById(R.id.exerciseTimerAlertExerciseTimeLBL);
+							
+					    	 alertExerciseTimeLBL.setText(tStr);
+					    	
+					     }
+
+					     public void onFinish() {
+					    	 TextView alertExerciseTimeLBL = (TextView) layout.findViewById(R.id.exerciseTimerAlertExerciseTimeLBL);
+					 		
+					    	 alertExerciseTimeLBL.setText("done!");
+					    	 timerAlertStartBTN.setText("Finish");
+					     }
+					  }.start();
+				}else if(timerAlertStartBTN.getText().equals("Finish")){
+					ad.dismiss();
+				}else if(timerAlertStartBTN.getText().equals("Pause")){
+					alertTime.cancel();
+					
+					//TODO Make this formatTimer() function
+					
+					int time = (int) (milisLeft / 1000);
+					int hours = time / (60 * 60);
+					time = time - (hours * 60 * 60);
+					int mins = time / 60;
+					int secs = time - (mins * 60);
+					
+
+					String tStr = "";
+					tStr += (hours > 9) ? (hours + ":") : ("0" + hours + ":");
+					tStr += (mins > 9) ? (mins + ":") : ("0" + mins + ":");
+					tStr += (secs > 9) ? (secs) : ("0" + secs);
+
+					
+					TextView alertExerciseTimeLBL = (TextView) layout.findViewById(R.id.exerciseTimerAlertExerciseTimeLBL);
+					
+			    	 alertExerciseTimeLBL.setText(tStr);
+					
+					timerAlertStartBTN.setText("Start");
+				}
+				
+				
+			}
+			
+		});
+		builder.setView(layout)
+				.setTitle(exercise.getName());
 		ad = builder.create();
 	}
 
