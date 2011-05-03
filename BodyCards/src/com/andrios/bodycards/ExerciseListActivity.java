@@ -132,6 +132,7 @@ public class ExerciseListActivity extends Activity {
 
 	@SuppressWarnings("unchecked")
 	private void readExercises() {
+		System.out.println("READING EXERCISES");
 		try {
 			FileInputStream fis = openFileInput("exercises");
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -143,7 +144,7 @@ public class ExerciseListActivity extends Activity {
 			fis.close();
 
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			exerciseList = new ArrayList<Exercise>();
 			sel = new ArrayList<Exercise>();
 

@@ -11,13 +11,16 @@ import com.google.ads.AdSize;
 import com.google.ads.AdView;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.view.LayoutInflater;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
@@ -37,7 +40,7 @@ public class WorkoutCardActivity extends Activity {
 	TextView sideLabel;
 	ImageView wkImg;
 	Button begin, finish;
-	
+	AlertDialog ad;
 
 	AdView adView;
 	AdRequest request;
@@ -59,7 +62,7 @@ public class WorkoutCardActivity extends Activity {
 	int reps, 	// Number of Reps of the exercise
 		set, 	// Which set user is on
 		count; 	// Exercise number
-	String exercise; // Exercise name
+	Exercise exercise; // Exercise name
 
 	// Workouts to add to Profiles
 	Workout[] workouts;
@@ -229,7 +232,7 @@ public class WorkoutCardActivity extends Activity {
 			reps = min + (num % modulo);
 		}
 		int randomNumber = Math.abs(rNum.nextInt()) % exercises.size();
-		exercise = (exercises.get(randomNumber).getName());
+		exercise = (exercises.get(randomNumber));
 			reps = (int) (reps*exercises.get(randomNumber).getMultiplier());
 		displayWorkout();
 
@@ -255,19 +258,28 @@ public class WorkoutCardActivity extends Activity {
 
 		if (count < numCards) {
 			sideLabel.setText(n);
-			exerciseName.setText(exercise);
+			exerciseName.setText(exercise.getName());
 
 			set = (count / numPeople) + 1;
 
-			rTL.setText(Integer.toString(reps));
-			rBR.setText(Integer.toString(reps));
+
+			
 			setView.setText("Set: " + set);
 
 			if ((count % numPeople) < numProf)
-				workouts[count % numPeople].incrementCount(exercise, reps);
+				workouts[count % numPeople].incrementCount(exercise.getName(), reps);
 
 			count++;
 			cardsRem.setText("Cards Remaining: " + (numCards - count));
+			if(exercise.isTimed){
+				rTL.setText("T");
+				rBR.setText("T");
+				setAlertDialog();
+				ad.show();
+			}else{
+				rTL.setText(Integer.toString(reps));
+				rBR.setText(Integer.toString(reps));
+			}
 
 		} else {
 
@@ -354,6 +366,35 @@ public class WorkoutCardActivity extends Activity {
 		for (int i = 0; i < workouts.length; i++) {
 			workouts[i].setWorkoutTime(clock.getText().toString());
 		}
+	}
+	
+	private void setAlertDialog() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		LayoutInflater inflater = LayoutInflater.from(this);
+		final View layout = inflater.inflate(R.layout.exercisetimeralert, null);
+		TextView alertExerciseNameLBL = (TextView) layout.findViewById(R.id.exerciseTimerAlertExerciseNameLBL);
+		TextView alertExerciseTimeLBL = (TextView) layout.findViewById(R.id.exerciseTimerAlertExerciseTimeLBL);
+		alertExerciseNameLBL.setText("");
+		
+		
+		builder.setView(layout)
+				.setTitle(exercise.getName())
+				.setNegativeButton("Quit",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,
+									int position) {
+
+								
+							}
+						})
+				.setPositiveButton("Start",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,
+									int which) {
+								
+							}
+						});
+		ad = builder.create();
 	}
 
 }

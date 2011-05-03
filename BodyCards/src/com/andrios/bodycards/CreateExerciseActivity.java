@@ -37,7 +37,7 @@ public class CreateExerciseActivity extends Activity {
 	String[] mgOptions = {"Hamstrings", "Calves", "Chest", "Back", "Shoulders", "Triceps", "Biceps", "Forearms", "Trapezius", "Abs"};
 	int selectedMuscle;
 
-	ArrayList<Exercise> exerciseList;
+	ArrayList<Exercise> exerciseList, selectedList;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -73,6 +73,7 @@ public class CreateExerciseActivity extends Activity {
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
 			exerciseList = (ArrayList<Exercise>) ois.readObject();
+			selectedList = (ArrayList<Exercise>) ois.readObject();
 			ois.close();
 			fis.close();
 		} catch (Exception e) {
@@ -192,9 +193,16 @@ public class CreateExerciseActivity extends Activity {
 					sort(exerciseList);
 					if(isUpdate){
 						int index = checkDupes(originalName);
+						
 						if(index != -1){
 							exerciseList.remove(index);
+						}else{
+							index = checkSelectedDupes(originalName);
+							if(index != -1){
+								selectedList.remove(index);
+							}
 						}
+						
 						
 						Toast.makeText(CreateExerciseActivity.this, "Exercise Updated",
 								Toast.LENGTH_SHORT).show();
@@ -205,7 +213,7 @@ public class CreateExerciseActivity extends Activity {
 						
 					}
 					exerciseList.add(exercise);
-					
+					System.out.println("Added " + exercise.getName());
 					
 					write();
 					CreateExerciseActivity.this.finish();
@@ -231,14 +239,13 @@ public class CreateExerciseActivity extends Activity {
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 
 			oos.writeObject(exerciseList);
-
+			oos.writeObject(selectedList);
 			oos.close();
 			fos.close();
 
 		} catch (IOException e) {
 
-			Toast.makeText(CreateExerciseActivity.this, "Error: Writing to file",
-					Toast.LENGTH_SHORT).show();
+			e.printStackTrace();
 		}
 
 	}
@@ -246,6 +253,16 @@ public class CreateExerciseActivity extends Activity {
 	private int checkDupes(String name){
 		for(int i = 0; i < exerciseList.size(); i++ ){
 			if(name.equals(exerciseList.get(i).getName())){
+				return i;
+			}
+		}
+		
+		return -1;
+	}
+	
+	private int checkSelectedDupes(String name){
+		for(int i = 0; i < selectedList.size(); i++ ){
+			if(name.equals(selectedList.get(i).getName())){
 				return i;
 			}
 		}
