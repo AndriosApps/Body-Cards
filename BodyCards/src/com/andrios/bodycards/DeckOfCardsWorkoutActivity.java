@@ -107,6 +107,10 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 			decksize = 54/2;
 		}
 		
+		while(decksize % numPeople != 0) {
+			decksize++;
+		}
+		
 		workoutName = intent.getStringExtra("workoutName");
 		
 		selectedProfiles = (ArrayList<Profile>) intent

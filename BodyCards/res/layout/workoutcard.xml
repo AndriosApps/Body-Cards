@@ -9,16 +9,7 @@
 	android:background="#000"
 	android:gravity="bottom" 
 	android:orientation="vertical">
-
-	<TextView android:id="@+id/userName"
-		android:gravity="center"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_weight="0"
-		android:textSize="25px"
-		android:background="#CCC"
-		android:textColor="#000" />
-
+ 
 	<!-- Banner Ads Above Workout Card Here -->
 		
 	<LinearLayout
@@ -103,8 +94,18 @@
 			android:orientation="vertical"
 			android:background="#000">
 			
-			<CustomTextView android:id="@+id/sideLabel"
-				 />
+			<TextView android:id="@+id/sideLabel"
+				android:padding="15px"
+				android:textColor="#000000"
+				android:textSize="20px"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:typeface="monospace"
+				android:textStyle="bold"
+				android:background="#FFFFFF"
+				android:layout_margin="1px"
+				android:gravity="center" />
 				
 			<TextView
 				android:id="@+id/repsBR"
@@ -127,7 +128,7 @@
 	
 		<!-- Banner Ads Below Workout Card Above Time Stuff Here -->
 	
-		<com.google.ads.AdView 
+	<com.google.ads.AdView 
 		android:id="@+id/workoutCardAdView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

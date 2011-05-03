@@ -13,9 +13,11 @@ import com.google.ads.AdView;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
@@ -23,6 +25,7 @@ import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,10 +33,11 @@ public class WorkoutCardActivity extends Activity {
 
 	private static final String MY_AD_UNIT_ID = "kbd74bf6644b3aff832515d10083421f";
 	// XML Variables
-	TextView nameView, setView, rTL, rBR, exerciseName, cardsRem;
+	TextView setView, rTL, rBR, exerciseName, cardsRem;
+	TextView sideLabel;
 	ImageView wkImg;
 	Button begin, finish;
-	CustomTextView prNm;
+	
 
 	AdView adView;
 	AdRequest request;
@@ -116,38 +120,13 @@ public class WorkoutCardActivity extends Activity {
 		
 		
 	    // Add the adView to it
-	     AdView adView = (AdView)this.findViewById(R.id.workoutCardAdView);
+	    adView = (AdView)this.findViewById(R.id.workoutCardAdView);
 	      
 	    // Initiate a generic request to load it with an ad
 		request = new AdRequest();
 		request.setTesting(true);
 		adView.loadAd(request);
-	    
 
-		prNm.SetRotation(90, 50, 200);
-		
-		
-		
-		
-		
-		
-	     /* *
-	      * 
-	      * 
-				android:textSize="40px"
-				android:textColor="#000000"
-				android:padding="10px"
-				android:maxWidth="50px"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				android:background="#FFFFFF"
-				android:layout_margin="1px"
-				android:gravity="center"
-	      * 
-	      * */
-	    
-	    
 		begin = (Button) findViewById(R.id.wcStart);
 		begin.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -197,7 +176,7 @@ public class WorkoutCardActivity extends Activity {
 		rTL.setOnClickListener(new myOnClick());
 		rBR.setOnClickListener(new myOnClick());
 		exerciseName.setOnClickListener(new myOnClick());
-		prNm.setOnClickListener(new myOnClick());
+		sideLabel.setOnClickListener(new myOnClick());
 	}
 
 	private void end() {
@@ -275,7 +254,7 @@ public class WorkoutCardActivity extends Activity {
 	private void showCard(String n) {
 
 		if (count < numCards) {
-			prNm.SetText(n);
+			sideLabel.setText(n);
 			exerciseName.setText(exercise);
 
 			set = (count / numPeople) + 1;
@@ -303,15 +282,15 @@ public class WorkoutCardActivity extends Activity {
 	}
 
 	private void setViews() {
-		nameView = (TextView) findViewById(R.id.userName);
 		setView = (TextView) findViewById(R.id.setCount);
 		clock = (Chronometer) findViewById(R.id.timerView);
 		exerciseName = (TextView) findViewById(R.id.exerciseName);
 		rTL = (TextView) findViewById(R.id.repsTL);
 		rBR = (TextView) findViewById(R.id.repsBR);
 		wkImg = (ImageView) findViewById(R.id.wkImg);
-		prNm = (CustomTextView) findViewById(R.id.sideLabel);
 		cardsRem = (TextView) findViewById(R.id.cardsRemaining);
+		sideLabel = (TextView) findViewById(R.id.sideLabel);
+
 	}
 
 	public void setWorkoutsToProfile() {
