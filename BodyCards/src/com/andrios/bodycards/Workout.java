@@ -74,6 +74,10 @@ public class Workout implements Serializable {
 		seconds += res;
 		
 	}
+	
+	public void addTime(int seconds){
+		this.seconds += seconds;
+	}
 
 	public int getNumPeople() {
 		return numPeople;

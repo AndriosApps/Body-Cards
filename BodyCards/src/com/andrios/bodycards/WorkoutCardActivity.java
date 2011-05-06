@@ -211,8 +211,11 @@ public class WorkoutCardActivity extends Activity {
 		public void onClick(View vi) {
 			if (running) {
 				v = vi;
-				if (((count - 1) % numPeople) < numProf)
-					workouts[(count - 1) % numPeople].stop();
+				if(!exercise.isTimed){
+					if (((count - 1) % numPeople) < numProf)
+						workouts[(count - 1) % numPeople].stop();
+				}
+				
 				getRandomWorkoutCard();
 				
 
@@ -249,7 +252,7 @@ public class WorkoutCardActivity extends Activity {
 		} else {
 			name = "User " + (count % numPeople + 1);
 		}
-
+		if(!exercise.)
 		if ((count % numPeople) < numProf)
 			workouts[count % numPeople].start();
 
