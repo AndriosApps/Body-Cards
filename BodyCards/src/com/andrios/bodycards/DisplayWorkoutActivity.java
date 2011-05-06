@@ -62,7 +62,7 @@ public class DisplayWorkoutActivity extends Activity {
 		dt.setText("  " + days[c.get(Calendar.DAY_OF_WEEK)] + ", "
 				+ months[c.get(Calendar.MONTH)] + " "
 				+ c.get(Calendar.DAY_OF_MONTH) + ", " + c.get(Calendar.YEAR));
-		pt.setText(w.getFormattedTime());
+		pt.setText(w.getPersonalTime());
 
 	}
 

@@ -31,6 +31,9 @@ public class Workout implements Serializable {
 		date = workoutDate.get(Calendar.DAY_OF_MONTH) + "-"
 				+ months[workoutDate.get(Calendar.MONTH)] + "-"
 				+ workoutDate.get(Calendar.YEAR);
+		seconds = 0;
+
+		System.out.println("init 1 Seconds: " + seconds);
 	}
 
 	public Workout(int np, int ns, int x, int n, ArrayList<Exercise> e, String wn) {
@@ -41,6 +44,7 @@ public class Workout implements Serializable {
 		exercises = new ArrayList<CompletedExercises>();
 		this.exerciseList = e;
 		seconds = 0;
+		System.out.println("init Seconds: " + seconds);
 		workoutName = wn;
 		workoutDate = Calendar.getInstance();
 		date = workoutDate.get(Calendar.DAY_OF_MONTH) + "-"
@@ -49,7 +53,7 @@ public class Workout implements Serializable {
 
 		for (int i = 0; i < this.exerciseList.size(); i++) {
 			Exercise e1 = this.exerciseList.get(i);
-			exercises.add(new CompletedExercises(e1.getName(), e1.getMultiplier()));
+			exercises.add(new CompletedExercises(e1.getName(), e1.getMultiplier(), e1.isTimed));
 		}
 
 	}
@@ -66,24 +70,31 @@ public class Workout implements Serializable {
 	}
 	public void start() {
 		base = SystemClock.elapsedRealtime();
+		System.out.println("start Seconds: " + seconds);
 	}
 
 	public void stop() {
 		long res = (SystemClock.elapsedRealtime() - base) / 1000;
 		
 		seconds += res;
+
+		System.out.println(" stop Seconds: " + seconds);
 		
 	}
 	
 	public void addTime(int seconds){
+
+		
 		this.seconds += seconds;
+		System.out.println("add Seconds: " + seconds);
 	}
 
 	public int getNumPeople() {
 		return numPeople;
 	}
 
-	public String getFormattedTime() {
+	public String getPersonalTime() {
+		System.out.println("Seconds: " + seconds);
 		long t = seconds;
 		long hr = t / (60 * 60);
 		t = seconds - (hr * 60 * 60);
@@ -113,6 +124,7 @@ public class Workout implements Serializable {
 			tStr += "00";
 		}
 
+		System.out.println("output Seconds: " + seconds);
 		return tStr;
 
 	}

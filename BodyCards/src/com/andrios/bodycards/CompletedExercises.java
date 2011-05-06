@@ -11,12 +11,14 @@ public class CompletedExercises implements Serializable {
 
 	String name;
 	int count;
+	boolean isTimed;
 	Double multiplier;
 
-	public CompletedExercises(String e, Double multiplier) {
+	public CompletedExercises(String e, Double multiplier, boolean isTimed) {
 		name = e;
 		count = 0;
 		this.multiplier = multiplier;
+		this.isTimed = isTimed;
 	}
 
 	public void increment(int n) {
@@ -32,7 +34,24 @@ public class CompletedExercises implements Serializable {
 	}
 
 	public String toString() {
-		return name + " completed: " + count;
+		if(isTimed){
+			int time = (int) (count);
+			int hours = time / (60 * 60);
+			time = time - (hours * 60 * 60);
+			int mins = time / 60;
+			int secs = time - (mins * 60);
+			
+
+			String tStr = "";
+			tStr += (hours > 9) ? (hours + ":") : ("0" + hours + ":");
+			tStr += (mins > 9) ? (mins + ":") : ("0" + mins + ":");
+			tStr += (secs > 9) ? (secs) : ("0" + secs);
+			
+			return name + " time: " + tStr;
+		}else{
+			return name + " completed: " + count;
+		}
+		
 	}
 
 }
