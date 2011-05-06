@@ -10,32 +10,40 @@ import java.util.Calendar;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class NewProfileActivity extends Activity {
-	Button back, done, reset;
+	Button back, done, reset, birthdayBTN;
 	RadioButton male, female;
-	EditText fName, lName, month, year, day;
+	EditText fName, lName;
 	EditText age;
 	String gen;
 	ArrayList<Workout> workouts;
 	List<Profile> profList;
-
+	Calendar bday, baseDate;
 	Profile created;
-
+	AlertDialog ad;
 	boolean update = false;
+	static final int DATE_DIALOG_ID = 1;
 
-	int row;
+	int row, mYear, mMonth, mDay;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -74,11 +82,26 @@ public class NewProfileActivity extends Activity {
 			workouts = (ArrayList<Workout>) intent
 					.getSerializableExtra("workouts");
 			
-			Calendar bday = (Calendar)intent.getSerializableExtra("bday");
-			month.setText(Integer.toString((bday.get(Calendar.MONTH)+1)));
-			day.setText(Integer.toString(bday.get(Calendar.DAY_OF_MONTH)));
-			year.setText(Integer.toString(bday.get(Calendar.YEAR)));
+			bday = (Calendar)intent.getSerializableExtra("bday");
+			if(bday != null){
+				System.out.println("NULL " + bday.toString()); 
+				String birthday = "";
+				birthday += Integer.toString((bday.get(Calendar.MONTH)+1));
+				birthday += "/";
+				birthday += Integer.toString(bday.get(Calendar.DAY_OF_MONTH));
+				birthday +="/";
+				birthday += Integer.toString(bday.get(Calendar.YEAR));
+				birthdayBTN.setText(birthday);
+				setBirthday(bday);
+			}
+			
 		}
+	}
+	
+	private void setBirthday(Calendar c){
+		mYear = c.get(Calendar.YEAR);
+		mMonth = c.get(Calendar.MONTH);
+		mDay = c.get(Calendar.DAY_OF_MONTH);
 	}
 
 	private void setConnections() {
@@ -87,12 +110,16 @@ public class NewProfileActivity extends Activity {
 		fName = (EditText) findViewById(R.id.newProfileUserFirstNameTXT);
 		lName = (EditText) findViewById(R.id.newProfileUserLastNameTXT);
 		age = (EditText) findViewById(R.id.newProfileUserAgeTXT);
-		month = (EditText) findViewById(R.id.newProfileUserBirthdayMonthTXT);
-		day = (EditText) findViewById(R.id.newProfileUserBirthdayDayTXT);
-		year = (EditText) findViewById(R.id.newProfileUserBirthdayYearTXT);
+		birthdayBTN = (Button) findViewById(R.id.newProfileUserBirthdayBTN);
 		back = (Button) findViewById(R.id.newProfileBackBTN);
 		reset = (Button) findViewById(R.id.newProfileResetBTN);
 		done = (Button) findViewById(R.id.newProfileDoneBTN);
+		
+		baseDate = Calendar.getInstance();
+		baseDate.set(Calendar.YEAR, 1900);
+		bday = (Calendar) baseDate.clone();
+		setBirthday(bday);
+		
 		
 		//TODO DOES THIS NEED TO GO HERE???? 
 		//TODO Answer: Either here, getExtras()or onCreate() makes more sense here
@@ -116,13 +143,19 @@ public class NewProfileActivity extends Activity {
 				fName.setText("");
 				lName.setText("");
 //				age.setText("");
-				month.setText("");
-				day.setText("");
-				year.setText("");
+				birthdayBTN.setText("Set Birthday");
 				male.setChecked(true);
 				gen = "Male";
 			}
 
+		});
+		birthdayBTN.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View arg0) {
+				showDialog(DATE_DIALOG_ID);
+				
+			}
+			
 		});
 		
 		done.setOnClickListener(new OnClickListener() {
@@ -147,7 +180,7 @@ public class NewProfileActivity extends Activity {
 					error = true;
 				}
 
-				if (isEmpty(year) || isEmpty(day) || isEmpty(month)) {
+				if (bday.before(baseDate)) {
 					Toast.makeText(NewProfileActivity.this, "Error: Birthday Field Incomplete ",
 							Toast.LENGTH_SHORT).show();
 					error = true;
@@ -155,9 +188,7 @@ public class NewProfileActivity extends Activity {
 
 				if (!error) {
 
-					mn = Integer.parseInt(month.getText().toString().trim());
-					dy = Integer.parseInt(day.getText().toString().trim());
-					yr = Integer.parseInt(year.getText().toString().trim());
+				
 					
 					if (male.isChecked())
 						gen = "Male";
@@ -165,7 +196,7 @@ public class NewProfileActivity extends Activity {
 						gen = "Female";
 
 					Calendar bd = Calendar.getInstance();
-					bd.set(yr, mn-1, dy);
+					bd = bday;
 					created.setNew(fName.getText().toString(), lName.getText()
 							.toString(), gen, bd);
 
@@ -230,4 +261,51 @@ public class NewProfileActivity extends Activity {
 	public boolean isEmpty(EditText field) {
 		return field.getText().toString().equals("");
 	}
+	
+	
+    @Override
+    protected Dialog onCreateDialog(int id) {
+            switch (id) {
+
+            case DATE_DIALOG_ID:
+                    return new DatePickerDialog(this,
+                            mDateSetListener,
+                            mYear, mMonth, mDay);
+            }
+            return null;
+    }
+    protected void onPrepareDialog(int id, Dialog dialog) {
+            switch (id) {
+
+            case DATE_DIALOG_ID:
+                    ((DatePickerDialog) dialog).updateDate(mYear, mMonth, mDay);
+                    break;
+            }
+    }    
+    private void updateDisplay() {
+            birthdayBTN.setText(
+                    new StringBuilder()
+                    // Month is 0 based so add 1
+                    .append(mMonth + 1).append("/")
+                    .append(mDay).append("/")
+                    .append(mYear).append(" "));
+    }
+    private DatePickerDialog.OnDateSetListener mDateSetListener =
+            new DatePickerDialog.OnDateSetListener() {
+
+				public void onDateSet(DatePicker view, int year,
+						int monthOfYear, int dayOfMonth) {
+					mYear = year;
+                    mMonth = monthOfYear;
+                    mDay = dayOfMonth;
+                    bday.set(Calendar.YEAR, mYear);
+                    bday.set(Calendar.MONTH, mMonth);
+                    bday.set(Calendar.DAY_OF_MONTH, mDay);
+                    updateDisplay();
+					
+				}
+
+          
+    };
+
 }

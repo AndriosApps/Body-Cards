@@ -89,51 +89,14 @@
 			android:gravity="center"
 			android:layout_weight="0"></TextView>
 
-		<EditText android:id="@+id/newProfileUserBirthdayMonthTXT"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:hint="MM"
-			android:textColorHint="#AAA"
-			android:textColor="#F00" 
-			android:background="#E5E5E5" 
-			android:gravity="center"
-			android:selectAllOnFocus="true"
-			android:layout_weight="1"
-			/>
+
+			<Button android:id="@+id/newProfileUserBirthdayBTN"
+				android:layout_width="wrap_content" 
+				android:text="Set Birthday"
+				android:layout_weight="1" 
+				android:layout_height="35px" />	
 			
-		<TextView
-			android:text="/"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_weight="0" />
 		
-		<EditText android:id="@+id/newProfileUserBirthdayDayTXT"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:hint="DD"
-			android:textColorHint="#AAA"
-			android:textColor="#F00" 
-			android:background="#E5E5E5" 
-			android:gravity="center"
-			android:selectAllOnFocus="true" />
-			
-		<TextView
-			android:text="/"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_weight="0" />
-		
-		<EditText android:id="@+id/newProfileUserBirthdayYearTXT"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:hint="YYYY"
-			android:textColorHint="#AAA"
-			android:textColor="#F00" 
-			android:background="#E5E5E5" 
-			android:gravity="center"
-			android:selectAllOnFocus="true" />
 	</LinearLayout>
 
 
