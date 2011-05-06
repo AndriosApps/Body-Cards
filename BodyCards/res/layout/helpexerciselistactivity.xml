@@ -18,7 +18,7 @@
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
 					android:gravity="center"
-					android:text="Getting Started"
+					android:text="Exercise List"
 					android:padding="10px"
 					android:textSize="15px"
 					android:textColor="#000"
@@ -30,27 +30,34 @@
 					android:layout_height="wrap_content"
 					android:background="#E5E5FF"
 					android:textColor="#000"
-					android:text="In order to track any of your workouts you should begin by creating at least one profile." />	
+					android:text="This activity allows you to edit your exercises and add exercises to Custom Workouts" />	
 
 				<TextView 
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
 					android:background="#FFFFFF"
 					android:textColor="#000"
-					android:text="To create a profile, look at the bottom left button on the homescreen, it should say 'Create Profile' or 'View Profiles' ." />
+					android:text="Long press on any exercise to view and edit it." />
 		
   				<TextView 
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
 					android:background="#E5E5FF"
 					android:textColor="#000"
-					android:text="After you have created a profile, the statistics for any workout that you complete will be saved to your profile." />	
+					android:text="Click the New button to create new custom workouts." />	
   
   				<TextView 
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
 					android:background="#FFFFFF"
 					android:textColor="#000"
-					android:text="For more detailed help on the main help screen." />
-		
+					android:text="Click any exercise in Exercise List to move it to Selected Exercises, and vice versa." />
+		  		
+		  		<TextView 
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:background="#E5E5FF"
+					android:textColor="#000"
+					android:text="Click the Clear button to move all exercises from Selected Exercises back to Exercise List." />	
+  
 </LinearLayout>
