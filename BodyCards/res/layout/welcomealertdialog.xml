@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent" android:orientation="vertical" android:gravity="center|center_vertical">
+    <TextView android:layout_width="fill_parent" android:id="@+id/textView1" android:layout_height="wrap_content" android:text="Welcome to Body Cards by Andrios!"></TextView>
+	<TextView android:text="We recommend that you begin by creating a profile, would you like to do that now?" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+	<CheckBox android:layout_width="fill_parent" android:text="Don't show this screen at startup." android:id="@+id/welcomeAlertDialogCheckBox" android:layout_height="wrap_content"></CheckBox>
+
+
+</LinearLayout>

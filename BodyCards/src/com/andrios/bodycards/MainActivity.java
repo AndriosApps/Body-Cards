@@ -5,19 +5,26 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	/** Called when the activity is first created. */
 
 	Button deckOfCardsWorkoutBTN, customWorkoutBTN, randomWorkoutBTN;
 	Button viewProfileBTN, helpBTN, quitBTN;
+	AlertDialog ad;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,6 +36,7 @@ public class MainActivity extends Activity {
 		
 		
 		setConnections();
+		setAlertDialog();
 		
 	}
 
@@ -55,6 +63,7 @@ public class MainActivity extends Activity {
 		
 		if(profileList.isEmpty()) {
 			viewProfileBTN.setText("Create Profile");
+			ad.show();
 		} else {
 			viewProfileBTN.setText("View Profiles");
 		}
@@ -139,4 +148,34 @@ public class MainActivity extends Activity {
 		
 	}
 
+	private void setAlertDialog() {
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		LayoutInflater inflater = LayoutInflater.from(this);
+		final View layout = inflater.inflate(R.layout.welcomealertdialog, null);
+		
+		builder.setView(layout)
+				.setTitle("Welcome!")
+				.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+					
+					
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						System.out.println("YES");
+						
+					}
+				})
+				.setNegativeButton("No Thanks", new DialogInterface.OnClickListener(){
+
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						System.out.println("NO");
+						
+					}
+					
+				});
+		ad = builder.create();
+	}
+
+	
 }
