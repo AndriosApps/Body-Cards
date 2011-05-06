@@ -180,7 +180,7 @@ public class NewProfileActivity extends Activity {
 					error = true;
 				}
 
-				if (bday.before(baseDate)) {
+				if (bday.before(baseDate) || birthdayBTN.getText().equals("Set Birthday")) {
 					Toast.makeText(NewProfileActivity.this, "Error: Birthday Field Incomplete ",
 							Toast.LENGTH_SHORT).show();
 					error = true;
