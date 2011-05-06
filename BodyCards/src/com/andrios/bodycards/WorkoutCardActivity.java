@@ -252,9 +252,11 @@ public class WorkoutCardActivity extends Activity {
 		} else {
 			name = "User " + (count % numPeople + 1);
 		}
-		if(!exercise.)
-		if ((count % numPeople) < numProf)
-			workouts[count % numPeople].start();
+		if(!exercise.isTimed){
+			if ((count % numPeople) < numProf)
+				workouts[count % numPeople].start();
+		}
+		
 
 		showCard(name);
 	}
@@ -446,6 +448,7 @@ public class WorkoutCardActivity extends Activity {
 					     }
 					  }.start();
 				}else if(timerAlertStartBTN.getText().equals("Finish")){
+					workouts[(count - 1) % numPeople].addTime(reps);
 					ad.dismiss();
 				}else if(timerAlertStartBTN.getText().equals("Pause")){
 					alertTime.cancel();
