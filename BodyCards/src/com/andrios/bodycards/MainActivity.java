@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -24,6 +25,7 @@ public class MainActivity extends Activity {
 	Button deckOfCardsWorkoutBTN, customWorkoutBTN, randomWorkoutBTN;
 	Button viewProfileBTN, helpBTN, quitBTN;
 	AlertDialog ad;
+	boolean showWelcome;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -58,12 +60,15 @@ public class MainActivity extends Activity {
 			
 		} catch (Exception e) {
 			profileList = new ArrayList<Profile>();
+			showWelcome = true;
 			
 		}
 		
 		if(profileList.isEmpty()) {
 			viewProfileBTN.setText("Create Profile");
-			ad.show();
+			if(showWelcome){
+				ad.show();
+			}
 		} else {
 			viewProfileBTN.setText("View Profiles");
 		}
@@ -153,6 +158,7 @@ public class MainActivity extends Activity {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		LayoutInflater inflater = LayoutInflater.from(this);
 		final View layout = inflater.inflate(R.layout.welcomealertdialog, null);
+		final CheckBox welcomeCheck = (CheckBox) layout.findViewById(R.id.welcomeAlertDialogCheckBox);
 		
 		builder.setView(layout)
 				.setTitle("Welcome!")
@@ -160,15 +166,25 @@ public class MainActivity extends Activity {
 					
 					
 					public void onClick(DialogInterface dialog, int which) {
-						// TODO Auto-generated method stub
-						System.out.println("YES");
+							
+							if(welcomeCheck.isChecked()){
+								showWelcome = false;
+							}
+							int whichOne = 1;
+							
+							Intent intent = new Intent(MainActivity.this.getBaseContext(), ViewProfileActivity.class);
+							intent.putExtra("whichOne", whichOne);
+							startActivity(intent);
+						
 						
 					}
 				})
 				.setNegativeButton("No Thanks", new DialogInterface.OnClickListener(){
 
 					public void onClick(DialogInterface dialog, int which) {
-						// TODO Auto-generated method stub
+						if(welcomeCheck.isChecked()){
+							showWelcome = false;
+						}
 						System.out.println("NO");
 						
 					}
