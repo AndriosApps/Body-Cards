@@ -88,7 +88,11 @@
 				android:selectAllOnFocus="true" />
 			
 		</LinearLayout>
-
+		<LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:layout_width="fill_parent">
+			<TextView android:background="#CCCCCC" android:id="@+id/profileChooserTitle" android:layout_weight="0" android:textColor="#000" android:layout_height="wrap_content" android:textSize="14px" android:gravity="left" android:text="Base reps / seconds" android:layout_width="wrap_content"></TextView>
+			<LinearLayout android:layout_height="fill_parent" android:id="@+id/linearLayout2" android:layout_width="wrap_content" android:layout_weight="1"></LinearLayout>
+			<ImageView android:layout_height="wrap_content" android:src="@drawable/help_icon" android:id="@+id/imageView1" android:layout_width="wrap_content"></ImageView>
+		</LinearLayout>
 		<LinearLayout
 			xmlns:android="http://schemas.android.com/apk/res/android"
 			android:layout_width="fill_parent"
@@ -99,7 +103,7 @@
 			android:layout_weight="0">
 		
 			<TextView android:id="@+id/minText" 
-				android:text="Min reps:" 
+				android:text="Min:" 
 				android:textColor="#000"
 				android:layout_width="wrap_content" 
 				android:layout_height="wrap_content"
@@ -117,7 +121,7 @@
 				android:selectAllOnFocus="true" android:gravity="center|left"></EditText>
 
 			<TextView android:id="@+id/maxText" 
-				android:text="Max reps:" 
+				android:text="Max:" 
 				android:textColor="#000"
 				android:layout_width="wrap_content" 
 				android:layout_height="wrap_content"

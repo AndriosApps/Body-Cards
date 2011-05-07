@@ -36,13 +36,13 @@
 	  	
 		  <Button android:id="@+id/viewProfileBackBTN"
 		  	android:text="Back"
-		  	android:layout_width="wrap_content"
+		  	android:layout_width="0px"
 		  	android:layout_height="50px"
 		  	android:layout_weight="1" />
 		  	
 		  <Button android:id="@+id/viewProfileNewProfileBTN"
 		  	android:text="Create Profile"
-		  	android:layout_width="wrap_content"
+		  	android:layout_width="0px"
 		  	android:layout_height="50px"
 		  	android:layout_weight="1" />
 
