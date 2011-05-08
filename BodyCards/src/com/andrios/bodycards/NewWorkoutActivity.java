@@ -6,17 +6,21 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +35,7 @@ public class NewWorkoutActivity extends Activity {
 	int chsnPrf;
 	EditText numPeeps, numSets, max, min;
 	String workoutName;
+	ImageView helpReps;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -83,6 +88,7 @@ public class NewWorkoutActivity extends Activity {
 
 		chsnPrf = 0;
 
+		helpReps = (ImageView) findViewById(R.id.newWorkoutActivityHelpRepsIMG);
 		TextView t = (TextView) findViewById(R.id.exerList);
 		String exLst = "";
 		for (int i = 0; i < exerciseNames.size(); i++) {
@@ -202,6 +208,16 @@ public class NewWorkoutActivity extends Activity {
 		});
 
 		done = (Button) findViewById(R.id.nwDone);
+		done.setOnFocusChangeListener(new OnFocusChangeListener(){
+
+			public void onFocusChange(View v, boolean hasFocus) {
+				InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+				imm.hideSoftInputFromWindow(done.getWindowToken(), 0);
+
+				
+			}
+			
+		});
 		done.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -251,6 +267,16 @@ public class NewWorkoutActivity extends Activity {
 				
 			}
 
+		});
+		
+		helpReps.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				Intent intent = new Intent(v.getContext(), HelpRepsActivity.class);
+				startActivity(intent);
+				
+			}
+			
 		});
 	}
 

@@ -44,7 +44,7 @@
    <activity android:name="HelpDeckOfCardsWorkoutActivity" android:screenOrientation="portrait" />
    <activity android:name="HelpRandomWorkoutActivity" android:screenOrientation="portrait" />
    <activity android:name="HelpCustomWorkoutActivity" android:screenOrientation="portrait" />
-   
+   <activity android:name="HelpRepsActivity" android:screenOrientation="portrait" />
    
     </application>
 	
