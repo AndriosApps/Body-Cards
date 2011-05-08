@@ -227,7 +227,7 @@ public class ExerciseListActivity extends Activity {
 								"3. Keep your knees bent while you jump again, bringing your feet together and your arms back to your sides. At the end of the movement, your weight should be on your heels.\n\n",
 								R.drawable.nopic,
 								2.0,
-								"Calves",
+								"Various",
 								false));
 		
 		exerciseList
@@ -246,7 +246,7 @@ public class ExerciseListActivity extends Activity {
 								"Repeat.\n\n",
 								R.drawable.nopic,
 								1.0,
-								"Hamstrings",
+								"Various",
 								false));
 		
 		exerciseList
@@ -263,7 +263,7 @@ public class ExerciseListActivity extends Activity {
 							"Repeat.\n\n",
 							R.drawable.nopic,
 							0.5,
-							"Calves",
+							"Cardio",
 							false));
 		
 		exerciseList
