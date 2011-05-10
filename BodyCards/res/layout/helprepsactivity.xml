@@ -18,7 +18,7 @@
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
 					android:gravity="center"
-					android:text="Exercise List"
+					android:text="min and max reps or seconds"
 					android:padding="10px"
 					android:textSize="15px"
 					android:textColor="#000"
@@ -30,34 +30,27 @@
 					android:layout_height="wrap_content"
 					android:background="#E5E5FF"
 					android:textColor="#000"
-					android:text="This activity allows you to edit your exercises and add exercises to Custom Workouts" />	
+					android:text="Min and Max are the base number of reps (seconds for timed exercises) you will complete for each exercise." />	
 
 				<TextView 
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
 					android:background="#FFFFFF"
 					android:textColor="#000"
-					android:text="Long press on any exercise to view and edit it." />
+					android:text="Each exercise has a multiplier associated with it." />
 		
   				<TextView 
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
 					android:background="#E5E5FF"
 					android:textColor="#000"
-					android:text="Click the New button to create new custom workouts." />	
+					android:text="If you choose 2-15 base reps / seconds, a Body Card of an exercise with a multiplier of 2 will show between 4-30 reps or seconds." />	
   
   				<TextView 
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
 					android:background="#FFFFFF"
 					android:textColor="#000"
-					android:text="Click any exercise in Exercise List to move it to Selected Exercises, and vice versa." />
-		  		
-		  		<TextView 
-					android:layout_width="fill_parent"
-					android:layout_height="wrap_content"
-					android:background="#E5E5FF"
-					android:textColor="#000"
-					android:text="Click the Clear button to move all exercises from Selected Exercises back to Exercise List." />	
-  
+					android:text="In this version of Body Cards reps and seconds are calculated the same way. In a workout with base 2-15, a timed exercise with a multiplier of 1 will be randomly assigned between 2-15 seconds, an exercise that is not timed with a multiplier of 1 will be randomly assigned between 2-15 reps. " />
+		  
 </LinearLayout>
