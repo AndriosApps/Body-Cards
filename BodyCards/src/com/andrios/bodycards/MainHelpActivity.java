@@ -40,7 +40,8 @@ public class MainHelpActivity extends Activity {
 		helpGettingStartedBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), HelpGettingStartedActivity.class);
+				Intent intent = new Intent(v.getContext(), HelpGenericActivity.class);
+				intent.putExtra("ID", 0);
 				startActivity(intent);
 				
 			}
@@ -50,7 +51,8 @@ public class MainHelpActivity extends Activity {
 		helpDeckOfCardsBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), HelpDeckOfCardsWorkoutActivity.class);
+				Intent intent = new Intent(v.getContext(), HelpGenericActivity.class);
+				intent.putExtra("ID", 2);
 				startActivity(intent);
 				
 			}
@@ -60,7 +62,8 @@ public class MainHelpActivity extends Activity {
 		helpRandomWorkoutBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), HelpRandomWorkoutActivity.class);
+				Intent intent = new Intent(v.getContext(), HelpGenericActivity.class);
+				intent.putExtra("ID", 5);
 				startActivity(intent);
 				
 			}
@@ -70,7 +73,8 @@ public class MainHelpActivity extends Activity {
 		helpCustomWorkoutBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), HelpCustomWorkoutActivity.class);
+				Intent intent = new Intent(v.getContext(), HelpGenericActivity.class);
+				intent.putExtra("ID", 4);
 				startActivity(intent);
 				
 			}

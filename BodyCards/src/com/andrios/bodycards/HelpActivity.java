@@ -19,8 +19,21 @@ public class HelpActivity extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.helpactivity);
+		
+		readHelp();
+		getExtras();
 		setConnections();
 	}//onCreate()
+
+	private void getExtras() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void readHelp() {
+		// TODO Auto-generated method stub
+		
+	}
 
 	private void setConnections() {
 

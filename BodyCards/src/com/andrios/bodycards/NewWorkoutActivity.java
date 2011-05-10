@@ -361,7 +361,8 @@ public class NewWorkoutActivity extends Activity {
 		helpReps.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), HelpRepsActivity.class);
+				Intent intent = new Intent(v.getContext(), HelpGenericActivity.class);
+				intent.putExtra("ID", 6);
 				startActivity(intent);
 				
 			}
