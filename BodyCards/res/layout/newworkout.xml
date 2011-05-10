@@ -14,6 +14,7 @@
 		android:background="#E5E5E5"
 		android:orientation="vertical"
 		android:gravity="center"
+		android:focusable="true"
 		android:layout_weight="1">
 		
 		<TextView android:id="@+id/textTitle"
@@ -53,6 +54,7 @@
 				android:layout_height="wrap_content" 
 				android:inputType="phone"
 				android:gravity="center"
+				android:nextFocusDown="@+id/repEdit"
 				android:selectAllOnFocus="true" />
 	
 		</LinearLayout>
@@ -85,6 +87,7 @@
 				android:background="#FFFFFF"
 				android:textSize="15px"
 				android:gravity="center"
+				android:nextFocusDown="@+id/minEdit"
 				android:selectAllOnFocus="true" />
 			
 		</LinearLayout>
@@ -122,6 +125,7 @@
 				android:inputType="phone"
 				android:textColor="#F00"
 				android:layout_weight="2"
+				android:nextFocusDown="@+id/maxEdit"
 				android:selectAllOnFocus="true" android:gravity="center|left"></EditText>
 
 			<TextView android:id="@+id/maxText" 
@@ -140,7 +144,9 @@
 				android:inputType="phone"
 				android:textColor="#F00"
 				android:layout_weight="2"
-				android:selectAllOnFocus="true" android:gravity="center|left"></EditText>
+				android:selectAllOnFocus="true" 
+				android:nextFocusDown="@+id/nwDone"
+				android:gravity="center|left"></EditText>
 				
 		</LinearLayout>
 

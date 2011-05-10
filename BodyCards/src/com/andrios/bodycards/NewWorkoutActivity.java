@@ -100,9 +100,16 @@ public class NewWorkoutActivity extends Activity {
 		t.setText(exLst);
 
 		numPeeps = (EditText) findViewById(R.id.numPeoEdit);
+		
 		numSets = (EditText) findViewById(R.id.repEdit);
 		max = (EditText) findViewById(R.id.maxEdit);
 		min = (EditText) findViewById(R.id.minEdit);
+		InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+		// only will trigger it if no physical keyboard is open
+		mgr.showSoftInput(numPeeps, InputMethodManager.SHOW_IMPLICIT);
+		mgr.showSoftInput(numSets, InputMethodManager.SHOW_IMPLICIT);
+		mgr.showSoftInput(max, InputMethodManager.SHOW_IMPLICIT);
+		mgr.showSoftInput(min, InputMethodManager.SHOW_IMPLICIT);
 
 		lv = (ListView) findViewById(R.id.profileChooser);
 		aa = new ArrayAdapter<Profile>(this, R.layout.list_view2, profs);
@@ -208,16 +215,91 @@ public class NewWorkoutActivity extends Activity {
 		});
 
 		done = (Button) findViewById(R.id.nwDone);
-		done.setOnFocusChangeListener(new OnFocusChangeListener(){
+		numSets.setOnFocusChangeListener(new OnFocusChangeListener(){
 
 			public void onFocusChange(View v, boolean hasFocus) {
-				InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-				imm.hideSoftInputFromWindow(done.getWindowToken(), 0);
+				System.out.println("DONE FOCUS CHANGE");
+				if(hasFocus){
+					/*
+					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+					// only will trigger it if no physical keyboard is open
+
+					mgr.showSoftInput(numSets, InputMethodManager.SHOW_IMPLICIT);
+					*/
+				}else{
+					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+					mgr.hideSoftInputFromWindow(numSets.getWindowToken(), 0);
+				}
+
 
 				
 			}
 			
 		});
+		numPeeps.setOnFocusChangeListener(new OnFocusChangeListener(){
+
+			public void onFocusChange(View v, boolean hasFocus) {
+				System.out.println("DONE FOCUS CHANGE");
+				if(hasFocus){
+					/*
+					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+					// only will trigger it if no physical keyboard is open
+
+					mgr.showSoftInput(numSets, InputMethodManager.SHOW_IMPLICIT);
+					*/
+				}else{
+					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+					mgr.hideSoftInputFromWindow(numPeeps.getWindowToken(), 0);
+				}
+
+
+				
+			}
+			
+		});
+		max.setOnFocusChangeListener(new OnFocusChangeListener(){
+
+			public void onFocusChange(View v, boolean hasFocus) {
+				System.out.println("DONE FOCUS CHANGE");
+				if(hasFocus){
+					/*
+					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+					// only will trigger it if no physical keyboard is open
+
+					mgr.showSoftInput(numSets, InputMethodManager.SHOW_IMPLICIT);
+					*/
+				}else{
+					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+					mgr.hideSoftInputFromWindow(max.getWindowToken(), 0);
+				}
+
+
+				
+			}
+			
+		});
+		min.setOnFocusChangeListener(new OnFocusChangeListener(){
+
+			public void onFocusChange(View v, boolean hasFocus) {
+				System.out.println("DONE FOCUS CHANGE");
+				if(hasFocus){
+					/*
+					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+					// only will trigger it if no physical keyboard is open
+
+					mgr.showSoftInput(numSets, InputMethodManager.SHOW_IMPLICIT);
+					*/
+				}else{
+					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+					mgr.hideSoftInputFromWindow(min.getWindowToken(), 0);
+				}
+
+
+				
+			}
+			
+		});
+	
 		done.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
