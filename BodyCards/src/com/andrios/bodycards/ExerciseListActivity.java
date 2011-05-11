@@ -289,7 +289,7 @@ public class ExerciseListActivity extends Activity {
 								"2. Leading with the chin and chest towards the ceiling, contract the abdominal and raise shoulders off floor or bench until you are seated in an upright position.\n\n" +
 								"3. Return to start position.\n\n" +
 								"4. Remember to keep head and back in a neutral position. Hyperextension or flexion of either may cause injury.",
-								R.drawable.situp,
+								R.drawable.nopic,
 								1.0,
 								"Abs",
 								false));
@@ -301,7 +301,7 @@ public class ExerciseListActivity extends Activity {
 							"2. Extend your legs behind you and rest on your toes, as if you are going to do a pushup. Your hips should not be lifted to the ceiling, nor should your back be arched. You should look to attain a straight line between your shoulders and toes.\n\n" +
 							"3. Tighten your abdominal muscles to help you hold the position correctly, and hold it as long as you can or until time expires.\n\n" +
 							"4. Alternative. Lift one leg at a time behind you to make the exercise more challenging.",
-							R.drawable.situp,
+							R.drawable.nopic,
 							1.0,
 							"Abs",
 							true));
