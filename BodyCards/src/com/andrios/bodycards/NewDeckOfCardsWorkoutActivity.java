@@ -6,12 +6,15 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -58,6 +61,28 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 		fullRDO = (RadioButton) findViewById(R.id.newDeckOfCardsFullRDO);
 		
 		chosenProfile = 0;
+		
+		numGuestsTXT.setOnFocusChangeListener(new OnFocusChangeListener(){
+
+			public void onFocusChange(View v, boolean hasFocus) {
+				System.out.println("DONE FOCUS CHANGE");
+				if(hasFocus){
+					/*
+					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+					// only will trigger it if no physical keyboard is open
+
+					mgr.showSoftInput(numSets, InputMethodManager.SHOW_IMPLICIT);
+					*/
+				}else{
+					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+					mgr.hideSoftInputFromWindow(numGuestsTXT.getWindowToken(), 0);
+				}
+
+
+				
+			}
+			
+		});
 		
 	
 		//Set array adapter for availableProfilesLV
