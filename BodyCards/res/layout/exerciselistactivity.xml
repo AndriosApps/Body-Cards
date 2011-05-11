@@ -21,8 +21,7 @@
 	android:layout_height="0px"
 	android:background="#E5E5E5"
 	android:choiceMode="multipleChoice"
-	android:layout_weight="1"
-	android:listSelector="@drawable/checked" />
+	android:layout_weight="1" />
 	
   <TextView android:layout_weight="0"
   	android:layout_width="fill_parent"
