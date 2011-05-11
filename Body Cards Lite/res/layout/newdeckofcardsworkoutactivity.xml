@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:background="#FFFFFF"
+	android:orientation="vertical"
+	android:gravity="top">
+		
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:background="#E5E5E5"
+		android:orientation="vertical"
+		android:gravity="center"
+		android:layout_weight="1">
+		
+		<TextView android:id="@+id/textTitle"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="Set Workout Details"
+			android:gravity="center"
+			android:textSize="20px"
+			android:background="#CCCCCC"
+			android:textColor="#000"
+			android:layout_weight="0"></TextView>
+ 
+		 <LinearLayout
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:background="#E5E5E5"
+			android:orientation="horizontal"
+			android:gravity="center"
+			android:layout_weight="0">
+			
+			<TextView android:id="@+id/newQuickWorkoutActivityNumberGuestsLBL" 
+				android:text="Guest Users" 
+				android:textColor="#000"
+				android:layout_weight="0"
+				android:layout_width="90px" 
+				android:layout_height="wrap_content"
+				android:gravity="left" />
+				
+			<EditText android:id="@+id/newQuickWorkoutActivityNumberGuestsTXT" 
+				android:text="0" 
+				android:layout_weight="1"
+				android:layout_width="0px"
+				android:textColor="#F00"
+				android:textSize="15px"
+				android:background="#E5E5E5"
+				android:layout_height="wrap_content" 
+				android:inputType="phone"
+				android:gravity="center"
+				android:selectAllOnFocus="true" />
+	
+		</LinearLayout>
+		 <LinearLayout 
+		 	android:layout_width="fill_parent" 
+		 	android:layout_height="wrap_content" 
+		 	android:id="@+id/linearLayout1" android:gravity="center">
+		    <TextView android:id="@+id/RadioLBL"
+		         	android:text="Deck Size" 
+		         	android:layout_width="90px" 
+		        	android:layout_height="wrap_content" 
+		        	android:textColor="#000" 
+		        	android:layout_weight="0" 
+		        	android:gravity="center|left">
+		        </TextView>
+		     <RadioGroup android:id="@+id/newDeckOfCardsRadioGrp" 
+		     	android:orientation="horizontal" 
+		     	android:layout_width="0px" 
+		     	android:layout_height="wrap_content" 
+		     	android:layout_weight="1" 
+		     	android:gravity="center">
+
+		         <RadioButton 
+		         	android:text="1/4" 
+		         	android:layout_height="wrap_content" 
+		         	android:textColor="#000" 
+		         	android:id="@+id/newDeckOfCardsQuarterRDO" 
+		         	android:layout_weight="1" 
+		         	android:layout_width="wrap_content">
+		         </RadioButton>
+		         <RadioButton 
+		         	android:text="1/2" 
+		         	android:checked="true" 
+		         	android:layout_height="wrap_content" 
+		         	android:textColor="#000" 
+		         	android:id="@+id/newDeckOfCardsHalfRDO" 
+		         	android:layout_weight="1" 
+		         	android:layout_width="wrap_content">
+		         </RadioButton>
+		         <RadioButton 
+		         	android:text="Full" 
+		         	android:id="@+id/newDeckOfCardsFullRDO" 
+		         	android:layout_width="wrap_content" 
+		         	android:layout_height="wrap_content"
+		         	android:textColor="#000" 
+		         	android:checked="true">
+		         </RadioButton>
+		     </RadioGroup>
+		 </LinearLayout>
+		
+		 <TextView android:id="@+id/profileChooserTitle"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="Choose Profiles for Workout"
+			android:gravity="center"
+			android:textSize="18px"
+			android:background="#CCCCCC"
+			android:textColor="#000"
+			android:layout_weight="0" />
+			
+		 <ListView android:id="@+id/newQuickWorkoutActivityAvailableProfilesListView"
+			android:layout_width="fill_parent"
+			android:layout_height="0px"
+			android:choiceMode="multipleChoice"
+			android:gravity="top"
+			android:layout_weight="1" />
+		
+		<TextView android:id="@+id/profileChooserTitle"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="Selected Profiles"
+			android:gravity="center"
+			android:textSize="18px"
+			android:background="#CCCCCC"
+			android:textColor="#000"
+			android:layout_weight="0" />
+			
+		 <ListView android:id="@+id/newQuickWorkoutActivityChosenProfilesListView"
+			android:layout_width="fill_parent"
+			android:layout_height="0px"
+			android:choiceMode="multipleChoice"
+			android:gravity="top"
+			android:layout_weight="1" />
+				
+		
+	</LinearLayout>
+
+
+<!-- Fill the rest of screen and place buttons at the bottom of screen -->
+	
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="55px"
+		android:background="#555555"
+		android:gravity="bottom"
+		android:orientation="horizontal"
+		android:layout_weight="0">
+		
+		<Button android:id="@+id/newQuickWorkoutActivityBackBTN" 
+			android:layout_width="wrap_content"
+			android:text="Back"
+			android:layout_height="50px"
+			android:layout_weight="1" />
+			
+		<Button android:id="@+id/newQuickWorkoutActivityResetBTN" 
+			android:layout_width="wrap_content"
+			android:text="Reset"
+			android:layout_height="50px"
+			android:layout_weight="1" />
+		
+		<Button android:id="@+id/newQuickWorkoutActivityDoneBTN" 
+			android:layout_width="wrap_content"
+			android:layout_height="50px"
+			android:text="Next"
+			android:layout_weight="1" />
+
+	</LinearLayout>
+	
+</LinearLayout>

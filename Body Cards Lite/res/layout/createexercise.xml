@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="#FFFFFF"
+  android:gravity="center"
+  android:orientation="vertical">
+  
+	  
+  <TextView android:id="@+id/exerciseTitle"
+  	android:text="New Exercise"
+  	android:layout_width="fill_parent"
+  	android:layout_height="wrap_content"
+  	android:textColor="#000"
+  	android:background="#CCCCCC"
+  	android:gravity="center"
+  	android:textSize="18px"
+  	android:layout_weight="0" />
+	  
+ 
+  
+  <LinearLayout
+	  android:id="@+id/newExNameRow"
+	  android:layout_width="fill_parent"
+	  android:layout_height="wrap_content"
+	  android:background="#E5E5E5"
+	  android:gravity="center"
+	  android:orientation="horizontal"
+	  android:layout_weight="0">
+  
+	  <TextView android:id="@+id/newExNameLabel"
+	  	android:text="Name"
+	  	android:gravity="center"
+	  	android:layout_width="100px"
+	  	android:layout_height="wrap_content"
+	  	android:layout_weight="0"
+	  	android:textColor="#000" />
+	  	
+	  <EditText android:id="@+id/newExName"
+	  	android:layout_width="fill_parent"
+	  	android:layout_height="wrap_content"
+	  	android:layout_weight="1"
+	  	android:hint="Exercise"
+	  	android:textColorHint="#E5E5E5"
+	  	android:inputType="text" />
+ 
+  </LinearLayout>
+
+  
+  <LinearLayout android:id="@+id/newExMuscleGroupRow"
+  	  android:layout_width="fill_parent"
+  	  android:layout_height="wrap_content"
+  	  android:layout_weight="0"
+  	  android:orientation="horizontal">
+  	  
+  	  <TextView android:id="@+id/newExMuscleGroupLBL"
+	  	android:text="Muscle Group"
+	  	android:gravity="center"
+	  	android:layout_width="100px"
+	  	android:layout_height="fill_parent"
+	  	android:textColor="#000"
+	  	android:layout_weight="0" />
+	  	
+	  <Spinner android:id="@+id/newExMuscleGroupSpinner"
+	  	android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+	  	
+  
+  </LinearLayout>
+ 
+   <LinearLayout
+	  android:id="@+id/newExMultiplierRow"
+	  android:layout_width="fill_parent"
+	  android:layout_height="wrap_content"
+	  android:background="#E5E5E5"
+	  android:gravity="center"
+	  android:orientation="horizontal"
+	  android:layout_weight="0">
+  
+	  <TextView android:id="@+id/newExMultiplierLBL"
+	  	android:text="Multiplier"
+	  	android:gravity="center"
+	  	android:layout_width="100px"
+	  	android:layout_height="wrap_content"
+	  	android:layout_weight="0"
+	  	android:textColor="#000" />
+	  	
+	  <EditText android:id="@+id/newExMultiplier"
+	  	android:text="1.0"
+	  	android:layout_width="fill_parent"
+	  	android:layout_height="wrap_content"
+	  	android:hint="Exercise"
+	  	android:textColorHint="#E5E5E5"
+	  	android:inputType="number"
+	  	android:layout_weight="1" />
+ 
+  </LinearLayout>
+ 
+  <LinearLayout
+	  android:id="@+id/newExDescRow"
+	  android:layout_width="fill_parent"
+	  android:layout_height="wrap_content"
+	  android:background="#FFFFFF"
+	  android:gravity="top"
+	  android:orientation="horizontal"
+	  android:layout_weight="0">
+  
+	  <TextView android:id="@+id/newExTimedLabel"
+	  	android:text="Timed Exercise"
+	  	android:gravity="center"
+	  	android:layout_width="100px"
+	  	android:layout_height="fill_parent"
+	  	android:textColor="#000"
+	  	android:layout_weight="0" />
+	  	
+	  <RadioGroup
+	  	android:id="@+id/newExTimedRadioGrp"
+	  	android:layout_height="wrap_content"
+	  	android:layout_width="0px"
+	  	android:layout_weight="1"
+	  	android:orientation="horizontal">
+	  	
+	  	<RadioButton android:id="@+id/newExTimedYesRadioBTN"
+	  		android:text="Yes"
+	  		android:layout_height="wrap_content"
+	  		android:layout_width="wrap_content"
+	  		android:textColor="#000"
+	  		android:layout_weight="1" />
+	  		
+	
+	  		
+	  	<RadioButton android:id="@+id/newExTimedNoRadioBTN"
+	  		android:text="No"
+	  		android:layout_height="wrap_content"
+	  		android:layout_width="wrap_content"
+	  		android:textColor="#000"
+	  		android:checked="true"
+	  		android:layout_weight="1" />
+	  		
+	  </RadioGroup>
+	  	
+ 
+  </LinearLayout>
+  
+  <LinearLayout
+	  android:id="@+id/newExDescRow"
+	  android:layout_width="fill_parent"
+	  android:layout_height="wrap_content"
+	  android:background="#E5E5E5"
+	  android:gravity="top"
+	  android:orientation="horizontal"
+	  android:layout_weight="1">
+  
+	  <TextView android:id="@+id/newExDescLabel"
+	  	android:text="Description"
+	  	android:gravity="center"
+	  	android:layout_width="100px"
+	  	android:layout_height="wrap_content"
+	  	android:textColor="#000"
+	  	android:layout_weight="0" />
+	  <ScrollView
+	  	android:layout_width="fill_parent"
+	  	android:layout_height="wrap_content"
+	  	android:layout_weight="1">
+		  <EditText android:id="@+id/newExDesc"
+		  	android:layout_width="fill_parent"
+		  	android:layout_height="wrap_content"
+		  	android:hint="Description of Exercise"
+		  	android:textColorHint="#E5E5E5"
+		  	android:gravity="top"
+		  	android:singleLine="false"
+		  	android:scrollHorizontally="false"
+		  	android:layout_weight="1" />
+	  </ScrollView>
+ 
+  </LinearLayout>
+
+  
+  <!-- Fill the rest of screen and place buttons at the bottom of screen -->
+		
+    
+  <LinearLayout
+    android:layout_width="fill_parent"
+  	android:layout_height="55px"
+  	android:background="#555555"
+ 	android:gravity="bottom"
+  	android:orientation="horizontal"
+  	android:layout_weight="0">
+  	
+  <Button android:id="@+id/ceBack"
+  	android:text="Back"
+  	android:layout_width="wrap_content"
+  	android:layout_height="50px"
+  	android:layout_weight="1" />
+  	
+  <Button android:id="@+id/ceReset"
+  	android:text="Clear"
+  	android:layout_width="wrap_content"
+  	android:layout_height="50px"
+  	android:layout_weight="1" />
+  	
+  <Button android:id="@+id/ceDone"
+  	android:text="Done"
+  	android:layout_width="wrap_content"
+  	android:layout_height="50px"
+  	android:layout_weight="1" />
+  	
+  </LinearLayout>
+</LinearLayout>

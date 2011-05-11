@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="muscleGroupChoices">
+    	<item>Hamstrings</item>
+        <item>Calves</item>
+        <item>Cardio</item>
+        <item>Chest</item>123qweasdzxcZXCASDQWE!@#
+        <item>Back</item>
+        <item>Shoulders</item>
+        <item>Triceps</item>
+        <item>Various</item>
+        <item>Biceps</item>
+        <item>Forearms</item>
+        <item>Trapezius</item>
+        <item>Abs</item>
+    </string-array>
+
+    
+</resources>
