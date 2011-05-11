@@ -15,7 +15,7 @@
   	android:gravity="center"
   	android:background="#CCC"
   	android:layout_weight="0"
-  	android:textSize="18px" />
+  	android:textSize="18dp" />
 	  
   
   <LinearLayout
@@ -28,24 +28,24 @@
   
   	  <ImageView android:id="@+id/newExImg"
   	  	android:src="@drawable/nopic"
-	  	android:layout_width="100px"
-	  	android:layout_height="100px"
+	  	android:layout_width="100dp"
+	  	android:layout_height="100dp"
 	  	android:layout_weight="0" />
   	 	
   	 	<LinearLayout
   	 		android:orientation="vertical"
-  	 		android:layout_width="0px"
+  	 		android:layout_width="0dp"
   	 		android:layout_height="fill_parent"
   	 		android:layout_weight="1">
   	 		
   	 		<LinearLayout
   	 			android:layout_width="fill_parent"
-  	 			android:layout_height="0px"
+  	 			android:layout_height="0dp"
   	 			android:layout_weight="1"
   	 			android:orientation="horizontal">
   	 		
 	  	 		<TextView android:id="@+id/newExCategoryTXT"
-	  	 			android:layout_width="0px"
+	  	 			android:layout_width="0dp"
 	  	 			android:layout_height="wrap_content"
 	  	 			android:layout_weight="1"
 	  	 			android:text="Category: Abs"
@@ -53,8 +53,8 @@
 	  	 			android:gravity="left" />
   	 			
   			  	<ImageView android:id="@+id/newExTimedIconIMG"
-  			  		android:layout_width="15px"
-	  			  	android:layout_height="15px"
+  			  		android:layout_width="15dp"
+	  			  	android:layout_height="15dp"
 	  			  	android:layout_weight="0"
 	  			  	android:gravity="right" />
 	  			  	
@@ -65,14 +65,14 @@
 			  	android:layout_height="wrap_content"
 			  	android:layout_weight="1"
 			  	android:text="Exercise Name"
-			  	android:textSize="19px"
+			  	android:textSize="19dp"
 			  	android:gravity="center"
 			  	android:textColor="#000"
 			  	android:background="#FFF" />
   			  	
 		  	<TextView android:id="@+id/displayExMultiplierTXT"  
 			  	android:text="Multiplier: 1.0" 
-			  	android:textSize="15px"
+			  	android:textSize="15dp"
 			  	android:layout_width="fill_parent" 
 			  	android:layout_height="wrap_content"
 			  	android:layout_weight="1"
@@ -87,14 +87,14 @@
   	android:layout_width="fill_parent"
   	android:layout_height="wrap_content"
   	android:background="#CCC"
-  	android:textSize="15px"
+  	android:textSize="15dp"
   	android:layout_weight="0"
   	android:textColor="#000" />
   
   
    <ScrollView
 	  android:layout_width="fill_parent"
-	  android:layout_height="0px"
+	  android:layout_height="0dp"
 	  android:layout_weight="1">
   		  	
 	  <TextView android:id="@+id/newExDesc"
@@ -113,7 +113,7 @@
   
   <LinearLayout
 	    android:layout_width="fill_parent"
-	  	android:layout_height="55px"
+	  	android:layout_height="55dp"
 	  	android:background="#555555"
 	 	android:gravity="bottom"
 	 	android:layout_weight="0"
@@ -122,13 +122,13 @@
 	  <Button android:id="@+id/deBack"
 	  	android:text="Back"
 	  	android:layout_width="wrap_content"
-	  	android:layout_height="50px"
+	  	android:layout_height="50dp"
 	  	android:layout_weight="1" />
 	  	
 	  <Button android:id="@+id/deUpdate"
 	  	android:text="Update"
 	  	android:layout_width="wrap_content"
-	  	android:layout_height="50px"
+	  	android:layout_height="50dp"
 	  	android:layout_weight="1" />
   	
   </LinearLayout>

@@ -58,7 +58,6 @@ public class StartDeckActivity extends Activity {
 		startImage = (ImageView) findViewById(R.id.startButton);
 		startImage.setOnClickListener(new OnClickListener (){
 
-			@Override
 			public void onClick(View v) {
 				setResult(RESULT_OK);
 				Intent wkout = new Intent(v.getContext(),

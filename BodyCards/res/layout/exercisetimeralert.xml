@@ -11,7 +11,7 @@
     	android:layout_height="wrap_content">
     </TextView>
     <LinearLayout 
-    	android:layout_height="75px" 
+    	android:layout_height="75dp" 
     	android:layout_width="fill_parent" 
     	android:id="@+id/linearLayout2" 
     	android:gravity="center|center_horizontal">
@@ -27,6 +27,6 @@
     	android:layout_width="fill_parent" 
     	android:id="@+id/linearLayout1" 
     	android:gravity="center_horizontal">
-        <Button android:text="Start" android:id="@+id/timerAlertStartBTN" android:layout_width="100px" android:layout_height="wrap_content"></Button>
+        <Button android:text="Start" android:id="@+id/timerAlertStartBTN" android:layout_width="100dp" android:layout_height="wrap_content"></Button>
     </LinearLayout>
 </LinearLayout>

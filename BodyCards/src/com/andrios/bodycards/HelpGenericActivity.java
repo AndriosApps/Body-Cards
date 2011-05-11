@@ -69,7 +69,6 @@ public class HelpGenericActivity extends Activity {
 	private void setOnClickListeners() {
 		back.setOnClickListener(new OnClickListener(){
 
-			@Override
 			public void onClick(View v) {
 				HelpGenericActivity.this.finish();
 				
@@ -156,6 +155,14 @@ public class HelpGenericActivity extends Activity {
 				"The creators, producers, participants, distributors of Body Cards disclaim any liabilities or loss in connection with the exercises and advice herein.");
 		
 		helpList.add(help);		
+		
+		//ID = 8
+		help = new Help("Disclaimer", 
+				"'Homepage Image: Ambro / FreeDigitalPhotos.net.\n\n" +
+				"'Complete Image: Ambro / FreeDigitalPhotos.net.\n\n" +
+				"The instructions and advice presented are in no way intended as a substitute for medical counseling. \n\n");
+		
+		helpList.add(help);	
 		
 
 	}

@@ -12,7 +12,8 @@ import android.widget.Button;
 public class MainHelpActivity extends Activity {
 
 	
-	Button helpGettingStartedBTN, helpDeckOfCardsBTN, helpRandomWorkoutBTN, helpCustomWorkoutBTN, DisclaimerBTN;
+	Button helpGettingStartedBTN, helpDeckOfCardsBTN, helpRandomWorkoutBTN;
+	Button helpCustomWorkoutBTN, DisclaimerBTN, imagesBTN;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -31,6 +32,8 @@ public class MainHelpActivity extends Activity {
 		helpRandomWorkoutBTN = (Button) findViewById(R.id.mainHelpActivityRandomWorkoutBTN);
 		helpCustomWorkoutBTN = (Button) findViewById(R.id.mainHelpActivityCustomWorkoutBTN);
 		DisclaimerBTN = (Button) findViewById(R.id.mainHelpActivityDisclaimerBTN);
+		imagesBTN = (Button) findViewById(R.id.mainHelpActivityImagesBTN);
+		
 		
 		setOnClickListeners();
 		
@@ -87,6 +90,17 @@ public class MainHelpActivity extends Activity {
 			public void onClick(View v) {
 				Intent intent = new Intent(v.getContext(), HelpGenericActivity.class);
 				intent.putExtra("ID", 7);
+				startActivity(intent);
+				
+			}
+			
+		});
+		
+		imagesBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				Intent intent = new Intent(v.getContext(), HelpGenericActivity.class);
+				intent.putExtra("ID", 8);
 				startActivity(intent);
 				
 			}

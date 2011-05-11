@@ -22,7 +22,7 @@
 			android:layout_height="wrap_content"
 			android:text="Set Workout Details"
 			android:gravity="center"
-			android:textSize="20px"
+			android:textSize="20dp"
 			android:background="#CCCCCC"
 			android:textColor="#000"
 			android:layout_weight="0"></TextView>
@@ -40,16 +40,16 @@
 				android:text="Guest Users" 
 				android:textColor="#000"
 				android:layout_weight="1"
-				android:layout_width="0px" 
+				android:layout_width="0dp" 
 				android:layout_height="wrap_content"
 				android:gravity="left" />
 				
 			<EditText android:id="@+id/numPeoEdit" 
 				android:text="0" 
 				android:layout_weight="1"
-				android:layout_width="0px"
+				android:layout_width="0dp"
 				android:textColor="#F00"
-				android:textSize="15px"
+				android:textSize="15dp"
 				android:background="#E5E5E5"
 				android:layout_height="wrap_content" 
 				android:inputType="phone"
@@ -72,7 +72,7 @@
 				android:text="Number of Sets" 
 				android:textColor="#000"
 				android:layout_weight="1"
-				android:layout_width="0px" 
+				android:layout_width="0dp" 
 				android:layout_height="wrap_content"
 				android:gravity="left" />
 				
@@ -80,25 +80,25 @@
 			<EditText android:id="@+id/repEdit" 
 				android:text="20" 
 				android:layout_weight="1"
-				android:layout_width="0px" 
+				android:layout_width="0dp" 
 				android:layout_height="fill_parent" 
 				android:inputType="phone"
 				android:textColor="#F00"
 				android:background="#FFFFFF"
-				android:textSize="15px"
+				android:textSize="15dp"
 				android:gravity="center"
 				android:nextFocusDown="@+id/minEdit"
 				android:selectAllOnFocus="true" />
 			
 		</LinearLayout>
 		<LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:layout_width="fill_parent">
-			<TextView android:background="#CCCCCC" android:id="@+id/profileChooserTitle" android:layout_weight="0" android:textColor="#000" android:layout_height="wrap_content" android:textSize="14px" android:gravity="left" android:text="Base reps / seconds" android:layout_width="wrap_content"></TextView>
+			<TextView android:background="#CCCCCC" android:id="@+id/profileChooserTitle" android:layout_weight="0" android:textColor="#000" android:layout_height="wrap_content" android:textSize="14dp" android:gravity="left" android:text="Base reps / seconds" android:layout_width="wrap_content"></TextView>
 			<LinearLayout android:layout_height="fill_parent" android:id="@+id/linearLayout2" android:layout_width="wrap_content" android:layout_weight="1"></LinearLayout>
 			<ImageView 
 				android:src="@drawable/help_icon" 
 				android:id="@+id/newWorkoutActivityHelpRepsIMG" 
-				android:layout_width="15px" 
-				android:layout_height="15px" ></ImageView>
+				android:layout_width="15dp" 
+				android:layout_height="15dp" ></ImageView>
 		</LinearLayout>
 		<LinearLayout
 			xmlns:android="http://schemas.android.com/apk/res/android"
@@ -118,8 +118,8 @@
 				
 			<EditText android:id="@+id/minEdit" 
 				android:text="2" 
-				android:layout_width="0px"
-				android:textSize="15px"
+				android:layout_width="0dp"
+				android:textSize="15dp"
 				android:background="#E5E5E5"
 				android:layout_height="wrap_content" 
 				android:inputType="phone"
@@ -137,8 +137,8 @@
 				
 			<EditText android:id="@+id/maxEdit" 
 				android:text="15" 
-				android:layout_width="0px"
-				android:textSize="15px"
+				android:layout_width="0dp"
+				android:textSize="15dp"
 				android:background="#E5E5E5"
 				android:layout_height="wrap_content" 
 				android:inputType="phone"
@@ -162,13 +162,13 @@
 			<TextView android:id="@+id/exerLabel" 
 				android:text="Exercise(s):" 
 				android:textColor="#000"
-				android:layout_width="0px" 
+				android:layout_width="0dp" 
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
 				android:gravity="left" />
 				
-			<ScrollView android:layout_height="60px"
-				android:layout_width="0px"
+			<ScrollView android:layout_height="60dp"
+				android:layout_width="0dp"
 				android:layout_weight="2" >
 				
 				<TextView android:id="@+id/exerList" 
@@ -186,14 +186,14 @@
 			android:layout_height="wrap_content"
 			android:text="Choose Profiles for Workout"
 			android:gravity="center"
-			android:textSize="18px"
+			android:textSize="18dp"
 			android:background="#CCCCCC"
 			android:textColor="#000"
 			android:layout_weight="0" />
 			
 		 <ListView android:id="@+id/profileChooser"
 			android:layout_width="fill_parent"
-			android:layout_height="0px"
+			android:layout_height="0dp"
 			android:choiceMode="multipleChoice"
 			android:gravity="top"
 			android:layout_weight="1" />
@@ -203,14 +203,14 @@
 			android:layout_height="wrap_content"
 			android:text="Selected Profiles"
 			android:gravity="center"
-			android:textSize="18px"
+			android:textSize="18dp"
 			android:background="#CCCCCC"
 			android:textColor="#000"
 			android:layout_weight="0" />
 			
 		 <ListView android:id="@+id/chosenProfiles"
 			android:layout_width="fill_parent"
-			android:layout_height="0px"
+			android:layout_height="0dp"
 			android:choiceMode="multipleChoice"
 			android:gravity="top"
 			android:layout_weight="1" />
@@ -224,7 +224,7 @@
 	<LinearLayout
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="fill_parent"
-		android:layout_height="55px"
+		android:layout_height="55dp"
 		android:background="#555555"
 		android:gravity="bottom"
 		android:orientation="horizontal"
@@ -233,18 +233,18 @@
 		<Button android:id="@+id/nwBack" 
 			android:layout_width="wrap_content"
 			android:text="Back"
-			android:layout_height="50px"
+			android:layout_height="50dp"
 			android:layout_weight="1" />
 			
 		<Button android:id="@+id/nwReset" 
 			android:layout_width="wrap_content"
 			android:text="Reset"
-			android:layout_height="50px"
+			android:layout_height="50dp"
 			android:layout_weight="1" />
 		
 		<Button android:id="@+id/nwDone" 
 			android:layout_width="wrap_content"
-			android:layout_height="50px"
+			android:layout_height="50dp"
 			android:text="Next"
 			android:layout_weight="1" />
 

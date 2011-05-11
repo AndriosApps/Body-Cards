@@ -10,7 +10,7 @@
 		android:layout_height="wrap_content" 
 		android:text="Enter Profile Details"
 		android:gravity="center" 
-		android:textSize="18px" 
+		android:textSize="18dp" 
 		android:textColor="#000"
 		android:background="#CCCCCC"
 		android:layout_weight="0"></TextView>
@@ -25,7 +25,7 @@
 
 		<TextView android:id="@+id/firstNameText" 
 			android:text="First Name"
-			android:layout_width="100px" 
+			android:layout_width="100dp" 
 			android:layout_height="wrap_content"
 			android:gravity="center" 
 			android:textColor="#000"
@@ -36,7 +36,7 @@
 			android:background="#E5E5E5" 
 			android:textColorHint="#AAA"
 			android:textColor="#F00" 
-			android:layout_width="0px"
+			android:layout_width="0dp"
 			android:layout_height="wrap_content" 
 			android:inputType="textCapWords"
 			android:selectAllOnFocus="true"
@@ -55,7 +55,7 @@
 		<TextView android:id="@+id/lastNameText" 
 			android:text="Last Name"
 			android:textColor="#000" 
-			android:layout_width="100px"
+			android:layout_width="100dp"
 			android:layout_height="wrap_content" 
 			android:gravity="center"
 			android:layout_weight="0" />
@@ -63,7 +63,7 @@
 		<EditText android:id="@+id/newProfileUserLastNameTXT" 
 			android:hint="Enter Last Name"
 			android:textColorHint="#AAA" 
-			android:layout_width="0px"
+			android:layout_width="0dp"
 			android:textColor="#F00" 
 			android:background="#FFFFFF"
 			android:layout_height="wrap_content" 
@@ -84,7 +84,7 @@
 		<TextView android:id="@+id/newProfileBirthdayLBL" 
 			android:text="Birthday"
 			android:textColor="#000" 
-			android:layout_width="100px"
+			android:layout_width="100dp"
 			android:layout_height="wrap_content" 
 			android:gravity="center"
 			android:layout_weight="0"></TextView>
@@ -94,7 +94,7 @@
 				android:layout_width="wrap_content" 
 				android:text="Set Birthday"
 				android:layout_weight="1" 
-				android:layout_height="35px" />	
+				android:layout_height="35dp" />	
 			
 		
 	</LinearLayout>
@@ -103,7 +103,7 @@
 	
 	<EditText android:id="@+id/newProfileUserAgeTXT" 
 			android:layout_width="fill_parent"
-			android:layout_height="0px" 
+			android:layout_height="0dp" 
 			android:inputType="phone"
 			android:hint="Age" 
 			android:textColorHint="#AAA"
@@ -126,7 +126,7 @@
 		<TextView android:id="@+id/genderText" 
 			android:text="Gender"
 			android:textColor="#000" 
-			android:layout_width="100px" 
+			android:layout_width="100dp" 
 			android:layout_height="wrap_content" 
 			android:gravity="center"
 			android:layout_weight="0"></TextView>
@@ -142,14 +142,14 @@
 				android:checked="True"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:textSize="15px"
+				android:textSize="15dp"
 				android:textColor="#000"></RadioButton>
 			
 			<RadioButton android:id="@+id/newProfileFemaleRDO"
 				android:text="Female"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:textSize="15px"
+				android:textSize="15dp"
 				android:textColor="#000"></RadioButton>
 		
 		</RadioGroup>
@@ -168,7 +168,7 @@
 
 		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			android:layout_width="fill_parent" 
-			android:layout_height="55px"
+			android:layout_height="55dp"
 			android:background="#555555" 
 			android:orientation="horizontal"
 			android:gravity="bottom">
@@ -177,19 +177,19 @@
 				android:layout_width="wrap_content" 
 				android:text="Back"
 				android:layout_weight="1" 
-				android:layout_height="50px" />
+				android:layout_height="50dp" />
 
 			<Button android:id="@+id/newProfileResetBTN"
 				android:layout_width="wrap_content" 
 				android:text="Reset"
 				android:layout_weight="1" 
-				android:layout_height="50px" />
+				android:layout_height="50dp" />
 
 			<Button android:id="@+id/newProfileDoneBTN"
 				android:layout_width="wrap_content" 
 				android:text="Done"
 				android:layout_weight="1" 
-				android:layout_height="50px" />
+				android:layout_height="50dp" />
 
 
 		</LinearLayout>

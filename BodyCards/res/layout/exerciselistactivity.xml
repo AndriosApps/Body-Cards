@@ -10,7 +10,7 @@
   <TextView android:layout_weight="0"
   	android:layout_width="fill_parent"
   	android:layout_height="wrap_content"
-  	android:textSize="20px"
+  	android:textSize="20dp"
   	android:textColor="#000"
   	android:text="Exercise List"
   	android:background="#CCCCCC"
@@ -18,7 +18,7 @@
   	
  <ListView android:id="@+id/exerciseListActivityAvailableExercisesListView"
 	android:layout_width="fill_parent"
-	android:layout_height="0px"
+	android:layout_height="0dp"
 	android:background="#E5E5E5"
 	android:choiceMode="multipleChoice"
 	android:layout_weight="1" />
@@ -26,7 +26,7 @@
   <TextView android:layout_weight="0"
   	android:layout_width="fill_parent"
   	android:layout_height="wrap_content"
-  	android:textSize="20px"
+  	android:textSize="20dp"
   	android:textColor="#000"
   	android:text="Selected Exercises"
   	android:background="#CCCCCC"
@@ -34,7 +34,7 @@
 	
  <ListView android:id="@+id/exerciseListActivitySelectedExercisesListView"
 	android:layout_width="fill_parent"
-	android:layout_height="0px"
+	android:layout_height="0dp"
 	android:background="#E5E5E5"
 	android:choiceMode="multipleChoice"
 	android:layout_weight="1" />
@@ -43,7 +43,7 @@
 
   <LinearLayout
     android:layout_width="fill_parent"
-  	android:layout_height="55px"
+  	android:layout_height="55dp"
   	android:background="#555555"
  	 android:gravity="bottom"
   	android:orientation="horizontal"
@@ -52,25 +52,25 @@
   <Button android:id="@+id/exerciseListActivityBackBTN"
   	android:text="Back"
   	android:layout_width="wrap_content"
-  	android:layout_height="50px"
+  	android:layout_height="50dp"
   	android:layout_weight="1" />
 
   <Button android:id="@+id/exerciseListActivityAddBTN"
   	android:text="New"
   	android:layout_width="wrap_content"
-  	android:layout_height="50px"
+  	android:layout_height="50dp"
   	android:layout_weight="1" />
   	
   <Button android:id="@+id/exerciseListActivityClearBTN"
   	android:text="Clear"
   	android:layout_width="wrap_content"
-  	android:layout_height="50px"
+  	android:layout_height="50dp"
   	android:layout_weight="1" />
   	
   <Button android:id="@+id/exerciseListActivityNextBTN"
   	android:text="Next"
   	android:layout_width="wrap_content"
-  	android:layout_height="50px"
+  	android:layout_height="50dp"
   	android:layout_weight="1" />
   	
   </LinearLayout>

@@ -9,7 +9,7 @@
 		android:layout_height="wrap_content"
 		android:gravity="center"
 		android:text="Help Window"
-		android:textSize="18px"
+		android:textSize="18dp"
 		android:textColor="#000"
 		android:background="#CCC"
 		android:layout_weight="0" />
@@ -19,8 +19,8 @@
 					android:layout_height="wrap_content"
 					android:gravity="center"
 					android:text="Image Credits"
-					android:padding="10px"
-					android:textSize="15px"
+					android:padding="10dp"
+					android:textSize="15dp"
 					android:textColor="#000"
 					android:background="#CCC"
 					android:layout_weight="0" />

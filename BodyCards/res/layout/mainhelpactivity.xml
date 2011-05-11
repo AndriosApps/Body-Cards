@@ -9,16 +9,17 @@
 		android:layout_height="wrap_content"
 		android:gravity="center"
 		android:text="Help Window"
-		android:textSize="18px"
+		android:textSize="18dp"
 		android:textColor="#000"
 		android:background="#CCC"
 		android:layout_weight="0" />
     	<LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout1" android:orientation="vertical" android:gravity="center" android:layout_height="fill_parent">
-    		<Button android:layout_width="150px" android:text="Getting Started" android:id="@+id/mainHelpActivityGettingStartedBTN" android:layout_height="wrap_content"></Button>
-    		<Button android:layout_width="150px" android:text="Deck Of Cards" android:id="@+id/mainHelpActivityDeckOfCardsBTN" android:layout_height="wrap_content"></Button>
-    		<Button android:layout_width="150px" android:text="Random Workout" android:id="@+id/mainHelpActivityRandomWorkoutBTN" android:layout_height="wrap_content"></Button>
-    		<Button android:layout_width="150px" android:text="Custom Workout" android:id="@+id/mainHelpActivityCustomWorkoutBTN" android:layout_height="wrap_content"></Button>
-    		<Button android:layout_width="150px" android:text="Disclaimer" android:id="@+id/mainHelpActivityDisclaimerBTN" android:layout_height="wrap_content"></Button>
+    		<Button android:layout_width="175dp" android:text="Getting Started" android:id="@+id/mainHelpActivityGettingStartedBTN" android:layout_height="wrap_content"></Button>
+    		<Button android:layout_width="175dp" android:text="Deck Of Cards" android:id="@+id/mainHelpActivityDeckOfCardsBTN" android:layout_height="wrap_content"></Button>
+    		<Button android:layout_width="175dp" android:text="Random Workout" android:id="@+id/mainHelpActivityRandomWorkoutBTN" android:layout_height="wrap_content"></Button>
+    		<Button android:layout_width="175dp" android:text="Custom Workout" android:id="@+id/mainHelpActivityCustomWorkoutBTN" android:layout_height="wrap_content"></Button>
+    		<Button android:layout_width="175dp" android:text="Disclaimer" android:id="@+id/mainHelpActivityDisclaimerBTN" android:layout_height="wrap_content"></Button>
+    		<Button android:layout_width="175dp" android:text="Images" android:id="@+id/mainHelpActivityImagesBTN" android:layout_height="wrap_content"></Button>
     	
     	</LinearLayout>
 
