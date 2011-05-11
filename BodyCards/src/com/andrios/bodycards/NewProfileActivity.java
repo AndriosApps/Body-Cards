@@ -102,6 +102,7 @@ public class NewProfileActivity extends Activity {
 		mYear = c.get(Calendar.YEAR);
 		mMonth = c.get(Calendar.MONTH);
 		mDay = c.get(Calendar.DAY_OF_MONTH);
+		System.out.println("Birthday: "+ mYear +" "+mMonth+" "+mDay);
 	}
 
 	private void setConnections() {
@@ -116,7 +117,7 @@ public class NewProfileActivity extends Activity {
 		done = (Button) findViewById(R.id.newProfileDoneBTN);
 		
 		baseDate = Calendar.getInstance();
-		baseDate.set(Calendar.YEAR, 1900);
+		baseDate.set(Calendar.YEAR, 1975);
 		bday = (Calendar) baseDate.clone();
 		setBirthday(bday);
 		
