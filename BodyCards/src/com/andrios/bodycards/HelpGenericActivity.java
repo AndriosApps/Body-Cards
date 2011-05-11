@@ -159,8 +159,7 @@ public class HelpGenericActivity extends Activity {
 		//ID = 8
 		help = new Help("Disclaimer", 
 				"'Homepage Image: Ambro / FreeDigitalPhotos.net.\n\n" +
-				"'Complete Image: Ambro / FreeDigitalPhotos.net.\n\n" +
-				"The instructions and advice presented are in no way intended as a substitute for medical counseling. \n\n");
+				"'Complete Image: Ambro / FreeDigitalPhotos.net.\n\n");
 		
 		helpList.add(help);	
 		
