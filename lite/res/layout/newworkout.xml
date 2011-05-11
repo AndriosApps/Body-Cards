@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:background="#FFFFFF"
+	android:orientation="vertical"
+	android:gravity="top">
+		
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:background="#E5E5E5"
+		android:orientation="vertical"
+		android:gravity="center"
+		android:focusable="true"
+		android:layout_weight="1">
+		
+		<TextView android:id="@+id/textTitle"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="Set Workout Details"
+			android:gravity="center"
+			android:textSize="20px"
+			android:background="#CCCCCC"
+			android:textColor="#000"
+			android:layout_weight="0"></TextView>
+ 
+		 <LinearLayout
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:background="#E5E5E5"
+			android:orientation="horizontal"
+			android:gravity="center"
+			android:layout_weight="0">
+			
+			<TextView android:id="@+id/numPeoText" 
+				android:text="Guest Users" 
+				android:textColor="#000"
+				android:layout_weight="1"
+				android:layout_width="0px" 
+				android:layout_height="wrap_content"
+				android:gravity="left" />
+				
+			<EditText android:id="@+id/numPeoEdit" 
+				android:text="0" 
+				android:layout_weight="1"
+				android:layout_width="0px"
+				android:textColor="#F00"
+				android:textSize="15px"
+				android:background="#E5E5E5"
+				android:layout_height="wrap_content" 
+				android:inputType="phone"
+				android:gravity="center"
+				android:nextFocusDown="@+id/repEdit"
+				android:selectAllOnFocus="true" />
+	
+		</LinearLayout>
+		
+		<LinearLayout
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:background="#FFFFFF"
+			android:orientation="horizontal"
+			android:gravity="center"
+			android:layout_weight="0">
+			
+			<TextView android:id="@+id/repText" 
+				android:text="Number of Sets" 
+				android:textColor="#000"
+				android:layout_weight="1"
+				android:layout_width="0px" 
+				android:layout_height="wrap_content"
+				android:gravity="left" />
+				
+				
+			<EditText android:id="@+id/repEdit" 
+				android:text="20" 
+				android:layout_weight="1"
+				android:layout_width="0px" 
+				android:layout_height="fill_parent" 
+				android:inputType="phone"
+				android:textColor="#F00"
+				android:background="#FFFFFF"
+				android:textSize="15px"
+				android:gravity="center"
+				android:nextFocusDown="@+id/minEdit"
+				android:selectAllOnFocus="true" />
+			
+		</LinearLayout>
+		<LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:layout_width="fill_parent">
+			<TextView android:background="#CCCCCC" android:id="@+id/profileChooserTitle" android:layout_weight="0" android:textColor="#000" android:layout_height="wrap_content" android:textSize="14px" android:gravity="left" android:text="Base reps / seconds" android:layout_width="wrap_content"></TextView>
+			<LinearLayout android:layout_height="fill_parent" android:id="@+id/linearLayout2" android:layout_width="wrap_content" android:layout_weight="1"></LinearLayout>
+			<ImageView 
+				android:src="@drawable/help_icon" 
+				android:id="@+id/newWorkoutActivityHelpRepsIMG" 
+				android:layout_width="15px" 
+				android:layout_height="15px" ></ImageView>
+		</LinearLayout>
+		<LinearLayout
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:background="#E5E5E5"
+			android:orientation="horizontal"
+			android:gravity="center"
+			android:layout_weight="0">
+		
+			<TextView android:id="@+id/minText" 
+				android:text="Min:" 
+				android:textColor="#000"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"
+				android:layout_weight="1" android:gravity="center|left"></TextView>
+				
+			<EditText android:id="@+id/minEdit" 
+				android:text="2" 
+				android:layout_width="0px"
+				android:textSize="15px"
+				android:background="#E5E5E5"
+				android:layout_height="wrap_content" 
+				android:inputType="phone"
+				android:textColor="#F00"
+				android:layout_weight="2"
+				android:nextFocusDown="@+id/maxEdit"
+				android:selectAllOnFocus="true" android:gravity="center|left"></EditText>
+
+			<TextView android:id="@+id/maxText" 
+				android:text="Max:" 
+				android:textColor="#000"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"
+				android:layout_weight="1" android:gravity="center|left"></TextView>
+				
+			<EditText android:id="@+id/maxEdit" 
+				android:text="15" 
+				android:layout_width="0px"
+				android:textSize="15px"
+				android:background="#E5E5E5"
+				android:layout_height="wrap_content" 
+				android:inputType="phone"
+				android:textColor="#F00"
+				android:layout_weight="2"
+				android:selectAllOnFocus="true" 
+				android:nextFocusDown="@+id/nwDone"
+				android:gravity="center|left"></EditText>
+				
+		</LinearLayout>
+
+		<LinearLayout
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:background="#FFFFFF"
+			android:orientation="horizontal"
+			android:gravity="top"
+			android:layout_weight="0">
+		
+			<TextView android:id="@+id/exerLabel" 
+				android:text="Exercise(s):" 
+				android:textColor="#000"
+				android:layout_width="0px" 
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity="left" />
+				
+			<ScrollView android:layout_height="60px"
+				android:layout_width="0px"
+				android:layout_weight="2" >
+				
+				<TextView android:id="@+id/exerList" 
+					android:text="" 
+					android:layout_width="fill_parent" 
+					android:layout_height="wrap_content"
+					android:textColor="#000" />
+					
+			</ScrollView>
+		</LinearLayout>
+				
+						
+		 <TextView android:id="@+id/profileChooserTitle"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="Choose Profiles for Workout"
+			android:gravity="center"
+			android:textSize="18px"
+			android:background="#CCCCCC"
+			android:textColor="#000"
+			android:layout_weight="0" />
+			
+		 <ListView android:id="@+id/profileChooser"
+			android:layout_width="fill_parent"
+			android:layout_height="0px"
+			android:choiceMode="multipleChoice"
+			android:gravity="top"
+			android:layout_weight="1" />
+		
+		<TextView android:id="@+id/profileChooserTitle"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="Selected Profiles"
+			android:gravity="center"
+			android:textSize="18px"
+			android:background="#CCCCCC"
+			android:textColor="#000"
+			android:layout_weight="0" />
+			
+		 <ListView android:id="@+id/chosenProfiles"
+			android:layout_width="fill_parent"
+			android:layout_height="0px"
+			android:choiceMode="multipleChoice"
+			android:gravity="top"
+			android:layout_weight="1" />
+				
+		
+	</LinearLayout>
+
+
+<!-- Fill the rest of screen and place buttons at the bottom of screen -->
+	
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="55px"
+		android:background="#555555"
+		android:gravity="bottom"
+		android:orientation="horizontal"
+		android:layout_weight="0">
+		
+		<Button android:id="@+id/nwBack" 
+			android:layout_width="wrap_content"
+			android:text="Back"
+			android:layout_height="50px"
+			android:layout_weight="1" />
+			
+		<Button android:id="@+id/nwReset" 
+			android:layout_width="wrap_content"
+			android:text="Reset"
+			android:layout_height="50px"
+			android:layout_weight="1" />
+		
+		<Button android:id="@+id/nwDone" 
+			android:layout_width="wrap_content"
+			android:layout_height="50px"
+			android:text="Next"
+			android:layout_weight="1" />
+
+	</LinearLayout>
+	
+</LinearLayout>

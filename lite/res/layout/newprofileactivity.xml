@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent"
+	android:background="#FFFFFF" 
+	android:orientation="vertical">
+
+	<TextView android:id="@+id/textTitle" 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" 
+		android:text="Enter Profile Details"
+		android:gravity="center" 
+		android:textSize="18px" 
+		android:textColor="#000"
+		android:background="#CCCCCC"
+		android:layout_weight="0"></TextView>
+
+	<LinearLayout
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:background="#E5E5E5" 
+		android:orientation="horizontal"
+		android:gravity="center"
+		android:layout_weight="0">
+
+		<TextView android:id="@+id/firstNameText" 
+			android:text="First Name"
+			android:layout_width="100px" 
+			android:layout_height="wrap_content"
+			android:gravity="center" 
+			android:textColor="#000"
+			android:layout_weight="0" />
+
+		<EditText android:id="@+id/newProfileUserFirstNameTXT" 
+			android:hint="Enter First Name"
+			android:background="#E5E5E5" 
+			android:textColorHint="#AAA"
+			android:textColor="#F00" 
+			android:layout_width="0px"
+			android:layout_height="wrap_content" 
+			android:inputType="textCapWords"
+			android:selectAllOnFocus="true"
+			android:layout_weight="1" />
+
+	</LinearLayout>
+
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:background="#FFFFFF" 
+		android:orientation="horizontal"
+		android:gravity="center"
+		android:layout_weight="0">
+
+		<TextView android:id="@+id/lastNameText" 
+			android:text="Last Name"
+			android:textColor="#000" 
+			android:layout_width="100px"
+			android:layout_height="wrap_content" 
+			android:gravity="center"
+			android:layout_weight="0" />
+
+		<EditText android:id="@+id/newProfileUserLastNameTXT" 
+			android:hint="Enter Last Name"
+			android:textColorHint="#AAA" 
+			android:layout_width="0px"
+			android:textColor="#F00" 
+			android:background="#FFFFFF"
+			android:layout_height="wrap_content" 
+			android:inputType="textCapWords"
+			android:selectAllOnFocus="true"
+			android:layout_weight="1" />
+
+	</LinearLayout>
+
+	<LinearLayout 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:background="#E5E5E5" 
+		android:orientation="horizontal"
+		android:gravity="center"
+		android:layout_weight="0">
+	
+		<TextView android:id="@+id/newProfileBirthdayLBL" 
+			android:text="Birthday"
+			android:textColor="#000" 
+			android:layout_width="100px"
+			android:layout_height="wrap_content" 
+			android:gravity="center"
+			android:layout_weight="0"></TextView>
+
+
+			<Button android:id="@+id/newProfileUserBirthdayBTN"
+				android:layout_width="wrap_content" 
+				android:text="Set Birthday"
+				android:layout_weight="1" 
+				android:layout_height="35px" />	
+			
+		
+	</LinearLayout>
+
+
+	
+	<EditText android:id="@+id/newProfileUserAgeTXT" 
+			android:layout_width="fill_parent"
+			android:layout_height="0px" 
+			android:inputType="phone"
+			android:hint="Age" 
+			android:textColorHint="#AAA"
+			android:layout_weight="0" 
+			android:textColor="#F00" 
+			android:background="#E5E5E5" 
+			android:gravity="center"
+			android:selectAllOnFocus="true"></EditText>
+
+
+
+	<LinearLayout 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:background="#FFFFFF" 
+		android:orientation="horizontal"
+		android:gravity="center"
+		android:layout_weight="0">
+
+		<TextView android:id="@+id/genderText" 
+			android:text="Gender"
+			android:textColor="#000" 
+			android:layout_width="100px" 
+			android:layout_height="wrap_content" 
+			android:gravity="center"
+			android:layout_weight="0"></TextView>
+
+		<RadioGroup android:id="@+id/gender"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:layout_weight="1">
+			
+			<RadioButton android:id="@+id/newProfileMaleRDO"
+				android:text="Male"
+				android:checked="True"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="15px"
+				android:textColor="#000"></RadioButton>
+			
+			<RadioButton android:id="@+id/newProfileFemaleRDO"
+				android:text="Female"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="15px"
+				android:textColor="#000"></RadioButton>
+		
+		</RadioGroup>
+			
+	</LinearLayout>
+
+	<!-- Fill the rest of screen and place buttons at the bottom of screen -->
+
+	<LinearLayout android:id="@+id/LinearLayout01"
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent"
+		android:background="#FFFFFF" 
+		android:orientation="vertical"
+		android:gravity="bottom"
+		android:layout_weight="1">
+
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent" 
+			android:layout_height="55px"
+			android:background="#555555" 
+			android:orientation="horizontal"
+			android:gravity="bottom">
+
+			<Button android:id="@+id/newProfileBackBTN"
+				android:layout_width="wrap_content" 
+				android:text="Back"
+				android:layout_weight="1" 
+				android:layout_height="50px" />
+
+			<Button android:id="@+id/newProfileResetBTN"
+				android:layout_width="wrap_content" 
+				android:text="Reset"
+				android:layout_weight="1" 
+				android:layout_height="50px" />
+
+			<Button android:id="@+id/newProfileDoneBTN"
+				android:layout_width="wrap_content" 
+				android:text="Done"
+				android:layout_weight="1" 
+				android:layout_height="50px" />
+
+
+		</LinearLayout>
+
+	</LinearLayout>
+</LinearLayout>
