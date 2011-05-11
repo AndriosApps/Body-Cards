@@ -89,6 +89,7 @@ public class WorkoutCardActivity extends Activity {
 
 		// Set the connections for this class]
 		setConnections();
+		toggleRunning();
 
 	}
 
@@ -136,31 +137,7 @@ public class WorkoutCardActivity extends Activity {
 		begin.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 
-				if (running) {
-					clock.stop();
-					pause_time = SystemClock.elapsedRealtime()
-							- clock.getBase();
-					if (((count - 1) % numPeople) < numProf)
-						workouts[(count - 1) % numPeople].start();
-					begin.setText("Resume");
-					running = false;
-				} else {
-					if (started) {
-						clock.setBase(SystemClock.elapsedRealtime()
-								- pause_time);
-						if (((count - 1) % numPeople) < numProf)
-							workouts[(count - 1) % numPeople].stop();
-						clock.start();
-					} else {
-						clock.setBase(SystemClock.elapsedRealtime());
-						clock.start();
-						getRandomWorkoutCard();
-						started = true;
-					}
-
-					begin.setText("Pause");
-					running = true;
-				}
+			toggleRunning();
 
 			}
 		});
@@ -484,6 +461,34 @@ public class WorkoutCardActivity extends Activity {
 		builder.setView(layout)
 				.setTitle(exercise.getName());
 		ad = builder.create();
+	}
+	
+	private void toggleRunning(){
+		if (running) {
+			clock.stop();
+			pause_time = SystemClock.elapsedRealtime()
+					- clock.getBase();
+			if (((count - 1) % numPeople) < numProf)
+				workouts[(count - 1) % numPeople].start();
+			begin.setText("Resume");
+			running = false;
+		} else {
+			if (started) {
+				clock.setBase(SystemClock.elapsedRealtime()
+						- pause_time);
+				if (((count - 1) % numPeople) < numProf)
+					workouts[(count - 1) % numPeople].stop();
+				clock.start();
+			} else {
+				clock.setBase(SystemClock.elapsedRealtime());
+				clock.start();
+				getRandomWorkoutCard();
+				started = true;
+			}
+
+			begin.setText("Pause");
+			running = true;
+		}
 	}
 
 }
