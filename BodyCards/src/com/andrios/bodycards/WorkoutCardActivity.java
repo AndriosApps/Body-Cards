@@ -59,7 +59,7 @@ public class WorkoutCardActivity extends Activity {
 	boolean running, started;
 	int numCards;
 	int numProf;
-	long milisLeft;
+	long milisLeft, baseAdTime;
 	// Workout Progress Variables
 	int reps, 	// Number of Reps of the exercise
 		set, 	// Which set user is on
@@ -129,7 +129,8 @@ public class WorkoutCardActivity extends Activity {
 	    adView = (AdView)this.findViewById(R.id.workoutCardAdView);
 	      
 	    // Initiate a generic request to load it with an ad
-		request = new AdRequest();
+	    baseAdTime = SystemClock.elapsedRealtime();
+	    request = new AdRequest();
 		request.setTesting(true);
 		adView.loadAd(request);
 
@@ -161,6 +162,20 @@ public class WorkoutCardActivity extends Activity {
 		sideLabel.setOnClickListener(new myOnClick());
 	}
 
+	private void updateAds(){
+		Long thisTime = SystemClock.elapsedRealtime();
+		if((thisTime-baseAdTime)/1000 > 15){
+			baseAdTime = SystemClock.elapsedRealtime();
+		    // Initiate a generic request to load it with an ad
+			request = new AdRequest();
+			request.setTesting(true);
+			adView.loadAd(request);
+		}
+
+	}
+	
+	
+	
 	private void end() {
 
 		if (running) {
@@ -187,6 +202,7 @@ public class WorkoutCardActivity extends Activity {
 	private class myOnClick implements OnClickListener {
 
 		public void onClick(View vi) {
+			updateAds();
 			if (running) {
 				v = vi;
 				if(!exercise.isTimed){

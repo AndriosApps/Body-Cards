@@ -37,6 +37,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 	ArrayList<Exercise> exercises;
 	Workout[] workouts;
 	String workoutName;
+	long baseAdTime;
 
 	int[] cards = { R.drawable.c2, R.drawable.c3, R.drawable.c4, R.drawable.c5,
 			R.drawable.c6, R.drawable.c7, R.drawable.c8, R.drawable.c9,
@@ -229,12 +230,25 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 		setOnClickListeners();
 		
 	}
+	
+	private void updateAds(){
+		Long thisTime = SystemClock.elapsedRealtime();
+		if((thisTime-baseAdTime)/1000 > 15){
+			baseAdTime = SystemClock.elapsedRealtime();
+		    // Initiate a generic request to load it with an ad
+			request = new AdRequest();
+			request.setTesting(true);
+			adView.loadAd(request);
+		}
+
+	}
 
 	private void setOnClickListeners() {
 		card.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				if (cardNum < decksize) {
+					updateAds();
 					getNewCard();
 				} else {
 					workouts[currentUser].stop();
