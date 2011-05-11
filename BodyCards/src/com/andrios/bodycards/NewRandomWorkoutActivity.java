@@ -390,7 +390,7 @@ public class NewRandomWorkoutActivity extends Activity {
 				} else {
 
 					Intent wkout = new Intent(v.getContext(),
-							WorkoutCardActivity.class);
+							StartDeckActivity.class);
 					wkout.putExtra("max", x);
 					wkout.putExtra("min", n);
 					wkout.putExtra("sets", s);
