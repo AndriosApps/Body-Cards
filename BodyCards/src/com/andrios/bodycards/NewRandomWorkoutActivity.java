@@ -22,6 +22,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +38,7 @@ public class NewRandomWorkoutActivity extends Activity {
 	EditText numPeeps, numSets, max, min;
 	TextView t;
 	String workoutName;
+	ImageView helpReps;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -93,6 +95,7 @@ public class NewRandomWorkoutActivity extends Activity {
 		pickRandomExercises();
 
 
+		helpReps = (ImageView) findViewById(R.id.newWorkoutActivityHelpRepsIMG);
 		numPeeps = (EditText) findViewById(R.id.numPeoEdit);
 		numSets = (EditText) findViewById(R.id.repEdit);
 		max = (EditText) findViewById(R.id.maxEdit);
@@ -308,6 +311,17 @@ public class NewRandomWorkoutActivity extends Activity {
 				
 			}
 
+		});
+		
+		helpReps.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				Intent intent = new Intent(v.getContext(), HelpGenericActivity.class);
+				intent.putExtra("ID", 6);
+				startActivity(intent);
+				
+			}
+			
 		});
 	}
 
