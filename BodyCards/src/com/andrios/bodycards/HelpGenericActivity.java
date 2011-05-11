@@ -148,7 +148,14 @@ public class HelpGenericActivity extends Activity {
 		
 		helpList.add(help);
 		
+		//ID = 7
+		help = new Help("Disclaimer", 
+				"Not all exercises are suitable for everyone and this or any other exercise program may result in injury.\n\n" +
+				"To reduce the risk of injury in your case, consult your doctor before beginning any exercise program.\n\n" +
+				"The instructions and advice presented are in no way intended as a substitute for medical counseling. \n\n" +
+				"The creators, producers, participants, distributors of Body Cards disclaim any liabilities or loss in connection with the exercises and advice herein.");
 		
+		helpList.add(help);		
 		
 
 	}
