@@ -180,8 +180,8 @@ public class NewProfileActivity extends Activity {
 							.show();
 					error = true;
 				}
-
-				if (bday.before(baseDate) || birthdayBTN.getText().equals("Set Birthday")) {
+				//TODO Change this wicket... it's wrong
+				if (birthdayBTN.getText().equals("Set Birthday")) {
 					Toast.makeText(NewProfileActivity.this, "Error: Birthday Field Incomplete ",
 							Toast.LENGTH_SHORT).show();
 					error = true;
