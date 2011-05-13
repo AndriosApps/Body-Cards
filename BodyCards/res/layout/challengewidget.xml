@@ -8,23 +8,5 @@
 
 
 	
-	<LinearLayout 
-		android:id="@+id/linearLayout1" 
-		android:layout_width="fill_parent"  
-		android:gravity="center|bottom" 
-		android:layout_height="fill_parent"
-		android:padding="30dp">
-        <Button 
-        	android:text="Accept" 
-        	android:id="@+id/button1" 
-        	android:layout_width="wrap_content" 
-        	android:layout_height="wrap_content"
-        	android:layout_weight="1"></Button>
-        <Button 
-        	android:text="Pass" 
-        	android:id="@+id/button2" 
-        	android:layout_width="wrap_content" 
-        	android:layout_height="wrap_content"
-        	android:layout_weight="1"></Button>
-    </LinearLayout>
+	
 </LinearLayout>
