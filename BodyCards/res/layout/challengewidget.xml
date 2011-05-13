@@ -3,7 +3,8 @@
 	android:layout_width="fill_parent" 
 	android:orientation="vertical" 
 	android:layout_gravity="center" 
-	android:layout_height="wrap_content">
+	android:layout_height="fill_parent"
+	android:background="#FFFF0000">
 
   
   <TextView 
@@ -20,16 +21,18 @@
 		android:id="@+id/linearLayout1" 
 		android:layout_height="wrap_content" 
 		android:layout_width="fill_parent" 
-		android:gravity="center">
+		android:layout_weight="1" android:gravity="center|bottom">
         <Button 
         	android:text="Accept" 
         	android:id="@+id/button1" 
         	android:layout_width="wrap_content" 
-        	android:layout_height="wrap_content"></Button>
+        	android:layout_height="wrap_content"
+        	android:layout_weight="1"></Button>
         <Button 
         	android:text="Pass" 
         	android:id="@+id/button2" 
         	android:layout_width="wrap_content" 
-        	android:layout_height="wrap_content"></Button>
+        	android:layout_height="wrap_content"
+        	android:layout_weight="1"></Button>
     </LinearLayout>
 </LinearLayout>
