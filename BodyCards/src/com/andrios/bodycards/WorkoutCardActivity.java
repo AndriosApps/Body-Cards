@@ -164,7 +164,7 @@ public class WorkoutCardActivity extends Activity {
 
 	private void updateAds(){
 		Long thisTime = SystemClock.elapsedRealtime();
-		if((thisTime-baseAdTime)/1000 > 15){
+		if((thisTime-baseAdTime)/1000 > 30){
 			baseAdTime = SystemClock.elapsedRealtime();
 		    // Initiate a generic request to load it with an ad
 			request = new AdRequest();

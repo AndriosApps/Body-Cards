@@ -220,7 +220,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 		
 	    // Add the adView to it
 		//TODO Change this name. 
-	     AdView adView = (AdView)this.findViewById(R.id.deckOfCardsAdView);
+	     adView = (AdView)this.findViewById(R.id.deckOfCardsAdView);
 	      
 	    // Initiate a generic request to load it with an ad
 		request = new AdRequest();
@@ -233,7 +233,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 	
 	private void updateAds(){
 		Long thisTime = SystemClock.elapsedRealtime();
-		if((thisTime-baseAdTime)/1000 > 15){
+		if((thisTime-baseAdTime)/1000 > 30){
 			baseAdTime = SystemClock.elapsedRealtime();
 		    // Initiate a generic request to load it with an ad
 			request = new AdRequest();
