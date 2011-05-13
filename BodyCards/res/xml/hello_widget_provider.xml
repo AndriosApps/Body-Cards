@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
 	android:minWidth="160dip" 
 	android:minHeight="200dip" 
-	android:updatePeriodMillis="10000" 
+	android:updatePeriodMillis="100000" 
 	android:initialLayout="@layout/challengewidget">
 </appwidget-provider>
 
