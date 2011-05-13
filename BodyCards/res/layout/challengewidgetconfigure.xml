@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="#FFFFFF"
+  android:gravity="center"
+  android:orientation="vertical">
+  
+  <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:layout_width="fill_parent">
+			  <TextView android:layout_weight="0"
+		  	android:layout_width="fill_parent"
+		  	android:layout_height="wrap_content"
+		  	android:textSize="20dp"
+		  	android:textColor="#000"
+		  	android:text="Base Reps / Seconds"
+		  	android:background="#CCCCCC"
+		  	android:gravity="center" />
+
+		</LinearLayout>
+<LinearLayout
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:background="#E5E5E5"
+			android:orientation="horizontal"
+			android:gravity="center"
+			android:layout_weight="0">
+		
+			<TextView android:id="@+id/minText" 
+				android:text="Min:" 
+				android:textColor="#000"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"
+				android:layout_weight="1" android:gravity="center|left"></TextView>
+				
+			<EditText android:id="@+id/challengeWidgetMinEdit" 
+				android:text="25" 
+				android:layout_width="0dp"
+				android:textSize="15dp"
+				android:background="#E5E5E5"
+				android:layout_height="wrap_content" 
+				android:inputType="phone"
+				android:textColor="#F00"
+				android:layout_weight="2"
+				android:nextFocusDown="@+id/maxEdit"
+				android:selectAllOnFocus="true" 
+				android:gravity="center|left"></EditText>
+
+			<TextView android:id="@+id/maxText" 
+				android:text="Max:" 
+				android:textColor="#000"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"
+				android:layout_weight="1" android:gravity="center|left"></TextView>
+				
+			<EditText android:id="@+id/challengeWidgetMaxEdit" 
+				android:text="50" 
+				android:layout_width="0dp"
+				android:textSize="15dp"
+				android:background="#E5E5E5"
+				android:layout_height="wrap_content" 
+				android:inputType="phone"
+				android:textColor="#F00"
+				android:layout_weight="2"
+				android:selectAllOnFocus="true" 
+				android:nextFocusDown="@+id/nwDone"
+				android:gravity="center|left"></EditText>
+				
+		</LinearLayout>
+  	  	
+  <TextView android:layout_weight="0"
+  	android:layout_width="fill_parent"
+  	android:layout_height="wrap_content"
+  	android:textSize="20dp"
+  	android:textColor="#000"
+  	android:text="Exercise List"
+  	android:background="#CCCCCC"
+  	android:gravity="center" />
+  	
+ <ListView android:id="@+id/challengeWidgetAvailableExercisesListView"
+	android:layout_width="fill_parent"
+	android:layout_height="0dp"
+	android:background="#E5E5E5"
+	android:choiceMode="multipleChoice"
+	android:layout_weight="1" />
+	
+  <TextView android:layout_weight="0"
+  	android:layout_width="fill_parent"
+  	android:layout_height="wrap_content"
+  	android:textSize="20dp"
+  	android:textColor="#000"
+  	android:text="Selected Exercises"
+  	android:background="#CCCCCC"
+  	android:gravity="center" />
+	
+ <ListView android:id="@+id/challengeWidgetSelectedExercisesListView"
+	android:layout_width="fill_parent"
+	android:layout_height="0dp"
+	android:background="#E5E5E5"
+	android:choiceMode="multipleChoice"
+	android:layout_weight="1" />
+  
+  <!-- Fill the rest of screen and place buttons at the bottom of screen -->
+
+  <LinearLayout
+    android:layout_width="fill_parent"
+  	android:layout_height="55dp"
+  	android:background="#555555"
+ 	 android:gravity="bottom"
+  	android:orientation="horizontal"
+  	android:layout_weight="0">
+  	
+  <Button android:id="@+id/challengeWidgetClearBTN"
+  	android:text="Clear"
+  	android:layout_width="wrap_content"
+  	android:layout_height="50dp"
+  	android:layout_weight="1" />
+  	
+  <Button android:id="@+id/challengeWidgetNextBTN"
+  	android:text="Done"
+  	android:layout_width="wrap_content"
+  	android:layout_height="50dp"
+  	android:layout_weight="1" />
+  	
+  </LinearLayout>
+</LinearLayout>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<appwidget-provider
-  xmlns:android="http://schemas.android.com/apk/res/android"
-	android:minWidth="160dip" 
-	android:minHeight="200dip" 
-	android:updatePeriodMillis="100000" 
-	android:initialLayout="@layout/challengewidget">
-</appwidget-provider>
-
