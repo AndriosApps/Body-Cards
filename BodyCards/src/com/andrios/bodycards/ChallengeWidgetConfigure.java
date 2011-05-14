@@ -72,7 +72,8 @@ public class ChallengeWidgetConfigure extends Activity {
 		}
 		
 		System.out.println(AppWidgetManager.EXTRA_APPWIDGET_ID);
-		System.out.println(AppWidgetManager.INVALID_APPWIDGET_ID);
+		System.out.println(Integer.toString(mAppWidgetId));
+		System.out.println(Integer.toString(AppWidgetManager.INVALID_APPWIDGET_ID));
 		
 	}
 
@@ -254,14 +255,18 @@ public class ChallengeWidgetConfigure extends Activity {
 			}
 
 			private void configureWidget() {
+				System.out.println("CONTEXT GETTER");
 				Context context = getBaseContext();
 				AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
 				
-				
+
+				System.out.println("REMOTE VIEWS GETTER");
 				RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.challengewidget);
 				appWidgetManager.updateAppWidget(mAppWidgetId, views);
 				
 				
+
+				System.out.println("INTENT resultValue");
 				Intent resultValue = new Intent();
 				resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
 				setResult(RESULT_OK, resultValue);
@@ -436,6 +441,7 @@ public class ChallengeWidgetConfigure extends Activity {
 	}
 	
 	public void write() {
+		System.out.println("WRITE CONFIGURE");
 		try {
 			FileOutputStream fos = openFileOutput("widgetexercises",
 					Context.MODE_PRIVATE);
