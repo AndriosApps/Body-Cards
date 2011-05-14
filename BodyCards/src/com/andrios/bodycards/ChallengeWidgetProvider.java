@@ -132,6 +132,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
     	
     	Intent wkout = new Intent(context,
 				StartDeckActivity.class);
+    	System.out.println("IM SENDING REPS: "+selectReps);
 		wkout.putExtra("max", selectReps);
 		wkout.putExtra("min", selectReps);
 		wkout.putExtra("sets", 1);
@@ -141,7 +142,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		wkout.putExtra("exercises", chosenList);
 		wkout.putExtra("workoutName", "Daily Challenge");
 		
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, wkout, 0);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, wkout, PendingIntent.FLAG_UPDATE_CURRENT);
 
         // Get the layout for the App Widget and attach an on-click listener to the button
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.challengewidget);

@@ -62,6 +62,9 @@ public class StartDeckActivity extends Activity {
 				setResult(RESULT_OK);
 				Intent wkout = new Intent(v.getContext(),
 						WorkoutCardActivity.class);
+
+				System.out.println("START out MAX "+ max);
+				System.out.println("START out MIN "+ min);
 				wkout.putExtra("max", max);
 				wkout.putExtra("min", min);
 				wkout.putExtra("sets", numSets);
@@ -86,6 +89,9 @@ public class StartDeckActivity extends Activity {
 		numSets = intent.getIntExtra("sets", -1);
 		min = intent.getIntExtra("min", -1);
 		max = intent.getIntExtra("max", -1);
+		
+		System.out.println("START MAX "+ max);
+		System.out.println("START MIN "+ min);
 		selectedProfiles = (ArrayList<Profile>) intent
 				.getSerializableExtra("profiles");
 		unusedProfiles = (ArrayList<Profile>) intent
