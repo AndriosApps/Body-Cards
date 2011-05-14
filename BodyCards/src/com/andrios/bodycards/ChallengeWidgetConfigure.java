@@ -14,6 +14,7 @@ import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -47,6 +48,7 @@ public class ChallengeWidgetConfigure extends Activity {
 	ArrayAdapter<Exercise> aa, sa;
 	ArrayList<Exercise> exerciseList, sel;
 	ArrayList<Profile> profs, selectProf;
+	String[] profNames;
 	Intent resultValue;
 	boolean[] selected;
 	
@@ -58,11 +60,13 @@ public class ChallengeWidgetConfigure extends Activity {
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.challengewidgetconfigure);
 
+		
 		getExtras();
 		readExercises();
 		readProfiles();
-		selectProfile();
+		setAlertDialog();
 		setConnections();
+		ad.show();
 	}
 
 	private void getExtras() {
@@ -95,21 +99,23 @@ public class ChallengeWidgetConfigure extends Activity {
 
 			profs = new ArrayList<Profile>();
 		}
+		
+	
 
 	}
 	
-	private void selectProfile(){
+	private void selectProfile(int arg2){
 		selectProf = new ArrayList<Profile>();
-		System.out.println(profs.get(0).getFirstName());
-		selectProf.add(profs.get(0));
-		profs.remove(0);
+		System.out.println(profs.get(arg2).getFirstName());
+		selectProf.add(profs.get(arg2));
+		profs.remove(arg2);
 	}
 
 	private void readExercises() {
 		
 			System.out.println("READING EXERCISES");
 			try {
-				FileInputStream fis = openFileInput(mAppWidgetId+"exercises");
+				FileInputStream fis = openFileInput("exercises");
 				ObjectInputStream ois = new ObjectInputStream(fis);
 
 				exerciseList = (ArrayList<Exercise>) ois.readObject();
@@ -513,6 +519,56 @@ public class ChallengeWidgetConfigure extends Activity {
 		
 	}
 
-	
+private void setAlertDialog() {
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		LayoutInflater inflater = LayoutInflater.from(this);
+		final View layout = inflater.inflate(R.layout.widgetconfiguredialog, null);
+		final ListView profileLV = (ListView) layout.findViewById(R.id.widgetConfigureDialogListView);
+		ArrayAdapter<Profile> profAdapter = new ArrayAdapter<Profile>(this, android.R.layout.simple_list_item_1, profs){
+	        
+			@Override
+	        public int getCount() {
+	                return profs.size();
+	        } 
+			
+	        @Override
+	        public Profile getItem(int position) {
+	                return profs.get(position);
+	        } 
+	        
+	        @Override
+	        public long getItemId(int position) {
+	                return position;
+	        } 
+	        
+			public <ViewGroup> View getView(int position, View convertView, ViewGroup parent){
+				 TextView view = (TextView) super.getView(position, convertView, (android.view.ViewGroup) parent);
+				 view.setText(profs.get(position).getFirstName());
+				 return view;
+			}
+			
+		};
+		
+		profileLV.setAdapter(profAdapter);
+		profileLV.setOnItemClickListener(new OnItemClickListener(){
+			
+			
+			
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				selectProfile(arg2);
+				ad.dismiss();
+				
+			}
+			
+		});
+		
+		
+		builder.setView(layout)
+				.setTitle("Choose Profile!");
+		
+		ad = builder.create();
+	}
 	
 }

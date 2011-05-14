@@ -25,7 +25,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 	static Random rNum;
 	
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-		super.onUpdate(context, appWidgetManager, appWidgetIds);
+		
 		final int N = appWidgetIds.length;
         
         
@@ -34,7 +34,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
         for (int i=0; i<N; i++) {
         	updateAppWidget(context, appWidgetManager, appWidgetIds[i]);
         }
-       
+        super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
 	
 	public void onDeleted(Context context, AppWidgetManager appWiedgetManager, int[] appWidgetIds){
@@ -130,8 +130,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
         // Create an Intent to launch ExampleActivity
 
     	
-    	Intent wkout = new Intent(context,
-				StartDeckActivity.class);
+    	Intent wkout = new Intent(context, StartDeckActivity.class);
     	System.out.println("IM SENDING REPS: "+selectReps);
 		wkout.putExtra("max", selectReps);
 		wkout.putExtra("min", selectReps);
@@ -149,7 +148,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
         try{
         	 views.setTextViewText(R.id.challengeWidgetCountLBL, Integer.toString(selectReps));
              views.setTextViewText(R.id.challengeWidgetExerciseLBL, exercise.getName());
-             
+             views.setTextViewText(R.id.challengeWidgetNameLBL, selectProf.get(0).getFirstName());
              //Basically an onClick Listener that launches the pending Intent (StartDeckActivity)
              views.setOnClickPendingIntent(R.id.challengeWidgetBottomLayout, pendingIntent);
              views.setOnClickPendingIntent(R.id.challengeWidgetMiddleLayout, pendingIntent);
