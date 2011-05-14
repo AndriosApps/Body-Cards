@@ -13,48 +13,22 @@ import android.widget.TextView;
 
 public class ChallengeWidgetProvider extends AppWidgetProvider {
 
-	ArrayList<Exercise> exerciseList;
-	int maxReps, minReps, selectReps;
-	Exercise exercise;
-	Random rNum;
+	static ArrayList<Exercise> exerciseList;
+	static int maxReps;
+	static int minReps;
+	static int selectReps;
+	static Exercise exercise;
+	static Random rNum;
 	
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        final int N = appWidgetIds.length;
-        rNum = new Random();
+		super.onUpdate(context, appWidgetManager, appWidgetIds);
+		final int N = appWidgetIds.length;
+        
         
         System.out.println("onUpdate");
         // Perform this loop procedure for each App Widget that belongs to this provider
         for (int i=0; i<N; i++) {
-        	try{
-        		readExercises(context);
-            	System.out.println("Exercise: " + exerciseList.get(0));
-            	System.out.println("Max: " + maxReps);
-            	System.out.println("Min: " + minReps);
-            	getRandomExercise();
-        	}catch(Exception e){
-        		e.printStackTrace();
-        	}
-        	
-        	
-            int appWidgetId = appWidgetIds[i];
-/*
-            // Create an Intent to launch ExampleActivity
-            Intent intent = new Intent(context, ExampleActivity.class);
-            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-*/
-            // Get the layout for the App Widget and attach an on-click listener to the button
-            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.challengewidget);
-            try{
-            	 views.setTextViewText(R.id.challengeWidgetCountLBL, Integer.toString(selectReps));
-                 views.setTextViewText(R.id.challengeWidgetExerciseLBL, exercise.getName());
-                 //views.setOnClickPendingIntent(R.id.button, pendingIntent);
-
-            }catch(Exception e){
-            	e.printStackTrace();
-            }
-           
-            // Tell the AppWidgetManager to perform an update on the current App Widget
-            appWidgetManager.updateAppWidget(appWidgetId, views);
+        	updateAppWidget(context, appWidgetManager, appWidgetIds[i]);
         }
        
     }
@@ -67,9 +41,9 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		super.onDisabled(context);
 	}
 	
-	private void readExercises(Context context){
+	private static void readExercises(Context context, int id){
 		try{
-			FileInputStream fis = context.openFileInput("widgetexercises");
+			FileInputStream fis = context.openFileInput(id+"widgetexercises");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
 			exerciseList = (ArrayList<Exercise>) ois.readObject();
@@ -88,7 +62,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		
 	}
 	
-	private void getRandomExercise() {
+	private static void getRandomExercise() {
 		try{
 			
 			if (maxReps == minReps) {
@@ -109,6 +83,41 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		
 		
 
+	}
+	
+	
+	public static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
+			 int appWidgetId){
+		rNum = new Random();
+    	try{
+    		readExercises(context, appWidgetId);
+        	System.out.println("Exercise: " + exerciseList.get(0));
+        	System.out.println("Max: " + maxReps);
+        	System.out.println("Min: " + minReps);
+        	getRandomExercise();
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
+    	
+    	
+/*
+        // Create an Intent to launch ExampleActivity
+        Intent intent = new Intent(context, ExampleActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+*/
+        // Get the layout for the App Widget and attach an on-click listener to the button
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.challengewidget);
+        try{
+        	 views.setTextViewText(R.id.challengeWidgetCountLBL, Integer.toString(selectReps));
+             views.setTextViewText(R.id.challengeWidgetExerciseLBL, exercise.getName());
+             //views.setOnClickPendingIntent(R.id.button, pendingIntent);
+
+        }catch(Exception e){
+        	e.printStackTrace();
+        }
+       
+        // Tell the AppWidgetManager to perform an update on the current App Widget
+        appWidgetManager.updateAppWidget(appWidgetId, views);
 	}
 
 }

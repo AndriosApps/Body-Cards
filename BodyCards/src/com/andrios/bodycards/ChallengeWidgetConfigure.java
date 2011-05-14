@@ -46,7 +46,7 @@ public class ChallengeWidgetConfigure extends Activity {
 
 	ArrayAdapter<Exercise> aa, sa;
 	ArrayList<Exercise> exerciseList, sel;
-
+	Intent resultValue;
 	boolean[] selected;
 	
 	@Override
@@ -81,7 +81,7 @@ public class ChallengeWidgetConfigure extends Activity {
 		
 			System.out.println("READING EXERCISES");
 			try {
-				FileInputStream fis = openFileInput("exercises");
+				FileInputStream fis = openFileInput(mAppWidgetId+"exercises");
 				ObjectInputStream ois = new ObjectInputStream(fis);
 
 				exerciseList = (ArrayList<Exercise>) ois.readObject();
@@ -109,6 +109,8 @@ public class ChallengeWidgetConfigure extends Activity {
 
 		min = (EditText) findViewById(R.id.challengeWidgetMinEdit);
 		max = (EditText) findViewById(R.id.challengeWidgetMaxEdit);
+		resultValue = new Intent();
+		setResult(RESULT_CANCELED, resultValue);
 		
 		
 		selected = new boolean[exerciseList.size()];
@@ -256,19 +258,20 @@ public class ChallengeWidgetConfigure extends Activity {
 
 			private void configureWidget() {
 				System.out.println("CONTEXT GETTER");
-				Context context = getBaseContext();
+				Context context = ChallengeWidgetConfigure.this;
 				AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
 				
 
 				System.out.println("REMOTE VIEWS GETTER");
-				RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.challengewidget);
-				appWidgetManager.updateAppWidget(mAppWidgetId, views);
-				
+				//RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.challengewidget);
+				//appWidgetManager.updateAppWidget(mAppWidgetId, views);
+				ChallengeWidgetProvider.updateAppWidget(context, appWidgetManager, mAppWidgetId);
 				
 
 				System.out.println("INTENT resultValue");
-				Intent resultValue = new Intent();
+				
 				resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
+
 				setResult(RESULT_OK, resultValue);
 				finish();
 				
@@ -443,7 +446,7 @@ public class ChallengeWidgetConfigure extends Activity {
 	public void write() {
 		System.out.println("WRITE CONFIGURE");
 		try {
-			FileOutputStream fos = openFileOutput("widgetexercises",
+			FileOutputStream fos = openFileOutput(mAppWidgetId+"widgetexercises",
 					Context.MODE_PRIVATE);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 
