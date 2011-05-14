@@ -97,21 +97,29 @@ public class WorkoutCardActivity extends Activity {
 	private void getExtras() {
 		Intent intent = this.getIntent();
 		numPeople = intent.getIntExtra("peeps", -1);
+		
 		numSets = intent.getIntExtra("sets", -1);
 		min = intent.getIntExtra("min", -1);
 		max = intent.getIntExtra("max", -1);
-		selectedProfiles = (ArrayList<Profile>) intent
-				.getSerializableExtra("profiles");
+		selectedProfiles = (ArrayList<Profile>) intent.getSerializableExtra("profiles");
 		unusedProfiles = (ArrayList<Profile>) intent
 				.getSerializableExtra("profilesU");
 		exercises = (ArrayList<Exercise>) intent
 				.getSerializableExtra("exercises");
 		workoutName = intent.getStringExtra("workoutName");
+		System.out.println("PEOPLE"+numPeople);
+		System.out.println("SETS"+numSets);
+		System.out.println("MIN"+min);
+
+		System.out.println("MAX"+max);
+
+		System.out.println("Exercise"+exercises.get(0).getName());
 	}
 
 	private void setConnections() {
 
 		setViews();
+		System.out.println("WORKOUT CARD PROFILE 0 NAME:" + selectedProfiles.get(0).getFirstName());
 		numProf = selectedProfiles.size();
 		rNum = new Random();
 		createWorkouts();

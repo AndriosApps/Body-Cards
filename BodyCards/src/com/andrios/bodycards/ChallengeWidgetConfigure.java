@@ -46,6 +46,7 @@ public class ChallengeWidgetConfigure extends Activity {
 
 	ArrayAdapter<Exercise> aa, sa;
 	ArrayList<Exercise> exerciseList, sel;
+	ArrayList<Profile> profs, selectProf;
 	Intent resultValue;
 	boolean[] selected;
 	
@@ -59,6 +60,8 @@ public class ChallengeWidgetConfigure extends Activity {
 
 		getExtras();
 		readExercises();
+		readProfiles();
+		selectProfile();
 		setConnections();
 	}
 
@@ -75,6 +78,31 @@ public class ChallengeWidgetConfigure extends Activity {
 		System.out.println(Integer.toString(mAppWidgetId));
 		System.out.println(Integer.toString(AppWidgetManager.INVALID_APPWIDGET_ID));
 		
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void readProfiles() {
+		try {
+			FileInputStream fis = openFileInput("profiles");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+
+			profs = (ArrayList<Profile>) ois.readObject();
+			
+			ois.close();
+			fis.close();
+
+		} catch (Exception e) {
+
+			profs = new ArrayList<Profile>();
+		}
+
+	}
+	
+	private void selectProfile(){
+		selectProf = new ArrayList<Profile>();
+		System.out.println(profs.get(0).getFirstName());
+		selectProf.add(profs.get(0));
+		profs.remove(0);
 	}
 
 	private void readExercises() {
@@ -451,6 +479,9 @@ public class ChallengeWidgetConfigure extends Activity {
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 
 			oos.writeObject(sel);
+			oos.writeObject(selectProf);
+			oos.writeObject(profs);
+			
 			oos.writeInt(maxReps);
 			oos.writeInt(minReps);
 			
