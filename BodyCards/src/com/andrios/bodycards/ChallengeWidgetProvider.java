@@ -131,6 +131,8 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 
     	
     	Intent wkout = new Intent(context, StartDeckActivity.class);
+    	wkout.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
     	System.out.println("IM SENDING REPS: "+selectReps);
 		wkout.putExtra("max", selectReps);
 		wkout.putExtra("min", selectReps);
@@ -141,12 +143,12 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		wkout.putExtra("exercises", chosenList);
 		wkout.putExtra("workoutName", "Daily Challenge");
 		
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, wkout, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, appWidgetId, wkout, PendingIntent.FLAG_CANCEL_CURRENT);
 
         // Get the layout for the App Widget and attach an on-click listener to the button
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.challengewidget);
         try{
-        	 views.setTextViewText(R.id.challengeWidgetCountLBL, Integer.toString(selectReps));
+        	 views.setTextViewText(R.id.challengeWidgetCountLBL, Integer.toString((int) (selectReps * chosenList.get(0).getMultiplier())));
              views.setTextViewText(R.id.challengeWidgetExerciseLBL, exercise.getName());
              views.setTextViewText(R.id.challengeWidgetNameLBL, selectProf.get(0).getFirstName());
              //Basically an onClick Listener that launches the pending Intent (StartDeckActivity)
