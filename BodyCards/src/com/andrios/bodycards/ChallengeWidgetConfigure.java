@@ -78,6 +78,7 @@ public class ChallengeWidgetConfigure extends Activity {
 		            AppWidgetManager.INVALID_APPWIDGET_ID);
 		}
 		
+		//TODO Remove these
 		System.out.println(AppWidgetManager.EXTRA_APPWIDGET_ID);
 		System.out.println(Integer.toString(mAppWidgetId));
 		System.out.println(Integer.toString(AppWidgetManager.INVALID_APPWIDGET_ID));
@@ -106,14 +107,14 @@ public class ChallengeWidgetConfigure extends Activity {
 	
 	private void selectProfile(int arg2){
 		selectProf = new ArrayList<Profile>();
-		System.out.println(profs.get(arg2).getFirstName());
+		System.out.println(profs.get(arg2).getFirstName()); // TODO Remove
 		selectProf.add(profs.get(arg2));
 		profs.remove(arg2);
 	}
 
 	private void readExercises() {
 		
-			System.out.println("READING EXERCISES");
+			System.out.println("READING EXERCISES"); // TODO Remove
 			try {
 				FileInputStream fis = openFileInput("exercises");
 				ObjectInputStream ois = new ObjectInputStream(fis);
@@ -291,18 +292,18 @@ public class ChallengeWidgetConfigure extends Activity {
 			}
 
 			private void configureWidget() {
-				System.out.println("CONTEXT GETTER");
+				System.out.println("CONTEXT GETTER"); // TODO Remove
 				Context context = ChallengeWidgetConfigure.this;
 				AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
 				
 
-				System.out.println("REMOTE VIEWS GETTER");
+				System.out.println("REMOTE VIEWS GETTER"); // TODO Remove
 				//RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.challengewidget);
 				//appWidgetManager.updateAppWidget(mAppWidgetId, views);
 				ChallengeWidgetProvider.updateAppWidget(context, appWidgetManager, mAppWidgetId);
 				
 
-				System.out.println("INTENT resultValue");
+				System.out.println("INTENT resultValue"); // TODO Remove
 				
 				resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
 

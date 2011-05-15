@@ -29,7 +29,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		final int N = appWidgetIds.length;
         
         
-        System.out.println("onUpdate");
+        System.out.println("onUpdate"); //TODO Remove
         // Perform this loop procedure for each App Widget that belongs to this provider
         for (int i=0; i<N; i++) {
         	updateAppWidget(context, appWidgetManager, appWidgetIds[i]);
@@ -40,9 +40,9 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 	public void onDeleted(Context context, AppWidgetManager appWiedgetManager, int[] appWidgetIds){
 		
 		for(int i = 0; i<appWidgetIds.length; i++){
-			System.out.println("DELETING filename");
+			System.out.println("DELETING filename"); // TODO Remove
 			String filename = (appWidgetIds[i] + "widgetexercises");
-			System.out.println("DELETING filename");
+			System.out.println("DELETING filename"); // TODO Remove
 			File file = new File(filename);
 			file.delete();
 		}
@@ -112,12 +112,18 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		rNum = new Random();
     	try{
     		readExercises(context, appWidgetId);
+    		
+    		//TODO Remove these
+    		
         	System.out.println("Exercise: " + exerciseList.get(0));
         	System.out.println("Max: " + maxReps);
         	System.out.println("Min: " + minReps);
-
         	System.out.println("PROFILE IN WIDGET"+selectProf.get(0).getFirstName()+selectProf.size());
+        	
         	getRandomExercise();
+        	
+        	//TODO Remove these too
+        	
         	System.out.println("Exercise IN WIDGET"+chosenList.get(0).getName());
         	System.out.println("Exercise REPS IN WIDGET"+selectReps);
     	}catch(Exception e){
@@ -133,7 +139,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
     	Intent wkout = new Intent(context, StartDeckActivity.class);
     	wkout.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-    	System.out.println("IM SENDING REPS: "+selectReps);
+    	System.out.println("IM SENDING REPS: "+selectReps); //TODO Remove
 		wkout.putExtra("max", selectReps);
 		wkout.putExtra("min", selectReps);
 		wkout.putExtra("sets", 1);
