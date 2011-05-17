@@ -44,6 +44,7 @@ public class Workout implements Serializable {
 		exercises = new ArrayList<CompletedExercises>();
 		this.exerciseList = e;
 		seconds = 0;
+		totalSeconds = 0;
 		System.out.println("init Seconds: " + seconds);
 		workoutName = wn;
 		workoutDate = Calendar.getInstance();
@@ -66,10 +67,14 @@ public class Workout implements Serializable {
 		long res = (time - totalBase) / 1000;
 		
 		totalSeconds += res;
+		System.out.println("Total Seconds " + totalSeconds);
 		
 	}
+
 	public void start() {
+		
 		base = SystemClock.elapsedRealtime();
+		
 		System.out.println("start Seconds: " + seconds);
 	}
 
@@ -77,6 +82,7 @@ public class Workout implements Serializable {
 		long res = (SystemClock.elapsedRealtime() - base) / 1000;
 		
 		seconds += res;
+		
 
 		System.out.println(" stop Seconds: " + seconds);
 		

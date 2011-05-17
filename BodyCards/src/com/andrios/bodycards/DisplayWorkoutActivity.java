@@ -56,8 +56,15 @@ public class DisplayWorkoutActivity extends Activity {
 				this, R.layout.list_view2, w.exercises);
 		ce.setAdapter(cea);
 
-		t.setText("  " + w.getWorkoutTime());
+		//Allows old workout times to be displayed correctly
+		if(w.totalSeconds==0){
+			t.setText("  " + w.getWorkoutTime());
+		}else{
 
+			t.setText("  " + w.getTotalFormattedTime());
+		}
+		
+		
 		Calendar c = w.getDate();
 		dt.setText("  " + days[c.get(Calendar.DAY_OF_WEEK)] + ", "
 				+ months[c.get(Calendar.MONTH)] + " "

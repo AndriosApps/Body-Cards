@@ -156,7 +156,7 @@ public class WorkoutCardActivity extends Activity {
 
 			public void onClick(View v) {
 				end();
-
+				toggleRunning();
 				setResult(RESULT_OK);
 				WorkoutCardActivity.this.finish();
 			}
@@ -187,7 +187,7 @@ public class WorkoutCardActivity extends Activity {
 	private void end() {
 
 		if (running) {
-
+			toggleRunning();
 			clock.stop();
 		}
 
@@ -355,7 +355,7 @@ public class WorkoutCardActivity extends Activity {
 	private long pause_time = 0;
 
 	public void updateTimer() {
-
+		System.out.println("Update Time");
 		int time = totalTime;
 		int hours = time / (60 * 60);
 		time = time - (hours * 60 * 60);
@@ -488,8 +488,13 @@ public class WorkoutCardActivity extends Activity {
 	}
 	
 	private void toggleRunning(){
+		//Pause
 		if (running) {
 			clock.stop();
+			System.out.println("Pause");//TODO REMOVE
+			for(int i = 0; i < workouts.length; i++){
+				workouts[i].stopTotal(SystemClock.elapsedRealtime());
+			}
 			pause_time = SystemClock.elapsedRealtime()
 					- clock.getBase();
 			if (((count - 1) % numPeople) < numProf)
@@ -497,13 +502,24 @@ public class WorkoutCardActivity extends Activity {
 			begin.setText("Resume");
 			running = false;
 		} else {
+			//Restart
+			System.out.println("Restart");//TODO REMOVE
 			if (started) {
+				for(int i = 0; i < workouts.length; i++){
+					workouts[i].startTotal(SystemClock.elapsedRealtime());
+				}
 				clock.setBase(SystemClock.elapsedRealtime()
 						- pause_time);
 				if (((count - 1) % numPeople) < numProf)
 					workouts[(count - 1) % numPeople].stop();
 				clock.start();
+			// Start First time
 			} else {
+				System.out.println("Start"+workouts.length);//TODO REMOVE
+				
+				for(int i = 0; i < workouts.length; i++){
+					workouts[i].startTotal(SystemClock.elapsedRealtime());
+				}
 				clock.setBase(SystemClock.elapsedRealtime());
 				clock.start();
 				getRandomWorkoutCard();
