@@ -132,7 +132,38 @@ public class Profile implements Serializable {
 	}
 
 	public void addWorkout(Workout w) {
-		workoutList.add(0, w);
+		
+		System.out.println("addWorkout"+ w.workoutName + getNumWorkouts());
+		if(w.workoutName.equals("Daily Challenge")){
+			System.out.println("its a match");
+			Calendar c = (Calendar) w.workoutDate.clone();
+			c.set(Calendar.HOUR, 0);
+			c.set(Calendar.MINUTE, 0);
+			c.set(Calendar.SECOND, 1);
+			for(int i = 0; i < workoutList.size(); i++){
+				System.out.println(i);
+				if(c.after(workoutList.get(i).getDate())){
+					System.out.println("First Daily Challenge");
+					workoutList.add(0, w);
+					break;//The most recent workout is at the earliest, the previous day. 
+				}else if(workoutList.get(i).workoutName.equals("Daily Challenge")){
+					//This workout happened today. 
+					System.out.println("TIME TO MERGE");
+					workoutList.get(i).totalSeconds += w.totalSeconds;
+					workoutList.get(i).seconds += w.seconds;
+					workoutList.get(i).finSets += w.finSets;
+					workoutList.get(i).numSets += w.numSets;
+					workoutList.get(i).exercises.add(w.exercises.get(0));
+					break;
+				}
+			}
+		}else{
+			System.out.println("Other Workout Type");
+
+			workoutList.add(0, w);
+		}
+		
+		
 	}
 
 }
