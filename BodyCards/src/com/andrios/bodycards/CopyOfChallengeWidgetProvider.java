@@ -14,9 +14,8 @@ import android.content.Intent;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 
-public class ChallengeWidgetProvider extends AppWidgetProvider {
+public class CopyOfChallengeWidgetProvider extends AppWidgetProvider {
 
-	public static String CLICK = "click";
 	static ArrayList<Exercise> exerciseList, chosenList;
 	static ArrayList<Profile> selectProf, unusedProf;
 	static int maxReps;
@@ -105,16 +104,6 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		
 		
 
-	}
-	
-	@Override
-	public void onReceive(Context context, Intent intent) {
-	 super.onReceive(context, intent);
-
-	 
-	 if (intent.getAction().equals(CLICK)) {
-		   //do some really cool stuff here
-		}
 	}
 	
 	
