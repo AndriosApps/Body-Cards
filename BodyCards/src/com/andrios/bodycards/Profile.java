@@ -134,27 +134,27 @@ public class Profile implements Serializable {
 	}
 
 	public void addWorkout(Workout w) {
-		
+		//TODO remove
 		System.out.println("addWorkout"+ w.workoutName +" "+ getNumWorkouts());
 		if(w.workoutName.equals("Daily Challenge")){
-			System.out.println("its a match");
+			System.out.println("its a match"); // TODO remove
 			if(getNumWorkouts() == 0){
-				System.out.println("First Entry");
+				System.out.println("First Entry"); //TODO remove
 				workoutList.add(0, w);
-			}else{
+			} else {
 				Calendar c = (Calendar) w.workoutDate.clone();
 				c.set(Calendar.HOUR, 0);
 				c.set(Calendar.MINUTE, 0);
 				c.set(Calendar.SECOND, 1);
 				for(int i = 0; i < workoutList.size(); i++){
-					System.out.println(i);
+					System.out.println(i); // TODO Remove
 					if(c.after(workoutList.get(i).getDate())){
-						System.out.println("First Daily Challenge");
+						System.out.println("First Daily Challenge"); // TODO Remove
 						workoutList.add(0, w);
 						break;//The most recent workout is at the earliest, the previous day. 
-					}else if(workoutList.get(i).workoutName.equals("Daily Challenge")){
+					} else if(workoutList.get(i).workoutName.equals("Daily Challenge")){
 						//This workout happened today. 
-						System.out.println("TIME TO MERGE");
+						System.out.println("TIME TO MERGE"); // TODO Remove
 						workoutList.get(i).totalSeconds += w.totalSeconds;
 						workoutList.get(i).seconds += w.seconds;
 						workoutList.get(i).finSets += w.finSets;
@@ -165,8 +165,8 @@ public class Profile implements Serializable {
 				}
 			}
 			
-		}else{
-			System.out.println("Other Workout Type");
+		} else {
+			System.out.println("Other Workout Type"); // TODO remove
 
 			workoutList.add(0, w);
 		}
