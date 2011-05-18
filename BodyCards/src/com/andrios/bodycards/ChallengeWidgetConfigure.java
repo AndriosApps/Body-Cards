@@ -300,9 +300,9 @@ public class ChallengeWidgetConfigure extends Activity {
 				System.out.println("REMOTE VIEWS GETTER"); // TODO Remove
 				
 				//TODO Toggle here between Provider solutions. 
-				//RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.challengewidget);
-				//appWidgetManager.updateAppWidget(mAppWidgetId, views);
-				ChallengeWidgetProvider.updateAppWidget(context, appWidgetManager, mAppWidgetId);
+				RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.challengewidget);
+				appWidgetManager.updateAppWidget(mAppWidgetId, views);
+				//ChallengeWidgetProvider.updateAppWidget(context, appWidgetManager, mAppWidgetId);
 				
 
 				System.out.println("INTENT resultValue"); // TODO Remove
