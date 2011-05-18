@@ -13,13 +13,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ChallengeWidgetProvider extends AppWidgetProvider {
 
 	public static ChallengeWidgetProvider Widget = null;
 	public static Context context;
 	public static AppWidgetManager AWM;
-	public static int IDs[];
+	public static int[] IDs;
 	
 	public static String CLICK = "click";
 	static ArrayList<Exercise> exerciseList, chosenList;
@@ -39,25 +40,28 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		}else{
 			this.context = context;
 		}
-	    if (null == AWM){
+	    if (null == appWidgetManager){
 	    	AWM = ChallengeWidgetProvider.AWM;
 	    }else{
 	    	AWM = appWidgetManager;
 	    }
-	    if (null == IDs){
+	    if (null == appWidgetIds){
 	    	IDs = ChallengeWidgetProvider.IDs;
 	    }else{
 	    	IDs = appWidgetIds;
+	    	System.out.println("AppWidgetsidlenght: "+ appWidgetIds.length); //TODO Remove
+	    	System.out.println("IDslenght: "+ IDs.length); // TODO Remove
 	    }
-	
-		final int N = appWidgetIds.length;
+	    ChallengeWidgetProvider.Widget = this;
+	    
+		final int N = IDs.length;
         
         
         System.out.println("onUpdate"); //TODO Remove
         // Perform this loop procedure for each App Widget that belongs to this provider
         for (int i=0; i<N; i++) {
         	rNum = new Random();
-        	readExercises(context, appWidgetIds[i]);
+        	readExercises(context, IDs[i]);
     		getRandomExercise();
         	
         	RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.challengewidget);
@@ -66,7 +70,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
     		
     		
     		try{
-    			
+    			System.out.println("Setting Text");
     			remoteViews.setTextViewText(R.id.challengeWidgetExerciseLBL, exercise.getName());
                 remoteViews.setTextViewText(R.id.challengeWidgetNameLBL, selectProf.get(0).getFirstName());
                 
@@ -77,15 +81,16 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
     		}
     		
     		
-    		PendingIntent actionPendingIntent = PendingIntent.getBroadcast(context, appWidgetIds[i], active, 0);
+    		PendingIntent actionPendingIntent = PendingIntent.getBroadcast(context, IDs[i], active, 0);
     		
     		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetBottomLayout, actionPendingIntent);
     		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetMiddleLayout, actionPendingIntent);
     		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetTopLayout, actionPendingIntent);
-    		
-    		appWidgetManager.updateAppWidget(appWidgetIds, remoteViews);
+    		System.out.println("IDs SIZE "+IDs.length);
+    		AWM.updateAppWidget(IDs,
+    				remoteViews);
         }
-        super.onUpdate(context, appWidgetManager, appWidgetIds);
+        super.onUpdate(context, appWidgetManager, ChallengeWidgetProvider.IDs);
     }
 	
 	
@@ -187,6 +192,37 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		super.onReceive(context, intent);
 	}
 	
-	
+	public static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
+			 int appWidgetId){
+		rNum = new Random();
+    	readExercises(context, appWidgetId);
+		getRandomExercise();
+    	
+    	RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.challengewidget);
+		Intent active = new Intent(context, ChallengeWidgetProvider.class);
+		active.setAction(CLICK);
+		
+		
+		try{
+			System.out.println("Setting Text");
+			remoteViews.setTextViewText(R.id.challengeWidgetExerciseLBL, exercise.getName());
+            remoteViews.setTextViewText(R.id.challengeWidgetNameLBL, selectProf.get(0).getFirstName());
+            
+    		remoteViews.setTextViewText(R.id.challengeWidgetCountLBL, Integer.toString((int) (selectReps * chosenList.get(0).getMultiplier())));
+           
+		}catch(NullPointerException e){
+			e.printStackTrace();
+		}
+		
+		
+		PendingIntent actionPendingIntent = PendingIntent.getBroadcast(context, appWidgetId, active, 0);
+		
+		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetBottomLayout, actionPendingIntent);
+		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetMiddleLayout, actionPendingIntent);
+		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetTopLayout, actionPendingIntent);
+		System.out.println("IDs SIZE "+IDs.length);
+		AWM.updateAppWidget(IDs,
+				remoteViews);
+			}
 
 }

@@ -144,7 +144,7 @@ public class ChallengeWidgetConfigure extends Activity {
 
 		min = (EditText) findViewById(R.id.challengeWidgetMinEdit);
 		max = (EditText) findViewById(R.id.challengeWidgetMaxEdit);
-		resultValue = new Intent();
+		resultValue = new Intent(this, ChallengeWidgetConfigure.class);
 		setResult(RESULT_CANCELED, resultValue);
 		
 		
@@ -291,6 +291,9 @@ public class ChallengeWidgetConfigure extends Activity {
 				}
 			}
 
+
+			
+			
 			private void configureWidget() {
 				System.out.println("CONTEXT GETTER"); // TODO Remove
 				Context context = ChallengeWidgetConfigure.this;
@@ -300,9 +303,10 @@ public class ChallengeWidgetConfigure extends Activity {
 				System.out.println("REMOTE VIEWS GETTER"); // TODO Remove
 				
 				//TODO Toggle here between Provider solutions. 
+				System.out.println("AppWidgetId "+ mAppWidgetId);
 				RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.challengewidget);
-				appWidgetManager.updateAppWidget(mAppWidgetId, views);
-				//ChallengeWidgetProvider.updateAppWidget(context, appWidgetManager, mAppWidgetId);
+				//appWidgetManager.updateAppWidget(mAppWidgetId, views);
+				ChallengeWidgetProvider.updateAppWidget(context, appWidgetManager, mAppWidgetId);
 				
 
 				System.out.println("INTENT resultValue"); // TODO Remove
