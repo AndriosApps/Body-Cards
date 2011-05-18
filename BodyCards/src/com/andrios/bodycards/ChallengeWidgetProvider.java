@@ -16,6 +16,11 @@ import android.widget.TextView;
 
 public class ChallengeWidgetProvider extends AppWidgetProvider {
 
+	public static ChallengeWidgetProvider Widget = null;
+	public static Context context;
+	public static AppWidgetManager AWM;
+	public static int IDs[];
+	
 	public static String CLICK = "click";
 	static ArrayList<Exercise> exerciseList, chosenList;
 	static ArrayList<Profile> selectProf, unusedProf;
@@ -25,11 +30,26 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 	static Exercise exercise;
 	static Random rNum;
 	// http://stackoverflow.com/questions/2748613/force-android-widget-to-update
-	static AppWidgetManager AWM;
+	
 	
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 		
-		mgr = appWidgetManager;
+		if (null == context){
+			context = ChallengeWidgetProvider.context;
+		}else{
+			this.context = context;
+		}
+	    if (null == AWM){
+	    	AWM = ChallengeWidgetProvider.AWM;
+	    }else{
+	    	AWM = appWidgetManager;
+	    }
+	    if (null == IDs){
+	    	IDs = ChallengeWidgetProvider.IDs;
+	    }else{
+	    	IDs = appWidgetIds;
+	    }
+	
 		final int N = appWidgetIds.length;
         
         
@@ -152,6 +172,13 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 				wkout.putExtra("profiles", selectProf);
 				wkout.putExtra("exercises", chosenList);
 				wkout.putExtra("workoutName", "Daily Challenge");
+				
+				if(ChallengeWidgetProvider.Widget != null){
+					ChallengeWidgetProvider.Widget.onUpdate(null, null, null);
+					
+				}else{
+					System.out.println("Widget still == null");
+				}
 				
 				context.startActivity(wkout);
 			}
