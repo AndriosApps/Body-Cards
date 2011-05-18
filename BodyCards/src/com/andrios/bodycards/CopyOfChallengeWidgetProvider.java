@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 public class CopyOfChallengeWidgetProvider extends AppWidgetProvider {
 
+	public static String CLICK = "click";
 	static ArrayList<Exercise> exerciseList, chosenList;
 	static ArrayList<Profile> selectProf, unusedProf;
 	static int maxReps;
@@ -32,29 +33,40 @@ public class CopyOfChallengeWidgetProvider extends AppWidgetProvider {
         System.out.println("onUpdate"); //TODO Remove
         // Perform this loop procedure for each App Widget that belongs to this provider
         for (int i=0; i<N; i++) {
-        	updateAppWidget(context, appWidgetManager, appWidgetIds[i]);
+        	rNum = new Random();
+        	readExercises(context, appWidgetIds[i]);
+    		getRandomExercise();
+        	
+        	RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.challengewidget);
+    		Intent active = new Intent(context, WidgetProvider.class);
+    		active.setAction(CLICK);
+    		
+    		try{
+    			System.out.println("NUMS: " + selectReps);
+        		System.out.println("NUMS2: " + chosenList.get(0).getMultiplier()); 
+        		remoteViews.setTextViewText(R.id.challengeWidgetCountLBL, Integer.toString((int) (selectReps * chosenList.get(0).getMultiplier())));
+                 //remoteViews.setTextViewText(R.id.challengeWidgetExerciseLBL, exercise.getName());
+                 //remoteViews.setTextViewText(R.id.challengeWidgetNameLBL, selectProf.get(0).getFirstName());
+                
+    		}catch(NullPointerException e){
+    			e.printStackTrace();
+    		}
+    		
+    		
+    		PendingIntent actionPendingIntent = PendingIntent.getBroadcast(context, appWidgetIds[i], active, 0);
+    		
+    		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetBottomLayout, actionPendingIntent);
+    		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetMiddleLayout, actionPendingIntent);
+    		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetTopLayout, actionPendingIntent);
+    		
+    		appWidgetManager.updateAppWidget(appWidgetIds, remoteViews);
         }
         super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
 	
-	public void onDeleted(Context context, AppWidgetManager appWiedgetManager, int[] appWidgetIds){
-		
-		for(int i = 0; i<appWidgetIds.length; i++){
-			System.out.println("DELETING filename"); // TODO Remove
-			String filename = (appWidgetIds[i] + "widgetexercises");
-			System.out.println("DELETING filename"); // TODO Remove
-			File file = new File(filename);
-			file.delete();
-		}
-		super.onDeleted(context, appWidgetIds);
-	}
-	
-	public void onDisabled(Context context){
-		super.onDisabled(context);
-	}
 	
 	private static void readExercises(Context context, int id){
-		
+		System.out.println("Read Exercises");
 		try{
 			FileInputStream fis = context.openFileInput(id+"widgetexercises");
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -92,9 +104,11 @@ public class CopyOfChallengeWidgetProvider extends AppWidgetProvider {
 
 				int num = Math.abs(rNum.nextInt());
 				selectReps = minReps + (num % modulo);
+				System.out.println("Reps"+ selectReps);
 			}
 			int randomNumber = Math.abs(rNum.nextInt()) % exerciseList.size();
 			exercise = (exerciseList.get(randomNumber));
+			
 			chosenList = new ArrayList<Exercise>();
 			chosenList.add(exercise);
 			
@@ -106,68 +120,41 @@ public class CopyOfChallengeWidgetProvider extends AppWidgetProvider {
 
 	}
 	
-	
-	public static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-			 int appWidgetId){
-		rNum = new Random();
-    	try{
-    		readExercises(context, appWidgetId);
-    		
-    		//TODO Remove these
-    		
-        	System.out.println("Exercise: " + exerciseList.get(0));
-        	System.out.println("Max: " + maxReps);
-        	System.out.println("Min: " + minReps);
-        	System.out.println("PROFILE IN WIDGET"+selectProf.get(0).getFirstName()+selectProf.size());
-        	
-        	getRandomExercise();
-        	
-        	//TODO Remove these too
-        	
-        	System.out.println("Exercise IN WIDGET"+chosenList.get(0).getName());
-        	System.out.println("Exercise REPS IN WIDGET"+selectReps);
-    	}catch(Exception e){
-    		e.printStackTrace();
-    	}
-    	
-    	//TODO REMOVE THIS
-    	
-
-        // Create an Intent to launch ExampleActivity
-
-    	
-    	Intent wkout = new Intent(context, StartDeckActivity.class);
-    	wkout.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-    	System.out.println("IM SENDING REPS: "+selectReps); //TODO Remove
-		wkout.putExtra("max", selectReps);
-		wkout.putExtra("min", selectReps);
-		wkout.putExtra("sets", 1);
-		wkout.putExtra("peeps", 1);
-		wkout.putExtra("profilesU", unusedProf);
-		wkout.putExtra("profiles", selectProf);
-		wkout.putExtra("exercises", chosenList);
-		wkout.putExtra("workoutName", "Daily Challenge");
+	@Override
+	public void onReceive(Context context, Intent intent){
 		
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, appWidgetId, wkout, PendingIntent.FLAG_CANCEL_CURRENT);
+		final String action = intent.getAction();
+		if(AppWidgetManager.ACTION_APPWIDGET_DELETED.equals(action)){
+			final int appWidgetId = intent.getExtras().getInt(
+					AppWidgetManager.EXTRA_APPWIDGET_ID, 
+					AppWidgetManager.INVALID_APPWIDGET_ID);
+			if(appWidgetId != AppWidgetManager.INVALID_APPWIDGET_ID){
+				this.onDeleted(context, new int[] {appWidgetId});
+			}
+		
+		}else{
+			//check if our Action was called
+			if(intent.getAction().equals(CLICK)){
+				System.out.println("I GO CLICKED GOOD");
+			   	Intent wkout = new Intent(context, StartDeckActivity.class);
+		    	wkout.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-        // Get the layout for the App Widget and attach an on-click listener to the button
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.challengewidget);
-        try{
-        	 views.setTextViewText(R.id.challengeWidgetCountLBL, Integer.toString((int) (selectReps * chosenList.get(0).getMultiplier())));
-             views.setTextViewText(R.id.challengeWidgetExerciseLBL, exercise.getName());
-             views.setTextViewText(R.id.challengeWidgetNameLBL, selectProf.get(0).getFirstName());
-             //Basically an onClick Listener that launches the pending Intent (StartDeckActivity)
-             views.setOnClickPendingIntent(R.id.challengeWidgetBottomLayout, pendingIntent);
-             views.setOnClickPendingIntent(R.id.challengeWidgetMiddleLayout, pendingIntent);
-             views.setOnClickPendingIntent(R.id.challengeWidgetTopLayout, pendingIntent);
-
-        }catch(Exception e){
-        	e.printStackTrace();
-        }
-       
-        // Tell the AppWidgetManager to perform an update on the current App Widget
-        appWidgetManager.updateAppWidget(appWidgetId, views);
+		    	System.out.println("IM SENDING REPS: "+selectReps); //TODO Remove
+				wkout.putExtra("max", selectReps);
+				wkout.putExtra("min", selectReps);
+				wkout.putExtra("sets", 1);
+				wkout.putExtra("peeps", 1);
+				wkout.putExtra("profilesU", unusedProf);
+				wkout.putExtra("profiles", selectProf);
+				wkout.putExtra("exercises", chosenList);
+				wkout.putExtra("workoutName", "Daily Challenge");
+				
+				context.startActivity(wkout);
+			}
+			
+		}
+		super.onReceive(context, intent);
 	}
+	
 
 }

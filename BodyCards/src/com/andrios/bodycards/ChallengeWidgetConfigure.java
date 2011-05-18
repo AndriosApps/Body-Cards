@@ -298,6 +298,8 @@ public class ChallengeWidgetConfigure extends Activity {
 				
 
 				System.out.println("REMOTE VIEWS GETTER"); // TODO Remove
+				
+				//TODO Toggle here between Provider solutions. 
 				//RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.challengewidget);
 				//appWidgetManager.updateAppWidget(mAppWidgetId, views);
 				ChallengeWidgetProvider.updateAppWidget(context, appWidgetManager, mAppWidgetId);
@@ -556,9 +558,9 @@ private void setAlertDialog() {
 			
 			
 			
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long arg3) {
-				selectProfile(arg2);
+				selectProfile(position);
 				ad.dismiss();
 				
 			}
