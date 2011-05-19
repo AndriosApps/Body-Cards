@@ -81,10 +81,7 @@ public class ChallengeWidgetConfigure extends Activity {
 		            AppWidgetManager.INVALID_APPWIDGET_ID);
 		}
 		
-		//TODO Remove these
-		System.out.println(AppWidgetManager.EXTRA_APPWIDGET_ID);
-		System.out.println(Integer.toString(mAppWidgetId));
-		System.out.println(Integer.toString(AppWidgetManager.INVALID_APPWIDGET_ID));
+	
 		
 	}
 	
@@ -140,7 +137,6 @@ public class ChallengeWidgetConfigure extends Activity {
 
 	private void readExercises() {
 		
-			System.out.println("READING EXERCISES"); // TODO Remove
 			try {
 				FileInputStream fis = openFileInput("exercises");
 				ObjectInputStream ois = new ObjectInputStream(fis);
@@ -320,21 +316,12 @@ public class ChallengeWidgetConfigure extends Activity {
 			
 			
 			private void configureWidget() {
-				System.out.println("CONTEXT GETTER"); // TODO Remove
 				Context context = ChallengeWidgetConfigure.this;
 				AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
 				
-
-				System.out.println("REMOTE VIEWS GETTER"); // TODO Remove
-				
-				//TODO Toggle here between Provider solutions. 
-				System.out.println("AppWidgetId "+ mAppWidgetId);
 				RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.challengewidget);
-				//appWidgetManager.updateAppWidget(mAppWidgetId, views);
 				ChallengeWidgetProvider.updateAppWidget(context, appWidgetManager, mAppWidgetId);
 				
-
-				System.out.println("INTENT resultValue"); // TODO Remove
 				//This Ensures that each PendingIntent is unique. 
 				Uri data = Uri.withAppendedPath(
 					    Uri.parse(URI_SCHEME + "://widget/id/")
@@ -515,7 +502,6 @@ public class ChallengeWidgetConfigure extends Activity {
 	}
 	
 	public void write() {
-		System.out.println("WRITE CONFIGURE");
 		try {
 			FileOutputStream fos = openFileOutput(mAppWidgetId+"widgetexercises",
 					Context.MODE_PRIVATE);
