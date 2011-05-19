@@ -346,7 +346,7 @@ public class NewWorkoutActivity extends Activity {
 					}
 				}catch(Exception e){
 					Toast.makeText(NewWorkoutActivity.this,
-							"Ensure values are entered in all fields",
+							"Ensure correct values are entered in all fields",
 							Toast.LENGTH_SHORT).show();
 				}
 			

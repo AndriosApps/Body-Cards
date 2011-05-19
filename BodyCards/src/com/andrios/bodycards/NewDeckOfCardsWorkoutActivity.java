@@ -197,10 +197,18 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 		doneBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				
+				boolean isCorrect = true;
 				int decksize=0;
-				int numGuests = Integer.parseInt(numGuestsTXT.getText().toString().trim());
-
+				int numGuests =0;
+				try{
+					numGuests = Integer.parseInt(numGuestsTXT.getText().toString().trim());
+				}catch(Exception e){
+					Toast.makeText(NewDeckOfCardsWorkoutActivity.this,
+							"Can only have integers in Guest User field",
+							Toast.LENGTH_SHORT).show();
+					isCorrect = false;
+				}
+				
 				if(quarterRDO.isChecked()){
 					decksize = 1;
 				}else if(halfRDO.isChecked()){
@@ -211,7 +219,10 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 					Toast.makeText(NewDeckOfCardsWorkoutActivity.this,
 							"Must choose at least one profile or guest user",
 							Toast.LENGTH_SHORT).show();
-				}else {
+					isCorrect = false;
+				}
+				
+				if(isCorrect) {
 
 					Intent deckworkout = new Intent(v.getContext(),
 							DeckOfCardsWorkoutActivity.class);
