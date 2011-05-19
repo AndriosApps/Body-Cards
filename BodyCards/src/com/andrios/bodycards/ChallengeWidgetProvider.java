@@ -2,7 +2,10 @@ package com.andrios.bodycards;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -34,7 +37,8 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 	
 	
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-		
+
+    	System.out.println("on Update");
 		if (null == context){
 			context = ChallengeWidgetProvider.context;
 		}else{
@@ -49,8 +53,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 	    	IDs = ChallengeWidgetProvider.IDs;
 	    }else{
 	    	IDs = appWidgetIds;
-	    	System.out.println("AppWidgetsidlenght: "+ appWidgetIds.length); //TODO Remove
-	    	System.out.println("IDslenght: "+ IDs.length); // TODO Remove
+	    	System.out.println("IDS Size "+IDs.length);
 	    }
 	    ChallengeWidgetProvider.Widget = this;
 	    
@@ -61,12 +64,16 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
         // Perform this loop procedure for each App Widget that belongs to this provider
         for (int i=0; i<N; i++) {
         	rNum = new Random();
+        	readProfiles();
+        	myProfile(IDs[i]);
         	readExercises(context, IDs[i]);
     		getRandomExercise();
         	
         	RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.challengewidget);
     		Intent active = new Intent(context, ChallengeWidgetProvider.class);
     		active.setAction(CLICK);
+    		active.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, IDs[i]);
+    	
     		
     		
     		try{
@@ -76,7 +83,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
                 
         		remoteViews.setTextViewText(R.id.challengeWidgetCountLBL, Integer.toString((int) (selectReps * chosenList.get(0).getMultiplier())));
                
-    		}catch(NullPointerException e){
+    		}catch(Exception e){
     			e.printStackTrace();
     		}
     		
@@ -87,13 +94,40 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
     		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetMiddleLayout, actionPendingIntent);
     		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetTopLayout, actionPendingIntent);
     		System.out.println("IDs SIZE "+IDs.length);
-    		AWM.updateAppWidget(IDs,
-    				remoteViews);
+    		AWM.updateAppWidget(IDs, remoteViews);
         }
         super.onUpdate(context, appWidgetManager, ChallengeWidgetProvider.IDs);
     }
 	
+	public void onDeleted(Context context, int[] appWidgetIds){
+		System.out.println("In onDeleted");
+		readProfiles();
+		myProfile(appWidgetIds[0]);
+		System.out.println("Select length "+ selectProf.size());
+		selectProf.get(0).setID(false, -1);
+		unusedProf.add(selectProf.remove(0));
+		writeProfiles(context);
+		
+		System.out.println("Before super.onDeleted");
+		super.onDeleted(context, appWidgetIds);
+		System.out.println("IDs Length "+ IDs.length);
+	}
 	
+	
+	private static void myProfile(int ID) {
+		for(int i = 0; i < unusedProf.size(); i++){
+			System.out.println("Does "+ID + " Match " + unusedProf.get(i).getID());
+			if(unusedProf.get(i).getID() == ID){
+				Profile p = unusedProf.remove(i);
+				selectProf = new ArrayList<Profile>();
+				selectProf.add(p);
+				break;
+			}
+		}
+		
+	}
+
+
 	private static void readExercises(Context context, int id){
 		System.out.println("Read Exercises");
 		try{
@@ -101,8 +135,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
 			exerciseList = (ArrayList<Exercise>) ois.readObject();
-			selectProf = (ArrayList<Profile>) ois.readObject();
-			unusedProf = (ArrayList<Profile>) ois.readObject();
+		
 			maxReps = (int) ois.readInt();
 			minReps = (int) ois.readInt();
 
@@ -118,7 +151,40 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		
 		
 	}
+	@SuppressWarnings("unchecked")
+	private static void readProfiles() {
+		try {
+			FileInputStream fis = context.openFileInput("profiles");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+
+			unusedProf = (ArrayList<Profile>) ois.readObject();
+			
+			ois.close();
+			fis.close();
+
+		} catch (Exception e) {
+
+			unusedProf = new ArrayList<Profile>();
+		}
+		
+	}
 	
+	private void writeProfiles(Context context){
+		try {
+			FileOutputStream fos = context.openFileOutput("profiles",
+					Context.MODE_PRIVATE);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+			oos.writeObject(unusedProf);
+
+			oos.close();
+			fos.close();
+
+		
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 
 	
@@ -154,22 +220,20 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		
 		final String action = intent.getAction();
 		if(AppWidgetManager.ACTION_APPWIDGET_DELETED.equals(action)){
-			final int appWidgetId = intent.getExtras().getInt(
-					AppWidgetManager.EXTRA_APPWIDGET_ID, 
-					AppWidgetManager.INVALID_APPWIDGET_ID);
-			if(appWidgetId != AppWidgetManager.INVALID_APPWIDGET_ID){
-				this.onDeleted(context, new int[] {appWidgetId});
-			}
+			
 		
 		}else{
 			//check if our Action was called
 			if(intent.getAction().equals(CLICK)){
 				System.out.println("I GO CLICKED GOOD");
+				int appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, 
+						AppWidgetManager.INVALID_APPWIDGET_ID);
 			   	Intent wkout = new Intent(context, StartDeckActivity.class);
 		    	wkout.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-		    	System.out.println("IM SENDING REPS: "+selectReps); //TODO Remove
-				wkout.putExtra("max", selectReps);
+				readProfiles();//TODO Look HERE
+				myProfile(appWidgetId);
+		    	wkout.putExtra("max", selectReps);
 				wkout.putExtra("min", selectReps);
 				wkout.putExtra("sets", 1);
 				wkout.putExtra("peeps", 1);
@@ -189,6 +253,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 			}
 			
 		}
+		System.out.println("Before Super.onReceive");
 		super.onReceive(context, intent);
 	}
 	
@@ -196,6 +261,8 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 			 int appWidgetId){
 		rNum = new Random();
     	readExercises(context, appWidgetId);
+    	readProfiles();
+    	myProfile(appWidgetId);
 		getRandomExercise();
     	
     	RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.challengewidget);

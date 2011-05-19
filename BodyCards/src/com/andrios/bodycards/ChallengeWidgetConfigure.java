@@ -47,7 +47,7 @@ public class ChallengeWidgetConfigure extends Activity {
 
 	ArrayAdapter<Exercise> aa, sa;
 	ArrayList<Exercise> exerciseList, sel;
-	ArrayList<Profile> profs, selectProf;
+	ArrayList<Profile> profs;
 	String[] profNames;
 	Intent resultValue;
 	boolean[] selected;
@@ -105,12 +105,24 @@ public class ChallengeWidgetConfigure extends Activity {
 
 	}
 	
-	private void selectProfile(int arg2){
-		selectProf = new ArrayList<Profile>();
-		System.out.println(profs.get(arg2).getFirstName()); // TODO Remove
-		selectProf.add(profs.get(arg2));
-		profs.remove(arg2);
+	private void writeProfiles(){
+		try {
+			FileOutputStream fos = openFileOutput("profiles",
+					Context.MODE_PRIVATE);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+			oos.writeObject(profs);
+
+			oos.close();
+			fos.close();
+
+		
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
+	
+
 
 	private void readExercises() {
 		
@@ -492,8 +504,7 @@ public class ChallengeWidgetConfigure extends Activity {
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 
 			oos.writeObject(sel);
-			oos.writeObject(selectProf);
-			oos.writeObject(profs);
+			
 			
 			oos.writeInt(maxReps);
 			oos.writeInt(minReps);
@@ -564,8 +575,17 @@ private void setAlertDialog() {
 			
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long arg3) {
-				selectProfile(position);
-				ad.dismiss();
+				if(profs.get(position).isWidget){
+					
+					Toast.makeText(ChallengeWidgetConfigure.this,
+							profs.get(position).getFirstName() +" already has a widget",
+							Toast.LENGTH_SHORT).show();
+				}else{
+					profs.get(position).setID(true, mAppWidgetId);
+					writeProfiles();
+					ad.dismiss();
+				}
+				
 				
 			}
 			

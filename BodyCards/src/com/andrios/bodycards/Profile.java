@@ -13,7 +13,7 @@ public class Profile implements Serializable {
 	String fName;
 	String lName;
 	String gender;
-	int age;
+	int age, ID;
 	String createDate;
 	public Calendar creationDate;
 	public Calendar birthday;
@@ -23,6 +23,7 @@ public class Profile implements Serializable {
 	StopWatch clock;
 
 	ArrayList<Workout> workoutList;
+	ArrayList<Exercise> widgetExercises;
 
 	String[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
 			"Sep", "Oct", "Nov", "Dec" };
@@ -131,6 +132,20 @@ public class Profile implements Serializable {
 
 	public void setCalDate(Calendar c) {
 		creationDate = c;
+	}
+	
+	public void setID(boolean isWidget, int ID){
+		this.isWidget = isWidget;
+		this.ID = ID;
+	}
+	
+	public int getID(){
+		return this.ID;
+	}
+	
+	public void setWidgetExcercises(ArrayList<Exercise> widgetExercises){
+		this.widgetExercises = widgetExercises;
+		
 	}
 
 	public void addWorkout(Workout w) {
