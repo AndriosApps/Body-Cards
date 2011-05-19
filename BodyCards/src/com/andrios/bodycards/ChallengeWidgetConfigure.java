@@ -14,6 +14,7 @@ import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -60,7 +61,8 @@ public class ChallengeWidgetConfigure extends Activity {
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.challengewidgetconfigure);
 
-		
+		resultValue = new Intent(this, ChallengeWidgetConfigure.class);
+		setResult(RESULT_CANCELED, resultValue);
 		getExtras();
 		readExercises();
 		readProfiles();
@@ -95,10 +97,21 @@ public class ChallengeWidgetConfigure extends Activity {
 			
 			ois.close();
 			fis.close();
+			
+			if(profs.size()<= 0){
+				Toast toast = new Toast(getBaseContext());
+				toast = Toast.makeText(getBaseContext(), "Please create a profile first.", Toast.LENGTH_LONG);
+				toast.setGravity(Gravity.CENTER, 0, 0);
+				toast.show();
+				finish();
+			}
 
 		} catch (Exception e) {
-
-			profs = new ArrayList<Profile>();
+			Toast toast = new Toast(getBaseContext());
+			toast = Toast.makeText(getBaseContext(), "Please create a profile first.", Toast.LENGTH_LONG);
+			toast.setGravity(Gravity.CENTER, 0, 0);
+			toast.show();
+			finish();
 		}
 		
 	
@@ -156,8 +169,7 @@ public class ChallengeWidgetConfigure extends Activity {
 
 		min = (EditText) findViewById(R.id.challengeWidgetMinEdit);
 		max = (EditText) findViewById(R.id.challengeWidgetMaxEdit);
-		resultValue = new Intent(this, ChallengeWidgetConfigure.class);
-		setResult(RESULT_CANCELED, resultValue);
+		
 		
 		
 		selected = new boolean[exerciseList.size()];
