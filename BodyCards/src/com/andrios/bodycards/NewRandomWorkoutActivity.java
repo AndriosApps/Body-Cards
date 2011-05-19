@@ -154,14 +154,13 @@ public class NewRandomWorkoutActivity extends Activity {
 		numPeeps.setOnFocusChangeListener(new OnFocusChangeListener(){
 
 			public void onFocusChange(View v, boolean hasFocus) {
-				System.out.println("DONE FOCUS CHANGE");
 				if(hasFocus){
-					/*
+					
 					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 					// only will trigger it if no physical keyboard is open
 
-					mgr.showSoftInput(numSets, InputMethodManager.SHOW_IMPLICIT);
-					*/
+					mgr.showSoftInput(v, InputMethodManager.SHOW_IMPLICIT);
+					
 				}else{
 					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 					mgr.hideSoftInputFromWindow(numPeeps.getWindowToken(), 0);
@@ -176,7 +175,6 @@ public class NewRandomWorkoutActivity extends Activity {
 		numSets.setOnFocusChangeListener(new OnFocusChangeListener(){
 
 			public void onFocusChange(View v, boolean hasFocus) {
-				System.out.println("DONE FOCUS CHANGE");
 				if(hasFocus){
 					/*
 					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -198,14 +196,13 @@ public class NewRandomWorkoutActivity extends Activity {
 		max.setOnFocusChangeListener(new OnFocusChangeListener(){
 
 			public void onFocusChange(View v, boolean hasFocus) {
-				System.out.println("DONE FOCUS CHANGE");
 				if(hasFocus){
-					/*
+					
 					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 					// only will trigger it if no physical keyboard is open
 
-					mgr.showSoftInput(numSets, InputMethodManager.SHOW_IMPLICIT);
-					*/
+					mgr.showSoftInput(v, InputMethodManager.SHOW_IMPLICIT);
+					
 				}else{
 					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 					mgr.hideSoftInputFromWindow(max.getWindowToken(), 0);
@@ -220,14 +217,13 @@ public class NewRandomWorkoutActivity extends Activity {
 		min.setOnFocusChangeListener(new OnFocusChangeListener(){
 
 			public void onFocusChange(View v, boolean hasFocus) {
-				System.out.println("DONE FOCUS CHANGE");
 				if(hasFocus){
-					/*
+					
 					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 					// only will trigger it if no physical keyboard is open
 
 					mgr.showSoftInput(numSets, InputMethodManager.SHOW_IMPLICIT);
-					*/
+					
 				}else{
 					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 					mgr.hideSoftInputFromWindow(min.getWindowToken(), 0);
@@ -250,17 +246,12 @@ public class NewRandomWorkoutActivity extends Activity {
 		selectedExercises.clear();
 		ArrayList<Exercise> tempHolder = new ArrayList<Exercise>();
 		for (int i = 0; i < numExercises; i++) {
-			System.out.println("INdex" +index);
 			index = generator.nextInt(exerciseList.size());
 		
 			e = exerciseList.get(index);
 			
-			System.out.println("exerciseSize" + exerciseList.size());
-			System.out.println("tempHolderSize" + tempHolder.size());
 			tempHolder.add(exerciseList.remove(index));
-			System.out.println("INdex" +index);
-			System.out.println("exerciseSize" + exerciseList.size());
-			System.out.println("tempHolderSize" + tempHolder.size());
+			
 			selectedExercises.add(e);
 		}
 		
@@ -272,7 +263,6 @@ public class NewRandomWorkoutActivity extends Activity {
 		}
 		
 		for (int i = 0; i < tempHolder.size(); i++) {
-			System.out.println("tempHolderSize" + i + tempHolder.size());
 			exerciseList.add(tempHolder.get(i));
 		}
 		tempHolder.clear();
