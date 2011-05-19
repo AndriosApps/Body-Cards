@@ -2,7 +2,7 @@
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
 	android:minWidth="160px" 
 	android:minHeight="200px" 
-	android:updatePeriodMillis="1900000" 
+	android:updatePeriodMillis="7600000"
 	android:initialLayout="@layout/challengewidget"
     android:configure="com.andrios.bodycards.ChallengeWidgetConfigure">
 </appwidget-provider>

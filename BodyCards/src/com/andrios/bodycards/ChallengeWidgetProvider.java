@@ -94,7 +94,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
     		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetMiddleLayout, actionPendingIntent);
     		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetTopLayout, actionPendingIntent);
     		System.out.println("IDs SIZE "+IDs.length);
-    		AWM.updateAppWidget(IDs, remoteViews);
+    		AWM.updateAppWidget(IDs[i], remoteViews);
         }
         super.onUpdate(context, appWidgetManager, ChallengeWidgetProvider.IDs);
     }

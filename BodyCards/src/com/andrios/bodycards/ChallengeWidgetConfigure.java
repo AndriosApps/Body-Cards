@@ -13,6 +13,7 @@ import android.app.AlertDialog;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -35,7 +36,7 @@ public class ChallengeWidgetConfigure extends Activity {
 	int mAppWidgetId;
 
 	Button nextBTN, clearBTN;
-
+	static final String URI_SCHEME = "ABCD";
 	ListView availableListView, selectedListView;
 	EditText min, max;
 	TextView tv;
@@ -334,7 +335,12 @@ public class ChallengeWidgetConfigure extends Activity {
 				
 
 				System.out.println("INTENT resultValue"); // TODO Remove
-				
+				//This Ensures that each PendingIntent is unique. 
+				Uri data = Uri.withAppendedPath(
+					    Uri.parse(URI_SCHEME + "://widget/id/")
+					    ,String.valueOf(mAppWidgetId));
+					resultValue.setData(data);
+
 				resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
 
 				setResult(RESULT_OK, resultValue);
