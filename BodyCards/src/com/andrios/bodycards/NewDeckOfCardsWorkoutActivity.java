@@ -65,14 +65,13 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 		numGuestsTXT.setOnFocusChangeListener(new OnFocusChangeListener(){
 
 			public void onFocusChange(View v, boolean hasFocus) {
-				System.out.println("DONE FOCUS CHANGE");
 				if(hasFocus){
-					/*
+					
 					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 					// only will trigger it if no physical keyboard is open
 
-					mgr.showSoftInput(numSets, InputMethodManager.SHOW_IMPLICIT);
-					*/
+					mgr.showSoftInput(v, InputMethodManager.SHOW_IMPLICIT);
+					
 				}else{
 					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 					mgr.hideSoftInputFromWindow(numGuestsTXT.getWindowToken(), 0);
