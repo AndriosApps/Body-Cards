@@ -38,7 +38,6 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 	
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 
-    	System.out.println("on Update");
 		if (null == context){
 			context = ChallengeWidgetProvider.context;
 		}else{
@@ -53,14 +52,11 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 	    	IDs = ChallengeWidgetProvider.IDs;
 	    }else{
 	    	IDs = appWidgetIds;
-	    	System.out.println("IDS Size "+IDs.length);
 	    }
 	    ChallengeWidgetProvider.Widget = this;
 	    
 		final int N = IDs.length;
         
-        
-        System.out.println("onUpdate"); //TODO Remove
         // Perform this loop procedure for each App Widget that belongs to this provider
         for (int i=0; i<N; i++) {
         	rNum = new Random();
@@ -77,7 +73,6 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
     		
     		
     		try{
-    			System.out.println("Setting Text");
     			remoteViews.setTextViewText(R.id.challengeWidgetExerciseLBL, exercise.getName());
                 remoteViews.setTextViewText(R.id.challengeWidgetNameLBL, selectProf.get(0).getFirstName());
                 
@@ -93,30 +88,24 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
     		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetBottomLayout, actionPendingIntent);
     		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetMiddleLayout, actionPendingIntent);
     		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetTopLayout, actionPendingIntent);
-    		System.out.println("IDs SIZE "+IDs.length);
     		AWM.updateAppWidget(IDs[i], remoteViews);
         }
         super.onUpdate(context, appWidgetManager, ChallengeWidgetProvider.IDs);
     }
 	
 	public void onDeleted(Context context, int[] appWidgetIds){
-		System.out.println("In onDeleted");
 		readProfiles();
 		myProfile(appWidgetIds[0]);
-		System.out.println("Select length "+ selectProf.size());
 		selectProf.get(0).setID(false, -1);
 		unusedProf.add(selectProf.remove(0));
 		writeProfiles(context);
 		
-		System.out.println("Before super.onDeleted");
 		super.onDeleted(context, appWidgetIds);
-		System.out.println("IDs Length "+ IDs.length);
 	}
 	
 	
 	private static void myProfile(int ID) {
 		for(int i = 0; i < unusedProf.size(); i++){
-			System.out.println("Does "+ID + " Match " + unusedProf.get(i).getID());
 			if(unusedProf.get(i).getID() == ID){
 				Profile p = unusedProf.remove(i);
 				selectProf = new ArrayList<Profile>();
@@ -129,7 +118,6 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 
 
 	private static void readExercises(Context context, int id){
-		System.out.println("Read Exercises");
 		try{
 			FileInputStream fis = context.openFileInput(id+"widgetexercises");
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -199,7 +187,6 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 
 				int num = Math.abs(rNum.nextInt());
 				selectReps = minReps + (num % modulo);
-				System.out.println("Reps"+ selectReps);
 			}
 			int randomNumber = Math.abs(rNum.nextInt()) % exerciseList.size();
 			exercise = (exerciseList.get(randomNumber));
@@ -225,7 +212,6 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		}else{
 			//check if our Action was called
 			if(intent.getAction().equals(CLICK)){
-				System.out.println("I GO CLICKED GOOD");
 				int appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, 
 						AppWidgetManager.INVALID_APPWIDGET_ID);
 			   	Intent wkout = new Intent(context, StartDeckActivity.class);
@@ -245,15 +231,12 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 				if(ChallengeWidgetProvider.Widget != null){
 					ChallengeWidgetProvider.Widget.onUpdate(null, null, null);
 					
-				}else{
-					System.out.println("Widget still == null");
 				}
 				
 				context.startActivity(wkout);
 			}
 			
 		}
-		System.out.println("Before Super.onReceive");
 		super.onReceive(context, intent);
 	}
 	
@@ -271,7 +254,6 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		
 		
 		try{
-			System.out.println("Setting Text");
 			remoteViews.setTextViewText(R.id.challengeWidgetExerciseLBL, exercise.getName());
             remoteViews.setTextViewText(R.id.challengeWidgetNameLBL, selectProf.get(0).getFirstName());
             
@@ -287,7 +269,6 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetBottomLayout, actionPendingIntent);
 		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetMiddleLayout, actionPendingIntent);
 		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetTopLayout, actionPendingIntent);
-		System.out.println("IDs SIZE "+IDs.length);
 		AWM.updateAppWidget(IDs,
 				remoteViews);
 			}
