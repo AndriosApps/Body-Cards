@@ -107,19 +107,12 @@ public class WorkoutCardActivity extends Activity {
 		exercises = (ArrayList<Exercise>) intent
 				.getSerializableExtra("exercises");
 		workoutName = intent.getStringExtra("workoutName");
-		System.out.println("PEOPLE"+numPeople);
-		System.out.println("SETS"+numSets);
-		System.out.println("MIN"+min);
-
-		System.out.println("MAX"+max);
-
-		System.out.println("Exercise"+exercises.get(0).getName());
+		
 	}
 
 	private void setConnections() {
 
 		setViews();
-		System.out.println("WORKOUT CARD PROFILE 0 NAME:" + selectedProfiles.get(0).getFirstName());
 		numProf = selectedProfiles.size();
 		rNum = new Random();
 		createWorkouts();
@@ -355,7 +348,6 @@ public class WorkoutCardActivity extends Activity {
 	private long pause_time = 0;
 
 	public void updateTimer() {
-		System.out.println("Update Time");
 		int time = totalTime;
 		int hours = time / (60 * 60);
 		time = time - (hours * 60 * 60);
@@ -491,7 +483,6 @@ public class WorkoutCardActivity extends Activity {
 		//Pause
 		if (running) {
 			clock.stop();
-			System.out.println("Pause");//TODO REMOVE
 			for(int i = 0; i < workouts.length; i++){
 				workouts[i].stopTotal(SystemClock.elapsedRealtime());
 			}
@@ -503,7 +494,6 @@ public class WorkoutCardActivity extends Activity {
 			running = false;
 		} else {
 			//Restart
-			System.out.println("Restart");//TODO REMOVE
 			if (started) {
 				for(int i = 0; i < workouts.length; i++){
 					workouts[i].startTotal(SystemClock.elapsedRealtime());
@@ -515,8 +505,6 @@ public class WorkoutCardActivity extends Activity {
 				clock.start();
 			// Start First time
 			} else {
-				System.out.println("Start"+workouts.length);//TODO REMOVE
-				
 				for(int i = 0; i < workouts.length; i++){
 					workouts[i].startTotal(SystemClock.elapsedRealtime());
 				}

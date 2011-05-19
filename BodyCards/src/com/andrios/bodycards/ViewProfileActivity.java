@@ -166,12 +166,17 @@ public class ViewProfileActivity extends Activity {
 
 			public boolean onItemLongClick(AdapterView<?> arg0, View theView,
 					int row, long arg3) {
-
-				tv.setText("Delete " + profileList.get(row).toString()
-						+ "'s profile?");
-				selectedRow = row;
-				button = true;
-				ad.show();
+				if(profileList.get(row).isWidget){
+					Toast.makeText(ViewProfileActivity.this, "Delete widget for this profile first",
+							Toast.LENGTH_SHORT).show();
+				}else{
+					tv.setText("Delete " + profileList.get(row).toString()
+							+ "'s profile?");
+					selectedRow = row;
+					button = true;
+					ad.show();
+				}
+				
 				return true;
 			}
 
