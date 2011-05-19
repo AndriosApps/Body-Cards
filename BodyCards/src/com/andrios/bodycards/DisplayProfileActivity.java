@@ -127,7 +127,6 @@ public class DisplayProfileActivity extends Activity {
 		int y = b.get(Calendar.YEAR) - c.get(Calendar.YEAR);
 		int m = b.get(Calendar.MONTH) - c.get(Calendar.MONTH);
 		int d = b.get(Calendar.DAY_OF_MONTH) - c.get(Calendar.DAY_OF_MONTH);
-		System.out.println("test: " + y + m + d);
 		if (y > 0)
 			return false;
 		if (m > 0)

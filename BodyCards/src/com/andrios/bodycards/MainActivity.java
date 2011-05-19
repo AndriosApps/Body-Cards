@@ -186,7 +186,6 @@ public class MainActivity extends Activity {
 						if(welcomeCheck.isChecked()){
 							showWelcome = false;
 						}
-						System.out.println("NO");
 						
 					}
 					

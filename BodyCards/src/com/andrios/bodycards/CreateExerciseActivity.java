@@ -213,7 +213,6 @@ public class CreateExerciseActivity extends Activity {
 						
 					}
 					exerciseList.add(exercise);
-					System.out.println("Added " + exercise.getName());
 					
 					write();
 					CreateExerciseActivity.this.finish();
@@ -272,7 +271,6 @@ public class CreateExerciseActivity extends Activity {
 	
 	@Override
 	public void finish(){
-		System.out.println("FINISH");
 		Intent intent = new Intent();
 			intent.putExtra("exercise", exercise);
 			

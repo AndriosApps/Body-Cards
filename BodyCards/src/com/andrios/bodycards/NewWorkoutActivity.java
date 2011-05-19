@@ -218,7 +218,6 @@ public class NewWorkoutActivity extends Activity {
 		numSets.setOnFocusChangeListener(new OnFocusChangeListener(){
 
 			public void onFocusChange(View v, boolean hasFocus) {
-				System.out.println("DONE FOCUS CHANGE");
 				if(hasFocus){
 					/*
 					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -239,7 +238,6 @@ public class NewWorkoutActivity extends Activity {
 		numPeeps.setOnFocusChangeListener(new OnFocusChangeListener(){
 
 			public void onFocusChange(View v, boolean hasFocus) {
-				System.out.println("DONE FOCUS CHANGE");
 				if(hasFocus){
 					/*
 					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -260,7 +258,6 @@ public class NewWorkoutActivity extends Activity {
 		max.setOnFocusChangeListener(new OnFocusChangeListener(){
 
 			public void onFocusChange(View v, boolean hasFocus) {
-				System.out.println("DONE FOCUS CHANGE");
 				if(hasFocus){
 					/*
 					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -281,7 +278,6 @@ public class NewWorkoutActivity extends Activity {
 		min.setOnFocusChangeListener(new OnFocusChangeListener(){
 
 			public void onFocusChange(View v, boolean hasFocus) {
-				System.out.println("DONE FOCUS CHANGE");
 				if(hasFocus){
 					/*
 					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);

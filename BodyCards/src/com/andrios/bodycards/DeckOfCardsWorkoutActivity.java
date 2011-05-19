@@ -149,7 +149,6 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 			workouts[currentUser].stop();
 			workouts[currentUser].setFinSets(sets);
 			workouts[currentUser].incrementCount("Deck of Cards", 1);
-			System.out.println("sets: "+ sets);
 	
 			
 		}else{
@@ -254,16 +253,11 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 					workouts[currentUser].stop();
 					workouts[currentUser].setFinSets(sets);
 					workouts[currentUser].incrementCount("Deck of Cards", 1);
-					System.out.println("sets: "+ sets);
 	
 					long endTime = SystemClock.elapsedRealtime();
 					
 					for(int i = 0; i < workouts.length; i++){
-						/*
-						if(workouts[i].getNumSets() != sets){
-							workouts[i].setNumSets(sets);
-						}
-						*/
+					
 						workouts[i].stopTotal(endTime);
 						workouts[i].setWorkoutTime(workouts[i].getTotalFormattedTime());
 					}

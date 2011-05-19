@@ -1,6 +1,5 @@
 package com.andrios.bodycards;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -15,8 +14,6 @@ import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class ChallengeWidgetProvider extends AppWidgetProvider {
 

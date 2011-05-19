@@ -46,11 +46,8 @@ public class HelpGenericActivity extends Activity {
 	private void getExtras() {
 		Intent intent = this.getIntent();
 		ID = intent.getIntExtra("ID", -1);
-		System.out.println("ID: "+ ID);
 		if(ID != -1){
 			help = helpList.get(ID);
-
-			System.out.println("help " + help.getTitle() );
 		}
 		
 	}

@@ -84,7 +84,6 @@ public class NewProfileActivity extends Activity {
 			
 			bday = (Calendar)intent.getSerializableExtra("bday");
 			if(bday != null){
-				System.out.println("NULL " + bday.toString()); 
 				String birthday = "";
 				birthday += Integer.toString((bday.get(Calendar.MONTH)+1));
 				birthday += "/";
@@ -102,7 +101,6 @@ public class NewProfileActivity extends Activity {
 		mYear = c.get(Calendar.YEAR);
 		mMonth = c.get(Calendar.MONTH);
 		mDay = c.get(Calendar.DAY_OF_MONTH);
-		System.out.println("Birthday: "+ mYear +" "+mMonth+" "+mDay);
 	}
 
 	private void setConnections() {
@@ -232,7 +230,6 @@ public class NewProfileActivity extends Activity {
 
 						NewProfileActivity.this.finish();
 					} catch (IOException e) {
-						System.out.println("Test: " + e);
 						Toast.makeText(NewProfileActivity.this,
 								"Error: Writing to file", Toast.LENGTH_SHORT)
 								.show();

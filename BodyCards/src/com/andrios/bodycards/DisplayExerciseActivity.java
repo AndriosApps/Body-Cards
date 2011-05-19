@@ -105,7 +105,7 @@ public class DisplayExerciseActivity extends Activity {
     			
     		}
     		}catch(Exception e){
-    			System.out.println("FAILURE");
+    			e.printStackTrace();
     		}
     		
     	}
