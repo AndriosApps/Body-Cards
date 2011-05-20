@@ -91,6 +91,8 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
     }
 	
 	public void onDeleted(Context context, int[] appWidgetIds){
+
+		System.out.println("OnDeleted");//TODO REMOVE
 		readProfiles();
 		myProfile(appWidgetIds[0]);
 		selectProf.get(0).setID(false, -1);
@@ -100,13 +102,28 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		super.onDeleted(context, appWidgetIds);
 	}
 	
+	public void onDisabled(Context context){
+		System.out.println("OnDisabled");//TODO REMOVE
+		readProfiles();
+		for(int i = 0; i<unusedProf.size(); i++){
+			unusedProf.get(i).setID(false, -1);
+		}
+		writeProfiles(context);
+		
+		
+		
+		super.onDisabled(context);
+	}
+	
 	
 	private static void myProfile(int ID) {
 		for(int i = 0; i < unusedProf.size(); i++){
+			System.out.println("myProfile is "+ ID + " equal to " + unusedProf.get(i).getID());//TODO REMOVE
 			if(unusedProf.get(i).getID() == ID){
 				Profile p = unusedProf.remove(i);
 				selectProf = new ArrayList<Profile>();
 				selectProf.add(p);
+				System.out.println("Select Prof Size "+ selectProf.size());//TODO
 				break;
 			}
 		}
@@ -224,6 +241,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 				wkout.putExtra("profiles", selectProf);
 				wkout.putExtra("exercises", chosenList);
 				wkout.putExtra("workoutName", "Daily Challenge");
+				System.out.println("Starting Daily Challenge Activity: "+ selectProf.size());//TODO REMOVE
 				
 				if(ChallengeWidgetProvider.Widget != null){
 					ChallengeWidgetProvider.Widget.onUpdate(null, null, null);

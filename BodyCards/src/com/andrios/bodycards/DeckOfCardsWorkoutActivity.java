@@ -223,7 +223,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 	      
 	    // Initiate a generic request to load it with an ad
 		request = new AdRequest();
-		request.setTesting(true);
+		request.setTesting(false);
 		adView.loadAd(request);
 		
 		setOnClickListeners();
@@ -236,7 +236,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 			baseAdTime = SystemClock.elapsedRealtime();
 		    // Initiate a generic request to load it with an ad
 			request = new AdRequest();
-			request.setTesting(true);
+			request.setTesting(false);
 			adView.loadAd(request);
 		}
 

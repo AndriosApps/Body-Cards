@@ -29,10 +29,11 @@
 	
 <!-- if we add ads to this we should put them here -->
 	<com.google.ads.AdView 
+		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
 		android:id="@+id/deckOfCardsAdView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        ads:adUnitId="a14dca3fe4ea15f "
+        ads:adUnitId="a14dca3fe4ea15f"
         ads:adSize="BANNER"
         android:layout_weight="0" />
         

@@ -127,7 +127,7 @@ public class WorkoutCardActivity extends Activity {
 	    // Initiate a generic request to load it with an ad
 	    baseAdTime = SystemClock.elapsedRealtime();
 	    request = new AdRequest();
-		request.setTesting(true);
+		request.setTesting(false);
 		adView.loadAd(request);
 
 		begin = (Button) findViewById(R.id.wcStart);
@@ -164,7 +164,7 @@ public class WorkoutCardActivity extends Activity {
 			baseAdTime = SystemClock.elapsedRealtime();
 		    // Initiate a generic request to load it with an ad
 			request = new AdRequest();
-			request.setTesting(true);
+			request.setTesting(false);
 			adView.loadAd(request);
 		}
 
