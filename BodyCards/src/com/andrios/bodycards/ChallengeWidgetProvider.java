@@ -34,7 +34,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 	
 	
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-
+		System.out.println("Body Cards onUpdate");//TODO REMOVE
 		if (null == context){
 			context = ChallengeWidgetProvider.context;
 		}else{
@@ -155,18 +155,18 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 	}
 	@SuppressWarnings("unchecked")
 	private static void readProfiles() {
+		System.out.println("REad Profiles");//TODO REMOVE
 		try {
 			FileInputStream fis = context.openFileInput("profiles");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
 			unusedProf = (ArrayList<Profile>) ois.readObject();
-			
+			System.out.println("UNUSED PROFILES SIZE "+ unusedProf.size());
 			ois.close();
 			fis.close();
 
 		} catch (Exception e) {
-
-			unusedProf = new ArrayList<Profile>();
+			e.printStackTrace();
 		}
 		
 	}
