@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -26,6 +28,7 @@ public class MainActivity extends Activity {
 	Button viewProfileBTN, helpBTN, quitBTN;
 	AlertDialog ad;
 	boolean showWelcome;
+	GoogleAnalyticsTracker tracker;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,12 @@ public class MainActivity extends Activity {
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.mainactivity);
 		
+		
+		tracker = GoogleAnalyticsTracker.getInstance();
+
+	    // Start the tracker in manual dispatch mode...
+	    tracker.start("UA-23366060-1", this);
+
 		
 		setConnections();
 		setAlertDialog();
@@ -67,9 +76,21 @@ public class MainActivity extends Activity {
 		if(profileList.isEmpty()) {
 			viewProfileBTN.setText("Create Profile");
 			if(showWelcome){
+				 tracker.trackEvent(
+				            "Use",  // Category
+				            "Login",  // Action
+				            "First Login / No Profile", // Label
+				            77);       // Value
+				   tracker.dispatch();
 				ad.show();
 			}
 		} else {
+			 tracker.trackEvent(
+			            "Use",  // Category
+			            "Login",  // Action
+			            "Regular Login", // Label
+			            77);       // Value
+			   tracker.dispatch();
 			viewProfileBTN.setText("View Profiles");
 		}
 		
@@ -91,6 +112,14 @@ public class MainActivity extends Activity {
 		deckOfCardsWorkoutBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
+				   tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Button",  // Action
+				            "Deck of Cards", // Label
+				            77);       // Value
+				   tracker.dispatch();
+
+				
 				Intent intent = new Intent(v.getContext(), NewDeckOfCardsWorkoutActivity.class);
 				intent.putExtra("workoutName", "Deck of Cards");
 				startActivity(intent);
@@ -101,6 +130,13 @@ public class MainActivity extends Activity {
 		randomWorkoutBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
+				   tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Button",  // Action
+				            "Random Workout", // Label
+				            77);       // Value
+				   tracker.dispatch();
+				
 				
 				Intent randomIntent = new Intent(v.getContext(), NewRandomWorkoutActivity.class);
 				randomIntent.putExtra("workoutName", "Random Workout");
@@ -113,6 +149,12 @@ public class MainActivity extends Activity {
 		customWorkoutBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
+				   tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Button",  // Action
+				            "Custom Workout", // Label
+				            77);       // Value
+				   tracker.dispatch();
 				Intent intent = new Intent(v.getContext(), ExerciseListActivity.class);
 				intent.putExtra("workoutName", "Custom Workout");
 				startActivityForResult(intent, 31415);
@@ -123,6 +165,13 @@ public class MainActivity extends Activity {
 		viewProfileBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
+				   tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Button",  // Action
+				            "View Profiles", // Label
+				            77);       // Value
+				   tracker.dispatch();
+				
 				int whichOne = 0;
 				if(viewProfileBTN.getText().equals("Create Profile")){
 					whichOne = 1;
@@ -137,6 +186,12 @@ public class MainActivity extends Activity {
 		helpBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
+				   tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Button",  // Action
+				            "Help", // Label
+				            77);       // Value
+				   tracker.dispatch();
 				Intent intent = new Intent(v.getContext(), MainHelpActivity.class);
 				
 				startActivity(intent);
@@ -145,8 +200,15 @@ public class MainActivity extends Activity {
 		});
 		
 		quitBTN.setOnClickListener(new OnClickListener() {
+			
 
 			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Button",  // Action
+				            "Finish", // Label
+				            77);       // Value
+				   tracker.dispatch();
 				MainActivity.this.finish();
 			}
 
