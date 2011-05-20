@@ -21,6 +21,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -167,6 +169,46 @@ public class ChallengeWidgetConfigure extends Activity {
 		min = (EditText) findViewById(R.id.challengeWidgetMinEdit);
 		max = (EditText) findViewById(R.id.challengeWidgetMaxEdit);
 		
+		min.setOnFocusChangeListener(new OnFocusChangeListener(){
+
+			public void onFocusChange(View v, boolean hasFocus) {
+				if(hasFocus){
+					/*
+					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+					// only will trigger it if no physical keyboard is open
+
+					mgr.showSoftInput(numSets, InputMethodManager.SHOW_IMPLICIT);
+					*/
+				}else{
+					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+					mgr.hideSoftInputFromWindow(min.getWindowToken(), 0);
+				}
+
+
+				
+			}
+			
+		});
+		max.setOnFocusChangeListener(new OnFocusChangeListener(){
+
+			public void onFocusChange(View v, boolean hasFocus) {
+				if(hasFocus){
+					/*
+					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+					// only will trigger it if no physical keyboard is open
+
+					mgr.showSoftInput(numSets, InputMethodManager.SHOW_IMPLICIT);
+					*/
+				}else{
+					InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+					mgr.hideSoftInputFromWindow(max.getWindowToken(), 0);
+				}
+
+
+				
+			}
+			
+		});
 		
 		
 		selected = new boolean[exerciseList.size()];

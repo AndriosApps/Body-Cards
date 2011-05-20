@@ -109,9 +109,6 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 			unusedProf.get(i).setID(false, -1);
 		}
 		writeProfiles(context);
-		
-		
-		
 		super.onDisabled(context);
 	}
 	
