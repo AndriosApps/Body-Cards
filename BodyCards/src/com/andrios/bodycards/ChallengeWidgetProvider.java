@@ -9,6 +9,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -31,6 +33,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 	static int selectReps;
 	static Exercise exercise;
 	static Random rNum;
+	static GoogleAnalyticsTracker tracker;
 	// http://stackoverflow.com/questions/2748613/force-android-widget-to-update
 	
 	
@@ -230,6 +233,16 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		}else{
 			//check if our Action was called
 			if(intent.getAction().equals(CLICK)){
+				tracker = GoogleAnalyticsTracker.getInstance();
+
+			    // Start the tracker in manual dispatch mode...
+			    tracker.start("UA-23366060-1", context);
+				 tracker.trackEvent(
+				            "Use",  // Category
+				            "Widget",  // Action
+				            "Cofigure Widget", // Label
+				            1);       // Value
+				   tracker.dispatch();
 				int appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, 
 						AppWidgetManager.INVALID_APPWIDGET_ID);
 			   	Intent wkout = new Intent(context, StartDeckActivity.class);
