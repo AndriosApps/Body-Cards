@@ -94,14 +94,14 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 	
 	public void onDeleted(Context context, int[] appWidgetIds){
 
-		System.out.println("OnDeleted");//TODO REMOVE
+		
 		readProfiles();
 		myProfile(appWidgetIds[0]);
 		selectProf.get(0).setID(false, -1);
 		unusedProf.add(selectProf.remove(0));
-		System.out.println("Deleting: " + appWidgetIds[0]+"widgetexercises");
-		File f = new File(appWidgetIds[0]+"widgetexercises");
-		f.delete();
+		
+		context.deleteFile(appWidgetIds[0]+"widgetexercises");
+		
 		writeProfiles(context);
 		
 		
