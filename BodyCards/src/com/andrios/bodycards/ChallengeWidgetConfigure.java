@@ -8,6 +8,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.appwidget.AppWidgetManager;
@@ -55,6 +57,7 @@ public class ChallengeWidgetConfigure extends Activity {
 	String[] profNames;
 	Intent resultValue;
 	boolean[] selected;
+	GoogleAnalyticsTracker tracker;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceBundle) {
@@ -72,6 +75,16 @@ public class ChallengeWidgetConfigure extends Activity {
 		setAlertDialog();
 		setConnections();
 		ad.show();
+		tracker = GoogleAnalyticsTracker.getInstance();
+
+	    // Start the tracker in manual dispatch mode...
+	    tracker.start("UA-23366060-1", this);
+		 tracker.trackEvent(
+		            "Use",  // Category
+		            "Widget",  // Action
+		            "Cofigure Widget", // Label
+		            1);       // Value
+		   tracker.dispatch();
 	}
 
 	private void getExtras() {
