@@ -1,5 +1,6 @@
 package com.andrios.bodycards;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -36,7 +37,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 		System.out.println("Body Cards onUpdate");//TODO REMOVE
 		if (null == context){
-			context = ChallengeWidgetProvider.context;
+			this.context = ChallengeWidgetProvider.context;
 		}else{
 			this.context = context;
 		}
@@ -98,7 +99,11 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		myProfile(appWidgetIds[0]);
 		selectProf.get(0).setID(false, -1);
 		unusedProf.add(selectProf.remove(0));
+		System.out.println("Deleting: " + appWidgetIds[0]+"widgetexercises");
+		File f = new File(appWidgetIds[0]+"widgetexercises");
+		f.delete();
 		writeProfiles(context);
+		
 		
 		super.onDeleted(context, appWidgetIds);
 	}
@@ -256,6 +261,14 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 	
 	public static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
 			 int appWidgetId){
+	
+		ChallengeWidgetProvider.context = context;
+		ChallengeWidgetProvider.AWM = appWidgetManager;
+	    
+	   
+	    
+		
+		
 		rNum = new Random();
     	readExercises(context, appWidgetId);
     	readProfiles();
@@ -283,8 +296,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetBottomLayout, actionPendingIntent);
 		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetMiddleLayout, actionPendingIntent);
 		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetTopLayout, actionPendingIntent);
-		AWM.updateAppWidget(IDs,
-				remoteViews);
+		appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
 			}
 
 }
