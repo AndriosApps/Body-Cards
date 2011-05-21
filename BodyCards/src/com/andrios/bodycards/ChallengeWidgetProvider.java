@@ -56,6 +56,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
         
         // Perform this loop procedure for each App Widget that belongs to this provider
         for (int i=0; i<N; i++) {
+        	System.out.println("Updating AppWidget "+ IDs[i]);//TODO REMOVE
         	rNum = new Random();
         	readProfiles();
         	myProfile(IDs[i]);
@@ -150,6 +151,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		
 		
 	}
+	
 	@SuppressWarnings("unchecked")
 	private static void readProfiles() {
 		System.out.println("REad Profiles");//TODO REMOVE
