@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -41,6 +43,7 @@ public class NewRandomWorkoutActivity extends Activity {
 	TextView t;
 	String workoutName;
 	ImageView helpReps;
+	GoogleAnalyticsTracker tracker;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,11 @@ public class NewRandomWorkoutActivity extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.newworkout);
+		
+		tracker = GoogleAnalyticsTracker.getInstance();
+
+	    // Start the tracker in manual dispatch mode...
+	    tracker.start("UA-23366060-1", this);
 		
 		readProfiles();
 		readExercises();
@@ -400,6 +408,12 @@ public class NewRandomWorkoutActivity extends Activity {
 		helpReps.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
+				 tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Button",  // Action
+				            "Help Random Workout Help Button", // Label
+				            1);       // Value
+				
 				Intent intent = new Intent(v.getContext(), HelpGenericActivity.class);
 				intent.putExtra("ID", 6);
 				startActivity(intent);
