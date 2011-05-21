@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -42,6 +44,7 @@ public class NewProfileActivity extends Activity {
 	AlertDialog ad;
 	boolean update = false;
 	static final int DATE_DIALOG_ID = 1;
+	GoogleAnalyticsTracker tracker;
 
 	int row, mYear, mMonth, mDay;
 
@@ -53,6 +56,11 @@ public class NewProfileActivity extends Activity {
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.newprofileactivity);
 
+		tracker = GoogleAnalyticsTracker.getInstance();
+
+	    // Start the tracker in manual dispatch mode...
+	    tracker.start("UA-23366060-1", this);
+		
 		setConnections();
 		getExtra();
 
@@ -209,6 +217,31 @@ public class NewProfileActivity extends Activity {
 						NewProfileActivity.this.setResult(RESULT_OK, done);
 						Toast.makeText(NewProfileActivity.this, "User Profile Updated",
 								Toast.LENGTH_SHORT).show();
+						int mf;
+						if(male.isChecked()){
+							mf = 0;
+						}else{
+							mf = 1;
+						}
+						tracker.trackEvent(
+						            "Use",  // Category
+						            "Profile",  // Action
+						            "Update Profile", // Label
+						            mf);       // Value
+						   tracker.dispatch();
+					}else{
+						int mf;
+						if(male.isChecked()){
+							mf = 0;
+						}else{
+							mf = 1;
+						}
+						tracker.trackEvent(
+						            "Use",  // Category
+						            "Profile",  // Action
+						            "New Profile", // Label
+						            mf);       // Value
+						   tracker.dispatch();
 					}
 
 					profList.add(created);

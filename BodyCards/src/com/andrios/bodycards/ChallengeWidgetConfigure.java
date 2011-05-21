@@ -79,12 +79,8 @@ public class ChallengeWidgetConfigure extends Activity {
 
 	    // Start the tracker in manual dispatch mode...
 	    tracker.start("UA-23366060-1", this);
-		 tracker.trackEvent(
-		            "Use",  // Category
-		            "Widget",  // Action
-		            "Cofigure Widget", // Label
-		            1);       // Value
-		   tracker.dispatch();
+		 
+	    
 	}
 
 	private void getExtras() {
@@ -362,6 +358,7 @@ public class ChallengeWidgetConfigure extends Activity {
 							Toast.LENGTH_SHORT).show();
 					
 				}else {
+					
 					write();
 					configureWidget();
 				}
@@ -641,6 +638,16 @@ private void setAlertDialog() {
 							Toast.LENGTH_SHORT).show();
 				}else{
 					profs.get(position).setID(true, mAppWidgetId);
+					int mf = 1;
+					if(profs.get(position).gender.equals("Male")){
+						mf = 0;
+					}
+					tracker.trackEvent(
+				            "Use",  // Category
+				            "Widget",  // Action
+				            "Cofigure Widget", // Label
+				            mf);       // Value
+				   tracker.dispatch();
 					writeProfiles();
 					ad.dismiss();
 				}
