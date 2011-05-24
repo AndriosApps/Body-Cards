@@ -5,6 +5,8 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -35,6 +37,7 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 	RadioButton quarterRDO, halfRDO, fullRDO;
 	
 	String workoutName;
+	GoogleAnalyticsTracker tracker;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,14 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 		readProfiles();
 		getExtras();
 		setConnections();
+		
+		tracker = GoogleAnalyticsTracker.getInstance();
+
+	    // Start the tracker in manual dispatch mode...
+	    tracker.start("UA-23366060-1", this);
+		tracker.trackPageView("New Deck of Cards Activity");
+		
+		
 	}
 
 	private void setConnections() {
@@ -222,7 +233,7 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 				}
 				
 				if(isCorrect) {
-
+					tracker.dispatch();
 					Intent deckworkout = new Intent(v.getContext(),
 							DeckOfCardsWorkoutActivity.class);
 					
@@ -270,4 +281,12 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 			NewDeckOfCardsWorkoutActivity.this.finish();
 		}
 	}
+	
+	  @Override
+	  protected void onDestroy() {
+	    super.onDestroy();
+	    // Stop the tracker when it is no longer needed.
+	    tracker.stop();
+	  }
+	
 }

@@ -6,6 +6,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -38,6 +40,7 @@ public class DisplayProfileActivity extends Activity {
 	TextView tv;
 
 	AlertDialog ad;
+GoogleAnalyticsTracker tracker;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,6 +52,14 @@ public class DisplayProfileActivity extends Activity {
 		setConnections();
 		setProfileText();
 		setAlertDialog();
+		
+		
+		tracker = GoogleAnalyticsTracker.getInstance();
+
+	    // Start the tracker in manual dispatch mode...
+	    tracker.start("UA-23366060-1", this);
+	    tracker.trackPageView("Display Profile Activity");
+
 
 	}
 
@@ -184,6 +195,7 @@ public class DisplayProfileActivity extends Activity {
 
 			public void onClick(View v) {
 
+				tracker.dispatch();
 				DisplayProfileActivity.this.setResult(RESULT_OK);
 
 				DisplayProfileActivity.this.finish();
@@ -195,6 +207,7 @@ public class DisplayProfileActivity extends Activity {
 		edit.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
+				tracker.dispatch();
 				Intent intent = new Intent(v.getContext(), NewProfileActivity.class);
 				intent.putExtra("fname", profile.getFirstName());
 				intent.putExtra("lname", profile.getLastName());
@@ -239,5 +252,10 @@ public class DisplayProfileActivity extends Activity {
 		aa.notifyDataSetChanged();
 		setProfileText();
 	}
-
+	  @Override
+	  protected void onDestroy() {
+	    super.onDestroy();
+	    // Stop the tracker when it is no longer needed.
+	    tracker.stop();
+	  }
 }

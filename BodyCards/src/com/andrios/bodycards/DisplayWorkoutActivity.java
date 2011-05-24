@@ -3,6 +3,8 @@ package com.andrios.bodycards;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 
 import android.app.Activity;
 import android.content.Intent;
@@ -26,6 +28,7 @@ public class DisplayWorkoutActivity extends Activity {
 	int row;
 	Button back;
 	Workout w;
+	GoogleAnalyticsTracker tracker;
 
 	@Override
 	public void onCreate(Bundle savedInstanceBundle) {
@@ -38,6 +41,13 @@ public class DisplayWorkoutActivity extends Activity {
 		getExtras();
 		setConnections();
 		setWokoutDetails();
+		
+		tracker = GoogleAnalyticsTracker.getInstance();
+
+	    // Start the tracker in manual dispatch mode...
+	    tracker.start("UA-23366060-1", this);
+	    tracker.trackPageView("Display Workout Activity");
+
 	}
 
 	private void setWokoutDetails() {
@@ -80,6 +90,7 @@ public class DisplayWorkoutActivity extends Activity {
 		back.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View arg0) {
+				tracker.dispatch();
 				DisplayWorkoutActivity.this.finish();
 			}
 
@@ -138,5 +149,10 @@ public class DisplayWorkoutActivity extends Activity {
 			return false;
 		return true;
 	}
-
+	  @Override
+	  protected void onDestroy() {
+	    super.onDestroy();
+	    // Stop the tracker when it is no longer needed.
+	    tracker.stop();
+	  }
 }

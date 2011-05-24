@@ -8,6 +8,7 @@ import java.util.Random;
 
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -66,6 +67,7 @@ public class WorkoutCardActivity extends Activity {
 	String workoutName;
 	
 	View v;
+	GoogleAnalyticsTracker tracker;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -85,6 +87,12 @@ public class WorkoutCardActivity extends Activity {
 		// Set the connections for this class]
 		setConnections();
 		toggleRunning();
+		
+		tracker = GoogleAnalyticsTracker.getInstance();
+
+	    // Start the tracker in manual dispatch mode...
+	    tracker.start("UA-23366060-1", this);
+	    tracker.trackPageView("Workout Card Activity");
 
 	}
 
@@ -146,6 +154,7 @@ public class WorkoutCardActivity extends Activity {
 				end();
 				toggleRunning();
 				setResult(RESULT_OK);
+				tracker.dispatch();
 				WorkoutCardActivity.this.finish();
 			}
 
@@ -281,7 +290,7 @@ public class WorkoutCardActivity extends Activity {
 		} else {
 
 			end();
-
+			tracker.dispatch();
 			Intent el_fin = new Intent(v.getContext(), FinishedActivity.class);
 
 			startActivity(el_fin);
@@ -513,5 +522,10 @@ public class WorkoutCardActivity extends Activity {
 			running = true;
 		}
 	}
-
+	  @Override
+	  protected void onDestroy() {
+	    super.onDestroy();
+	    // Stop the tracker when it is no longer needed.
+	    tracker.stop();
+	  }
 }

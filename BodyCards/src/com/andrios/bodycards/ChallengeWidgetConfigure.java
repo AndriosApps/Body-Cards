@@ -663,5 +663,11 @@ private void setAlertDialog() {
 		
 		ad = builder.create();
 	}
-	
+	@Override
+	protected void onDestroy() {
+	  super.onDestroy();
+	  // Stop the tracker when it is no longer needed.
+	  tracker.stop();
+}
+
 }

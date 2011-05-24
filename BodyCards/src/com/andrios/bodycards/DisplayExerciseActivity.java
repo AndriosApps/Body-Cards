@@ -1,5 +1,7 @@
 package com.andrios.bodycards;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +20,7 @@ public class DisplayExerciseActivity extends Activity {
 	Exercise exer;
 	TextView multiplierTXT,f,g;
 	ImageView img;
+	GoogleAnalyticsTracker tracker;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,13 @@ public class DisplayExerciseActivity extends Activity {
 		getExtras();
 		setConnections();
 		setOnClickListeners();
+		
+		tracker = GoogleAnalyticsTracker.getInstance();
+
+	    // Start the tracker in manual dispatch mode...
+	    tracker.start("UA-23366060-1", this);
+	    tracker.trackPageView("Display Exercise Activity");
+	    
 	}
 
 	private void getExtras() {
@@ -66,7 +76,7 @@ public class DisplayExerciseActivity extends Activity {
 		back.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-
+				tracker.dispatch();
 				DisplayExerciseActivity.this.finish();
 			}
 
@@ -78,7 +88,7 @@ public class DisplayExerciseActivity extends Activity {
 		
 				Intent intent = new Intent(v.getContext(), CreateExerciseActivity.class);
 				intent.putExtra("exercise", exer);
-				
+				tracker.dispatch();
 				startActivityForResult(intent,EXERCISE_ACTIVITY);
 
 			}
@@ -111,5 +121,10 @@ public class DisplayExerciseActivity extends Activity {
     	}
     	
     }	
-
+	  @Override
+	  protected void onDestroy() {
+	    super.onDestroy();
+	    // Stop the tracker when it is no longer needed.
+	    tracker.stop();
+	  }
 }

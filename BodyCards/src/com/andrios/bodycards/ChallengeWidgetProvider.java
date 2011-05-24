@@ -58,13 +58,19 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		final int N = IDs.length;
         
         // Perform this loop procedure for each App Widget that belongs to this provider
-        for (int i=0; i<N; i++) {
+		System.out.println("appWidgetIds Size: "+ N);
+		for (int i=0; i<N; i++) {
+			System.out.println("widget update for loop: "+ i);
+        	System.out.println("ID: " + IDs[i]);
         	rNum = new Random();
         	readProfiles();
         	myProfile(IDs[i]);
+        	
         	readExercises(context, IDs[i]);
     		getRandomExercise();
-        	
+    		System.out.println("ID: " + IDs[i]);
+    		
+    		
         	RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.challengewidget);
     		Intent active = new Intent(context, ChallengeWidgetProvider.class);
     		active.setAction(CLICK);
@@ -122,6 +128,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 	private static void myProfile(int ID) {
 		for(int i = 0; i < unusedProf.size(); i++){
 			System.out.println("myProfile is "+ ID + " equal to " + unusedProf.get(i).getID());//TODO REMOVE
+			
 			if(unusedProf.get(i).getID() == ID){
 				Profile p = unusedProf.remove(i);
 				selectProf = new ArrayList<Profile>();
@@ -223,6 +230,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 	public void onReceive(Context context, Intent intent){
 		
 		final String action = intent.getAction();
+		System.out.println("WIDGET ON RECEIVE ACTION: "+ action);
 		if(AppWidgetManager.ACTION_APPWIDGET_DELETED.equals(action)){
 			
 		
@@ -236,7 +244,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 				 tracker.trackEvent(
 				            "Use",  // Category
 				            "Widget",  // Action
-				            "Cofigure Widget", // Label
+				            "Daily Challenge", // Label
 				            0);       // Value
 				   tracker.dispatch();
 				int appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, 
@@ -297,6 +305,7 @@ public class ChallengeWidgetProvider extends AppWidgetProvider {
 		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetBottomLayout, actionPendingIntent);
 		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetMiddleLayout, actionPendingIntent);
 		remoteViews.setOnClickPendingIntent(R.id.challengeWidgetTopLayout, actionPendingIntent);
+		
 		AWM.updateAppWidget(appWidgetId, remoteViews);
 		
 	}

@@ -8,6 +8,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -45,6 +47,8 @@ public class ExerciseListActivity extends Activity {
 	ArrayList<Exercise> exerciseList, sel;
 
 	boolean[] selected;
+	GoogleAnalyticsTracker tracker;
+	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,12 @@ public class ExerciseListActivity extends Activity {
 		setContentView(R.layout.exerciselistactivity);
 		
 		getExtras();
+		
+		tracker = GoogleAnalyticsTracker.getInstance();
+
+	    // Start the tracker in manual dispatch mode...
+	    tracker.start("UA-23366060-1", this);
+	    tracker.trackPageView("Exercise List Activity");
 		
 		
 	}
@@ -80,11 +90,7 @@ public class ExerciseListActivity extends Activity {
 		write();
 	}
 	
-	public void onDestroy(){
-		super.onDestroy();
-		resetExerciseList();
-		write();
-	}
+
 
 	public void onActivityResult(int requestCode, int returnCode, Intent intent) {
 		if (returnCode == RESULT_OK) {
@@ -450,6 +456,7 @@ public class ExerciseListActivity extends Activity {
 
 			public void onClick(View v) {
 				resetExerciseList();
+				tracker.dispatch();
 				ExerciseListActivity.this.finish();
 			}
 
@@ -466,7 +473,7 @@ public class ExerciseListActivity extends Activity {
 				} else {
 					
 					Intent intent = new Intent(v.getContext(), NewWorkoutActivity.class);
-					
+					tracker.dispatch();
 					
 					intent.putExtra("workoutName", workoutName);
 					intent.putExtra("selectedexercises", sel);
@@ -525,4 +532,13 @@ public class ExerciseListActivity extends Activity {
 		}
 
 	}
+	  @Override
+	  protected void onDestroy() {
+	    super.onDestroy();
+	    resetExerciseList();
+		write();
+	    // Stop the tracker when it is no longer needed.
+	    tracker.stop();
+	  }
+	
 }

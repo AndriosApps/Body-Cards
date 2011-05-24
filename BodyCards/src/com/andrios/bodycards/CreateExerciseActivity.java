@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -38,6 +41,7 @@ public class CreateExerciseActivity extends Activity {
 	int selectedMuscle;
 
 	ArrayList<Exercise> exerciseList, selectedList;
+	GoogleAnalyticsTracker tracker;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,12 @@ public class CreateExerciseActivity extends Activity {
 		getExtras();
 		readExercises();
 		setConnections();
+		
+		tracker = GoogleAnalyticsTracker.getInstance();
+
+	    // Start the tracker in manual dispatch mode...
+	    tracker.start("UA-23366060-1", this);
+	    tracker.trackPageView("Create Exercise Activity");
 		
 
 	}
@@ -146,7 +156,7 @@ public class CreateExerciseActivity extends Activity {
 		back.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-
+				tracker.dispatch();
 				CreateExerciseActivity.this.finish();
 			}
 
@@ -212,9 +222,17 @@ public class CreateExerciseActivity extends Activity {
 								Toast.LENGTH_SHORT).show();
 						
 					}
-					exerciseList.add(exercise);
+					System.out.println("New Exercise "+ exercise.getName());
+					tracker.setCustomVar(1, "New Exercise", exercise.getName(), 3);
+					 tracker.trackEvent(
+					            "Use",  // Category
+					            "New Exercise",  // Action
+					            exercise.getName(), // Label
+					            0);       // Value
+					 exerciseList.add(exercise);
 					
 					write();
+					tracker.dispatch();
 					CreateExerciseActivity.this.finish();
 					
 				}
@@ -278,5 +296,12 @@ public class CreateExerciseActivity extends Activity {
 		
 		super.finish();
 	}
+	
+	  @Override
+	  protected void onDestroy() {
+	    super.onDestroy();
+	    // Stop the tracker when it is no longer needed.
+	    tracker.stop();
+	  }
 
 }

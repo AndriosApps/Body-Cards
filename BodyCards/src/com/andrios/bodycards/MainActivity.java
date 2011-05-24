@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
 
 	    // Start the tracker in manual dispatch mode...
 	    tracker.start("UA-23366060-1", this);
-
+	    tracker.trackPageView("Main Activity");
 		
 		setConnections();
 		setAlertDialog();
@@ -80,7 +80,7 @@ public class MainActivity extends Activity {
 				            "Use",  // Category
 				            "Login",  // Action
 				            "First Login / No Profile", // Label
-				            77);       // Value
+				            0);       // Value
 				   tracker.dispatch();
 				ad.show();
 			}
@@ -89,7 +89,7 @@ public class MainActivity extends Activity {
 			            "Use",  // Category
 			            "Login",  // Action
 			            "Regular Login", // Label
-			            77);       // Value
+			            0);       // Value
 			   tracker.dispatch();
 			viewProfileBTN.setText("View Profiles");
 		}
@@ -116,7 +116,7 @@ public class MainActivity extends Activity {
 				            "Clicks",  // Category
 				            "Button",  // Action
 				            "Deck of Cards", // Label
-				            77);       // Value
+				            0);       // Value
 				   tracker.dispatch();
 
 				
@@ -134,7 +134,7 @@ public class MainActivity extends Activity {
 				            "Clicks",  // Category
 				            "Button",  // Action
 				            "Random Workout", // Label
-				            77);       // Value
+				            0);       // Value
 				   tracker.dispatch();
 				
 				
@@ -153,7 +153,7 @@ public class MainActivity extends Activity {
 				            "Clicks",  // Category
 				            "Button",  // Action
 				            "Custom Workout", // Label
-				            77);       // Value
+				            0);       // Value
 				   tracker.dispatch();
 				Intent intent = new Intent(v.getContext(), ExerciseListActivity.class);
 				intent.putExtra("workoutName", "Custom Workout");
@@ -169,7 +169,7 @@ public class MainActivity extends Activity {
 				            "Clicks",  // Category
 				            "Button",  // Action
 				            "View Profiles", // Label
-				            77);       // Value
+				            0);       // Value
 				   tracker.dispatch();
 				
 				int whichOne = 0;
@@ -190,7 +190,7 @@ public class MainActivity extends Activity {
 				            "Clicks",  // Category
 				            "Button",  // Action
 				            "Help", // Label
-				            77);       // Value
+				            0);       // Value
 				   tracker.dispatch();
 				Intent intent = new Intent(v.getContext(), MainHelpActivity.class);
 				
@@ -207,7 +207,7 @@ public class MainActivity extends Activity {
 				            "Clicks",  // Category
 				            "Button",  // Action
 				            "Finish", // Label
-				            77);       // Value
+				            0);       // Value
 				   tracker.dispatch();
 				MainActivity.this.finish();
 			}
@@ -255,5 +255,11 @@ public class MainActivity extends Activity {
 		ad = builder.create();
 	}
 
-	
+	  @Override
+	  protected void onDestroy() {
+	    super.onDestroy();
+	    // Stop the tracker when it is no longer needed.
+	    tracker.stop();
+	  }
+
 }

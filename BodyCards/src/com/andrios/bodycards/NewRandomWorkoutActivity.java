@@ -57,7 +57,7 @@ public class NewRandomWorkoutActivity extends Activity {
 
 	    // Start the tracker in manual dispatch mode...
 	    tracker.start("UA-23366060-1", this);
-		
+	    tracker.trackPageView("New Random Workout Activity");
 		readProfiles();
 		readExercises();
 		getExtras();
@@ -615,5 +615,10 @@ public class NewRandomWorkoutActivity extends Activity {
 		}
 
 	}
-
+	  @Override
+	  protected void onDestroy() {
+	    super.onDestroy();
+	    // Stop the tracker when it is no longer needed.
+	    tracker.stop();
+	  }
 }

@@ -32,6 +32,7 @@ public class MainHelpActivity extends Activity {
 	    // Start the tracker in manual dispatch mode...
 	    tracker.start("UA-23366060-1", this);
 
+	    tracker.trackPageView("Main Help Activity");
 	    
 		setConnections();
 	}//onCreate()
@@ -60,7 +61,7 @@ public class MainHelpActivity extends Activity {
 				            "Button",  // Action
 				            "Help Getting Started", // Label
 				            1);       // Value
-				   
+				  tracker.dispatch();
 				
 				Intent intent = new Intent(v.getContext(), HelpGenericActivity.class);
 				intent.putExtra("ID", 0);
@@ -78,7 +79,7 @@ public class MainHelpActivity extends Activity {
 				            "Button",  // Action
 				            "Help Deck of Cards", // Label
 				            1);       // Value
-				   
+				  tracker.dispatch();
 				Intent intent = new Intent(v.getContext(), HelpGenericActivity.class);
 				intent.putExtra("ID", 2);
 				startActivity(intent);
@@ -96,7 +97,7 @@ public class MainHelpActivity extends Activity {
 				            "Button",  // Action
 				            "Help Random Workout", // Label
 				            1);       // Value
-				   
+				  tracker.dispatch();
 				Intent intent = new Intent(v.getContext(), HelpGenericActivity.class);
 				intent.putExtra("ID", 5);
 				startActivity(intent);
@@ -113,7 +114,7 @@ public class MainHelpActivity extends Activity {
 				            "Button",  // Action
 				            "Help Custom Workout", // Label
 				            1);       // Value
-				   
+				  tracker.dispatch();
 				Intent intent = new Intent(v.getContext(), HelpGenericActivity.class);
 				intent.putExtra("ID", 4);
 				startActivity(intent);
@@ -130,7 +131,7 @@ public class MainHelpActivity extends Activity {
 				            "Button",  // Action
 				            "Help Disclaimer", // Label
 				            1);       // Value
-				   
+				  tracker.dispatch();
 				Intent intent = new Intent(v.getContext(), HelpGenericActivity.class);
 				intent.putExtra("ID", 7);
 				startActivity(intent);
@@ -147,7 +148,7 @@ public class MainHelpActivity extends Activity {
 				            "Button",  // Action
 				            "Help Image Reference", // Label
 				            1);       // Value
-				   
+				   tracker.dispatch();
 				Intent intent = new Intent(v.getContext(), HelpGenericActivity.class);
 				intent.putExtra("ID", 8);
 				startActivity(intent);
@@ -159,11 +160,14 @@ public class MainHelpActivity extends Activity {
 		
 	}
 	
-	@Override
-	public void onDestroy(){
-		tracker.dispatch();
-		super.onDestroy();
-	}
+	  @Override
+	  protected void onDestroy() {
+	    super.onDestroy();
+	    // Stop the tracker when it is no longer needed.
+	    tracker.dispatch();
+	    tracker.stop();
+	  }
+
 	
 	
 	

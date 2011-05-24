@@ -10,6 +10,7 @@ import java.util.TimerTask;
 
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 import android.app.Activity;
 import android.content.Context;
@@ -60,6 +61,8 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 	int cardNum = 0;
 
 	int cardBack;
+	
+	GoogleAnalyticsTracker tracker;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -76,6 +79,14 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 		shuffleDeck();
 		setConnections();
 		createWorkouts();
+		
+		tracker = GoogleAnalyticsTracker.getInstance();
+
+	    // Start the tracker in manual dispatch mode...
+	    tracker.start("UA-23366060-1", this);
+	    tracker.trackPageView("Main Activity");
+
+
 	}
 
 	private void createWorkouts() {
@@ -262,7 +273,9 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 						workouts[i].setWorkoutTime(workouts[i].getTotalFormattedTime());
 					}
 					
+					tracker.dispatch();
 					setWorkoutsToProfile();
+					
 					Intent el_fin = new Intent(v.getContext(), FinishedActivity.class);
 					
 					startActivityForResult(el_fin, 34222);
@@ -307,5 +320,12 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 			DeckOfCardsWorkoutActivity.this.finish();
 		}
 	}
+	
+	  @Override
+	  protected void onDestroy() {
+	    super.onDestroy();
+	    // Stop the tracker when it is no longer needed.
+	    tracker.stop();
+	  }
 	
 }

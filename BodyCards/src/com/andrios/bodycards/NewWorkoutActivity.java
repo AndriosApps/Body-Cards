@@ -52,7 +52,7 @@ public class NewWorkoutActivity extends Activity {
 
 	    // Start the tracker in manual dispatch mode...
 	    tracker.start("UA-23366060-1", this);
-		
+		tracker.trackPageView("New Workout Activity");
 		getExtras();
 		setConnections();
 	}
@@ -307,6 +307,7 @@ public class NewWorkoutActivity extends Activity {
 		done.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
+				
 				 
 				try{
 					int x = Integer.parseInt(max.getText().toString());
@@ -380,5 +381,10 @@ public class NewWorkoutActivity extends Activity {
 			
 		});
 	}
-
+	  @Override
+	  protected void onDestroy() {
+	    super.onDestroy();
+	    // Stop the tracker when it is no longer needed.
+	    tracker.stop();
+	  }
 }
