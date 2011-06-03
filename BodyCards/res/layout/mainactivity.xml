@@ -11,7 +11,7 @@
 	
 	<com.google.ads.AdView 
 		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-		android:id="@+id/workoutCardAdView"
+		android:id="@+id/homeAdView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         ads:adUnitId="a14dca3fe4ea15f"
