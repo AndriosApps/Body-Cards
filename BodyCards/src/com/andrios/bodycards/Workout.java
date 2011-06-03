@@ -171,7 +171,7 @@ public class Workout implements Serializable {
 	}
 
 	public String toString() {
-		String ret = date + " ("+ workoutName + ")";
+		String ret = " ("+ workoutName + ")";
 		return ret;
 	}
 

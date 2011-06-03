@@ -33,7 +33,7 @@ public class DisplayProfileActivity extends Activity {
 	Button edit, back;
 	Profile profile;
 	ListView lv;
-	ArrayAdapter<Workout> aa;
+	ProfileAdapter aa;
 	ArrayList<Profile> profs;
 	int row, selectedRow;
 	boolean update = false;
@@ -160,7 +160,7 @@ GoogleAnalyticsTracker tracker;
 
 	private void setConnections() {
 		lv = (ListView) findViewById(R.id.profWorkoutList);
-		aa = new ArrayAdapter<Workout>(this, R.layout.list_view2,
+		aa = new ProfileAdapter(this, R.layout.profile_list_item,
 				profile.getWorkouts());
 		lv.setAdapter(aa);
 
