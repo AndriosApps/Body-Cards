@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
+import com.google.ads.AdRequest;
+import com.google.ads.AdView;
 import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 import android.app.Activity;
@@ -29,6 +31,8 @@ public class MainActivity extends Activity {
 	AlertDialog ad;
 	boolean showWelcome;
 	GoogleAnalyticsTracker tracker;
+	AdView adView;
+	AdRequest request;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,8 @@ public class MainActivity extends Activity {
 	    tracker.start("UA-23366060-1", this);
 	    tracker.trackPageView("Main Activity");
 		
+	    
+	    
 		setConnections();
 		setAlertDialog();
 		
@@ -104,6 +110,11 @@ public class MainActivity extends Activity {
 		helpBTN = (Button) findViewById(R.id.mainActivityHelpBTN);
 		quitBTN = (Button) findViewById(R.id.mainActivityQuitBTN);
 
+		adView = (AdView)this.findViewById(R.id.homeAdView);
+	      
+	    request = new AdRequest();
+		request.setTesting(false);
+		adView.loadAd(request);
 		
 		setOnClickListeners();
 	}
