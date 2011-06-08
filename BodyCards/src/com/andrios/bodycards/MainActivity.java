@@ -48,7 +48,6 @@ public class MainActivity extends Activity {
 
 	    // Start the tracker in manual dispatch mode...
 	    tracker.start("UA-23366060-1", this);
-	    tracker.trackPageView("Main Activity");
 		
 	    
 	    
@@ -128,7 +127,7 @@ public class MainActivity extends Activity {
 				            "Button",  // Action
 				            "Deck of Cards", // Label
 				            0);       // Value
-				   tracker.dispatch();
+				   
 
 				
 				Intent intent = new Intent(v.getContext(), NewDeckOfCardsWorkoutActivity.class);
@@ -146,7 +145,7 @@ public class MainActivity extends Activity {
 				            "Button",  // Action
 				            "Random Workout", // Label
 				            0);       // Value
-				   tracker.dispatch();
+				   
 				
 				
 				Intent randomIntent = new Intent(v.getContext(), NewRandomWorkoutActivity.class);
@@ -165,7 +164,7 @@ public class MainActivity extends Activity {
 				            "Button",  // Action
 				            "Custom Workout", // Label
 				            0);       // Value
-				   tracker.dispatch();
+				
 				Intent intent = new Intent(v.getContext(), ExerciseListActivity.class);
 				intent.putExtra("workoutName", "Custom Workout");
 				startActivityForResult(intent, 31415);
@@ -181,7 +180,7 @@ public class MainActivity extends Activity {
 				            "Button",  // Action
 				            "View Profiles", // Label
 				            0);       // Value
-				   tracker.dispatch();
+				   
 				
 				int whichOne = 0;
 				if(viewProfileBTN.getText().equals("Create Profile")){
@@ -202,7 +201,7 @@ public class MainActivity extends Activity {
 				            "Button",  // Action
 				            "Help", // Label
 				            0);       // Value
-				   tracker.dispatch();
+				   
 				Intent intent = new Intent(v.getContext(), MainHelpActivity.class);
 				
 				startActivity(intent);
@@ -219,7 +218,7 @@ public class MainActivity extends Activity {
 				            "Button",  // Action
 				            "Finish", // Label
 				            0);       // Value
-				   tracker.dispatch();
+				   
 				MainActivity.this.finish();
 			}
 
@@ -264,6 +263,18 @@ public class MainActivity extends Activity {
 					
 				});
 		ad = builder.create();
+	}
+	
+	public void onResume(){
+		super.onResume();
+
+	    tracker.trackPageView("Main Activity");
+	}
+	
+	public void onPause(){
+		super.onPause();
+		System.out.println("onPause");
+		tracker.dispatch();
 	}
 
 	  @Override
