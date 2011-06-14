@@ -109,7 +109,7 @@ public class MainActivity extends Activity {
 		helpBTN = (Button) findViewById(R.id.mainActivityHelpBTN);
 		quitBTN = (Button) findViewById(R.id.mainActivityQuitBTN);
 
-		adView = (AdView)this.findViewById(R.id.homeAdView);
+		adView = (AdView)this.findViewById(R.id.homeAdView2);
 	      
 	    request = new AdRequest();
 		request.setTesting(false);

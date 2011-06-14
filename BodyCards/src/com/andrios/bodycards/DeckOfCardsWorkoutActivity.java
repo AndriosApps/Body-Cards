@@ -20,11 +20,13 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.AnimationUtils;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 public class DeckOfCardsWorkoutActivity extends Activity {
 
@@ -39,6 +41,8 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 	Workout[] workouts;
 	String workoutName;
 	long baseAdTime;
+	ViewFlipper flipper;//Used to Show animation between Back / Front of card. 
+	
 
 	int[] cards = { R.drawable.c2, R.drawable.c3, R.drawable.c4, R.drawable.c5,
 			R.drawable.c6, R.drawable.c7, R.drawable.c8, R.drawable.c9,
@@ -170,7 +174,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 				workouts[i].startTotal(startTime);
 			}
 		}
-		card.setImageResource(cardBack);
+		
 
 		dealCard();
 
@@ -201,22 +205,11 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 	}
 
 	private void dealCard() {
-		Timer clock = new Timer();
-		clock.schedule(new myTask(), 150);
+		card.setImageResource(cards[cardNum++]);
+		
 	}
 
-	public class myTask extends TimerTask {
-		final Handler handler = new Handler();
 
-		public void run() {
-			handler.post(new Runnable() {
-				public void run() {
-					card.setImageResource(cards[cardNum++]);
-				}
-
-			});
-		};
-	}
 
 	private void setConnections() {
 		
@@ -227,6 +220,10 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 		
 		currentUser = -1;
 		remainingTXT.setText("Cards Remaining: " + (decksize - cardNum));
+		
+		flipper = (ViewFlipper) findViewById(R.id.details); 
+		flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_in));
+	    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));  
 		
 	    // Add the adView to it
 		//TODO Change this name. 
@@ -254,6 +251,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 	}
 
 	private void setOnClickListeners() {
+		/*
 		card.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -284,6 +282,70 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 				}
 			}
 
+		});
+		*/
+		flipper.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				
+				if(flipper.getDisplayedChild() == 0){
+					if (cardNum < decksize-1) {
+						updateAds();
+						getNewCard();
+						flipper.showNext();
+					} else {
+						workouts[currentUser].stop();
+						workouts[currentUser].setFinSets(sets);
+						workouts[currentUser].incrementCount("Deck of Cards", 1);
+		
+						long endTime = SystemClock.elapsedRealtime();
+						
+						for(int i = 0; i < workouts.length; i++){
+						
+							workouts[i].stopTotal(endTime);
+							workouts[i].setWorkoutTime(workouts[i].getTotalFormattedTime());
+						}
+						
+						tracker.dispatch();
+						setWorkoutsToProfile();
+						
+						Intent el_fin = new Intent(v.getContext(), FinishedActivity.class);
+						
+						startActivityForResult(el_fin, 34222);
+						
+	
+					}
+				}else{
+
+					flipper.showNext();
+				}
+				/*
+				if(cardsRemaining <=0){
+					completeWorkout();
+					
+				}else{
+					//IF User is currently looking at the back of the card child == 0.
+					if(flipper.getDisplayedChild() == 0){
+						getNewCard();
+					}else{
+						getNextUser();
+					}
+					if(!isStarted){
+						isStarted = true;
+						mChronometer.setBase(SystemClock.elapsedRealtime());
+					}
+					if(!isRunning){
+						mChronometer.start();
+					}
+					
+					flipper.showNext();
+					formatCard();
+				}
+			*/
+			}
+
+
+			
 		});
 		
 	}

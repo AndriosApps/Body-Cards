@@ -20,12 +20,10 @@
 		android:layout_width="fill_parent" 
 		android:layout_height="wrap_content"
 		android:layout_weight="0" />
-		
-	<ImageView android:id="@+id/card" 
-		android:layout_width="fill_parent" 
-		android:layout_height="fill_parent"
-		android:src="@drawable/start"
-		android:layout_weight="1" />
+	<ViewFlipper android:id="@+id/details" android:layout_height="wrap_content" android:layout_width="fill_parent" android:paddingRight="50dip" android:paddingLeft="50dip" android:layout_weight="1" android:paddingBottom="15dip" android:paddingTop="15dip">
+		<ImageView android:layout_width="fill_parent" android:scaleType="fitXY" android:src="@drawable/start" android:id="@+id/card" android:layout_height="fill_parent"></ImageView>
+		<ImageView android:layout_width="fill_parent" android:scaleType="fitXY" android:src="@drawable/back" android:id="@+id/backIMG" android:layout_height="fill_parent"></ImageView>
+	</ViewFlipper>
 	
 <!-- if we add ads to this we should put them here -->
 	<com.google.ads.AdView 

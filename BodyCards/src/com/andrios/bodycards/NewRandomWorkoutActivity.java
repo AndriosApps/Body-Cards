@@ -358,46 +358,51 @@ public class NewRandomWorkoutActivity extends Activity {
 
 			public void onClick(View v) {
 				 
-
-				int x = Integer.parseInt(max.getText().toString());
-				int n = Integer.parseInt(min.getText().toString());
-				int s = Integer.parseInt(numSets.getText().toString());
-				int p = Integer.parseInt(numPeeps.getText().toString());
-
-				if(p+chsnPrf < 1) {
+				try{
+					int x = Integer.parseInt(max.getText().toString());
+					int n = Integer.parseInt(min.getText().toString());
+					int s = Integer.parseInt(numSets.getText().toString());
+					int p = Integer.parseInt(numPeeps.getText().toString());
+	
+					if(p+chsnPrf < 1) {
+						Toast.makeText(NewRandomWorkoutActivity.this,
+								"Must choose at least one profile or guest user",
+								Toast.LENGTH_SHORT).show();
+					}
+					else if (x < n) {
+						Toast.makeText(NewRandomWorkoutActivity.this,
+								"Max must be greater than or equal to min",
+								Toast.LENGTH_SHORT).show();
+					} else if (x <= 0) {
+						Toast.makeText(NewRandomWorkoutActivity.this,
+								"Max must be greater than zero",
+								Toast.LENGTH_SHORT).show();
+					} else if (n <= 0) {
+						Toast.makeText(NewRandomWorkoutActivity.this,
+								"Min must be greater than zero",
+								Toast.LENGTH_SHORT).show();
+					} else if (s < 1) {
+						Toast.makeText(NewRandomWorkoutActivity.this,
+								"Sets must be greater than zero",
+								Toast.LENGTH_SHORT).show();
+					} else {
+	
+						Intent wkout = new Intent(v.getContext(),
+								StartDeckActivity.class);
+						wkout.putExtra("max", x);
+						wkout.putExtra("min", n);
+						wkout.putExtra("sets", s);
+						wkout.putExtra("peeps", p+chsnPrf);
+						wkout.putExtra("profilesU", profs);
+						wkout.putExtra("profiles", selects);
+						wkout.putExtra("exercises", selectedExercises);
+						wkout.putExtra("workoutName", workoutName);
+						startActivityForResult(wkout, 31415);
+					}
+				}catch(Exception e){
 					Toast.makeText(NewRandomWorkoutActivity.this,
-							"Must choose at least one profile or guest user",
+							"Ensure correct values are entered in all fields",
 							Toast.LENGTH_SHORT).show();
-				}
-				else if (x < n) {
-					Toast.makeText(NewRandomWorkoutActivity.this,
-							"Max must be greater than or equal to min",
-							Toast.LENGTH_SHORT).show();
-				} else if (x <= 0) {
-					Toast.makeText(NewRandomWorkoutActivity.this,
-							"Max must be greater than zero",
-							Toast.LENGTH_SHORT).show();
-				} else if (n <= 0) {
-					Toast.makeText(NewRandomWorkoutActivity.this,
-							"Min must be greater than zero",
-							Toast.LENGTH_SHORT).show();
-				} else if (s < 1) {
-					Toast.makeText(NewRandomWorkoutActivity.this,
-							"Sets must be greater than zero",
-							Toast.LENGTH_SHORT).show();
-				} else {
-
-					Intent wkout = new Intent(v.getContext(),
-							StartDeckActivity.class);
-					wkout.putExtra("max", x);
-					wkout.putExtra("min", n);
-					wkout.putExtra("sets", s);
-					wkout.putExtra("peeps", p+chsnPrf);
-					wkout.putExtra("profilesU", profs);
-					wkout.putExtra("profiles", selects);
-					wkout.putExtra("exercises", selectedExercises);
-					wkout.putExtra("workoutName", workoutName);
-					startActivityForResult(wkout, 31415);
 				}
 
 				
