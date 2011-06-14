@@ -69,17 +69,9 @@
 				android:gravity="center"
 				android:layout_margin="1dp" 
 				android:id="@+id/workoutCardAdLayout">
-
-
-				
-				<ImageView
-					android:id="@+id/wkImg"
-					android:layout_width="fill_parent"
-					android:layout_height="fill_parent"
-					android:layout_weight="0"
-					android:src="@drawable/mainscreen"
-					android:textColor="#000"
-					android:background="#FFF" />
+				<ViewFlipper android:layout_width="wrap_content" android:layout_height="fill_parent" android:id="@+id/workoutCardViewFlipper">
+					<ImageView android:background="#FFF" android:src="@drawable/mainscreen" android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/wkImg" android:scaleType="fitXY"></ImageView>
+				</ViewFlipper>
 				
 			</LinearLayout>
 

@@ -22,12 +22,14 @@ import android.view.LayoutInflater;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 public class WorkoutCardActivity extends Activity {
 
@@ -65,6 +67,8 @@ public class WorkoutCardActivity extends Activity {
 	// Workouts to add to Profiles
 	Workout[] workouts;
 	String workoutName;
+
+	ViewFlipper flipper;//Used to Show animation between Back / Front of card.
 	
 	View v;
 	GoogleAnalyticsTracker tracker;
@@ -127,6 +131,11 @@ public class WorkoutCardActivity extends Activity {
 		set = 1;
 
 		workoutCardAdLayout = (LinearLayout) findViewById(R.id.workoutCardAdLayout);
+		
+		flipper = (ViewFlipper) findViewById(R.id.workoutCardViewFlipper); 
+		flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_in));
+	    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));  
+		
 		
 		
 	    // Add the adView to it
@@ -216,7 +225,8 @@ public class WorkoutCardActivity extends Activity {
 				}
 				
 				getRandomWorkoutCard();
-				
+
+				flipper.showNext();
 
 			}
 		}
