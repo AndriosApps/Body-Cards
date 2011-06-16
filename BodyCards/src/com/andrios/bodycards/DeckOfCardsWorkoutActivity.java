@@ -232,7 +232,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 	    // Initiate a generic request to load it with an ad
 		request = new AdRequest();
 		request.setTesting(false);
-		adView.loadAd(request);
+		//adView.loadAd(request);
 		
 		setOnClickListeners();
 		
@@ -245,7 +245,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 		    // Initiate a generic request to load it with an ad
 			request = new AdRequest();
 			request.setTesting(false);
-			adView.loadAd(request);
+			//adView.loadAd(request);
 		}
 
 	}

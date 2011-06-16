@@ -3,8 +3,7 @@
 	xmlns:ads="http://schemas.android.com/apk/res/com.andrios.bodycards"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-	android:background="#000000"
-	android:orientation="vertical">
+	android:orientation="vertical" android:background="@drawable/background">
 	
 	<TextView android:id="@+id/quickWorkoutActivityUserNameTXT"
 		android:gravity="center"
@@ -20,8 +19,8 @@
 		android:layout_width="fill_parent" 
 		android:layout_height="wrap_content"
 		android:layout_weight="0" />
-	<ViewFlipper android:id="@+id/details" android:layout_height="wrap_content" android:layout_width="fill_parent" android:paddingRight="50dip" android:paddingLeft="50dip" android:layout_weight="1" android:paddingBottom="15dip" android:paddingTop="15dip">
-		<ImageView android:layout_width="fill_parent" android:scaleType="fitXY" android:src="@drawable/start" android:id="@+id/card" android:layout_height="fill_parent"></ImageView>
+	<ViewFlipper android:id="@+id/details" android:layout_height="wrap_content" android:layout_width="fill_parent" android:layout_weight="1" android:paddingBottom="50dip" android:paddingLeft="25dip" android:paddingRight="25dip" android:paddingTop="50dip">
+		<ImageView android:layout_width="fill_parent" android:src="@drawable/start" android:id="@+id/card" android:layout_height="fill_parent" android:scaleType="fitXY" android:baselineAlignBottom="false"></ImageView>
 		<ImageView android:layout_width="fill_parent" android:scaleType="fitXY" android:src="@drawable/back" android:id="@+id/backIMG" android:layout_height="fill_parent"></ImageView>
 	</ViewFlipper>
 	
