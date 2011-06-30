@@ -40,7 +40,7 @@ public class DisplayProfileActivity extends Activity {
 	TextView tv;
 
 	AlertDialog ad;
-GoogleAnalyticsTracker tracker;
+	GoogleAnalyticsTracker tracker;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
