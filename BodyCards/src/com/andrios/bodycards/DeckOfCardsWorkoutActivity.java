@@ -288,11 +288,12 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 
 			public void onClick(View v) {
 				
-				if(flipper.getDisplayedChild() == 0){
+				if(flipper.getDisplayedChild() == 1){
 					if (cardNum < decksize-1) {
 						updateAds();
 						getNewCard();
 						flipper.showNext();
+						
 					} else {
 						workouts[currentUser].stop();
 						workouts[currentUser].setFinSets(sets);
