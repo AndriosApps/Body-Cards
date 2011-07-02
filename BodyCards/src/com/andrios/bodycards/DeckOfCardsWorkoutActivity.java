@@ -34,7 +34,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 	AdRequest request;
 	
 	int numPeople, currentUser, sets, decksize;
-	ImageView card;
+	ImageView card, cardBackImageView;
 	TextView userTXT, remainingTXT;
 	ArrayList<Profile> unusedProfiles, selectedProfiles;
 	ArrayList<Exercise> exercises;
@@ -42,7 +42,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 	String workoutName;
 	long baseAdTime;
 	ViewFlipper flipper;//Used to Show animation between Back / Front of card. 
-	
+	boolean started = false;
 
 	int[] cards = { R.drawable.c2, R.drawable.c3, R.drawable.c4, R.drawable.c5,
 			R.drawable.c6, R.drawable.c7, R.drawable.c8, R.drawable.c9,
@@ -126,7 +126,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 		while(decksize % numPeople != 0) {
 			decksize++;
 		}
-		
+		System.out.println("Deck Size "+ decksize);//TODO REMOVE
 		workoutName = intent.getStringExtra("workoutName");
 		
 		selectedProfiles = (ArrayList<Profile>) intent
@@ -200,7 +200,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 			userTXT.setText(selectedProfiles.get(currentUser).getFirstName());
 		}
 		
-		remainingTXT.setText("Cards Remaining: " + (decksize - cardNum - 1));
+		remainingTXT.setText("Cards Remaining: " + (decksize - cardNum));//TODO Changed this (Removed -1)
 		workouts[currentUser].start();
 	}
 
@@ -217,8 +217,13 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 		remainingTXT = (TextView) findViewById(R.id.cardCount);
 		
 		card = (ImageView) findViewById(R.id.card);
+		cardBackImageView = (ImageView) findViewById(R.id.backIMG);
+		cardBackImageView.setImageResource(cardBack);
 		
 		currentUser = -1;
+
+		System.out.println("Deck Size "+ decksize);
+		System.out.println("Card Num "+ cardNum);
 		remainingTXT.setText("Cards Remaining: " + (decksize - cardNum));
 		
 		flipper = (ViewFlipper) findViewById(R.id.details); 
@@ -289,12 +294,13 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 			public void onClick(View v) {
 				
 				if(flipper.getDisplayedChild() == 1){
-					if (cardNum < decksize-1) {
-						updateAds();
-						getNewCard();
-						flipper.showNext();
-						
-					} else {
+				
+					updateAds();
+					getNewCard();
+					flipper.showNext();
+					
+				}else{
+					if(cardNum == decksize){
 						workouts[currentUser].stop();
 						workouts[currentUser].setFinSets(sets);
 						workouts[currentUser].incrementCount("Deck of Cards", 1);
@@ -313,12 +319,12 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 						Intent el_fin = new Intent(v.getContext(), FinishedActivity.class);
 						
 						startActivityForResult(el_fin, 34222);
-						
-	
+					}else{
+						flipper.showNext();
 					}
-				}else{
-
-					flipper.showNext();
+					
+					
+					
 				}
 				/*
 				if(cardsRemaining <=0){
