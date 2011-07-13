@@ -170,7 +170,7 @@ public class ExerciseListActivity extends Activity {
 								"2. Your torso and legs should remain rigid, keeping your back perfectly straight throughout the move.\n\n" +
 								"3. Bend your arms and slowly lower your body downward, stopping just before your upper chest touches the ground.\n\n" +
 								"4. Feel a stretch in your chest muscles and then reverse direction, pushing your body up along the same path back to the start position.",
-								R.drawable.nopic,
+								R.drawable.exercise_push_ups,
 								1.0, 
 								"Chest", 
 								false));
@@ -182,7 +182,7 @@ public class ExerciseListActivity extends Activity {
 								"2. Keeping the head up, the chest lifted, and the abdominal muscles tight, squat until thighs are parallel to the floor.\n\n" +
 								"3. Arch your lower back slightly, and keep that arch throughout the exercise.\n\n" +
 								"4. Pause briefly, then stand upright by pressing heels into the floor and keeping the glutes (the rump muscles) tight.",
-								R.drawable.nopic,
+								R.drawable.exercise_squats,
 								1.0,
 								"Hamstrings",
 								false));
@@ -194,7 +194,7 @@ public class ExerciseListActivity extends Activity {
 								"2. Walk your feet forward, then straighten your arms to lift your body off the bench.\n\n" +
 								"3. Lower yourself until your upper arms are about parallel with the floor, then press with the triceps to lift yourself back up - straighten the arms, but don’t lock the elbows at the top."+
 								"Alternative. Place your feet on another bench or chair and add weights to your lap to add difficulty.",
-								R.drawable.nopic,
+								R.drawable.exercise_bench_dips,
 								1.0,
 								"Triceps",
 								false));
@@ -206,7 +206,7 @@ public class ExerciseListActivity extends Activity {
 								"2. Hold onto the wall or a railing lightly with one hand.\n\n" +
 								"3. Keeping your head up and your torso upright, stand up on your toes, then lower yourself until your heels are slightly below the step.\n\n" +
 								"Alternative. Balance without using your hands, conduct exercise one leg at a time.",
-								R.drawable.nopic,
+								R.drawable.exercise_calf_raises,
 								1.0,
 								"Calves",
 								false));
@@ -218,7 +218,7 @@ public class ExerciseListActivity extends Activity {
 								"2. Keep your torso parallel to the floor.\n\n" +
 								"3. Raise arms out to the side to shoulder height, keeping elbows in a fixed (slightly bent) position.\n\n" +
 								"Alternative. Conduct exercise while standing.",
-								R.drawable.nopic,
+								R.drawable.exercise_reverse_flyes,
 								1.0,
 								"Back",
 								false));
@@ -230,7 +230,7 @@ public class ExerciseListActivity extends Activity {
 								"1. Begin by standing with your feet together and arms at your sides. Tighten your abdominal muscles to pull your pelvis forward and take the curve out of your lower back.\n\n" +
 								"2. Bend your knees and jump, moving your feet apart until they are wider than your shoulders. At the same time, raise your arms over your head. You should be on the balls of your feet.\n\n" +
 								"3. Keep your knees bent while you jump again, bringing your feet together and your arms back to your sides. At the end of the movement, your weight should be on your heels.\n\n",
-								R.drawable.nopic,
+								R.drawable.exercise_jumping_jacks,
 								2.0,
 								"Various",
 								false));
@@ -249,7 +249,7 @@ public class ExerciseListActivity extends Activity {
 								"7. Draw your knees up to your chest.\n\n" +
 								"8. Quickly stand up.\n\n" +
 								"Repeat.\n\n",
-								R.drawable.nopic,
+								R.drawable.exercise_8_count_bodybuilders,
 								1.0,
 								"Various",
 								false));
@@ -266,7 +266,7 @@ public class ExerciseListActivity extends Activity {
 							"5. Breathe naturally and deeply into your abdomen as you sprint, and keep your torso erect.\n\n" +
 							"6. Slow down after you've passed your goal post, then stop.\n\n" +
 							"Repeat.\n\n",
-							R.drawable.nopic,
+							R.drawable.exercise_sprints,
 							0.5,
 							"Cardio",
 							false));
@@ -281,7 +281,7 @@ public class ExerciseListActivity extends Activity {
 								"4. At the bottom of the movement, the front thigh should be parallel to the floor and the back knee should point toward the floor.\n\n" +
 								"5. Keep the weight evenly distributed between both legs and push back up, keeping the weight in the heel of the front foot.\n\n"+
 								"Repeat.\n\n",
-								R.drawable.nopic,
+								R.drawable.exercise_lunges,
 								1.0,
 								"Calves",
 								false));
@@ -294,7 +294,7 @@ public class ExerciseListActivity extends Activity {
 								"2. Leading with the chin and chest towards the ceiling, contract the abdominal and raise shoulders off floor or bench until you are seated in an upright position.\n\n" +
 								"3. Return to start position.\n\n" +
 								"4. Remember to keep head and back in a neutral position. Hyperextension or flexion of either may cause injury.",
-								R.drawable.nopic,
+								R.drawable.exercise_sit_ups,
 								1.0,
 								"Abs",
 								false));
@@ -306,7 +306,7 @@ public class ExerciseListActivity extends Activity {
 							"2. Extend your legs behind you and rest on your toes, as if you are going to do a pushup. Your hips should not be lifted to the ceiling, nor should your back be arched. You should look to attain a straight line between your shoulders and toes.\n\n" +
 							"3. Tighten your abdominal muscles to help you hold the position correctly, and hold it as long as you can or until time expires.\n\n" +
 							"4. Alternative. Lift one leg at a time behind you to make the exercise more challenging.",
-							R.drawable.nopic,
+							R.drawable.exercise_planks,
 							1.0,
 							"Abs",
 							true));

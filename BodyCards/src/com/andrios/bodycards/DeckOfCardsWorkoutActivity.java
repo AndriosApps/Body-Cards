@@ -100,8 +100,6 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 		Exercise quickWorkout = new Exercise("Deck of Cards");
 		exercises.add(quickWorkout);
 		for (int i = 0; i < numPeople; i++) {
-			//TODO Check Math on this one... 
-			//Compensation commented out in line 202. if math doesn't work.   
 			workouts[i] = new Workout(numPeople, decksize / numPeople, 14, 2, exercises, workoutName);
 		}
 	}
@@ -126,7 +124,6 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 		while(decksize % numPeople != 0) {
 			decksize++;
 		}
-		System.out.println("Deck Size "+ decksize);//TODO REMOVE
 		workoutName = intent.getStringExtra("workoutName");
 		
 		selectedProfiles = (ArrayList<Profile>) intent
@@ -181,7 +178,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 		
 		currentUser++;
 		
-		//TODO Clean up code (use modulos) or not doesn't matter...
+	
 		//		not sure if modulo is more efficient, but maybe something
 		//		to look up for future reference.
 		if(currentUser > (numPeople-1)){
@@ -231,13 +228,12 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 	    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));  
 		
 	    // Add the adView to it
-		//TODO Change this name. 
 	     adView = (AdView)this.findViewById(R.id.deckOfCardsAdView);
 	      
 	    // Initiate a generic request to load it with an ad
 		request = new AdRequest();
 		request.setTesting(false);
-		//adView.loadAd(request);
+		adView.loadAd(request);
 		
 		setOnClickListeners();
 		
@@ -250,45 +246,13 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 		    // Initiate a generic request to load it with an ad
 			request = new AdRequest();
 			request.setTesting(false);
-			//adView.loadAd(request);
+			adView.loadAd(request);
 		}
 
 	}
 
 	private void setOnClickListeners() {
-		/*
-		card.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View v) {
-				if (cardNum < decksize) {
-					updateAds();
-					getNewCard();
-				} else {
-					workouts[currentUser].stop();
-					workouts[currentUser].setFinSets(sets);
-					workouts[currentUser].incrementCount("Deck of Cards", 1);
 	
-					long endTime = SystemClock.elapsedRealtime();
-					
-					for(int i = 0; i < workouts.length; i++){
-					
-						workouts[i].stopTotal(endTime);
-						workouts[i].setWorkoutTime(workouts[i].getTotalFormattedTime());
-					}
-					
-					tracker.dispatch();
-					setWorkoutsToProfile();
-					
-					Intent el_fin = new Intent(v.getContext(), FinishedActivity.class);
-					
-					startActivityForResult(el_fin, 34222);
-					
-
-				}
-			}
-
-		});
-		*/
 		flipper.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {

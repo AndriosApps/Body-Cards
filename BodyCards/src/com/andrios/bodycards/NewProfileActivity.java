@@ -181,10 +181,7 @@ public class NewProfileActivity extends Activity {
 				}
 
 				if (isEmpty(lName)) {
-					Toast.makeText(NewProfileActivity.this,
-							"Error: Last Name Field Empty ", Toast.LENGTH_SHORT)
-							.show();
-					error = true;
+					lName.setText("");
 				}
 				//TODO Change this wicket... it's wrong
 				if (birthdayBTN.getText().equals("Set Birthday")) {

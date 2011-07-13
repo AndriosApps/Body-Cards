@@ -197,7 +197,7 @@ public class CreateExerciseActivity extends Activity {
 					multiplier = Double.parseDouble(multiplierTXT.getText().toString().trim());
 					exercise = new Exercise(nameTXT.getText().toString(), descTXT
 							.getText().toString(),
-							R.drawable.nopic, multiplier,
+							R.drawable.exercise_custom, multiplier,
 							mg, timed);
 					
 					sort(exerciseList);

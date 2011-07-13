@@ -50,11 +50,17 @@ public class MainActivity extends Activity {
 	    tracker.start("UA-23366060-1", this);
 		
 	    
-	    
+	    patch();
+	    welcome();
 		setConnections();
 		setAlertDialog();
 		
 	}
+
+
+
+
+
 
 	public void onStart(){
 		super.onStart();
@@ -74,7 +80,7 @@ public class MainActivity extends Activity {
 			
 		} catch (Exception e) {
 			profileList = new ArrayList<Profile>();
-			showWelcome = true;
+			
 			
 		}
 		
@@ -242,6 +248,7 @@ public class MainActivity extends Activity {
 							
 							if(welcomeCheck.isChecked()){
 								showWelcome = false;
+								AndriosPatcher.setWelcome(MainActivity.this);
 							}
 							int whichOne = 1;
 							
@@ -257,6 +264,7 @@ public class MainActivity extends Activity {
 					public void onClick(DialogInterface dialog, int which) {
 						if(welcomeCheck.isChecked()){
 							showWelcome = false;
+							AndriosPatcher.setWelcome(MainActivity.this);
 						}
 						
 					}
@@ -273,7 +281,6 @@ public class MainActivity extends Activity {
 	
 	public void onPause(){
 		super.onPause();
-		System.out.println("onPause");
 		tracker.dispatch();
 	}
 
@@ -283,5 +290,16 @@ public class MainActivity extends Activity {
 	    // Stop the tracker when it is no longer needed.
 	    tracker.stop();
 	  }
+	  
 
+		private void welcome() {
+			showWelcome = AndriosPatcher.readWelcome(MainActivity.this);
+			
+		}
+		private void patch() {
+			
+			AndriosPatcher.patch(MainActivity.this);
+			
+			
+		}
 }

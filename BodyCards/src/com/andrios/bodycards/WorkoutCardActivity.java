@@ -98,6 +98,7 @@ public class WorkoutCardActivity extends Activity {
 	    tracker.start("UA-23366060-1", this);
 	    tracker.trackPageView("Workout Card Activity");
 
+	    
 	}
 
 	@SuppressWarnings("unchecked")
@@ -170,6 +171,7 @@ public class WorkoutCardActivity extends Activity {
 		});
 
 		wkImg.setOnClickListener(new myOnClick());
+		
 		rTL.setOnClickListener(new myOnClick());
 		rBR.setOnClickListener(new myOnClick());
 		exerciseName.setOnClickListener(new myOnClick());
@@ -254,7 +256,7 @@ public class WorkoutCardActivity extends Activity {
 
 	private void displayWorkout() {
 		String name;
-
+		
 		if (count % numPeople < selectedProfiles.size()) {
 			name = selectedProfiles.get(count % numPeople).getFirstName();
 
@@ -275,7 +277,7 @@ public class WorkoutCardActivity extends Activity {
 		if (count < numCards) {
 			sideLabel.setText(n);
 			exerciseName.setText(exercise.getName());
-
+			wkImg.setImageResource(exercise.getImg());
 			set = (count / numPeople) + 1;
 
 
