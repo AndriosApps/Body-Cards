@@ -40,7 +40,7 @@ public class FinishedActivity extends Activity {
 	private void getExtras() {
 		hasRated = AndriosPatcher.readRated(FinishedActivity.this);
 		Calendar c = Calendar.getInstance();
-		c.add(Calendar.DAY_OF_YEAR, -30);
+		c.add(Calendar.DAY_OF_YEAR, -15);
 		if(!hasRated){
 			setAlertDialog();
 			Intent intent = this.getIntent();
@@ -85,11 +85,12 @@ public class FinishedActivity extends Activity {
 		
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		LayoutInflater inflater = LayoutInflater.from(this);
-		final View layout = inflater.inflate(R.layout.welcomealertdialog, null);
-		final CheckBox welcomeCheck = (CheckBox) layout.findViewById(R.id.welcomeAlertDialogCheckBox);
+		final View layout = inflater.inflate(R.layout.ratealertdialog, null);
+		final CheckBox welcomeCheck = (CheckBox) layout.findViewById(R.id.rateAlertDialogCheckBox);
+		
 		
 		builder.setView(layout)
-				.setTitle("You have been using Body Cards for a while, Please take a moment to rate it!")
+				.setTitle("Tell us what you think!")
 				.setPositiveButton("OK", new DialogInterface.OnClickListener(){
 					
 					

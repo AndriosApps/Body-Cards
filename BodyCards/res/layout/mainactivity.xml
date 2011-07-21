@@ -8,28 +8,29 @@
 	android:orientation="vertical"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:ads="http://schemas.android.com/apk/res/com.andrios.bodycards">
+    <LinearLayout 
+    	android:id="@+id/linearLayout1" 
+    	android:layout_width="fill_parent" 
+    	android:gravity="center" android:layout_height="75px">
+    	
+    	<com.google.ads.AdView 
+			xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+			android:id="@+id/homeAdView2"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        ads:adUnitId="a14dca3fe4ea15f"
+	        ads:adSize="BANNER"
+	        android:layout_weight="0" />
+    
+    </LinearLayout>
 	
-	<com.google.ads.AdView 
-		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-		android:id="@+id/homeAdView2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        ads:adUnitId="a14dca3fe4ea15f"
-        ads:adSize="BANNER"
-        android:layout_weight="0" />	
+	
         
 	<LinearLayout
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_weight="1" >
+		android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:layout_width="250dip" android:layout_height="200dip">
+		<ImageView android:id="@+id/imageView1" android:src="@drawable/mainscreen" android:layout_gravity="center" android:layout_weight="1" android:scaleType="fitXY" android:layout_width="fill_parent" android:layout_height="fill_parent"></ImageView>
 
 	</LinearLayout>
-	
-	<ImageView android:id="@+id/imageView1" 
-			android:layout_width="wrap_content" 
-			android:layout_height="300dp" 
-			android:src="@drawable/mainscreen">
-	</ImageView>
 
 	<LinearLayout
 		android:layout_height="wrap_content"
