@@ -15,7 +15,7 @@ public class AndriosPatcher {
 	static ArrayList<Exercise> exerciseList;
 	static ArrayList<Exercise> sel;
 	static ArrayList<Boolean> patchList;
-	static boolean isWelcome;
+	static boolean isWelcome, hasRated;
 
 	public static boolean patch(Context ctx){
 		readPatches(ctx);
@@ -139,6 +139,57 @@ public class AndriosPatcher {
 		
 	}
 	
+	@SuppressWarnings("unchecked")
+	public static boolean readRated(Context ctx) {
+		
+		try {
+			
+			FileInputStream fis = ctx.openFileInput("rated");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			
+			hasRated = (Boolean) ois.readObject();
+			
+			
+
+			ois.close();
+			fis.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			hasRated = false;
+			
+
+			
+
+		}
+		
+		writeRated(ctx);
+		return hasRated;
+	}
+	
+	private static void writeRated(Context ctx) {
+		try {
+			FileOutputStream fos = ctx.openFileOutput("rated",
+					Context.MODE_PRIVATE);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+			oos.writeObject(hasRated);
+			oos.close();
+			fos.close();
+
+		} catch (IOException e) {
+
+		
+		}
+
+		
+	}
+	
+	public static void setRated(Context ctx){
+		hasRated = true;
+		writeRated(ctx);
+	}
+
 	@SuppressWarnings("unchecked")
 	public static boolean readWelcome(Context ctx) {
 		

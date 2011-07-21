@@ -304,7 +304,7 @@ public class WorkoutCardActivity extends Activity {
 			end();
 			tracker.dispatch();
 			Intent el_fin = new Intent(v.getContext(), FinishedActivity.class);
-
+			el_fin.putExtra("profiles", selectedProfiles);
 			startActivity(el_fin);
 			setResult(RESULT_OK);
 			WorkoutCardActivity.this.finish();
