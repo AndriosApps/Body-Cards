@@ -4,7 +4,7 @@
   android:layout_width="fill_parent"
   android:layout_height="fill_parent" android:orientation="vertical" android:gravity="center|center_vertical">
     <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Thanks for using Body Cards by AndriOS!" android:id="@+id/ratingTextView"></TextView>
-	<TextView android:text="We see you've been using our app for a while, please take a minute to rate it, every comment helps us make it better!" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+	<TextView android:text="We see you've been using our app for a while, please take a minute to rate it in the market, every comment helps us make improvements!" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 	<CheckBox android:layout_width="fill_parent" android:text="Don't ask me again." android:layout_height="wrap_content" android:id="@+id/rateAlertDialogCheckBox"></CheckBox>
 
 

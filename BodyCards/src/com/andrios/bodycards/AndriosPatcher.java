@@ -19,7 +19,7 @@ public class AndriosPatcher {
 
 	public static boolean patch(Context ctx){
 		readPatches(ctx);
-		if(patchList.get(0) == false){
+		if(true){
 			patchList.set(0, patch0(ctx));
 			writePatch(ctx);
 			return true;
