@@ -281,7 +281,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 						setWorkoutsToProfile();
 						
 						Intent el_fin = new Intent(v.getContext(), FinishedActivity.class);
-						
+						el_fin.putExtra("profiles", selectedProfiles);
 						startActivityForResult(el_fin, 34222);
 					}else{
 						flipper.showNext();
