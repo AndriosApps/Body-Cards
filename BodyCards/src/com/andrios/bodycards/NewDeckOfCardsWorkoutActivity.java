@@ -1,16 +1,23 @@
 package com.andrios.bodycards;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 
 import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -20,9 +27,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -35,6 +44,8 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 	ArrayAdapter<Profile> availableProfilesAdapter, chosenProfilesAdapter;
 	Button backBTN, resetBTN, doneBTN;
 	RadioButton quarterRDO, halfRDO, fullRDO;
+	static boolean hasTrained;
+	AlertDialog ad;
 	
 	String workoutName;
 	GoogleAnalyticsTracker tracker;
@@ -57,6 +68,7 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 	    tracker.start("UA-23366060-1", this);
 		tracker.trackPageView("New Deck of Cards Activity");
 		
+		setAlertDialog();
 		
 	}
 
@@ -288,5 +300,97 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 	    // Stop the tracker when it is no longer needed.
 	    tracker.stop();
 	  }
-	
+		private void setAlertDialog() {
+			
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			LayoutInflater inflater = LayoutInflater.from(this);
+			final View layout = inflater.inflate(R.layout.ratealertdialog, null);
+			final CheckBox rateCheck = (CheckBox) layout.findViewById(R.id.rateAlertDialogCheckBox);
+			final TextView topText = (TextView) layout.findViewById(R.id.ratingTextView);
+			final TextView middleText = (TextView) layout.findViewById(R.id.ratingTextView2);
+			
+			rateCheck.setText("Don't show this again");
+			topText.setText("The original concept for Body Cards stems from a basic Deck of Cards");
+			middleText.setText("This workout is a throwback to when we worked out with a bunch of Marines in our dorm room. Use it however you would use a regular deck of cards.");
+			builder.setView(layout)
+					.setTitle("About Deck of Cards!")
+					.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+						
+						
+						public void onClick(DialogInterface dialog, int which) {
+								
+							if(rateCheck.isChecked()){
+								hasTrained = true;
+								writeTrained();
+								tracker.trackEvent(
+							            "Clicks",  // Category
+							            "Training",  // Action
+							            "Deck of Cards - Last Time", // Label
+							            1);       // Value
+							}else{
+								hasTrained = false;
+								writeTrained();
+								tracker.trackEvent(
+							            "Clicks",  // Category
+							            "Training",  // Action
+							            "Deck of Cards", // Label
+							            1);       // Value
+							}
+							
+							
+							
+							
+							
+							
+						}
+					});
+			ad = builder.create();
+			readDeckTraining();
+		}
+		
+		private void readDeckTraining() {
+			
+			try {
+				
+				FileInputStream fis = NewDeckOfCardsWorkoutActivity.this.openFileInput("deckTraining");
+				ObjectInputStream ois = new ObjectInputStream(fis);
+				
+				
+				
+				if(!(boolean) ois.readBoolean()){
+					ad.show();
+				}
+
+				ois.close();
+				fis.close();
+
+			} catch (Exception e) {
+				
+				ad.show();
+				
+
+				
+
+			}
+			
+			
+		}
+		
+		private void writeTrained() {
+			try {
+				FileOutputStream fos = NewDeckOfCardsWorkoutActivity.this.openFileOutput("deckTraining",
+						Context.MODE_PRIVATE);
+				ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+				oos.writeObject(hasTrained);
+				oos.close();
+				fos.close();
+
+			} catch (IOException e) {
+
+			
+			}
+
+			
+		}
 }
