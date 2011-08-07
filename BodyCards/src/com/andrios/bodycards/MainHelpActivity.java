@@ -4,6 +4,7 @@ import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -14,7 +15,7 @@ import android.widget.Button;
 public class MainHelpActivity extends Activity {
 
 	
-	Button helpGettingStartedBTN, helpDeckOfCardsBTN, helpRandomWorkoutBTN;
+	Button helpGettingStartedBTN, helpDeckOfCardsBTN, helpRandomWorkoutBTN, rateBTN;
 	Button helpCustomWorkoutBTN, DisclaimerBTN, imagesBTN;
 	GoogleAnalyticsTracker tracker;
 	
@@ -45,6 +46,7 @@ public class MainHelpActivity extends Activity {
 		helpCustomWorkoutBTN = (Button) findViewById(R.id.mainHelpActivityCustomWorkoutBTN);
 		DisclaimerBTN = (Button) findViewById(R.id.mainHelpActivityDisclaimerBTN);
 		imagesBTN = (Button) findViewById(R.id.mainHelpActivityImagesBTN);
+		rateBTN = (Button) findViewById(R.id.mainHelpActivityRatingBTN);
 		
 		
 		setOnClickListeners();
@@ -152,6 +154,23 @@ public class MainHelpActivity extends Activity {
 				Intent intent = new Intent(v.getContext(), HelpGenericActivity.class);
 				intent.putExtra("ID", 8);
 				startActivity(intent);
+				
+			}
+			
+		});
+		
+		rateBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				  tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Button",  // Action
+				            "Help Rate", // Label
+				            1);       // Value
+				   tracker.dispatch();
+				   Intent intent = new Intent(Intent.ACTION_VIEW);
+					intent.setData(Uri.parse("market://details?id=com.andrios.bodycards"));
+					startActivity(intent);
 				
 			}
 			

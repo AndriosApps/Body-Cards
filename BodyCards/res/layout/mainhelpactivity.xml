@@ -20,6 +20,7 @@
     		<Button android:layout_width="175dp" android:text="Custom Workout" android:id="@+id/mainHelpActivityCustomWorkoutBTN" android:layout_height="wrap_content"></Button>
     		<Button android:layout_width="175dp" android:text="Disclaimer" android:id="@+id/mainHelpActivityDisclaimerBTN" android:layout_height="wrap_content"></Button>
     		<Button android:layout_width="175dp" android:text="Images" android:id="@+id/mainHelpActivityImagesBTN" android:layout_height="wrap_content"></Button>
+    		<Button android:text="Rate" android:layout_height="wrap_content" android:id="@+id/mainHelpActivityRatingBTN" android:layout_width="175dip"></Button>
     	
     	</LinearLayout>
 

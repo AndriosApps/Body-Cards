@@ -310,11 +310,11 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 			final TextView middleText = (TextView) layout.findViewById(R.id.ratingTextView2);
 			
 			rateCheck.setText("Don't show this again");
-			topText.setText("The original concept for Body Cards stems from a basic Deck of Cards");
-			middleText.setText("This workout is a throwback to when we worked out with a bunch of Marines in our dorm room. Use it however you would use a regular deck of cards.");
+			topText.setText("Using a simple deck of playing cards to develop a random workout served as our inspiration for Body Cards.");
+			middleText.setText("Click 'Help' below for more information or 'Continue' to proceed to the workout");
 			builder.setView(layout)
 					.setTitle("About Deck of Cards!")
-					.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+					.setPositiveButton("Help", new DialogInterface.OnClickListener(){
 						
 						
 						public void onClick(DialogInterface dialog, int which) {
@@ -327,6 +327,9 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 							            "Training",  // Action
 							            "Deck of Cards - Last Time", // Label
 							            1);       // Value
+								
+							  
+							  
 							}else{
 								hasTrained = false;
 								writeTrained();
@@ -337,10 +340,35 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 							            1);       // Value
 							}
 							
+							Intent intent = new Intent(layout.getContext(), HelpGenericActivity.class);
+							intent.putExtra("ID", 2);
+							startActivity(intent);
 							
 							
 							
 							
+						}
+					})
+					.setNeutralButton("Continue", new DialogInterface.OnClickListener(){
+						
+						public void onClick(DialogInterface dialog, int which) {
+							if(rateCheck.isChecked()){
+								hasTrained = true;
+								writeTrained();
+								tracker.trackEvent(
+							            "Clicks",  // Category
+							            "Training",  // Action
+							            "Deck of Cards - Last Time - No View", // Label
+							            1);       // Value
+							}else{
+								hasTrained = false;
+								writeTrained();
+								tracker.trackEvent(
+							            "Clicks",  // Category
+							            "Training",  // Action
+							            "Deck of Cards - No View", // Label
+							            1);       // Value
+							}
 							
 						}
 					});
@@ -355,9 +383,16 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 				FileInputStream fis = NewDeckOfCardsWorkoutActivity.this.openFileInput("deckTraining");
 				ObjectInputStream ois = new ObjectInputStream(fis);
 				
+				try{
+					hasTrained = (boolean) ois.readBoolean();
+					System.out.println("TRY");
+				}catch(Exception e){
+					hasTrained = false;
+					System.out.println("Catch");
+				}
 				
-				
-				if(!(boolean) ois.readBoolean()){
+				System.out.println("Read HAS TRAINED: " + hasTrained);
+				if(hasTrained){
 					ad.show();
 				}
 
@@ -365,7 +400,7 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 				fis.close();
 
 			} catch (Exception e) {
-				
+				System.out.println("ERROR READING");
 				ad.show();
 				
 
@@ -377,17 +412,18 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 		}
 		
 		private void writeTrained() {
+			System.out.println("Write Trainined");
 			try {
 				FileOutputStream fos = NewDeckOfCardsWorkoutActivity.this.openFileOutput("deckTraining",
 						Context.MODE_PRIVATE);
 				ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-				oos.writeObject(hasTrained);
+				System.out.println("HAS TRAINED: " + hasTrained);
+				oos.writeBoolean(hasTrained);
 				oos.close();
 				fos.close();
 
 			} catch (IOException e) {
-
+				System.out.println("HAS TRAINED: catch");
 			
 			}
 

@@ -98,8 +98,8 @@ public class HelpGenericActivity extends Activity {
 		
 		//ID = 2
 		help = new Help("Deck of Cards", 
-				"'Deck of Cards' workout is the reason this app was developed.  We used to workout to a deck of cards, each suite indicated a different exercise.\n\n" +
-				"Use this workout to create your own unique workout, it will simulate shuffling a deck of cards.\n\n" +
+				"'Deck of Cards' Workout shows the inspiration for Body Cards.  We used to workout to a deck of cards, assigning a different exercise to each suite and using face values to represent number of reps.\n\n" +
+				"Use this version to see how we did the workout before we wrote our app. We expect that most users will favor Custom or Random workouts, so please try those out as well!\n\n" +
 				"Individual exercises are not tracked when you do a 'Deck of Cards' workout. We do plan to track that in some manner in a future release.");
 		
 		helpList.add(help);
