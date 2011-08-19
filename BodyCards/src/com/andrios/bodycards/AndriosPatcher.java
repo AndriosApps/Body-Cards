@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.widget.Toast;
 
 public class AndriosPatcher {
 	
@@ -19,14 +20,19 @@ public class AndriosPatcher {
 
 	public static boolean patch(Context ctx){
 		readPatches(ctx);
-		if(true){
-			patchList.set(0, patch0(ctx));
-			writePatch(ctx);
-			return true;
-			
-		}else{
-			return true;
+		for(int i = 0; i < patchList.size(); i++){
+			System.out.println(patchList.get(i));
 		}
+		if(!patchList.get(0)){
+			patchList.set(0, patch0(ctx));
+		}
+		if(!patchList.get(1)){
+			patchList.set(1, patch1(ctx));
+			
+			
+		}
+		writePatch(ctx);
+		return true;
 	}
 	
 	public static boolean patch0(Context ctx){
@@ -81,7 +87,55 @@ public class AndriosPatcher {
 		return true;
 		
 	}
+	/*
+	 * patch1
+	 * Sets Widget Boolean to false for all profiles. 
+	 * 
+	 * @parameter Context ctx  Context passed from main activity
+	 * @Result boolean success indicates if all profiles have been cleared of widget status
+	 */
+	public static boolean patch1(Context ctx){
+		ArrayList<Profile> profList = readProfiles(ctx);
+		for(int i = 0; i < profList.size(); i++){
+			profList.get(i).isWidget = false;
+		}
+		writeProfiles(profList, ctx);
+		return true;
+	}
+
+	@SuppressWarnings("unchecked")
+	private static ArrayList<Profile> readProfiles(Context ctx) {
+		ArrayList<Profile> profList;
+		try {
+			FileInputStream fis = ctx.openFileInput("profiles");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+
+			profList = (ArrayList<Profile>) ois.readObject();
+			ois.close();
+			fis.close();
+		} catch (Exception e) {
+			profList = new ArrayList<Profile>();
+		}
+		
+		return profList;
+	}
 	
+	public static boolean writeProfiles(ArrayList<Profile> profList, Context ctx) {
+		try {
+			FileOutputStream fos = ctx.openFileOutput("profiles",
+					Context.MODE_PRIVATE);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+			oos.writeObject(profList);
+
+			oos.close();
+			fos.close();
+			return true;
+		} catch (IOException e) {
+			return false;
+		}
+
+	}
 	
 
 	@SuppressWarnings("unchecked")
@@ -121,7 +175,10 @@ public class AndriosPatcher {
 			
 			
 			patchList = (ArrayList<Boolean>) ois.readObject();
-			
+			if(patchList.size() < 2){
+				patchList.add(false);
+			}
+			//For Patch 2 add past 3 lines again. 
 
 			ois.close();
 			fis.close();
@@ -129,7 +186,8 @@ public class AndriosPatcher {
 		} catch (Exception e) {
 			e.printStackTrace();
 			patchList = new ArrayList<Boolean>();
-			patchList.add(false);
+			patchList.add(false); // Patch 0
+			patchList.add(false);// Patch 1
 			
 
 			
