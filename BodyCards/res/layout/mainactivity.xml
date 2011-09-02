@@ -3,11 +3,10 @@
 <LinearLayout
 	android:layout_width="fill_parent" 
 	android:layout_height="fill_parent"
-	android:background="#FFFFFF"
 	android:gravity="center"
 	android:orientation="vertical"
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:ads="http://schemas.android.com/apk/res/com.andrios.bodycards">
+	xmlns:ads="http://schemas.android.com/apk/res/com.andrios.bodycards" android:background="@drawable/smoke3">
     <LinearLayout 
     	android:id="@+id/linearLayout1" 
     	android:layout_width="fill_parent" 
@@ -23,6 +22,7 @@
 	        android:layout_weight="0" />
     
     </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1"></LinearLayout>
 	
 	
         
@@ -33,26 +33,25 @@
 	</LinearLayout>
 
 	<LinearLayout
-		android:layout_height="wrap_content"
 		android:layout_width="fill_parent"
-		android:layout_weight="0"
-		android:orientation="vertical"
-		android:gravity="center">
-		<Button android:layout_width="250dp" android:text="Custom Workout" android:id="@+id/mainActivityCustomWorkoutBTN" android:layout_height="50dp"></Button>
-		<Button android:layout_width="250dp" android:text="Random Workout" android:id="@+id/mainActivityRandomWorkoutBTN" android:layout_height="50dp"></Button>
-		
-		<Button android:id="@+id/mainActivityDeckOfCardsWorkoutBTN" 
-			android:text="Deck of Cards" 
-			android:layout_width="250dp" 
-			android:layout_height="50dp"
-			android:gravity="center" />
+		android:gravity="center|bottom" android:orientation="vertical" android:background="@drawable/smoke_grey_background" android:layout_height="125dip" android:layout_weight="0">
+		<TextView android:textColor="#000000" android:text="Workouts" android:layout_width="wrap_content" android:id="@+id/textView4" android:layout_height="wrap_content"></TextView>
+		<LinearLayout android:id="@+id/linearLayout5" android:layout_height="fill_parent" android:layout_width="fill_parent">
+			<LinearLayout android:id="@+id/linearLayout2" android:layout_width="wrap_content" android:gravity="center" android:layout_weight="1" android:orientation="vertical" android:layout_height="fill_parent">
+				<Button android:id="@+id/mainActivityCustomWorkoutBTN"  android:layout_width="75dip" android:background="@drawable/custombtn" android:layout_height="75dip"></Button>
+				<TextView android:text="Custom" android:layout_width="wrap_content" android:id="@+id/textView1" android:layout_height="wrap_content"></TextView>
+			</LinearLayout>
+			<LinearLayout android:id="@+id/linearLayout3" android:layout_width="wrap_content" android:gravity="center" android:layout_weight="1" android:orientation="vertical" android:layout_height="fill_parent">
+				<Button android:id="@+id/mainActivityRandomWorkoutBTN"  android:layout_width="75dip" android:background="@drawable/randombtn" android:layout_height="75dip"></Button>
+				<TextView android:text="Random" android:layout_width="wrap_content" android:id="@+id/textView2" android:layout_height="wrap_content"></TextView>
+			</LinearLayout>
+			<LinearLayout android:id="@+id/linearLayout4" android:layout_width="wrap_content" android:gravity="center" android:layout_weight="1" android:orientation="vertical" android:layout_height="fill_parent">
+				<Button android:gravity="center"  android:id="@+id/mainActivityDeckOfCardsWorkoutBTN" android:layout_width="75dip" android:background="@drawable/deckbtn" android:layout_height="75dip"></Button>
+				<TextView android:text="Deck of Cards" android:layout_width="wrap_content" android:id="@+id/textView3" android:layout_height="wrap_content"></TextView>
+			</LinearLayout>
+		</LinearLayout>
 				
 	</LinearLayout>
-
-	<LinearLayout
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_weight="1" />
 	
 	<!-- Fill the rest of screen and place buttons at the bottom of screen -->
 		
