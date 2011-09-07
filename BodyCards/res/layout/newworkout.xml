@@ -16,16 +16,9 @@
 		android:gravity="center"
 		android:focusable="true"
 		android:layout_weight="1">
-		
-		<TextView android:id="@+id/textTitle"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:text="Set Workout Details"
-			android:gravity="center"
-			android:textSize="20dp"
-			android:background="#CCCCCC"
-			android:textColor="#000"
-			android:layout_weight="0"></TextView>
+		<LinearLayout android:id="@+id/linearLayout3" android:layout_width="fill_parent" android:layout_height="50dip" android:background="@drawable/actionbar" android:gravity="center|left">
+			<TextView android:textSize="22dip" android:layout_width="wrap_content" android:id="@+id/textView8" android:layout_height="wrap_content" android:text="Workout Details"></TextView>
+		</LinearLayout>
  
 		 <LinearLayout
 			xmlns:android="http://schemas.android.com/apk/res/android"
@@ -224,29 +217,19 @@
 	<LinearLayout
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="fill_parent"
-		android:layout_height="55dp"
-		android:background="#555555"
-		android:gravity="bottom"
 		android:orientation="horizontal"
-		android:layout_weight="0">
-		
-		<Button android:id="@+id/nwBack" 
-			android:layout_width="wrap_content"
-			android:text="Back"
-			android:layout_height="50dp"
-			android:layout_weight="1" />
+		android:layout_weight="0" android:layout_height="50dip" android:gravity="center|left" android:background="@drawable/actionbar">
 			
 		<Button android:id="@+id/nwReset" 
-			android:layout_width="wrap_content"
-			android:text="Reset"
+			android:text=""
 			android:layout_height="50dp"
-			android:layout_weight="1" />
+			android:background="@drawable/refresh" android:layout_width="50dip" android:layout_weight="0"/>
+		<LinearLayout android:layout_height="fill_parent" android:id="@+id/linearLayout4" android:layout_width="wrap_content" android:layout_weight="1"></LinearLayout>
 		
 		<Button android:id="@+id/nwDone" 
-			android:layout_width="wrap_content"
 			android:layout_height="50dp"
-			android:text="Next"
-			android:layout_weight="1" />
+			android:text=""
+			android:background="@drawable/next" android:layout_width="50dip" android:layout_weight="0"/>
 
 	</LinearLayout>
 	

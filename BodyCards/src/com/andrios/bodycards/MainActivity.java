@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
 	/** Called when the activity is first created. */
 
 	Button deckOfCardsWorkoutBTN, customWorkoutBTN, randomWorkoutBTN;
-	Button viewProfileBTN, helpBTN, quitBTN;
+	Button viewProfileBTN, helpBTN;
 	AlertDialog ad;
 	boolean showWelcome;
 	GoogleAnalyticsTracker tracker;
@@ -85,7 +85,7 @@ public class MainActivity extends Activity {
 		}
 		
 		if(profileList.isEmpty()) {
-			viewProfileBTN.setText("Create Profile");
+			viewProfileBTN.setText("+");
 			if(showWelcome){
 				 tracker.trackEvent(
 				            "Use",  // Category
@@ -96,13 +96,14 @@ public class MainActivity extends Activity {
 				ad.show();
 			}
 		} else {
+			viewProfileBTN.setText("");
 			 tracker.trackEvent(
 			            "Use",  // Category
 			            "Login",  // Action
 			            "Regular Login", // Label
 			            0);       // Value
 			   tracker.dispatch();
-			viewProfileBTN.setText("View Profiles");
+			
 		}
 		
 	}
@@ -113,13 +114,13 @@ public class MainActivity extends Activity {
 		randomWorkoutBTN = (Button) findViewById(R.id.mainActivityRandomWorkoutBTN);
 		viewProfileBTN = (Button) findViewById(R.id.mainActivityViewProfilesBTN);
 		helpBTN = (Button) findViewById(R.id.mainActivityHelpBTN);
-		quitBTN = (Button) findViewById(R.id.mainActivityQuitBTN);
+		
 
-		adView = (AdView)this.findViewById(R.id.homeAdView2);
+		//adView = (AdView)this.findViewById(R.id.homeAdView2);
 	      
-	    request = new AdRequest();
-		request.setTesting(false);
-		adView.loadAd(request);
+	    //request = new AdRequest();
+		//request.setTesting(false);
+		//adView.loadAd(request);
 		
 		setOnClickListeners();
 	}
@@ -189,7 +190,7 @@ public class MainActivity extends Activity {
 				   
 				
 				int whichOne = 0;
-				if(viewProfileBTN.getText().equals("Create Profile")){
+				if(viewProfileBTN.getText().equals("+")){
 					whichOne = 1;
 				}
 				Intent intent = new Intent(v.getContext(), ViewProfileActivity.class);
@@ -215,20 +216,7 @@ public class MainActivity extends Activity {
 
 		});
 		
-		quitBTN.setOnClickListener(new OnClickListener() {
-			
 
-			public void onClick(View v) {
-				 tracker.trackEvent(
-				            "Clicks",  // Category
-				            "Button",  // Action
-				            "Finish", // Label
-				            0);       // Value
-				   
-				MainActivity.this.finish();
-			}
-
-		});
 		
 	}
 

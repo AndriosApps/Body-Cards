@@ -31,7 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ExerciseListActivity extends Activity {
-	Button backBTN, nextBTN, clearBTN, addBTN;
+	Button nextBTN, clearBTN, addBTN;
 
 	ListView availableListView, selectedListView;
 
@@ -351,9 +351,6 @@ public class ExerciseListActivity extends Activity {
 		addBTN = (Button) findViewById(R.id.exerciseListActivityAddBTN);
 
 
-		backBTN = (Button) findViewById(R.id.exerciseListActivityBackBTN);
-
-
 		nextBTN = (Button) findViewById(R.id.exerciseListActivityNextBTN);
 
 
@@ -452,15 +449,7 @@ public class ExerciseListActivity extends Activity {
 
 		});
 		
-		backBTN.setOnClickListener(new OnClickListener() {
 
-			public void onClick(View v) {
-				resetExerciseList();
-				tracker.dispatch();
-				ExerciseListActivity.this.finish();
-			}
-
-		});
 		
 		nextBTN.setOnClickListener(new OnClickListener() {
 

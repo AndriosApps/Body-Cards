@@ -30,7 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class DisplayProfileActivity extends Activity {
-	Button edit, back;
+	Button edit;
 	Profile profile;
 	ListView lv;
 	ProfileAdapter aa;
@@ -190,18 +190,7 @@ public class DisplayProfileActivity extends Activity {
 
 		});
 
-		back = (Button) findViewById(R.id.dpBack);
-		back.setOnClickListener(new OnClickListener() {
 
-			public void onClick(View v) {
-
-				tracker.dispatch();
-				DisplayProfileActivity.this.setResult(RESULT_OK);
-
-				DisplayProfileActivity.this.finish();
-			}
-
-		});
 
 		edit = (Button) findViewById(R.id.dpEdit);
 		edit.setOnClickListener(new OnClickListener() {

@@ -14,6 +14,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
@@ -506,7 +508,9 @@ public class WorkoutCardActivity extends Activity {
 					- clock.getBase();
 			if (((count - 1) % numPeople) < numProf)
 				workouts[(count - 1) % numPeople].start();
-			begin.setText("Resume");
+			Resources res = this.getResources();
+			Drawable myImage = res.getDrawable(R.drawable.play);
+			begin.setBackgroundDrawable(myImage);
 			running = false;
 		} else {
 			//Restart
@@ -530,7 +534,9 @@ public class WorkoutCardActivity extends Activity {
 				started = true;
 			}
 
-			begin.setText("Pause");
+			Resources res = this.getResources();
+			Drawable myImage = res.getDrawable(R.drawable.pause);
+			begin.setBackgroundDrawable(myImage);
 			running = true;
 		}
 	}

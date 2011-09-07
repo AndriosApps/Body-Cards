@@ -26,7 +26,7 @@ public class HelpGenericActivity extends Activity {
 	ArrayList<Help> helpList;
 	Help help;
 	TextView title, body;
-	Button back;
+	
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,25 +55,14 @@ public class HelpGenericActivity extends Activity {
 	private void setConnections() {
 		title = (TextView) findViewById (R.id.helpGenericActivityTitle);
 		body = (TextView) findViewById (R.id.helpGenericActivityBody);
-		back = (Button) findViewById (R.id.helpGenericActivityBackBTN);
 		String titleText = help.getTitle();
 		title.setText(titleText);
 		body.setText(help.getBody());
 		
-		setOnClickListeners();
-	}
-	
-	private void setOnClickListeners() {
-		back.setOnClickListener(new OnClickListener(){
-
-			public void onClick(View v) {
-				HelpGenericActivity.this.finish();
-				
-			}
-			
-		});
 		
 	}
+	
+	
 
 	private void writeHelp(){
 		helpList = new ArrayList<Help>();
@@ -154,7 +143,7 @@ public class HelpGenericActivity extends Activity {
 		helpList.add(help);		
 		
 		//ID = 8
-		help = new Help("Disclaimer", 
+		help = new Help("Images", 
 				"'Homepage Image: Ambro / FreeDigitalPhotos.net.\n\n" +
 				"'Complete Image: Ambro / FreeDigitalPhotos.net.\n\n");
 		

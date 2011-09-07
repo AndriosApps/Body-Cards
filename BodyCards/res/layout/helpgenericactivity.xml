@@ -3,18 +3,14 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_height="fill_parent"
 	android:layout_width="fill_parent"
-	android:gravity="bottom"
-	android:orientation="vertical" android:background="@drawable/background">
-
-	<TextView
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:gravity="center"
-		android:text="Help Window"
-		android:textSize="18dp"
-		android:textColor="#000"
-		android:background="#CCC"
-		android:layout_weight="0" />
+	android:orientation="vertical" android:background="#ffffff" android:gravity="center|bottom">
+    <LinearLayout android:background="@drawable/actionbar" android:layout_width="fill_parent" android:layout_height="50dip" android:gravity="center" android:id="@+id/linearLayout11">
+        <TextView android:layout_width="wrap_content" android:id="@+id/textView8" android:text="Help" android:layout_height="wrap_content" android:textSize="22dip"></TextView>
+        <LinearLayout android:layout_height="fill_parent" android:id="@+id/linearLayout1" android:layout_width="10dip"></LinearLayout>
+        <LinearLayout android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="fill_parent" android:id="@+id/linearLayout12" android:gravity="center">
+            <TextView android:text="Help" android:textSize="22dip" android:id="@+id/helpGenericActivityTitle" android:layout_width="fill_parent" android:gravity="center|left" android:layout_height="wrap_content"></TextView>
+        </LinearLayout>
+    </LinearLayout>
 		
 		<ScrollView 
 			android:layout_weight="1"
@@ -24,26 +20,13 @@
 			<LinearLayout
 				android:layout_height="fill_parent"
 				android:layout_width="fill_parent"
-				android:orientation="vertical"
-				android:background="#000000">
-
-				<TextView
-					android:id="@+id/helpGenericActivityTitle" 
-					android:layout_width="fill_parent"
-					android:layout_height="wrap_content"
-					android:gravity="center"
-					android:padding="10dp"
-					android:textSize="15dp"
-					android:textColor="#FFF"
-					android:background="#333"
-					android:textStyle="bold"
-					android:layout_weight="0" />	
+				android:orientation="vertical">	
 
 				<TextView 
 					android:id="@+id/helpGenericActivityBody" 
 					android:layout_width="fill_parent"
 					android:layout_height="0dp"
-					android:textColor="#FFF"
+					android:textColor="#000000"
 					android:layout_weight="1"
 					android:text="Exercises completed in this mode will not be saved to your profile." />
 
@@ -53,16 +36,8 @@
 
 
 	<LinearLayout android:layout_width="fill_parent"
-		android:layout_height="55dp" android:background="#555555"
 		android:gravity="bottom" android:orientation="horizontal"
-		android:layout_weight="0">
-
-		<Button 
-			android:id="@+id/helpGenericActivityBackBTN" 
-			android:text="Back"
-			android:layout_width="wrap_content" 
-			android:layout_height="50dp"
-			android:layout_weight="1" />
+		android:layout_weight="0" android:background="@drawable/actionbar" android:layout_height="50dp">
 
 
 	</LinearLayout>

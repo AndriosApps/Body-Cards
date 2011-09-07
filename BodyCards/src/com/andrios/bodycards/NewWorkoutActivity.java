@@ -28,7 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class NewWorkoutActivity extends Activity {
-	Button back, reset, done;
+	Button reset, done;
 	ArrayList<Exercise> exerciseNames;
 	ArrayList<Workout> peoplesWorkouts;
 	ListView lv, ls;
@@ -193,15 +193,6 @@ public class NewWorkoutActivity extends Activity {
 
 		});
 
-		back = (Button) findViewById(R.id.nwBack);
-		back.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View v) {
-				 
-				NewWorkoutActivity.this.finish();
-			}
-
-		});
 
 		reset = (Button) findViewById(R.id.nwReset);
 		reset.setOnClickListener(new OnClickListener() {

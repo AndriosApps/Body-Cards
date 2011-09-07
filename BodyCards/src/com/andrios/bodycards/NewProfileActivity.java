@@ -32,10 +32,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class NewProfileActivity extends Activity {
-	Button back, done, reset, birthdayBTN;
+	Button done, reset, birthdayBTN;
 	RadioButton male, female;
 	EditText fName, lName;
 	EditText age;
+	TextView birthdayTXT;
 	String gen;
 	ArrayList<Workout> workouts;
 	List<Profile> profList;
@@ -98,7 +99,7 @@ public class NewProfileActivity extends Activity {
 				birthday += Integer.toString(bday.get(Calendar.DAY_OF_MONTH));
 				birthday +="/";
 				birthday += Integer.toString(bday.get(Calendar.YEAR));
-				birthdayBTN.setText(birthday);
+				birthdayTXT.setText(birthday);
 				setBirthday(bday);
 			}
 			
@@ -117,8 +118,9 @@ public class NewProfileActivity extends Activity {
 		fName = (EditText) findViewById(R.id.newProfileUserFirstNameTXT);
 		lName = (EditText) findViewById(R.id.newProfileUserLastNameTXT);
 		age = (EditText) findViewById(R.id.newProfileUserAgeTXT);
+	
+		birthdayTXT = (TextView) findViewById(R.id.newProfileBirthdayTXT);
 		birthdayBTN = (Button) findViewById(R.id.newProfileUserBirthdayBTN);
-		back = (Button) findViewById(R.id.newProfileBackBTN);
 		reset = (Button) findViewById(R.id.newProfileResetBTN);
 		done = (Button) findViewById(R.id.newProfileDoneBTN);
 		
@@ -136,13 +138,7 @@ public class NewProfileActivity extends Activity {
 	}
 
 	private void setOnClickListeners() {
-		back.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View v) {
-				NewProfileActivity.this.finish();
-			}
-
-		});
+		
 		
 		reset.setOnClickListener(new OnClickListener() {
 
@@ -150,7 +146,7 @@ public class NewProfileActivity extends Activity {
 				fName.setText("");
 				lName.setText("");
 //				age.setText("");
-				birthdayBTN.setText("Set Birthday");
+				birthdayTXT.setText("Set Birthday");
 				male.setChecked(true);
 				gen = "Male";
 			}
@@ -184,7 +180,7 @@ public class NewProfileActivity extends Activity {
 					lName.setText("");
 				}
 				//TODO Change this wicket... it's wrong
-				if (birthdayBTN.getText().equals("Set Birthday")) {
+				if (birthdayTXT.getText().equals("Set Birthday")) {
 					Toast.makeText(NewProfileActivity.this, "Error: Birthday Field Incomplete ",
 							Toast.LENGTH_SHORT).show();
 					error = true;
@@ -311,7 +307,7 @@ public class NewProfileActivity extends Activity {
             }
     }    
     private void updateDisplay() {
-            birthdayBTN.setText(
+            birthdayTXT.setText(
                     new StringBuilder()
                     // Month is 0 based so add 1
                     .append(mMonth + 1).append("/")

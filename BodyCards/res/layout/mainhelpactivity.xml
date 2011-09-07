@@ -2,26 +2,49 @@
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent" android:gravity="top" android:orientation="vertical" android:background="@drawable/background">
-    
-    	<TextView
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:gravity="center"
-		android:text="Help Window"
-		android:textSize="18dp"
-		android:textColor="#000"
-		android:background="#CCC"
-		android:layout_weight="0" />
-    	<LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout1" android:orientation="vertical" android:gravity="center" android:layout_height="fill_parent">
-    		<Button android:layout_width="175dp" android:text="Getting Started" android:id="@+id/mainHelpActivityGettingStartedBTN" android:layout_height="wrap_content"></Button>
-    		<Button android:layout_width="175dp" android:text="Deck Of Cards" android:id="@+id/mainHelpActivityDeckOfCardsBTN" android:layout_height="wrap_content"></Button>
-    		<Button android:layout_width="175dp" android:text="Random Workout" android:id="@+id/mainHelpActivityRandomWorkoutBTN" android:layout_height="wrap_content"></Button>
-    		<Button android:layout_width="175dp" android:text="Custom Workout" android:id="@+id/mainHelpActivityCustomWorkoutBTN" android:layout_height="wrap_content"></Button>
-    		<Button android:layout_width="175dp" android:text="Disclaimer" android:id="@+id/mainHelpActivityDisclaimerBTN" android:layout_height="wrap_content"></Button>
-    		<Button android:layout_width="175dp" android:text="Images" android:id="@+id/mainHelpActivityImagesBTN" android:layout_height="wrap_content"></Button>
-    		<Button android:text="Rate" android:layout_height="wrap_content" android:id="@+id/mainHelpActivityRatingBTN" android:layout_width="175dip"></Button>
+  android:layout_height="fill_parent" android:gravity="top" android:orientation="vertical" android:background="#ffffff">
+    <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout11" android:layout_height="50dip" android:gravity="center" android:background="@drawable/actionbar">
+        <TextView android:layout_width="wrap_content" android:id="@+id/textView8" android:text="Help" android:layout_height="wrap_content" android:textSize="22dip"></TextView>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:id="@+id/linearLayout12" android:layout_weight="1"></LinearLayout>
+    </LinearLayout>
+    	<LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout1" android:orientation="vertical" android:gravity="center" android:layout_height="fill_parent" android:layout_weight="1">
+    		<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout2" android:layout_weight="1">
+    			<LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:id="@+id/linearLayout5" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+    				<Button android:id="@+id/mainHelpActivityGettingStartedBTN" android:text="" android:background="@drawable/help" android:layout_height="50dip" android:layout_width="40dip"></Button>
+    				<TextView android:layout_width="wrap_content" android:textColor="#000000" android:id="@+id/textView1" android:text="Getting Started" android:layout_height="wrap_content"></TextView>
+    			</LinearLayout>
+    			<LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:id="@+id/linearLayout6" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+    				<Button android:id="@+id/mainHelpActivityDeckOfCardsBTN" android:text="" android:background="@drawable/help" android:layout_height="50dip" android:layout_width="40dip"></Button>
+    				<TextView android:layout_width="wrap_content" android:textColor="#000000" android:id="@+id/textView2" android:text="Deck of Cards" android:layout_height="wrap_content"></TextView>
+    			</LinearLayout>
+    		</LinearLayout>
+    		<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout3" android:layout_weight="1">
+    			<LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:id="@+id/linearLayout7" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+    				<Button android:id="@+id/mainHelpActivityRandomWorkoutBTN" android:text="" android:background="@drawable/help" android:layout_height="50dip" android:layout_width="40dip"></Button>
+    				<TextView android:layout_width="wrap_content" android:textColor="#000000" android:id="@+id/textView3" android:text="Random Workout" android:layout_height="wrap_content"></TextView>
+    			</LinearLayout>
+    			<LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:id="@+id/linearLayout8" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+    				<Button android:id="@+id/mainHelpActivityCustomWorkoutBTN" android:text="" android:background="@drawable/help" android:layout_height="50dip" android:layout_width="40dip"></Button>
+    				<TextView android:layout_width="wrap_content" android:textColor="#000000" android:id="@+id/textView4" android:text="Custom Workout" android:layout_height="wrap_content"></TextView>
+    			</LinearLayout>
+    		</LinearLayout>
+    		<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout4" android:layout_weight="1">
+    			<LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:id="@+id/linearLayout10" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+    				<Button android:id="@+id/mainHelpActivityDisclaimerBTN" android:text="" android:layout_height="50dip" android:background="@drawable/disclaimer" android:layout_width="50dip"></Button>
+    				<TextView android:layout_width="wrap_content" android:textColor="#000000" android:id="@+id/textView5" android:text="Disclaimer" android:layout_height="wrap_content"></TextView>
+    			</LinearLayout>
+    			<LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:id="@+id/linearLayout9" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+    				<Button android:id="@+id/mainHelpActivityImagesBTN" android:text="" android:layout_height="50dip" android:layout_width="40dip" android:background="@drawable/poloroid"></Button>
+    				<TextView android:layout_width="wrap_content" android:textColor="#000000" android:id="@+id/textView6" android:text="Images" android:layout_height="wrap_content"></TextView>
+    			</LinearLayout>
+    		</LinearLayout>
+    		<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout13" android:orientation="vertical" android:gravity="center" android:layout_weight="1">
+    			<Button android:layout_width="50dip" android:text="" android:id="@+id/mainHelpActivityRatingBTN" android:background="@drawable/rate" android:layout_height="50dip"></Button>
+    			<TextView android:textColor="#000000" android:layout_width="wrap_content" android:id="@+id/textView7" android:text="Rate Body Cards" android:layout_height="wrap_content"></TextView>
+    		</LinearLayout>
     	
+    	</LinearLayout>
+    	<LinearLayout android:background="@drawable/actionbar" android:layout_width="fill_parent" android:layout_height="50dip" android:gravity="center" android:id="@+id/LinearLayout02">
     	</LinearLayout>
 
 

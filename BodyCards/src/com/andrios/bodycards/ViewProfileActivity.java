@@ -31,7 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ViewProfileActivity extends Activity {
-	Button backBTN, newProfileBTN;
+	Button newProfileBTN;
 	ListView listView;
 	ArrayList<Profile> profileList;
 	ArrayAdapter<Profile> profileListAdapter;
@@ -51,7 +51,7 @@ public class ViewProfileActivity extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.viewprofileactivity);
-		
+		System.out.println("VIEW PROFILE ACTIVITY");
 		getExtras();
 		setConnections();
 		setAlertDialog();
@@ -146,8 +146,6 @@ public class ViewProfileActivity extends Activity {
 		
 		listView.setAdapter(profileListAdapter);
 
-		backBTN = (Button) findViewById(R.id.viewProfileBackBTN);
-
 
 		newProfileBTN = (Button) findViewById(R.id.viewProfileNewProfileBTN);
 		
@@ -189,14 +187,7 @@ public class ViewProfileActivity extends Activity {
 
 		});
 		
-		backBTN.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View v) {
-				tracker.dispatch();
-				ViewProfileActivity.this.finish();
-			}
-
-		});
+	
 		newProfileBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {

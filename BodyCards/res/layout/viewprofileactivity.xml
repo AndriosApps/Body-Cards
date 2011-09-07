@@ -6,15 +6,10 @@
   android:background="#FFFFFF"
   android:gravity="top"
   android:orientation="vertical">
-
-	<TextView android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_weight="0"
-		android:text="Profiles"
-		android:textSize="20dp"
-		android:textColor="#000"
-		android:background="#CCC"
-		android:gravity="center" />
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="fill_parent" android:background="@drawable/actionbar" android:layout_height="50dip" android:gravity="center">
+        <TextView android:layout_width="wrap_content" android:textSize="22dip" android:text="Profiles" android:layout_height="wrap_content" android:id="@+id/textView8"></TextView>
+        <LinearLayout android:id="@+id/linearLayout2" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1"></LinearLayout>
+    </LinearLayout>
 		
 	<ListView android:id="@+id/viewProfileProfileListView"
 		android:layout_width="fill_parent"
@@ -29,22 +24,14 @@
 	  <LinearLayout
 	    android:layout_width="fill_parent"
 	  	android:layout_height="55dp"
-	  	android:background="#555555"
-	 	 android:gravity="bottom"
+	  	android:gravity="bottom"
 	  	android:orientation="horizontal"
-	  	android:layout_weight="0">
-	  	
-		  <Button android:id="@+id/viewProfileBackBTN"
-		  	android:text="Back"
-		  	android:layout_width="0dp"
-		  	android:layout_height="50dp"
-		  	android:layout_weight="1" />
+	  	android:layout_weight="0" android:background="@drawable/actionbar">
 		  	
 		  <Button android:id="@+id/viewProfileNewProfileBTN"
-		  	android:text="Create Profile"
-		  	android:layout_width="0dp"
+		  	android:text=""
 		  	android:layout_height="50dp"
-		  	android:layout_weight="1" />
+		  	android:layout_weight="0" android:background="@drawable/add" android:layout_width="50dip"/>
 
   	
   </LinearLayout>

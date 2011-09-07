@@ -3,18 +3,16 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
-  android:background="#FFFFFF"
   android:gravity="center"
-  android:orientation="vertical">
-  	  	
-  <TextView android:layout_weight="0"
-  	android:layout_width="fill_parent"
-  	android:layout_height="wrap_content"
-  	android:textSize="20dp"
-  	android:textColor="#000"
-  	android:text="Exercise List"
-  	android:background="#CCCCCC"
-  	android:gravity="center" />
+  android:orientation="vertical" android:background="@drawable/add">
+    <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout1" android:layout_height="50dip" android:gravity="center|left" android:background="@drawable/actionbar">
+        <TextView 
+        	android:id="@+id/textView8" 
+        	android:layout_height="wrap_content" 
+        	android:layout_width="wrap_content" 
+        	android:text="Exercise List" 
+        	android:textSize="22dip"></TextView>
+    </LinearLayout>
   	
  <ListView android:id="@+id/exerciseListActivityAvailableExercisesListView"
 	android:layout_width="fill_parent"
@@ -22,15 +20,9 @@
 	android:background="#E5E5E5"
 	android:choiceMode="multipleChoice"
 	android:layout_weight="1" />
-	
-  <TextView android:layout_weight="0"
-  	android:layout_width="fill_parent"
-  	android:layout_height="wrap_content"
-  	android:textSize="20dp"
-  	android:textColor="#000"
-  	android:text="Selected Exercises"
-  	android:background="#CCCCCC"
-  	android:gravity="center" />
+ <LinearLayout android:layout_width="fill_parent" android:gravity="center|left" android:background="@drawable/actionbar" android:id="@+id/LinearLayout01" android:layout_height="50dip">
+     <TextView android:id="@+id/TextView01" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Selected Exercises" android:textSize="22dip"></TextView>
+ </LinearLayout>
 	
  <ListView android:id="@+id/exerciseListActivitySelectedExercisesListView"
 	android:layout_width="fill_parent"
@@ -43,35 +35,24 @@
 
   <LinearLayout
     android:layout_width="fill_parent"
-  	android:layout_height="55dp"
-  	android:background="#555555"
- 	 android:gravity="bottom"
   	android:orientation="horizontal"
-  	android:layout_weight="0">
-  	
-  <Button android:id="@+id/exerciseListActivityBackBTN"
-  	android:text="Back"
-  	android:layout_width="wrap_content"
-  	android:layout_height="50dp"
-  	android:layout_weight="1" />
+  	android:layout_weight="0" android:layout_height="50dip" android:gravity="center|left" android:background="@drawable/actionbar">
 
   <Button android:id="@+id/exerciseListActivityAddBTN"
-  	android:text="New"
-  	android:layout_width="wrap_content"
+  	android:text=""
   	android:layout_height="50dp"
-  	android:layout_weight="1" />
+  	android:background="@drawable/add" android:layout_width="50dip" android:layout_weight="0"/>
   	
   <Button android:id="@+id/exerciseListActivityClearBTN"
-  	android:text="Clear"
-  	android:layout_width="wrap_content"
+  	android:text=""
   	android:layout_height="50dp"
-  	android:layout_weight="1" />
+  	android:layout_width="50dip" android:layout_weight="0" android:background="@drawable/refresh"/>
+  <LinearLayout android:layout_width="wrap_content" android:id="@+id/linearLayout2" android:layout_height="fill_parent" android:layout_weight="1"></LinearLayout>
   	
   <Button android:id="@+id/exerciseListActivityNextBTN"
-  	android:text="Next"
-  	android:layout_width="wrap_content"
+  	android:text=""
   	android:layout_height="50dp"
-  	android:layout_weight="1" />
+  	android:layout_width="50dip" android:layout_weight="0" android:background="@drawable/next"/>
   	
   </LinearLayout>
 </LinearLayout>

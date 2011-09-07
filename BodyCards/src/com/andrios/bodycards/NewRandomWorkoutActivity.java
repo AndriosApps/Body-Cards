@@ -32,7 +32,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class NewRandomWorkoutActivity extends Activity {
-	Button back, reset, done;
+	Button reset, done;
 	ArrayList<Exercise> exerciseList, selectedExercises;
 	ArrayList<Workout> peoplesWorkouts;
 	ListView lv, ls;
@@ -143,9 +143,7 @@ public class NewRandomWorkoutActivity extends Activity {
 
 
 
-		back = (Button) findViewById(R.id.nwBack);
-
-
+		
 		reset = (Button) findViewById(R.id.nwReset);
 		reset.setText("Randomize");
 
@@ -329,14 +327,7 @@ public class NewRandomWorkoutActivity extends Activity {
 
 		});
 		
-		back.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View v) {
-				 
-				NewRandomWorkoutActivity.this.finish();
-			}
-
-		});
+	
 		
 		reset.setOnClickListener(new OnClickListener() {
 
