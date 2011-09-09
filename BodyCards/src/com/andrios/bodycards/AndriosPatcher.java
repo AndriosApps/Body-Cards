@@ -8,7 +8,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.widget.Toast;
 
 public class AndriosPatcher {
 	

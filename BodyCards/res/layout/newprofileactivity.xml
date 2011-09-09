@@ -167,6 +167,7 @@
 			<Button android:id="@+id/newProfileResetBTN"
 				android:text=""
 				android:layout_height="50dp" android:background="@drawable/refresh" android:layout_weight="0" android:layout_width="50dip"/>
+			<LinearLayout android:id="@+id/linearLayout3" android:layout_height="fill_parent" android:layout_width="wrap_content" android:layout_weight="1"></LinearLayout>
 
 			<Button android:id="@+id/newProfileDoneBTN"
 				android:text=""

@@ -12,8 +12,8 @@
         <TextView android:layout_width="wrap_content" android:id="@+id/textView8" android:text="Body Cards" android:layout_height="wrap_content" android:textSize="22dip"></TextView>
         <LinearLayout android:id="@+id/linearLayout14" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1">
         </LinearLayout>
-        <Button android:text="" android:background="@drawable/user" android:layout_height="50dip" android:layout_width="50dip" android:id="@+id/mainActivityViewProfilesBTN"></Button>
-        <Button android:background="@drawable/icon_help" android:padding="5dp" android:layout_weight="0" android:id="@+id/mainActivityHelpBTN" android:text="" android:layout_height="50dip" android:layout_width="50dip"></Button>
+        <Button android:text="" android:background="@drawable/user" android:layout_height="50dip" android:layout_width="50dip" android:id="@+id/mainActivityViewProfilesBTN" android:padding="10dip"></Button>
+        <Button android:background="@drawable/icon_help" android:layout_weight="0" android:id="@+id/mainActivityHelpBTN" android:text="" android:layout_height="50dip" android:layout_width="50dip" android:padding="10dip"></Button>
     </LinearLayout>
     <LinearLayout android:id="@+id/linearLayout6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1"></LinearLayout>
 	

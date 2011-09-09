@@ -35,7 +35,7 @@ import android.widget.ViewFlipper;
 
 public class WorkoutCardActivity extends Activity {
 
-	private static final String MY_AD_UNIT_ID = "a14dca3fe4ea15f";
+	
 	// XML Variables
 	TextView setView, rTL, rBR, exerciseName, cardsRem;
 	TextView sideLabel;

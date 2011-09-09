@@ -9,7 +9,7 @@
 		android:id="@+id/linearLayout1" android:orientation="vertical"
 		android:layout_width="50dp" android:layout_weight="1">
 		<LinearLayout android:id="@+id/linearLayout3" android:layout_width="fill_parent" android:orientation="vertical" android:layout_weight="1" android:layout_height="wrap_content" android:gravity="center_vertical">
-			<TextView android:layout_width="wrap_content" android:textSize="24px" android:id="@+id/profile_list_item_nameLBL" android:text="TextView" android:layout_height="wrap_content"></TextView>
+			<TextView android:layout_width="wrap_content" android:textColor="#000000" android:textSize="24px" android:id="@+id/profile_list_item_nameLBL" android:text="TextView" android:layout_height="wrap_content"></TextView>
 		</LinearLayout>
 
 	</LinearLayout>

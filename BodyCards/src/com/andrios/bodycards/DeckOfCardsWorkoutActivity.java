@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
@@ -16,7 +14,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.SystemClock;
 import android.view.View;
 import android.view.View.OnClickListener;

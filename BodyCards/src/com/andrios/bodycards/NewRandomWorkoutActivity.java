@@ -145,7 +145,7 @@ public class NewRandomWorkoutActivity extends Activity {
 
 		
 		reset = (Button) findViewById(R.id.nwReset);
-		reset.setText("Randomize");
+		
 
 
 		done = (Button) findViewById(R.id.nwDone);

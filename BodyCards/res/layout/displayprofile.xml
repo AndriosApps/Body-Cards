@@ -2,6 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
 	android:background="#FFFFFF" android:gravity="top" android:orientation="vertical">
+    <LinearLayout android:id="@+id/linearLayout1" android:background="@drawable/actionbar" android:orientation="horizontal" android:layout_weight="0" android:layout_height="50dip" android:gravity="center|left" android:layout_width="fill_parent">
+        <TextView android:gravity="right" android:text="TextView" android:textSize="22dip" android:id="@+id/profName" android:layout_height="wrap_content" android:layout_width="wrap_content"></TextView>
+    </LinearLayout>
 
 	<LinearLayout android:layout_weight="1"
 		android:layout_width="fill_parent" android:layout_height="0dp"
@@ -21,10 +24,6 @@
 				<LinearLayout android:id="@+id/profRight"
 					android:layout_width="fill_parent" android:layout_height="wrap_content"
 					android:orientation="vertical" android:gravity="left">
-
-					<TextView android:id="@+id/profName" android:layout_width="wrap_content"
-						android:layout_height="wrap_content" android:textSize="20dp"
-						android:textColor="#000000" android:gravity="right" />
 
 					<TextView android:id="@+id/profAge" android:layout_width="wrap_content"
 						android:layout_height="wrap_content" android:textSize="12dp"
