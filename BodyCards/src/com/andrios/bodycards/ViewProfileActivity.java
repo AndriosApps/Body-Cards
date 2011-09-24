@@ -34,7 +34,7 @@ public class ViewProfileActivity extends Activity {
 	Button newProfileBTN;
 	ListView listView;
 	ArrayList<Profile> profileList;
-	ArrayAdapter<Profile> profileListAdapter;
+	ProfileAdapter profileListAdapter;
 	AlertDialog ad;
 	int selectedRow;
 
@@ -130,7 +130,7 @@ public class ViewProfileActivity extends Activity {
 		readProfiles();
 
 		listView = (ListView) findViewById(R.id.viewProfileProfileListView);
-		profileListAdapter = new ArrayAdapter<Profile>(this, R.layout.list_view2, profileList);
+		profileListAdapter = new ProfileAdapter(this, R.layout.list_view2, profileList);
 		profileListAdapter.setNotifyOnChange(true);
 		profileListAdapter.sort(new Comparator<Profile>() {
 

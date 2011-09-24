@@ -16,7 +16,7 @@ public class MainHelpActivity extends Activity {
 
 	
 	Button helpGettingStartedBTN, helpDeckOfCardsBTN, helpRandomWorkoutBTN, rateBTN;
-	Button helpCustomWorkoutBTN, DisclaimerBTN, imagesBTN;
+	Button helpCustomWorkoutBTN, DisclaimerBTN, imagesBTN, andriosBTN;
 	GoogleAnalyticsTracker tracker;
 	
 	@Override
@@ -47,6 +47,7 @@ public class MainHelpActivity extends Activity {
 		DisclaimerBTN = (Button) findViewById(R.id.mainHelpActivityDisclaimerBTN);
 		imagesBTN = (Button) findViewById(R.id.mainHelpActivityImagesBTN);
 		rateBTN = (Button) findViewById(R.id.mainHelpActivityRatingBTN);
+		andriosBTN = (Button) findViewById(R.id.mainHelpActivityAndriosBTN);
 		
 		
 		setOnClickListeners();
@@ -54,6 +55,23 @@ public class MainHelpActivity extends Activity {
 	}
 	private void setOnClickListeners() {
 	
+		andriosBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				  tracker.trackEvent(
+				            "Clicks",  // Category
+				            "Button",  // Action
+				            "About AndriOS", // Label
+				            1);       // Value
+				  tracker.dispatch();
+				
+				Intent intent = new Intent(v.getContext(), AboutActivity.class);
+				intent.putExtra("ID", 0);
+				startActivity(intent);
+				
+			}
+			
+		});
 		
 		helpGettingStartedBTN.setOnClickListener(new OnClickListener(){
 

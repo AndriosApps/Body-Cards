@@ -32,7 +32,7 @@ public class DisplayProfileActivity extends Activity {
 	Button edit;
 	Profile profile;
 	ListView lv;
-	ProfileAdapter aa;
+	WorkoutAdapter aa;
 	ArrayList<Profile> profs;
 	int row, selectedRow;
 	boolean update = false;
@@ -159,7 +159,7 @@ public class DisplayProfileActivity extends Activity {
 
 	private void setConnections() {
 		lv = (ListView) findViewById(R.id.profWorkoutList);
-		aa = new ProfileAdapter(this, R.layout.profile_list_item,
+		aa = new WorkoutAdapter(this, R.layout.workout_list_item,
 				profile.getWorkouts());
 		lv.setAdapter(aa);
 

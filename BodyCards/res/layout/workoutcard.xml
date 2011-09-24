@@ -10,6 +10,11 @@
 	android:orientation="vertical" android:background="@drawable/background">
  
 	<!-- Banner Ads Above Workout Card Here -->
+    <LinearLayout android:layout_weight="0" android:gravity="bottom" android:orientation="horizontal" android:layout_width="fill_parent" android:background="@drawable/actionbar" android:layout_height="30dip">
+        <TextView android:paddingLeft="10dp" android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/setCount" android:text="Set: 0" android:layout_width="0dp" ></TextView>
+        <TextView android:gravity="center" android:paddingLeft="10dp" android:layout_height="wrap_content" android:layout_weight="3" android:id="@+id/cardsRemaining" android:text="Cards Remaining: 0" android:layout_width="0dp"></TextView>
+        <Chronometer android:paddingRight="10dp" android:gravity="right" android:layout_height="wrap_content" android:layout_weight="1" android:id="@+id/timerView" android:layout_width="0dp"></Chronometer>
+    </LinearLayout>
     <ViewFlipper android:layout_height="fill_parent" android:id="@+id/workoutCardViewFlipper" android:layout_weight="1" android:layout_width="fill_parent">
         <LinearLayout android:id="@+id/linearLayout1" android:layout_width="fill_parent" android:orientation="horizontal" android:background="#000" android:layout_margin="2dp" android:layout_height="fill_parent">
             <LinearLayout android:id="@+id/linearLayout2" android:layout_width="0dp" android:orientation="vertical" android:layout_height="fill_parent" android:layout_weight="1">
@@ -36,41 +41,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         ads:adUnitId="a14dca3fe4ea15f"
-        ads:adSize="BANNER" android:layout_weight="0"/>	
-	
-	<LinearLayout
-		android:gravity="bottom"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:background="#CCCCCC"
-		android:orientation="horizontal" android:layout_weight="0">
-		
-		<TextView android:id="@+id/setCount"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:textColor="#000"
-			android:text="Set: 0"
-			android:paddingLeft="10dp" />
-		
-		<TextView android:id="@+id/cardsRemaining"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_weight="3"
-			android:gravity="center"
-			android:textColor="#000"
-			android:text="Cards Remaining: 0"
-			android:paddingLeft="10dp" />
-			
-		<Chronometer android:id="@+id/timerView"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:textColor="#000"
-			android:gravity="right"
-			android:paddingRight="10dp" />
-
-	</LinearLayout>
+        ads:adSize="BANNER" android:layout_weight="0"/>
 		
 		
 	<!-- Banner Ads Above Buttons Here -->

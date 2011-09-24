@@ -8,16 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ProfileAdapter extends ArrayAdapter<Workout>{
+public class ProfileAdapter extends ArrayAdapter<Profile>{
 
-    private ArrayList<Workout> items;
+    private ArrayList<Profile> items;
 	
    
 	public ProfileAdapter(Context context, int textViewResourceId,
-			ArrayList<Workout> items) {
+			ArrayList<Profile> items) {
 		super(context, textViewResourceId, items);
 		this.items = items;
 		
@@ -32,55 +32,75 @@ public class ProfileAdapter extends ArrayAdapter<Workout>{
                 LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 v = vi.inflate(R.layout.profile_list_item, null);
             }
-            Workout w;
-            w = items.get(position);
+            Profile p;
+            p = items.get(position);
       
-            if (w != null) {
+            if (p != null) {
                     TextView nameLBL = (TextView) v.findViewById(R.id.profile_list_item_nameLBL);
-                    TextView dateLBL = (TextView) v.findViewById(R.id.profile_list_item_calendarLBL);
-                    LinearLayout calendarLayout = (LinearLayout) v.findViewById(R.id.profile_list_item_calendarLayout);
+                    TextView birthdayLBL = (TextView) v.findViewById(R.id.profile_list_item_birthdayLBL);
+                    ImageView star1IMG = (ImageView) v.findViewById(R.id.profile_list_item_rating_star1);
+                   ImageView star2IMG = (ImageView) v.findViewById(R.id.profile_list_item_rating_star2);
+                    ImageView star3IMG = (ImageView) v.findViewById(R.id.profile_list_item_rating_star3);
+                    ImageView star4IMG = (ImageView) v.findViewById(R.id.profile_list_item_rating_star4);
+                    ImageView star5IMG = (ImageView) v.findViewById(R.id.profile_list_item_rating_star5);
+                   ImageView displayIMG = (ImageView) v.findViewById(R.id.profile_list_item_displayIMG);
                     if (nameLBL != null) {
-                          nameLBL.setText(w.toString());                            
+                          nameLBL.setText(p.toString());                            
                     }
-                    Calendar c = (Calendar) w.getDate();
-                    if(dateLBL != null){
-                          dateLBL.setText(Integer.toString(c.get(Calendar.DAY_OF_MONTH)));
+                    if(birthdayLBL != null){
+                          birthdayLBL.setText("Weekly workouts: ");
                     }
                    
-                    if(calendarLayout != null){
-                    	//displayIMG.setImageResource(p.getImage());
+                    if(displayIMG != null){
+                    	ArrayList<Workout> w = p.getWorkouts();
+                    	int x = w.size();
+                		String g = p.getGender();
+                		Calendar d = Calendar.getInstance();
+                    	
+                    	if (g.equals("Male")) {
+                			if (x >= 5 && difference(d, w.get(4).getDate()))
+                				displayIMG.setImageResource(R.drawable.mstrong);
+                			else
+                				displayIMG.setImageResource(R.drawable.mweak);
+                		} else {
+                			if (x >= 5 && difference(d, w.get(4).getDate()))
+                				displayIMG.setImageResource(R.drawable.fstrong);
+                			else
+                				displayIMG.setImageResource(R.drawable.fweak);
+                		}
+                    }
                     
-                    
-                    
-	                    if(c.get(Calendar.MONTH) == 0){
-	                    	calendarLayout.setBackgroundResource(R.drawable.cal_0);
-	                    }else if(c.get(Calendar.MONTH) == 1){
-	                    	calendarLayout.setBackgroundResource(R.drawable.cal_1);
-	                    }else if(c.get(Calendar.MONTH) == 2){
-	                    	calendarLayout.setBackgroundResource(R.drawable.cal_2);
-	                    }else if(c.get(Calendar.MONTH) == 3){
-	                    	calendarLayout.setBackgroundResource(R.drawable.cal_3);
-	                    }else if(c.get(Calendar.MONTH) == 4){
-	                    	calendarLayout.setBackgroundResource(R.drawable.cal_4);
-	                    }else if(c.get(Calendar.MONTH) == 5){
-	                    	calendarLayout.setBackgroundResource(R.drawable.cal_5);
-	                    }else if(c.get(Calendar.MONTH) == 6){
-	                    	calendarLayout.setBackgroundResource(R.drawable.cal_6);
-	                    }else if(c.get(Calendar.MONTH) == 7){
-	                    	calendarLayout.setBackgroundResource(R.drawable.cal_7);
-	                    }else if(c.get(Calendar.MONTH) == 8){
-	                    	calendarLayout.setBackgroundResource(R.drawable.cal_8);
-	                    }else if(c.get(Calendar.MONTH) == 9){
-	                    	calendarLayout.setBackgroundResource(R.drawable.cal_9);
-	                    }else if(c.get(Calendar.MONTH) == 10){
-	                    	calendarLayout.setBackgroundResource(R.drawable.cal_10);
-	                    }else if(c.get(Calendar.MONTH) == 111){
-	                    	calendarLayout.setBackgroundResource(R.drawable.cal_11);
-	                    }
-                    
+                    int days = p.getNumWorkouts();
+                    if(days > 0){
+                    	star1IMG.setImageResource(R.drawable.star_lit);
+                    }
+                    if(days > 1){
+                    	star2IMG.setImageResource(R.drawable.star_lit);
+                    }
+                    if(days > 2){
+                    	star3IMG.setImageResource(R.drawable.star_lit);
+                    }
+                    if(days > 3){
+                    	star4IMG.setImageResource(R.drawable.star_lit);
+                    }
+                    if(days > 4){
+                    	star5IMG.setImageResource(R.drawable.star_lit);
                     }
             }
             return v;
     }
+    
+	private boolean difference(Calendar b, Calendar c) {
+		int y = b.get(Calendar.YEAR) - c.get(Calendar.YEAR);
+		int m = b.get(Calendar.MONTH) - c.get(Calendar.MONTH);
+		int d = b.get(Calendar.DAY_OF_MONTH) - c.get(Calendar.DAY_OF_MONTH);
+		if (y > 0)
+			return false;
+		if (m > 0)
+			return false;
+		if (d > 7)
+			return false;
+		return true;
+	}
 
 }

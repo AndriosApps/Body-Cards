@@ -41,7 +41,7 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 	ListView availableProfilesLV, chosenProfilesLV;
 	ArrayList<Profile> availableProfilesList, selectedProfilesList;
 	ArrayAdapter<Profile> availableProfilesAdapter, chosenProfilesAdapter;
-	Button backBTN, resetBTN, doneBTN;
+	Button resetBTN, doneBTN;
 	RadioButton quarterRDO, halfRDO, fullRDO;
 	static boolean hasTrained;
 	AlertDialog ad;
@@ -75,7 +75,6 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 		numGuestsTXT = (EditText) findViewById(R.id.newQuickWorkoutActivityNumberGuestsTXT);
 		availableProfilesLV = (ListView) findViewById(R.id.newQuickWorkoutActivityAvailableProfilesListView);
 		chosenProfilesLV = (ListView) findViewById(R.id.newQuickWorkoutActivityChosenProfilesListView);
-		backBTN = (Button) findViewById(R.id.newQuickWorkoutActivityBackBTN);
 		resetBTN = (Button) findViewById(R.id.newQuickWorkoutActivityResetBTN);
 		doneBTN = (Button) findViewById(R.id.newQuickWorkoutActivityDoneBTN);
 		quarterRDO = (RadioButton) findViewById(R.id.newDeckOfCardsQuarterRDO);
@@ -182,13 +181,7 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 
 		});//chosenProfilesLV.setOnItemClickListener
 		
-		backBTN.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View v) {
-				NewDeckOfCardsWorkoutActivity.this.finish();
-			}
-
-		});//backBTN.setOnClickListener
+	
 		
 		resetBTN.setOnClickListener(new OnClickListener() {
 

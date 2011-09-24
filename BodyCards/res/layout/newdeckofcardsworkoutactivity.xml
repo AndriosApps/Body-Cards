@@ -15,16 +15,9 @@
 		android:orientation="vertical"
 		android:gravity="center"
 		android:layout_weight="1">
-		
-		<TextView android:id="@+id/textTitle"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:text="Set Workout Details"
-			android:gravity="center"
-			android:textSize="20dp"
-			android:background="#CCCCCC"
-			android:textColor="#000"
-			android:layout_weight="0"></TextView>
+		<LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout2" android:layout_weight="0" android:layout_height="50dip" android:background="@drawable/actionbar" android:gravity="center|left">
+			<TextView android:gravity="center" android:layout_height="wrap_content" android:layout_weight="0" android:id="@+id/textTitle" android:text="Set Workout Details" android:textSize="22dp" android:layout_width="wrap_content"></TextView>
+		</LinearLayout>
  
 		 <LinearLayout
 			xmlns:android="http://schemas.android.com/apk/res/android"
@@ -102,16 +95,9 @@
 		         </RadioButton>
 		     </RadioGroup>
 		 </LinearLayout>
-		
-		 <TextView android:id="@+id/profileChooserTitle"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:text="Choose Profiles for Workout"
-			android:gravity="center"
-			android:textSize="18dp"
-			android:background="#CCCCCC"
-			android:textColor="#000"
-			android:layout_weight="0" />
+		 <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout3" android:layout_weight="0" android:background="@drawable/actionbar" android:gravity="center|left" android:layout_height="30dip">
+		     <TextView android:gravity="center" android:layout_height="wrap_content" android:layout_weight="0" android:id="@+id/profileChooserTitle" android:text="Choose Profiles for Workout" android:textSize="18dp"  android:layout_width="wrap_content"></TextView>
+		 </LinearLayout>
 			
 		 <ListView android:id="@+id/newQuickWorkoutActivityAvailableProfilesListView"
 			android:layout_width="fill_parent"
@@ -119,16 +105,9 @@
 			android:choiceMode="multipleChoice"
 			android:gravity="top"
 			android:layout_weight="1" />
-		
-		<TextView android:id="@+id/profileChooserTitle"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:text="Selected Profiles"
-			android:gravity="center"
-			android:textSize="18dp"
-			android:background="#CCCCCC"
-			android:textColor="#000"
-			android:layout_weight="0" />
+		 <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout4" android:layout_weight="0" android:background="@drawable/actionbar" android:gravity="center|left" android:layout_height="30dip">
+		     <TextView android:gravity="center" android:layout_height="wrap_content" android:layout_weight="0" android:id="@+id/profileChooserTitle" android:text="Selected Profiles" android:textSize="18dp"  android:layout_width="wrap_content"></TextView>
+		 </LinearLayout>
 			
 		 <ListView android:id="@+id/newQuickWorkoutActivityChosenProfilesListView"
 			android:layout_width="fill_parent"
@@ -147,28 +126,21 @@
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="fill_parent"
 		android:layout_height="55dp"
-		android:background="#555555"
 		android:gravity="bottom"
 		android:orientation="horizontal"
-		android:layout_weight="0">
-		
-		<Button android:id="@+id/newQuickWorkoutActivityBackBTN" 
-			android:layout_width="wrap_content"
-			android:text="Back"
-			android:layout_height="50dp"
-			android:layout_weight="1" />
+		android:layout_weight="0" android:background="@drawable/actionbar">
 			
 		<Button android:id="@+id/newQuickWorkoutActivityResetBTN" 
-			android:layout_width="wrap_content"
-			android:text="Reset"
+			android:text=" "
 			android:layout_height="50dp"
-			android:layout_weight="1" />
+			android:background="@drawable/refresh" android:layout_width="50dip" android:layout_weight="0"/>
+		<LinearLayout android:layout_width="wrap_content" android:id="@+id/linearLayout5" android:layout_height="fill_parent" android:layout_weight="1"></LinearLayout>
 		
 		<Button android:id="@+id/newQuickWorkoutActivityDoneBTN" 
 			android:layout_width="wrap_content"
 			android:layout_height="50dp"
-			android:text="Next"
-			android:layout_weight="1" />
+			android:text=" "
+			android:background="@drawable/next" android:layout_weight="0"/>
 
 	</LinearLayout>
 	

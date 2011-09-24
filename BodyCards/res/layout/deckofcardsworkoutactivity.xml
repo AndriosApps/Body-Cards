@@ -4,15 +4,9 @@
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
 	android:orientation="vertical" android:background="@drawable/background">
-	
-	<TextView android:id="@+id/quickWorkoutActivityUserNameTXT"
-		android:gravity="center"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_weight="0"
-		android:textSize="25dp"
-		android:background="#CCC"
-		android:textColor="#000" />
+    <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout1" android:layout_weight="0" android:layout_height="50dip" android:gravity="center|left">
+        <TextView android:gravity="center" android:layout_height="wrap_content" android:layout_weight="0" android:id="@+id/quickWorkoutActivityUserNameTXT" android:textSize="25dp" android:layout_width="wrap_content"></TextView>
+    </LinearLayout>
 
 	<TextView android:text="Cards Remaining: 54" 
 		android:id="@+id/cardCount" 
@@ -20,8 +14,8 @@
 		android:layout_height="wrap_content"
 		android:layout_weight="0" />
 	<ViewFlipper android:id="@+id/details" android:layout_height="wrap_content" android:layout_width="fill_parent" android:layout_weight="1" android:paddingBottom="50dip" android:paddingLeft="25dip" android:paddingRight="25dip" android:paddingTop="50dip">
-		<ImageView android:layout_width="fill_parent" android:src="@drawable/start" android:id="@+id/card" android:layout_height="fill_parent" android:scaleType="fitXY" android:baselineAlignBottom="false"></ImageView>
-		<ImageView android:layout_width="fill_parent" android:scaleType="fitXY" android:src="@drawable/back" android:id="@+id/backIMG" android:layout_height="fill_parent"></ImageView>
+		<ImageView android:src="@drawable/start" android:layout_height="fill_parent" android:id="@+id/card" android:baselineAlignBottom="false" android:layout_width="fill_parent" android:scaleType="fitXY"></ImageView>
+		<ImageView android:src="@drawable/back" android:layout_height="fill_parent" android:id="@+id/backIMG" android:layout_width="fill_parent" android:scaleType="fitXY"></ImageView>
 	</ViewFlipper>
 	
 <!-- if we add ads to this we should put them here -->
@@ -29,9 +23,7 @@
 		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
 		android:id="@+id/deckOfCardsAdView"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
         ads:adUnitId="a14dca3fe4ea15f"
-        ads:adSize="BANNER"
-        android:layout_weight="0" />
+        ads:adSize="BANNER" android:layout_weight="0" android:layout_height="50dip"/>
         
 </LinearLayout>
