@@ -186,9 +186,17 @@ public class MainHelpActivity extends Activity {
 				            "Help Rate", // Label
 				            1);       // Value
 				   tracker.dispatch();
-				   Intent intent = new Intent(Intent.ACTION_VIEW);
-					intent.setData(Uri.parse("market://details?id=com.andrios.bodycards"));
-					startActivity(intent);
+				   String market = getResources().getString(R.string.market);
+				   if(market.equals("amazon")){
+					   Intent intent = new Intent(Intent.ACTION_VIEW);
+						intent.setData(Uri.parse("http://www.amazon.com/gp/mas/dl/android?p=com.andrios.bodycards"));
+						startActivity(intent);
+				   }else{
+					   Intent intent = new Intent(Intent.ACTION_VIEW);
+						intent.setData(Uri.parse("market://details?id=com.andrios.bodycards"));
+						startActivity(intent);  
+				   }
+				  
 				
 			}
 			

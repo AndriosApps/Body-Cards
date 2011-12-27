@@ -2,12 +2,11 @@ package com.andrios.bodycards;
 
 import java.util.List;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
@@ -16,13 +15,13 @@ import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class AboutActivity extends Activity {
 	
 	
 	Button facebookBTN, twitterBTN, emailBTN, marketBTN;
-	
+	GoogleAnalyticsTracker tracker;
+	String market;
 	
     /** Called when the activity is first created. */
     @Override
@@ -33,8 +32,26 @@ public class AboutActivity extends Activity {
         
         setConnections();
         setOnClickListeners();
-    
+        setTracker();
     }
+    
+	private void setTracker() {
+		tracker = GoogleAnalyticsTracker.getInstance();
+		tracker.start(this.getString(R.string.ga_api_key),
+				getApplicationContext());
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		tracker.trackPageView("/" + this.getLocalClassName());
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		tracker.dispatch();
+	}
 
 
 	private void setConnections() {
@@ -42,7 +59,10 @@ public class AboutActivity extends Activity {
 		twitterBTN = (Button) findViewById(R.id.aboutActivityTwitterBTN);
 		emailBTN = (Button) findViewById(R.id.aboutActivityEmailBTN);
 		marketBTN = (Button) findViewById(R.id.aboutActivityMarketBTN);
-		facebookBTN.setVisibility(View.INVISIBLE);
+		market = getResources().getString(R.string.market);
+		if(market.equals("amazon")){
+			
+		}
 	}
 
 
@@ -56,7 +76,7 @@ public class AboutActivity extends Activity {
 			     
 			    emailIntent .putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"andriosapps@gmail.com"});
 			     
-			    emailIntent .putExtra(android.content.Intent.EXTRA_SUBJECT, "Navy PRT Android App");
+			    emailIntent .putExtra(android.content.Intent.EXTRA_SUBJECT, "Army PFT Android App");
 			     
 			    //emailIntent .putExtra(android.content.Intent.EXTRA_TEXT, myBodyText);
 			     
@@ -69,9 +89,16 @@ public class AboutActivity extends Activity {
 		marketBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent intent = new Intent(Intent.ACTION_VIEW);
-				intent.setData(Uri.parse("market://search?q=pub:AndriOS"));
-				startActivity(intent);
+				if(market.equals("amazon")){
+					Intent intent = new Intent(Intent.ACTION_VIEW);
+					intent.setData(Uri.parse("http://www.amazon.com/gp/mas/dl/android?p=com.andrios.bodycards&showAll=1"));
+					startActivity(intent);
+					
+				}else{
+					Intent intent = new Intent(Intent.ACTION_VIEW);
+					intent.setData(Uri.parse("market://search?q=pub:AndriOS"));
+					startActivity(intent);
+				}
 
 				
 			}
@@ -83,20 +110,17 @@ public class AboutActivity extends Activity {
 		facebookBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				//Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.facebook.com/pages/AndriOS/224807700868604"));
-				//startActivity(browserIntent);
-/*
-				Intent intent = new Intent(Intent.ACTION_VIEW);
-				intent.setClassName("com.facebook.katana", "com.facebook.katana.ProfileTabHostActivity");
-				intent.putExtra("extra_user_id", "224807700868604");
-				startActivity(intent);
-*/
-				Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-				sharingIntent.setType("text/plain");
-				sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "AndriOS Apps");
-				sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Navy PRT");
-				startActivity(Intent.createChooser(sharingIntent, "Share using"));
+				
 
+				try{
+					String uri = "fb://page/224807700868604";
+					Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+					startActivity(intent);
+				}catch(Exception e){
+					Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://www.facebook.com/pages/AndriOS/224807700868604"));
+					startActivity(browserIntent);
+				}
+				
 				
 			}
 			
@@ -137,10 +161,15 @@ public class AboutActivity extends Activity {
 				}
 
 */
+				try{
+					Intent intent = findTwitterClient();
+					intent.putExtra(Intent.EXTRA_TEXT, message);
+					startActivity(Intent.createChooser(intent, null)); 
+				}catch(Exception e){
+					Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("http://twitter.com/#!/AndriOS_Apps"));
+					startActivity(browserIntent);
+				}
 				
-				Intent intent = findTwitterClient();
-				intent.putExtra(Intent.EXTRA_TEXT, message);
-				startActivity(Intent.createChooser(intent, null)); 
 	            //context.startActivity(intent);
 			}
 			

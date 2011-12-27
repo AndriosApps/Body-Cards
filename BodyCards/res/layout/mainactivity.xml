@@ -1,48 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res/com.andrios.bodycards"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:gravity="center"
+    android:orientation="vertical" >
 
-<LinearLayout
-	android:layout_width="fill_parent" 
-	android:layout_height="fill_parent"
-	android:gravity="center"
-	android:orientation="vertical"
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:ads="http://schemas.android.com/apk/res/com.andrios.bodycards" android:background="#ffffff">
+    <LinearLayout
+        android:id="@+id/linearLayout11"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_weight="0"
+        android:background="@drawable/actionbar"
+        android:gravity="center" >
 
-    <LinearLayout android:id="@+id/linearLayout11" android:layout_width="fill_parent" android:layout_height="50dip" android:background="@drawable/actionbar" android:layout_weight="0" android:gravity="center">
-        <TextView android:layout_width="wrap_content" android:id="@+id/textView8" android:text="Body Cards" android:layout_height="wrap_content" android:textSize="22dip"></TextView>
-        <LinearLayout android:id="@+id/linearLayout14" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1">
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Body Cards"
+            android:textSize="22dip" >
+        </TextView>
+
+        <LinearLayout
+            android:id="@+id/linearLayout14"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
         </LinearLayout>
-        <Button android:text="" android:background="@drawable/user" android:layout_height="50dip" android:layout_width="50dip" android:id="@+id/mainActivityViewProfilesBTN" android:padding="10dip"></Button>
-        <Button android:background="@drawable/icon_help" android:layout_weight="0" android:id="@+id/mainActivityHelpBTN" android:text="" android:layout_height="50dip" android:layout_width="50dip" android:padding="10dip"></Button>
-    </LinearLayout>
-    <LinearLayout android:id="@+id/linearLayout6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1"></LinearLayout>
-	
-	
-        
-	<LinearLayout
-		android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:layout_width="250dip" android:layout_height="200dip">
-		<ImageView android:id="@+id/imageView1" android:src="@drawable/mainscreen" android:layout_gravity="center" android:layout_weight="1" android:scaleType="fitXY" android:layout_width="fill_parent" android:layout_height="fill_parent"></ImageView>
 
-	</LinearLayout>
-	<LinearLayout android:id="@+id/LinearLayout01" android:layout_weight="1" android:layout_width="fill_parent" android:layout_height="wrap_content"></LinearLayout>
-	<LinearLayout android:id="@+id/linearLayout12" android:layout_width="fill_parent" android:background="@drawable/actionbar" android:layout_weight="0" android:layout_height="wrap_content" android:orientation="vertical">
-		<TextView android:layout_width="fill_parent" android:text="Workouts" android:layout_height="wrap_content" android:id="@+id/textView4" android:gravity="center"></TextView>
-		<LinearLayout android:id="@+id/linearLayout5" android:layout_width="fill_parent" android:layout_height="fill_parent">
-			<LinearLayout android:orientation="vertical" android:id="@+id/linearLayout2" android:layout_weight="1" android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent">
-				<Button android:layout_width="75dip" android:text="" android:background="@drawable/custombtn" android:id="@+id/mainActivityCustomWorkoutBTN" android:layout_height="75dip"></Button>
-				<TextView android:layout_width="wrap_content" android:text="Custom" android:layout_height="wrap_content" android:id="@+id/textView1"></TextView>
-			</LinearLayout>
-			<LinearLayout android:orientation="vertical" android:id="@+id/linearLayout3" android:layout_weight="1" android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent">
-				<Button android:layout_width="75dip" android:text="" android:background="@drawable/randombtn" android:id="@+id/mainActivityRandomWorkoutBTN" android:layout_height="75dip"></Button>
-				<TextView android:layout_width="wrap_content" android:text="Random" android:layout_height="wrap_content" android:id="@+id/textView2"></TextView>
-			</LinearLayout>
-			<LinearLayout android:orientation="vertical" android:id="@+id/linearLayout4" android:layout_weight="1" android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent">
-				<Button android:layout_width="75dip" android:text="" android:background="@drawable/deckbtn" android:gravity="center" android:id="@+id/mainActivityDeckOfCardsWorkoutBTN" android:layout_height="75dip"></Button>
-				<TextView android:layout_width="wrap_content" android:text="Deck of Cards" android:layout_height="wrap_content" android:id="@+id/textView3"></TextView>
-			</LinearLayout>
-		</LinearLayout>
-	</LinearLayout>
-	
-	<!-- Fill the rest of screen and place buttons at the bottom of screen -->
+        <Button
+            android:id="@+id/mainActivityViewProfilesBTN"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:background="@drawable/user"
+            android:padding="10dip"
+            android:text="" >
+        </Button>
+
+        <Button
+            android:id="@+id/mainActivityHelpBTN"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:layout_weight="0"
+            android:background="@drawable/icon_help"
+            android:padding="10dip"
+            android:text="" >
+        </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="250dip"
+        android:layout_height="200dip"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            android:src="@drawable/mainscreen" >
+        </ImageView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout12"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:background="@drawable/actionbar"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Workouts" >
+        </TextView>
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/mainActivityCustomWorkoutBTN"
+                    android:layout_width="75dip"
+                    android:layout_height="75dip"
+                    android:background="@drawable/custombtn"
+                    android:text="" >
+                </Button>
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Custom" >
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/mainActivityRandomWorkoutBTN"
+                    android:layout_width="75dip"
+                    android:layout_height="75dip"
+                    android:background="@drawable/randombtn"
+                    android:text="" >
+                </Button>
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Random" >
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/mainActivityDeckOfCardsWorkoutBTN"
+                    android:layout_width="75dip"
+                    android:layout_height="75dip"
+                    android:background="@drawable/deckbtn"
+                    android:gravity="center"
+                    android:text="" >
+                </Button>
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Deck of Cards" >
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Fill the rest of screen and place buttons at the bottom of screen -->
 
 </LinearLayout>

@@ -6,6 +6,38 @@
 	android:orientation="vertical">
     <LinearLayout android:id="@+id/linearLayout1" android:layout_width="fill_parent" android:layout_height="50dip" android:gravity="center|left" android:background="@drawable/actionbar">
         <TextView android:textSize="22dip" android:layout_height="wrap_content" android:id="@+id/textView8" android:text="Edit Profile" android:layout_width="wrap_content"></TextView>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/newProfileResetBTN"
+            android:layout_width="50dip"
+            android:layout_height="50dp"
+            android:layout_weight="0"
+            android:background="@drawable/refresh" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="5dp"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/newProfileDoneBTN"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:layout_weight="0"
+            android:background="@drawable/check"
+            android:padding="5dip" />
+
     </LinearLayout>
 
 	<LinearLayout
@@ -159,22 +191,6 @@
 		android:orientation="vertical"
 		android:gravity="bottom"
 		android:layout_weight="1">
-
-		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			android:layout_width="fill_parent" 
-			android:orientation="horizontal" android:gravity="center|left" android:layout_height="50dip" android:background="@drawable/actionbar">
-
-			<Button android:id="@+id/newProfileResetBTN"
-				android:text=""
-				android:layout_height="50dp" android:background="@drawable/refresh" android:layout_weight="0" android:layout_width="50dip"/>
-			<LinearLayout android:id="@+id/linearLayout3" android:layout_height="fill_parent" android:layout_width="wrap_content" android:layout_weight="1"></LinearLayout>
-
-			<Button android:id="@+id/newProfileDoneBTN"
-				android:text=""
-				android:layout_weight="0" android:layout_width="50dip" android:background="@drawable/check" android:padding="5dip" android:layout_height="50dip"/>
-
-
-		</LinearLayout>
 
 	</LinearLayout>
 </LinearLayout>

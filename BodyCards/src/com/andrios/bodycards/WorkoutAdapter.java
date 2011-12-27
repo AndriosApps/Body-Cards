@@ -74,7 +74,7 @@ public class WorkoutAdapter extends ArrayAdapter<Workout>{
 	                    	calendarLayout.setBackgroundResource(R.drawable.cal_9);
 	                    }else if(c.get(Calendar.MONTH) == 10){
 	                    	calendarLayout.setBackgroundResource(R.drawable.cal_10);
-	                    }else if(c.get(Calendar.MONTH) == 111){
+	                    }else if(c.get(Calendar.MONTH) == 11){
 	                    	calendarLayout.setBackgroundResource(R.drawable.cal_11);
 	                    }
                     

@@ -17,6 +17,10 @@
     
     <string name="app_name">Body Cards!</string>
     <string name="widget_text">Daily Challenge!</string>
+    <string name="ga_api_key">UA-23366060-1</string>
+    <string name="empty"></string>
+    
+    <string name="market">amazon</string>
 
     
 </resources>
