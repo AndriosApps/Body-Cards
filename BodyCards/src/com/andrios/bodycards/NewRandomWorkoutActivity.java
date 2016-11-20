@@ -1,25 +1,14 @@
 package com.andrios.bodycards;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Random;
-
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -30,6 +19,15 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Random;
 
 public class NewRandomWorkoutActivity extends Activity {
 	Button reset, done;
@@ -43,7 +41,6 @@ public class NewRandomWorkoutActivity extends Activity {
 	TextView t;
 	String workoutName;
 	ImageView helpReps;
-	GoogleAnalyticsTracker tracker;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -52,12 +49,7 @@ public class NewRandomWorkoutActivity extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.newworkout);
-		
-		tracker = GoogleAnalyticsTracker.getInstance();
 
-	    // Start the tracker in manual dispatch mode...
-	    tracker.start("UA-23366060-1", this);
-	    tracker.trackPageView("New Random Workout Activity");
 		readProfiles();
 		readExercises();
 		getExtras();
@@ -404,11 +396,6 @@ public class NewRandomWorkoutActivity extends Activity {
 		helpReps.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				 tracker.trackEvent(
-				            "Clicks",  // Category
-				            "Button",  // Action
-				            "Help Random Workout Help Button", // Label
-				            1);       // Value
 				
 				Intent intent = new Intent(v.getContext(), HelpGenericActivity.class);
 				intent.putExtra("ID", 6);
@@ -473,7 +460,7 @@ public class NewRandomWorkoutActivity extends Activity {
 								"Bench Dips",
 								"1. Sit on the edge of a solid bench or chair with your hands holding the edge by your hips.\n\n" +
 								"2. Walk your feet forward, then straighten your arms to lift your body off the bench.\n\n" +
-								"3. Lower yourself until your upper arms are about parallel with the floor, then press with the triceps to lift yourself back up - straighten the arms, but don’t lock the elbows at the top."+
+								"3. Lower yourself until your upper arms are about parallel with the floor, then press with the triceps to lift yourself back up - straighten the arms, but donï¿½t lock the elbows at the top."+
 								"Alternative. Place your feet on another bench or chair and add weights to your lap to add difficulty.",
 								R.drawable.nopic,
 								1.0,
@@ -557,7 +544,7 @@ public class NewRandomWorkoutActivity extends Activity {
 						new Exercise(
 								"Lunges",
 								"1. Stand in a split stance with the right foot forward and the left leg back, feet should be about 2 to 3 feet apart, depending on your leg length.\n\n" +
-								"2. Before you lunge, make sure your torso is straight and that you’re up on the back toe.\n\n" +
+								"2. Before you lunge, make sure your torso is straight and that youï¿½re up on the back toe.\n\n" +
 								"3. Bend the knees and lower the body down until the back knee is a few inches from the floor.\n\n" +
 								"4. At the bottom of the movement, the front thigh should be parallel to the floor and the back knee should point toward the floor.\n\n" +
 								"5. Keep the weight evenly distributed between both legs and push back up, keeping the weight in the heel of the front foot.\n\n"+
@@ -614,7 +601,5 @@ public class NewRandomWorkoutActivity extends Activity {
 	  @Override
 	  protected void onDestroy() {
 	    super.onDestroy();
-	    // Stop the tracker when it is no longer needed.
-	    tracker.stop();
 	  }
 }

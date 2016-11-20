@@ -1,13 +1,5 @@
 package com.andrios.bodycards;
 
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
-import java.util.ArrayList;
-
-import com.google.ads.AdRequest;
-import com.google.ads.AdView;
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -15,11 +7,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 	/** Called when the activity is first created. */
@@ -28,10 +24,7 @@ public class MainActivity extends Activity {
 	Button viewProfileBTN, helpBTN;
 	AlertDialog ad;
 	boolean showWelcome;
-	GoogleAnalyticsTracker tracker;
-	AdView adView;
-	AdRequest request;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,13 +33,7 @@ public class MainActivity extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.mainactivity);
-		
-		
-		tracker = GoogleAnalyticsTracker.getInstance();
 
-	    // Start the tracker in manual dispatch mode...
-	    tracker.start("UA-23366060-1", this);
-		
 	    
 	    patch();
 	    welcome();
@@ -54,11 +41,6 @@ public class MainActivity extends Activity {
 		setAlertDialog();
 		
 	}
-
-
-
-
-
 
 	public void onStart(){
 		super.onStart();
@@ -85,23 +67,10 @@ public class MainActivity extends Activity {
 		if(profileList.isEmpty()) {
 			viewProfileBTN.setText("+");
 			if(showWelcome){
-				 tracker.trackEvent(
-				            "Use",  // Category
-				            "Login",  // Action
-				            "First Login / No Profile", // Label
-				            0);       // Value
-				   tracker.dispatch();
 				ad.show();
 			}
 		} else {
 			viewProfileBTN.setText("");
-			 tracker.trackEvent(
-			            "Use",  // Category
-			            "Login",  // Action
-			            "Regular Login", // Label
-			            0);       // Value
-			   tracker.dispatch();
-			
 		}
 		
 	}
@@ -127,13 +96,6 @@ public class MainActivity extends Activity {
 		deckOfCardsWorkoutBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				   tracker.trackEvent(
-				            "Clicks",  // Category
-				            "Button",  // Action
-				            "Deck of Cards", // Label
-				            0);       // Value
-				   
-
 				
 				Intent intent = new Intent(v.getContext(), NewDeckOfCardsWorkoutActivity.class);
 				intent.putExtra("workoutName", "Deck of Cards");
@@ -145,13 +107,6 @@ public class MainActivity extends Activity {
 		randomWorkoutBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				   tracker.trackEvent(
-				            "Clicks",  // Category
-				            "Button",  // Action
-				            "Random Workout", // Label
-				            0);       // Value
-				   
-				
 				
 				Intent randomIntent = new Intent(v.getContext(), NewRandomWorkoutActivity.class);
 				randomIntent.putExtra("workoutName", "Random Workout");
@@ -164,11 +119,6 @@ public class MainActivity extends Activity {
 		customWorkoutBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				   tracker.trackEvent(
-				            "Clicks",  // Category
-				            "Button",  // Action
-				            "Custom Workout", // Label
-				            0);       // Value
 				
 				Intent intent = new Intent(v.getContext(), ExerciseListActivity.class);
 				intent.putExtra("workoutName", "Custom Workout");
@@ -180,12 +130,6 @@ public class MainActivity extends Activity {
 		viewProfileBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				   tracker.trackEvent(
-				            "Clicks",  // Category
-				            "Button",  // Action
-				            "View Profiles", // Label
-				            0);       // Value
-				   
 				
 				int whichOne = 0;
 				if(viewProfileBTN.getText().equals("+")){
@@ -201,14 +145,8 @@ public class MainActivity extends Activity {
 		helpBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				   tracker.trackEvent(
-				            "Clicks",  // Category
-				            "Button",  // Action
-				            "Help", // Label
-				            0);       // Value
 				   
 				Intent intent = new Intent(v.getContext(), MainHelpActivity.class);
-				
 				startActivity(intent);
 			}
 
@@ -261,20 +199,15 @@ public class MainActivity extends Activity {
 	
 	public void onResume(){
 		super.onResume();
-
-	    tracker.trackPageView("Main Activity");
 	}
 	
 	public void onPause(){
 		super.onPause();
-		tracker.dispatch();
 	}
 
 	  @Override
 	  protected void onDestroy() {
 	    super.onDestroy();
-	    // Stop the tracker when it is no longer needed.
-	    tracker.stop();
 	  }
 	  
 
@@ -283,9 +216,7 @@ public class MainActivity extends Activity {
 			
 		}
 		private void patch() {
-			
 			AndriosPatcher.patch(MainActivity.this);
-			
 			
 		}
 }

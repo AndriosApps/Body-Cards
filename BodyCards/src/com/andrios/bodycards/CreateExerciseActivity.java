@@ -1,22 +1,13 @@
 package com.andrios.bodycards;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
@@ -25,6 +16,13 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 public class CreateExerciseActivity extends Activity {
 
@@ -41,7 +39,6 @@ public class CreateExerciseActivity extends Activity {
 	int selectedMuscle;
 
 	ArrayList<Exercise> exerciseList, selectedList;
-	GoogleAnalyticsTracker tracker;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -54,14 +51,6 @@ public class CreateExerciseActivity extends Activity {
 		getExtras();
 		readExercises();
 		setConnections();
-		
-		tracker = GoogleAnalyticsTracker.getInstance();
-
-	    // Start the tracker in manual dispatch mode...
-	    tracker.start("UA-23366060-1", this);
-	    tracker.trackPageView("Create Exercise Activity");
-		
-
 	}
 
 	private void getExtras() {
@@ -156,7 +145,6 @@ public class CreateExerciseActivity extends Activity {
 		back.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				tracker.dispatch();
 				CreateExerciseActivity.this.finish();
 			}
 
@@ -222,17 +210,9 @@ public class CreateExerciseActivity extends Activity {
 								Toast.LENGTH_SHORT).show();
 						
 					}
-					System.out.println("New Exercise "+ exercise.getName());
-					tracker.setCustomVar(1, "New Exercise", exercise.getName(), 3);
-					 tracker.trackEvent(
-					            "Use",  // Category
-					            "New Exercise",  // Action
-					            exercise.getName(), // Label
-					            0);       // Value
 					 exerciseList.add(exercise);
 					
 					write();
-					tracker.dispatch();
 					CreateExerciseActivity.this.finish();
 					
 				}
@@ -300,8 +280,6 @@ public class CreateExerciseActivity extends Activity {
 	  @Override
 	  protected void onDestroy() {
 	    super.onDestroy();
-	    // Stop the tracker when it is no longer needed.
-	    tracker.stop();
 	  }
 
 }

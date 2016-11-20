@@ -1,15 +1,5 @@
 package com.andrios.bodycards;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.Random;
-
-import com.google.ads.AdRequest;
-import com.google.ads.AdView;
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -19,11 +9,11 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
-import android.view.View;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.View.OnClickListener;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -32,6 +22,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class WorkoutCardActivity extends Activity {
 
@@ -42,9 +38,6 @@ public class WorkoutCardActivity extends Activity {
 	ImageView wkImg;
 	Button begin, finish;
 	AlertDialog ad;
-
-	AdView adView;
-	AdRequest request;
 	// Profiles
 	ArrayList<Profile> unusedProfiles;
 	ArrayList<Profile> selectedProfiles;
@@ -73,7 +66,6 @@ public class WorkoutCardActivity extends Activity {
 	ViewFlipper flipper;//Used to Show animation between Back / Front of card.
 	
 	View v;
-	GoogleAnalyticsTracker tracker;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -93,12 +85,6 @@ public class WorkoutCardActivity extends Activity {
 		// Set the connections for this class]
 		setConnections();
 		toggleRunning();
-		
-		tracker = GoogleAnalyticsTracker.getInstance();
-
-	    // Start the tracker in manual dispatch mode...
-	    tracker.start("UA-23366060-1", this);
-	    tracker.trackPageView("Workout Card Activity");
 
 	    
 	}
@@ -137,18 +123,7 @@ public class WorkoutCardActivity extends Activity {
 		
 		flipper = (ViewFlipper) findViewById(R.id.workoutCardViewFlipper); 
 		flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_in));
-	    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));  
-		
-		
-		
-	    // Add the adView to it
-	    adView = (AdView)this.findViewById(R.id.workoutCardAdView);
-	      
-	    // Initiate a generic request to load it with an ad
-	    baseAdTime = SystemClock.elapsedRealtime();
-	    request = new AdRequest();
-		request.setTesting(false);
-		adView.loadAd(request);
+	    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));
 
 		begin = (Button) findViewById(R.id.wcStart);
 		begin.setOnClickListener(new OnClickListener() {
@@ -166,7 +141,6 @@ public class WorkoutCardActivity extends Activity {
 				end();
 				toggleRunning();
 				setResult(RESULT_OK);
-				tracker.dispatch();
 				WorkoutCardActivity.this.finish();
 			}
 
@@ -178,18 +152,6 @@ public class WorkoutCardActivity extends Activity {
 		rBR.setOnClickListener(new myOnClick());
 		exerciseName.setOnClickListener(new myOnClick());
 		sideLabel.setOnClickListener(new myOnClick());
-	}
-
-	private void updateAds(){
-		Long thisTime = SystemClock.elapsedRealtime();
-		if((thisTime-baseAdTime)/1000 > 30){
-			baseAdTime = SystemClock.elapsedRealtime();
-		    // Initiate a generic request to load it with an ad
-			request = new AdRequest();
-			request.setTesting(false);
-			adView.loadAd(request);
-		}
-
 	}
 	
 	
@@ -220,7 +182,6 @@ public class WorkoutCardActivity extends Activity {
 	private class myOnClick implements OnClickListener {
 
 		public void onClick(View vi) {
-			updateAds();
 			if (running) {
 				v = vi;
 				if(!exercise.isTimed){
@@ -304,7 +265,6 @@ public class WorkoutCardActivity extends Activity {
 		} else {
 
 			end();
-			tracker.dispatch();
 			Intent el_fin = new Intent(v.getContext(), FinishedActivity.class);
 			el_fin.putExtra("profiles", selectedProfiles);
 			startActivity(el_fin);
@@ -544,6 +504,5 @@ public class WorkoutCardActivity extends Activity {
 	  protected void onDestroy() {
 	    super.onDestroy();
 	    // Stop the tracker when it is no longer needed.
-	    tracker.stop();
 	  }
 }

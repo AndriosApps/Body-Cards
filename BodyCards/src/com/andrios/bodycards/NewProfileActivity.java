@@ -1,16 +1,5 @@
 package com.andrios.bodycards;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -19,15 +8,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 public class NewProfileActivity extends Activity {
 	Button done, reset, birthdayBTN;
@@ -43,7 +41,6 @@ public class NewProfileActivity extends Activity {
 	AlertDialog ad;
 	boolean update = false;
 	static final int DATE_DIALOG_ID = 1;
-	GoogleAnalyticsTracker tracker;
 
 	int row, mYear, mMonth, mDay;
 
@@ -54,11 +51,6 @@ public class NewProfileActivity extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.newprofileactivity);
-
-		tracker = GoogleAnalyticsTracker.getInstance();
-
-	    // Start the tracker in manual dispatch mode...
-	    tracker.start("UA-23366060-1", this);
 		
 		setConnections();
 		getExtra();
@@ -214,12 +206,6 @@ public class NewProfileActivity extends Activity {
 						}else{
 							mf = 1;
 						}
-						tracker.trackEvent(
-						            "Use",  // Category
-						            "Profile",  // Action
-						            "Update Profile", // Label
-						            mf);       // Value
-						   tracker.dispatch();
 					}else{
 						int mf;
 						if(male.isChecked()){
@@ -227,12 +213,6 @@ public class NewProfileActivity extends Activity {
 						}else{
 							mf = 1;
 						}
-						tracker.trackEvent(
-						            "Use",  // Category
-						            "Profile",  // Action
-						            "New Profile", // Label
-						            mf);       // Value
-						   tracker.dispatch();
 					}
 
 					profList.add(created);

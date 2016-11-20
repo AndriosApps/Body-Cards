@@ -1,23 +1,20 @@
 package com.andrios.bodycards;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class DisplayWorkoutActivity extends Activity {
 	String[] months = { "January", "February", "March", "April", "May", "June",
@@ -28,7 +25,6 @@ public class DisplayWorkoutActivity extends Activity {
 	int row;
 	Button back;
 	Workout w;
-	GoogleAnalyticsTracker tracker;
 
 	@Override
 	public void onCreate(Bundle savedInstanceBundle) {
@@ -41,12 +37,6 @@ public class DisplayWorkoutActivity extends Activity {
 		getExtras();
 		setConnections();
 		setWokoutDetails();
-		
-		tracker = GoogleAnalyticsTracker.getInstance();
-
-	    // Start the tracker in manual dispatch mode...
-	    tracker.start("UA-23366060-1", this);
-	    tracker.trackPageView("Display Workout Activity");
 
 	}
 
@@ -90,7 +80,6 @@ public class DisplayWorkoutActivity extends Activity {
 		back.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View arg0) {
-				tracker.dispatch();
 				DisplayWorkoutActivity.this.finish();
 			}
 
@@ -152,7 +141,5 @@ public class DisplayWorkoutActivity extends Activity {
 	  @Override
 	  protected void onDestroy() {
 	    super.onDestroy();
-	    // Stop the tracker when it is no longer needed.
-	    tracker.stop();
 	  }
 }

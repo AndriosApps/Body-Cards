@@ -1,15 +1,5 @@
 package com.andrios.bodycards;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.Comparator;
-
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -18,12 +8,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -32,7 +23,14 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 public class NewDeckOfCardsWorkoutActivity extends Activity  {
 
@@ -47,7 +45,6 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 	AlertDialog ad;
 	
 	String workoutName;
-	GoogleAnalyticsTracker tracker;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -60,13 +57,6 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 		readProfiles();
 		getExtras();
 		setConnections();
-		
-		tracker = GoogleAnalyticsTracker.getInstance();
-
-	    // Start the tracker in manual dispatch mode...
-	    tracker.start("UA-23366060-1", this);
-		tracker.trackPageView("New Deck of Cards Activity");
-		
 		setAlertDialog();
 		
 	}
@@ -237,7 +227,6 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 				}
 				
 				if(isCorrect) {
-					tracker.dispatch();
 					Intent deckworkout = new Intent(v.getContext(),
 							DeckOfCardsWorkoutActivity.class);
 					
@@ -289,8 +278,6 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 	  @Override
 	  protected void onDestroy() {
 	    super.onDestroy();
-	    // Stop the tracker when it is no longer needed.
-	    tracker.stop();
 	  }
 		private void setAlertDialog() {
 			
@@ -314,22 +301,9 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 							if(rateCheck.isChecked()){
 								hasTrained = true;
 								writeTrained();
-								tracker.trackEvent(
-							            "Clicks",  // Category
-							            "Training",  // Action
-							            "Deck of Cards - Last Time", // Label
-							            1);       // Value
-								
-							  
-							  
 							}else{
 								hasTrained = false;
 								writeTrained();
-								tracker.trackEvent(
-							            "Clicks",  // Category
-							            "Training",  // Action
-							            "Deck of Cards", // Label
-							            1);       // Value
 							}
 							
 							Intent intent = new Intent(layout.getContext(), HelpGenericActivity.class);
@@ -347,19 +321,9 @@ public class NewDeckOfCardsWorkoutActivity extends Activity  {
 							if(rateCheck.isChecked()){
 								hasTrained = true;
 								writeTrained();
-								tracker.trackEvent(
-							            "Clicks",  // Category
-							            "Training",  // Action
-							            "Deck of Cards - Last Time - No View", // Label
-							            1);       // Value
 							}else{
 								hasTrained = false;
 								writeTrained();
-								tracker.trackEvent(
-							            "Clicks",  // Category
-							            "Training",  // Action
-							            "Deck of Cards - No View", // Label
-							            1);       // Value
 							}
 							
 						}

@@ -1,15 +1,5 @@
 package com.andrios.bodycards;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.Random;
-
-import com.google.ads.AdRequest;
-import com.google.ads.AdView;
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -17,18 +7,21 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.animation.AnimationUtils;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
-public class DeckOfCardsWorkoutActivity extends Activity {
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Random;
 
-	AdView adView;
-	AdRequest request;
+public class DeckOfCardsWorkoutActivity extends Activity {
 	
 	int numPeople, currentUser, sets, decksize;
 	ImageView card, cardBackImageView;
@@ -62,8 +55,6 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 	int cardNum = 0;
 
 	int cardBack;
-	
-	GoogleAnalyticsTracker tracker;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -80,12 +71,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 		shuffleDeck();
 		setConnections();
 		createWorkouts();
-		
-		tracker = GoogleAnalyticsTracker.getInstance();
 
-	    // Start the tracker in manual dispatch mode...
-	    tracker.start("UA-23366060-1", this);
-	    tracker.trackPageView("Main Activity");
 
 
 	}
@@ -224,29 +210,11 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 		flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_in));
 	    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));  
 		
-	    // Add the adView to it
-	     adView = (AdView)this.findViewById(R.id.deckOfCardsAdView);
-	      
-	    // Initiate a generic request to load it with an ad
-		request = new AdRequest();
-		request.setTesting(false);
-		adView.loadAd(request);
-		
+
 		setOnClickListeners();
 		
 	}
-	
-	private void updateAds(){
-		Long thisTime = SystemClock.elapsedRealtime();
-		if((thisTime-baseAdTime)/1000 > 30){
-			baseAdTime = SystemClock.elapsedRealtime();
-		    // Initiate a generic request to load it with an ad
-			request = new AdRequest();
-			request.setTesting(false);
-			adView.loadAd(request);
-		}
 
-	}
 
 	private void setOnClickListeners() {
 	
@@ -255,8 +223,6 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 			public void onClick(View v) {
 				
 				if(flipper.getDisplayedChild() == 1){
-				
-					updateAds();
 					getNewCard();
 					flipper.showNext();
 					
@@ -273,8 +239,7 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 							workouts[i].stopTotal(endTime);
 							workouts[i].setWorkoutTime(workouts[i].getTotalFormattedTime());
 						}
-						
-						tracker.dispatch();
+
 						setWorkoutsToProfile();
 						
 						Intent el_fin = new Intent(v.getContext(), FinishedActivity.class);
@@ -354,8 +319,6 @@ public class DeckOfCardsWorkoutActivity extends Activity {
 	  @Override
 	  protected void onDestroy() {
 	    super.onDestroy();
-	    // Stop the tracker when it is no longer needed.
-	    tracker.stop();
 	  }
 	
 }

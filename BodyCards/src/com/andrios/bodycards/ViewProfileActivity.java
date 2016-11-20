@@ -1,15 +1,5 @@
 package com.andrios.bodycards;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.Comparator;
-
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -18,17 +8,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 public class ViewProfileActivity extends Activity {
 	Button newProfileBTN;
@@ -42,7 +39,6 @@ public class ViewProfileActivity extends Activity {
 	boolean button;
 
 	TextView tv;
-	GoogleAnalyticsTracker tracker;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -55,12 +51,6 @@ public class ViewProfileActivity extends Activity {
 		getExtras();
 		setConnections();
 		setAlertDialog();
-		
-		tracker = GoogleAnalyticsTracker.getInstance();
-
-	    // Start the tracker in manual dispatch mode...
-	    tracker.start("UA-23366060-1", this);
-	    tracker.trackPageView("View Profile Activity");
 	}
 
 	private void getExtras() {
@@ -191,7 +181,6 @@ public class ViewProfileActivity extends Activity {
 		newProfileBTN.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
-				tracker.dispatch();
 				Intent intent = new Intent(v.getContext(), NewProfileActivity.class);
 				startActivity(intent);
 
@@ -229,7 +218,6 @@ public class ViewProfileActivity extends Activity {
 	  protected void onDestroy() {
 	    super.onDestroy();
 	    // Stop the tracker when it is no longer needed.
-	    tracker.stop();
 	  }
 	
 }

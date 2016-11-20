@@ -1,15 +1,5 @@
 package com.andrios.bodycards;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.Comparator;
-
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -18,9 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
@@ -29,6 +19,14 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 public class ExerciseListActivity extends Activity {
 	Button nextBTN, clearBTN, addBTN;
@@ -47,7 +45,6 @@ public class ExerciseListActivity extends Activity {
 	ArrayList<Exercise> exerciseList, sel;
 
 	boolean[] selected;
-	GoogleAnalyticsTracker tracker;
 	
 
 	@Override
@@ -59,14 +56,6 @@ public class ExerciseListActivity extends Activity {
 		setContentView(R.layout.exerciselistactivity);
 		
 		getExtras();
-		
-		tracker = GoogleAnalyticsTracker.getInstance();
-
-	    // Start the tracker in manual dispatch mode...
-	    tracker.start("UA-23366060-1", this);
-	    tracker.trackPageView("Exercise List Activity");
-		
-		
 	}
 
 	private void getExtras() {
@@ -192,7 +181,7 @@ public class ExerciseListActivity extends Activity {
 								"Bench Dips",
 								"1. Sit on the edge of a solid bench or chair with your hands holding the edge by your hips.\n\n" +
 								"2. Walk your feet forward, then straighten your arms to lift your body off the bench.\n\n" +
-								"3. Lower yourself until your upper arms are about parallel with the floor, then press with the triceps to lift yourself back up - straighten the arms, but don’t lock the elbows at the top."+
+								"3. Lower yourself until your upper arms are about parallel with the floor, then press with the triceps to lift yourself back up - straighten the arms, but donï¿½t lock the elbows at the top."+
 								"Alternative. Place your feet on another bench or chair and add weights to your lap to add difficulty.",
 								R.drawable.exercise_bench_dips,
 								1.0,
@@ -276,7 +265,7 @@ public class ExerciseListActivity extends Activity {
 						new Exercise(
 								"Lunges",
 								"1. Stand in a split stance with the right foot forward and the left leg back, feet should be about 2 to 3 feet apart, depending on your leg length.\n\n" +
-								"2. Before you lunge, make sure your torso is straight and that you’re up on the back toe.\n\n" +
+								"2. Before you lunge, make sure your torso is straight and that youï¿½re up on the back toe.\n\n" +
 								"3. Bend the knees and lower the body down until the back knee is a few inches from the floor.\n\n" +
 								"4. At the bottom of the movement, the front thigh should be parallel to the floor and the back knee should point toward the floor.\n\n" +
 								"5. Keep the weight evenly distributed between both legs and push back up, keeping the weight in the heel of the front foot.\n\n"+
@@ -462,7 +451,6 @@ public class ExerciseListActivity extends Activity {
 				} else {
 					
 					Intent intent = new Intent(v.getContext(), NewWorkoutActivity.class);
-					tracker.dispatch();
 					
 					intent.putExtra("workoutName", workoutName);
 					intent.putExtra("selectedexercises", sel);
@@ -526,8 +514,6 @@ public class ExerciseListActivity extends Activity {
 	    super.onDestroy();
 	    resetExerciseList();
 		write();
-	    // Stop the tracker when it is no longer needed.
-	    tracker.stop();
 	  }
 	
 }

@@ -1,9 +1,5 @@
 package com.andrios.bodycards;
 
-import java.util.List;
-
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,15 +8,16 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
+
+import java.util.List;
 
 public class AboutActivity extends Activity {
 	
 	
 	Button facebookBTN, twitterBTN, emailBTN, marketBTN;
-	GoogleAnalyticsTracker tracker;
 	String market;
 	
     /** Called when the activity is first created. */
@@ -32,25 +29,17 @@ public class AboutActivity extends Activity {
         
         setConnections();
         setOnClickListeners();
-        setTracker();
     }
-    
-	private void setTracker() {
-		tracker = GoogleAnalyticsTracker.getInstance();
-		tracker.start(this.getString(R.string.ga_api_key),
-				getApplicationContext());
-	}
+
 
 	@Override
 	public void onResume() {
 		super.onResume();
-		tracker.trackPageView("/" + this.getLocalClassName());
 	}
 
 	@Override
 	public void onPause() {
 		super.onPause();
-		tracker.dispatch();
 	}
 
 

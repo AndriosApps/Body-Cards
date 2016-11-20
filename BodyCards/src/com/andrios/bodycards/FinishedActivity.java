@@ -1,31 +1,24 @@
 package com.andrios.bodycards;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-
-import com.google.android.apps.analytics.GoogleAnalyticsTracker;
-
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class FinishedActivity extends Activity {
 	
 	boolean hasRated;
 	AlertDialog ad;
 	ArrayList<Profile> selectedProfiles;
-	GoogleAnalyticsTracker tracker;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,12 +26,6 @@ public class FinishedActivity extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.finished);
-		
-		tracker = GoogleAnalyticsTracker.getInstance();
-
-	    // Start the tracker in manual dispatch mode...
-	    tracker.start("UA-23366060-1", this);
-		
 		getExtras();
 		setConnections();
 		
@@ -81,19 +68,14 @@ public class FinishedActivity extends Activity {
 	
 	public void onResume(){
 		super.onResume();
-
-	    tracker.trackPageView("Finished Activity");
 	}
 	
 	public void onPause(){
 		super.onPause();
-		tracker.dispatch();
 	}
 
 	  @Override
 	  protected void onDestroy() {
 	    super.onDestroy();
-	    // Stop the tracker when it is no longer needed.
-	    tracker.stop();
 	  }
 }
